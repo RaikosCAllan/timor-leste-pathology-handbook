@@ -26,3 +26,6 @@ data/site.internal.js
 .Rhistory
 .RData
 .Rproj.user/
+
+# USB build output
+build/

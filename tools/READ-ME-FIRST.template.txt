@@ -1,0 +1,74 @@
+===============================================================================
+  {{ORGANISATION}}
+  PATHOLOGY SERVICES HANDBOOK  —  offline copy
+===============================================================================
+
+  Version:   {{VERSION}}
+  Released:  {{DATE}}
+  Expires:   {{EXPIRY}}        <-- after this date, ask for a new copy
+
+
+  TO OPEN THE HANDBOOK
+  --------------------
+
+    Double-click the file named:   index.html
+
+    It opens in your web browser. You do NOT need an internet connection.
+    Nothing is installed on the computer.
+
+    If you see "index" instead of "index.html", that is the same file —
+    Windows hides the ending.
+
+
+  WHAT THIS IS
+  ------------
+
+    The laboratory test directory, specimen collection guide, and specimen
+    acceptance rules — the same content as the handbook on the intranet,
+    copied onto this device so it works when the network is down.
+
+    Use the search box to find a test by name, abbreviation, sample type or
+    department.
+
+
+  IMPORTANT
+  ---------
+
+    1. THIS COPY DOES NOT UPDATE ITSELF.
+
+       It is correct as at the release date above and nowhere else. If today
+       is past the expiry date, do not rely on it — contact the laboratory
+       for a current copy.
+
+    2. FOR ANY RESULT OR REFERENCE RANGE, THE LABORATORY REPORT IS THE
+       AUTHORITATIVE SOURCE.
+
+       This handbook tells you how to collect and request. It does not
+       replace the report.
+
+    3. IF YOU ARE UNSURE, TELEPHONE THE LABORATORY.
+
+       {{CONTACT}}
+
+
+  PLEASE DO NOT EDIT THE FILES ON THIS DEVICE
+  -------------------------------------------
+
+    Changes made here reach nobody else and will be lost when this copy is
+    replaced. If something is wrong or out of date, tell the laboratory so it
+    can be corrected at the source and reissued to everyone.
+
+
+  ISSUED TO
+  ---------
+
+    Ward / department: ...........................................
+
+    Issued by: ...................................................
+
+    Date issued: .................................................
+
+
+===============================================================================
+{{STATUS_NOTICE}}
+===============================================================================
