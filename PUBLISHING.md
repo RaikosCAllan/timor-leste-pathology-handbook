@@ -107,6 +107,48 @@ addresses in `data/site.js`.
 
 ---
 
+## Step 3b — Add a second maintainer (do this straight after the first push)
+
+A national handbook should never depend on one person remaining reachable. As
+soon as the repository exists, give a trusted colleague administrative access.
+
+1. Repository → **Settings** → **Collaborators and teams**
+2. **Add people** → their GitHub username → **Add**
+3. Set their role to **Admin**, not Write
+
+Admin rather than Write matters: a Write collaborator can commit, but cannot
+recover the repository, change its settings, or transfer it if you are
+unavailable. Admin is the level that provides actual continuity.
+
+Then record both names in the *Custodianship* table in `README.md`, so anyone
+opening the repository can see who is responsible without asking.
+
+### Why not just a shared password
+
+Do not share a GitHub account or password. Two named accounts give you an
+audit trail — every commit says who made it — which a shared login destroys.
+Shared credentials also break GitHub's two-factor authentication requirement.
+
+### Keeping honest review once there are two of you
+
+With two maintainers you can protect `main` without blocking yourself:
+
+1. Repository → **Settings** → **Rules** → **Rulesets** (or **Branches** →
+   **Add branch protection rule**)
+2. Target the `main` branch and enable:
+   - Require a pull request before merging
+   - Require 1 approving review
+   - Block force pushes and branch deletion
+   - **Include administrators** — so the rule binds you too
+
+These are free on public repositories. The last one is the one an auditor
+will care about: it means nobody, including the owner, can change a critical
+value without a second pair of eyes.
+
+Remember that code review is not clinical review. A reviewer confirming the
+file parses has not confirmed the number is right. Ask the reviewer to state
+which source they verified against.
+
 ## Step 4 — Your day-to-day loop from here
 
 Every time you fill in more content:
@@ -167,3 +209,7 @@ CC BY 4.0 is a common choice for government health documents. Add it as
 version should not carry internal extensions, keep the internal one as
 `data/site.internal.js` — `.gitignore` already excludes that filename, so it
 will never be pushed by accident.
+
+**When the draft banner comes off.** The checklist is in `README.md` under
+*Status*. Do not remove the banner before every item is met, including written
+Ministry sign-off.
