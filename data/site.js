@@ -115,6 +115,7 @@ window.SITE = {
       "Only qualified staff may authorise and release results. Log in with your own identification and password — passwords must never be shared.",
       "Access to stored patient data for research requires ethics approval and written permission."
     ],
+    linkLabel: "Open SchuyNet",
     url: "[FILL IN — SchuyNet intranet address, or leave as-is to hide the link]"
   }
 

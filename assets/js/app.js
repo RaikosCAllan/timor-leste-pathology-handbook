@@ -111,8 +111,12 @@
     function row(k, v) { return v ? "<dt>" + esc(k) + "</dt><dd>" + fmt(v) + "</dd>" : ""; }
     function initials(s) {
       s = String(s).trim();
+      // An unfilled placeholder would produce nonsense initials, and an empty
+      // name an empty circle. Show a neutral mark in both cases.
+      if (!s || /\[FILL IN/i.test(s)) return "LAB";
       if (s.length <= 4 && s.indexOf(" ") === -1) return s.toUpperCase();
-      return s.split(/\s+/).map(function (w) { return w[0] || ""; }).join("").slice(0, 3).toUpperCase();
+      return s.split(/\s+/).map(function (w) { return w[0] || ""; })
+              .join("").replace(/[^A-Za-z0-9]/g, "").slice(0, 3).toUpperCase() || "LAB";
     }
   }
 
@@ -135,7 +139,8 @@
     var L = S.limsPanel;
     if (L) {
       var link = (L.url && L.url.indexOf("[FILL IN") !== 0)
-        ? '<p><a href="' + esc(L.url) + '">Open SchuyNet</a></p>' : "";
+        ? '<p><a href="' + esc(L.url) + '">' +
+          esc(t(L.linkLabel) || "Open the results portal") + "</a></p>" : "";
       set("limsPanel", "<h3>" + esc(t(L.heading)) + "</h3>" +
         (t(L.body) || []).map(function (p) { return "<p>" + fmt(p) + "</p>"; }).join("") + link);
     }
@@ -151,6 +156,12 @@
     pending: ["PENDING", "badge-pending"]
   };
 
+  // The LIMS code field. `limsCode` is the portable name; `schuylabCode` is
+  // accepted so instances written against the earlier schema still work.
+  function code(test) {
+    return has(test.limsCode) ? test.limsCode : test.schuylabCode;
+  }
+
   function deptName(id) {
     var d = (window.DEPARTMENTS || []).filter(function (x) { return x.id === id; })[0];
     return d ? t(d.name) : (id || "");
@@ -163,7 +174,7 @@
 
   // Everything a test should be searchable by.
   function haystack(test) {
-    var parts = [t(test.name), t(test.schuylabCode), t(test.sampleType),
+    var parts = [t(test.name), t(code(test)), t(test.sampleType),
                  t(test.containerColour), deptName(test.department), t(test.summary),
                  t(test.description)];
     parts = parts.concat(t(test.synonyms) || [], t(test.indications) || [],
@@ -193,7 +204,7 @@
 
     var meta = [];
     if (has(test.department)) meta.push("<b>" + esc(deptName(test.department)) + "</b>");
-    if (has(test.schuylabCode)) meta.push("Code " + esc(t(test.schuylabCode)));
+    if (has(code(test))) meta.push("Code " + esc(t(code(test))));
     if (has(test.sampleType)) meta.push(esc(t(test.sampleType)));
     if (has(test.synonyms)) meta.push("Also: " + esc((t(test.synonyms) || []).join(", ")));
 
