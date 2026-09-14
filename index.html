@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathology Services Handbook</title>
+<meta name="description" content="Laboratory test directory, specimen requirements and reporting guidance.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="brand">
+      <div class="brand-logo" id="brandLogo"></div>
+      <div class="brand-text">
+        <p class="brand-org" id="brandOrg"></p>
+        <h1 class="brand-title" id="brandTitle"></h1>
+        <p class="brand-parent" id="brandParent"></p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="lang-toggle" id="langToggle" hidden></div>
+      <a class="btn-ghost" id="handbookDownload" hidden>Download full handbook (PDF)</a>
+    </div>
+  </div>
+
+  <nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#directory">Test Directory</a></li>
+        <li><a href="#request">How to Request</a></li>
+        <li><a href="#collection">Specimen Collection</a></li>
+        <li><a href="#criteria">Specimen Criteria</a></li>
+        <li><a href="#hours">Hours &amp; Contact</a></li>
+        <li><a href="#appendices">Appendices</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ============================ HERO / SEARCH ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-tagline" id="heroTagline"></p>
+    <div class="hero-search">
+      <label for="heroSearch" class="sr-only">Search the test directory</label>
+      <input type="search" id="heroSearch" placeholder="Search a test — name, synonym, sample type or department" autocomplete="off">
+      <button type="button" id="heroSearchBtn">Search</button>
+    </div>
+    <p class="hero-hint">Try <button class="chip-link" data-q="blood culture">blood culture</button>
+      <button class="chip-link" data-q="EDTA">EDTA</button>
+      <button class="chip-link" data-q="coagulation">coagulation</button></p>
+  </div>
+</section>
+
+<!-- ============================ ABOUT ============================= -->
+<section id="about" class="section">
+  <div class="wrap">
+    <h2>About Us</h2>
+    <p class="lead" id="aboutIntro"></p>
+
+    <div class="grid-2">
+      <div class="panel">
+        <h3>Vision</h3>
+        <ol id="visionList" class="tidy-list"></ol>
+      </div>
+      <div class="panel panel-accent">
+        <h3>Mission</h3>
+        <p id="missionText"></p>
+      </div>
+    </div>
+
+    <h3 class="sub">Departments and services</h3>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Department</th><th>Services</th><th>Location</th><th>Contact</th></tr></thead>
+        <tbody id="deptTable"></tbody>
+      </table>
+    </div>
+
+    <div id="aboutNotes" class="note-stack"></div>
+
+    <div class="panel panel-info" id="limsPanel"></div>
+  </div>
+</section>
+
+<!-- ============================ TEST DIRECTORY ==================== -->
+<section id="directory" class="section section-alt">
+  <div class="wrap">
+    <h2>Test Directory</h2>
+    <p class="lead">Search by test name, synonym, sample type, SchuyLab code or department. Select a test to see full specimen requirements, reference range and turnaround time.</p>
+
+    <div class="filter-bar">
+      <div class="filter-field grow">
+        <label for="testSearch">Search</label>
+        <input type="search" id="testSearch" placeholder="e.g. APTT, citrate, sepsis" autocomplete="off">
+      </div>
+      <div class="filter-field">
+        <label for="deptFilter">Department</label>
+        <select id="deptFilter"><option value="">All departments</option></select>
+      </div>
+      <div class="filter-field">
+        <label for="flagFilter">Show</label>
+        <select id="flagFilter">
+          <option value="">All tests</option>
+          <option value="critical">Critical-value tests</option>
+          <option value="stat">STAT available</option>
+          <option value="send-away">Referred / send-away</option>
+          <option value="pending">Not yet available</option>
+        </select>
+      </div>
+      <button type="button" class="btn-ghost" id="clearFilters">Clear</button>
+    </div>
+
+    <div class="legend">
+      <span><b class="badge badge-critical">CRITICAL</b> has a critical-value alert — the laboratory will telephone this result</span>
+      <span><b class="badge badge-stat">STAT</b> urgent processing available</span>
+      <span><b class="badge badge-away">SEND-AWAY</b> referred to another laboratory; results take days to weeks</span>
+      <span><b class="badge badge-pending">PENDING</b> not currently available — check with the department before requesting</span>
+    </div>
+
+    <p class="result-count" id="resultCount"></p>
+    <div id="testResults" class="test-list"></div>
+    <p class="empty-state" id="emptyState" hidden>No matching test. Try a shorter search term, or clear the filters.</p>
+  </div>
+</section>
+
+<!-- ============================ HOW TO REQUEST ==================== -->
+<section id="request" class="section">
+  <div class="wrap">
+    <h2>How to Request a Test</h2>
+    <ol class="steps" id="requestSteps"></ol>
+
+    <h3 class="sub">Request forms</h3>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Form</th><th>Used for</th></tr></thead>
+        <tbody id="formsTable"></tbody>
+      </table>
+    </div>
+
+    <div class="panel panel-warn" id="outOfHours"></div>
+    <div class="panel panel-critical" id="criticalResults"></div>
+  </div>
+</section>
+
+<!-- ============================ COLLECTION ======================== -->
+<section id="collection" class="section section-alt">
+  <div class="wrap">
+    <h2>Specimen Collection Quick Guide</h2>
+    <p class="lead" id="collectionIntro"></p>
+
+    <h3 class="sub">Order of draw and tube reference</h3>
+    <div class="table-scroll">
+      <table class="data-table tube-table">
+        <thead><tr><th>Order</th><th>Tube type / colour</th><th>Additive and volume</th><th>Primary uses</th></tr></thead>
+        <tbody id="tubeTable"></tbody>
+      </table>
+    </div>
+
+    <div class="grid-3" id="collectionNotes"></div>
+  </div>
+</section>
+
+<!-- ============================ CRITERIA ========================== -->
+<section id="criteria" class="section">
+  <div class="wrap">
+    <h2>Specimen Criteria</h2>
+    <div class="grid-2 align-start">
+      <div class="panel panel-ok" id="acceptancePanel"></div>
+      <div class="panel panel-reject" id="rejectionPanel"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HOURS ============================= -->
+<section id="hours" class="section section-alt">
+  <div class="wrap">
+    <h2>Laboratory Hours &amp; Contact</h2>
+    <div class="grid-2 align-start">
+      <div>
+        <h3 class="sub">Opening hours</h3>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Service</th><th>Hours</th><th>Notes</th></tr></thead>
+            <tbody id="hoursTable"></tbody>
+          </table>
+        </div>
+        <ul class="tidy-list small" id="hoursNotes"></ul>
+      </div>
+      <div>
+        <h3 class="sub">Contacts</h3>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Department</th><th>Telephone</th><th>Ext.</th><th>Email</th></tr></thead>
+            <tbody id="contactsTable"></tbody>
+          </table>
+        </div>
+        <p class="small" id="addressLine"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ APPENDICES ======================== -->
+<section id="appendices" class="section">
+  <div class="wrap">
+    <h2>Appendices</h2>
+    <nav class="appendix-index" id="appendixIndex" aria-label="Appendices"></nav>
+    <div id="appendixBody"></div>
+
+    <h3 class="sub" id="references">References</h3>
+    <div id="referencesBody"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-org" id="footerOrg"></p>
+      <p class="small" id="footerParent"></p>
+    </div>
+    <dl class="footer-meta" id="footerMeta"></dl>
+  </div>
+</footer>
+
+<!-- Data files — edit these, not the code below -->
+<script src="data/site.js"></script>
+<script src="data/departments.js"></script>
+<script src="data/tests.js"></script>
+<script src="data/collection.js"></script>
+<script src="data/request.js"></script>
+<script src="data/appendices.js"></script>
+
+<!-- Application code — you should not need to edit this -->
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>

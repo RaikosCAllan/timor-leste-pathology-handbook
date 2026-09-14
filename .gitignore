@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Word/Office lock files
+~$*
+
+# Local-only copies — see TEMPLATE_GUIDE.md §8.
+# If you keep a separate intranet version of site.js with internal phone
+# extensions, name it site.internal.js and it will stay out of the repo.
+data/site.internal.js
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
