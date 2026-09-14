@@ -62,6 +62,6 @@ structure and field set of Timor-Leste Handbook v9.3.
 **Intranet:** copy this folder to the intranet server's document root or a
 shared drive.
 
-**Internet:** the same folder publishes to GitHub Pages unchanged. See
-TEMPLATE_GUIDE.md §8, including the note about reviewing internal contact
-details before making the site public.
+**Internet:** the same folder publishes to GitHub Pages unchanged. Step-by-step
+instructions are in **PUBLISHING.md**. See also TEMPLATE_GUIDE.md §8, on
+reviewing internal contact details before making the site public.
