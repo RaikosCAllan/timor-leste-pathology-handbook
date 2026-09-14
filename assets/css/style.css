@@ -102,6 +102,10 @@ h3.sub{margin:34px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)
 
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
+/* Grid items default to min-width:auto, so a column will not shrink below its
+   content. Without this, a wide table pushes the whole page sideways on a
+   phone instead of scrolling inside its own .table-scroll wrapper. */
+.grid-2>*,.grid-3>*{min-width:0}
 .align-start{align-items:start}
 
 .panel{background:#fff;border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:var(--radius);padding:20px 22px}
