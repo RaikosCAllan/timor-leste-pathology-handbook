@@ -18,7 +18,7 @@
       <div class="brand-logo" id="brandLogo"></div>
       <div class="brand-text">
         <p class="brand-org" id="brandOrg"></p>
-        <h1 class="brand-title" id="brandTitle"></h1>
+        <h1 class="brand-title"><span class="draft-chip" id="draftChip" hidden>DRAFT</span><span id="brandTitle"></span></h1>
         <p class="brand-parent" id="brandParent"></p>
       </div>
     </div>
@@ -44,6 +44,9 @@
 </header>
 
 <main id="main">
+
+<!-- Shown only while site.js draftNotice.show is true -->
+<section class="draft-notice" id="draftNotice" role="alert" hidden></section>
 
 <!-- ============================ HERO / SEARCH ===================== -->
 <section class="hero">

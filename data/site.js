@@ -21,6 +21,27 @@ window.SITE = {
   defaultLanguage: "en",
   showLanguageToggle: false,
 
+  /* --- Draft notice ------------------------------------------------------
+     While show is true, the site displays a red banner on every page view, a
+     DRAFT chip beside the title, and a [DRAFT] prefix in the browser tab.
+
+     SET show TO false ONLY when the handbook has been completed, clinically
+     verified and formally approved by the Ministry of Health. The checklist
+     is in README.md under "Before this banner can be removed".
+
+     Dismissing the banner hides it for that page view only. It returns on
+     reload, deliberately: it is a clinical safety warning, not a cookie
+     notice.                                                                */
+  draftNotice: {
+    show: true,
+    heading: "Working draft — not for clinical use",
+    body: [
+      "This handbook is still being written. Its reference ranges, critical values and specimen requirements have not been verified by a qualified scientist, and it has not been approved by the Ministry of Health.",
+      "Do not use it for clinical decisions. For any reference range or result, the SchuyLab report is the authoritative source. If you are unsure about a test or a specimen, telephone the laboratory."
+    ],
+    dismissible: true
+  },
+
   /* --- Identity -------------------------------------------------------- */
   organisation: "Laboratório Nacional de Saúde",
   organisationShort: "LNS",

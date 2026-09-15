@@ -80,6 +80,33 @@ a:hover{color:var(--navy)}
 .site-nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
 .site-nav a.active{color:#fff;border-bottom-color:#fff;font-weight:600}
 
+/* ----------------------------------------------------- DRAFT NOTICE -- */
+/* Shown only while draftNotice.show is true in data/site.js. */
+.draft-notice{background:#7f1d1d;color:#fff;border-bottom:3px solid #5f1515}
+.draft-inner{display:flex;gap:20px;align-items:flex-start;justify-content:space-between;padding-block:16px}
+.draft-heading{
+  margin:0 0 6px;font-size:16px;font-weight:700;letter-spacing:.01em;
+  display:flex;align-items:center;gap:9px;
+}
+.draft-heading::before{content:"\26A0";font-size:19px;line-height:1}
+.draft-notice p{margin:0 0 5px;font-size:14.5px;color:rgba(255,255,255,.93);max-width:80ch}
+.draft-notice p:last-child{margin-bottom:0}
+.draft-dismiss{
+  flex:0 0 auto;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);
+  color:#fff;padding:6px 14px;border-radius:var(--radius);font:inherit;font-size:13.5px;cursor:pointer;
+}
+.draft-dismiss:hover{background:rgba(255,255,255,.26)}
+
+.draft-chip{
+  display:inline-block;background:#b12a2a;color:#fff;font-size:10.5px;font-weight:700;
+  letter-spacing:.09em;padding:2.5px 7px;border-radius:3px;vertical-align:2px;margin-right:9px;
+}
+
+@media (max-width:700px){
+  .draft-inner{flex-direction:column;gap:12px}
+  .draft-dismiss{align-self:flex-start}
+}
+
 /* ------------------------------------------------------------ HERO --- */
 .hero{background:linear-gradient(160deg,var(--navy-light),var(--navy));color:#fff;padding:42px 0 46px}
 .hero-tagline{margin:0 0 22px;font-size:17px;max-width:62ch;color:rgba(255,255,255,.9)}
@@ -261,6 +288,9 @@ figcaption{font-size:13px;color:var(--ink-faint);margin-top:6px}
 /* ------------------------------------------------------------ PRINT -- */
 @media print{
   .site-header,.hero,.filter-bar,.legend,.site-footer,.appendix-index,.skip-link{display:none}
+  .draft-notice{display:block!important;background:none;color:#000;border:2px solid #000;padding:10px}
+  .draft-notice p{color:#000}
+  .draft-dismiss{display:none}
   .section{padding:12px 0;page-break-inside:avoid}
   .test-card{border:0;border-bottom:1px solid #ccc}
   .test-body{display:block!important}

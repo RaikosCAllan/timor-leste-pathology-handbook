@@ -99,6 +99,8 @@
       });
     }
 
+    renderDraftNotice(S.draftNotice);
+
     set("footerOrg", esc(t(S.organisation)));
     set("footerParent", esc(t(S.parentBody)) + (S.address ? " &middot; " + fmt(t(S.address)) : ""));
     set("footerMeta",
@@ -109,6 +111,36 @@
     );
 
     function row(k, v) { return v ? "<dt>" + esc(k) + "</dt><dd>" + fmt(v) + "</dd>" : ""; }
+
+    // The draft notice. While draftNotice.show is true the page carries a
+    // banner, a DRAFT chip beside the title, and a [DRAFT] tab prefix.
+    // Dismissing hides it for this page view only — it returns on reload,
+    // deliberately, because it is a clinical safety warning and not a cookie
+    // notice.
+    function renderDraftNotice(D) {
+      var box = el("draftNotice"), chip = el("draftChip");
+      if (!D || !D.show) { return; }
+
+      document.title = "[DRAFT] " + document.title;
+      if (chip) chip.hidden = false;
+      if (!box) return;
+
+      var paras = t(D.body);
+      if (!Array.isArray(paras)) paras = paras ? [paras] : [];
+
+      box.innerHTML =
+        '<div class="wrap draft-inner"><div>' +
+          '<p class="draft-heading">' + esc(t(D.heading) || "Working draft") + "</p>" +
+          paras.map(function (x) { return "<p>" + fmt(x) + "</p>"; }).join("") +
+        "</div>" +
+        (D.dismissible === false ? "" :
+          '<button type="button" class="draft-dismiss" id="draftDismiss">Dismiss</button>') +
+        "</div>";
+      box.hidden = false;
+
+      var btn = el("draftDismiss");
+      if (btn) btn.addEventListener("click", function () { box.hidden = true; });
+    }
     function initials(s) {
       s = String(s).trim();
       // An unfilled placeholder would produce nonsense initials, and an empty
