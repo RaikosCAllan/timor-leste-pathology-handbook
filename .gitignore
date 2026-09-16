@@ -29,3 +29,7 @@ data/site.internal.js
 
 # USB build output
 build/
+
+# Source extract of the handbook document — kept outside the repo,
+# ignored here as a second line of defence against publishing it.
+handbook_source_extract/
