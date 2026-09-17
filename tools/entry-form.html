@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test entry form — handbook tools</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+/* Tool-only styling. This page is never part of the published handbook. */
+body{background:var(--bg-alt)}
+.tool-head{background:var(--navy-dark);color:#fff;padding:14px 0}
+.tool-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.tool-head h1{margin:0;font-size:18px;font-weight:650}
+.tool-head .tool-sub{margin:2px 0 0;font-size:13px;color:rgba(255,255,255,.65)}
+.tool-warn{background:#7f1d1d;color:#fff;font-size:13.5px;padding:9px 0}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start;padding:22px 0 60px}
+@media (max-width:1000px){.layout{grid-template-columns:1fr}}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:16px}
+.card h2{font-size:15px;margin:0 0 4px;color:var(--navy);letter-spacing:.01em}
+.card .hint{font-size:12.5px;color:var(--ink-faint);margin:0 0 14px}
+
+.f{margin-bottom:13px}
+.f label{display:block;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);margin-bottom:4px}
+.f label .req{color:var(--red);margin-left:3px}
+.f .note{font-size:12px;color:var(--ink-faint);font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px}
+.f input[type=text],.f textarea,.f select{
+  width:100%;border:1px solid var(--line);border-radius:4px;padding:8px 10px;
+  font:inherit;font-size:14px;background:#fff;color:var(--ink);
+}
+.f textarea{resize:vertical;min-height:62px;line-height:1.5}
+.f input:focus,.f textarea:focus,.f select:focus{outline:2px solid var(--navy-light);outline-offset:-1px}
+.f.bad input,.f.bad select{border-color:var(--red);background:#fdf5f5}
+.msg{font-size:12.5px;margin-top:4px}
+.msg.err{color:var(--red)}
+.msg.ok{color:var(--green)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+
+.checks{display:flex;flex-wrap:wrap;gap:6px 16px}
+.checks label{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:400;
+  text-transform:none;letter-spacing:0;color:var(--ink);margin:0;cursor:pointer}
+.checks input{margin:0}
+
+.bar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);
+  padding:12px 0;margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+button.primary{background:var(--navy);color:#fff;border:0;padding:9px 18px;border-radius:var(--radius);
+  font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+button.primary:hover{background:var(--navy-light)}
+button.sec{background:#fff;border:1px solid var(--line);color:var(--ink-soft);padding:9px 16px;
+  border-radius:var(--radius);font:inherit;font-size:14px;cursor:pointer}
+button.sec:hover{background:var(--bg-tint);color:var(--ink)}
+button:disabled{opacity:.45;cursor:not-allowed}
+
+pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius);
+  font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  overflow:auto;max-height:520px;white-space:pre;margin:0}
+.queue{max-height:300px;overflow:auto;border:1px solid var(--line);border-radius:4px}
+.queue table{width:100%;border-collapse:collapse;font-size:13.5px}
+.queue td{padding:7px 10px;border-bottom:1px solid var(--line-soft)}
+.queue tr:last-child td{border-bottom:0}
+.queue .qid{color:var(--ink-faint);font:12px ui-monospace,monospace}
+.queue button{background:none;border:0;color:var(--red);cursor:pointer;font:inherit;font-size:12.5px;padding:2px 4px}
+.counter{font-size:13px;color:var(--ink-faint);margin-left:auto}
+.pill{display:inline-block;background:var(--bg-tint);border:1px solid var(--line);border-radius:20px;
+  padding:2px 9px;font-size:12px;color:var(--ink-soft);margin-right:5px}
+.loaderr{background:#fdf8ee;border-left:3px solid var(--amber);padding:12px 15px;font-size:13.5px;border-radius:0 4px 4px 0}
+</style>
+</head>
+<body>
+
+<header class="tool-head">
+  <div class="wrap">
+    <div>
+      <h1>Test entry form</h1>
+      <p class="tool-sub">Generates correctly-formatted entries for <code>data/tests.js</code></p>
+    </div>
+    <div><span class="pill" id="pillDept">0 departments</span><span class="pill" id="pillTests">0 tests loaded</span></div>
+  </div>
+</header>
+<div class="tool-warn"><div class="wrap">
+  Developer tool — not part of the published handbook. It cannot save to disk; it writes a file for you to save yourself.
+</div></div>
+
+<div class="wrap">
+<div id="loadError"></div>
+<div class="layout">
+
+  <!-- ================= LEFT: the form ================= -->
+  <div>
+    <div class="card">
+      <h2>Identity</h2>
+      <p class="hint">The id becomes the permanent link <code>index.html#test-&lt;id&gt;</code>. Changing it later breaks any link already shared.</p>
+
+      <div class="f" id="f-name">
+        <label>Test name <span class="req">*</span><span class="note">as it appears on your report</span></label>
+        <input type="text" id="name" autocomplete="off">
+      </div>
+
+      <div class="row">
+        <div class="f" id="f-id">
+          <label>id <span class="req">*</span></label>
+          <input type="text" id="id" autocomplete="off">
+          <div class="msg" id="idMsg"></div>
+        </div>
+        <div class="f">
+          <label>LIMS code</label>
+          <input type="text" id="limsCode" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="f" id="f-department">
+        <label>Department <span class="req">*</span></label>
+        <select id="department"></select>
+        <div class="msg" id="deptMsg"></div>
+      </div>
+
+      <div class="f">
+        <label>Synonyms <span class="note">one per line — what clinicians actually type</span></label>
+        <textarea id="synonyms" rows="2"></textarea>
+      </div>
+
+      <div class="f">
+        <label>Flags</label>
+        <div class="checks" id="flags"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Description</h2>
+      <div class="f">
+        <label>Summary <span class="note">one line, shown in search results</span></label>
+        <input type="text" id="summary" autocomplete="off">
+      </div>
+      <div class="f">
+        <label>Full description</label>
+        <textarea id="description" rows="3"></textarea>
+      </div>
+      <div class="f">
+        <label>Clinical use / indications <span class="note">one per line</span></label>
+        <textarea id="indications" rows="4"></textarea>
+      </div>
+      <div class="f">
+        <label>Reference range <span class="note">one per line if several</span></label>
+        <textarea id="referenceRange" rows="2"></textarea>
+      </div>
+      <div class="f">
+        <label>Analytical limitations <span class="note">one per line</span></label>
+        <textarea id="analyticalLimitations" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Specimen</h2>
+      <div class="row">
+        <div class="f">
+          <label>Sample type</label>
+          <input type="text" id="sampleType" list="sampleTypes" autocomplete="off">
+          <datalist id="sampleTypes"></datalist>
+        </div>
+        <div class="f">
+          <label>Container</label>
+          <select id="containerColour"></select>
+        </div>
+      </div>
+      <div class="f">
+        <label>Sample requirements <span class="note">one per line if it differs by age</span></label>
+        <textarea id="sampleRequirements" rows="2"></textarea>
+      </div>
+      <div class="f">
+        <label>Storage / transport</label>
+        <textarea id="storageTransport" rows="2"></textarea>
+      </div>
+      <div class="f">
+        <label>Rejection</label>
+        <textarea id="rejection" rows="2"></textarea>
+      </div>
+      <div class="f">
+        <label>Methodology</label>
+        <textarea id="methodology" rows="2"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Reporting</h2>
+      <div class="row">
+        <div class="f">
+          <label>Turnaround — routine</label>
+          <input type="text" id="tatRoutine" autocomplete="off">
+        </div>
+        <div class="f">
+          <label>Turnaround — urgent</label>
+          <input type="text" id="tatUrgent" autocomplete="off">
+        </div>
+      </div>
+      <div class="f">
+        <label>Critical / alert</label>
+        <textarea id="criticalAlert" rows="2"></textarea>
+        <div class="msg" id="critMsg"></div>
+      </div>
+      <div class="f">
+        <label>Disease associations <span class="note">one per line</span></label>
+        <textarea id="diseaseAssociations" rows="3"></textarea>
+      </div>
+      <div class="f">
+        <label>Conversion factors</label>
+        <input type="text" id="conversionFactors" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Organisms reported <span class="note" style="font-weight:400;text-transform:none;letter-spacing:0">cultures only</span></h2>
+      <p class="hint">Leave empty for non-culture tests. Format: a group name on its own line ending in a colon, then its organisms beneath it. A line starting <code>note:</code> becomes a footnote on that group.</p>
+      <div class="f">
+        <textarea id="organisms" rows="6" placeholder="Common pathogens:&#10;Staphylococcus aureus&#10;Escherichia coli&#10;&#10;Commensal contaminants:&#10;Coagulase-negative staphylococci&#10;note: Reported as contaminants unless repeated or clinically supported."></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Cross-references and governance</h2>
+      <div class="f">
+        <label>Appendices to link</label>
+        <div class="checks" id="appendixRefs"></div>
+      </div>
+      <div class="f">
+        <label>Last reviewed <span class="note">when a scientist verified this entry</span></label>
+        <input type="text" id="lastReviewed" autocomplete="off" placeholder="2026-09">
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= RIGHT: output ================= -->
+  <div>
+    <div class="card" style="position:sticky;top:12px">
+      <h2>Generated entry</h2>
+      <p class="hint">Updates as you type. Quotes and backslashes are escaped, and text pasted from Word is cleaned automatically.</p>
+      <pre class="out" id="preview">// Fill in a name to begin.</pre>
+      <div class="bar">
+        <button class="primary" id="btnAdd">Add to queue</button>
+        <button class="sec" id="btnCopy">Copy entry</button>
+        <button class="sec" id="btnClear">Clear form</button>
+        <span class="counter" id="queueCount">0 queued</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Queue</h2>
+      <p class="hint">Entries added this session. Export writes a complete <code>data/tests.js</code> containing the tests already in the file plus everything queued here.</p>
+      <div class="queue" id="queue"><table><tbody id="queueBody"></tbody></table></div>
+      <div class="bar">
+        <button class="primary" id="btnExport">Export tests.js</button>
+        <button class="sec" id="btnExportQueue">Export queue only</button>
+      </div>
+      <p class="hint" style="margin:0">
+        Export downloads a file. Replace <code>data/tests.js</code> with it, then run
+        <code>node tools/check-data.js</code> before committing.
+      </p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- Load the real data files, exactly as the site does -->
+<script src="../data/departments.js"></script>
+<script src="../data/collection.js"></script>
+<script src="../data/appendices.js"></script>
+<script src="../data/tests.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var DEPTS = window.DEPARTMENTS || [];
+  var COLL  = window.COLLECTION || {};
+  var APPS  = window.APPENDICES || [];
+  var EXISTING = window.TESTS || [];
+  var queue = [];
+
+  var el = function (id) { return document.getElementById(id); };
+
+  /* ---- Warn loudly if the data files did not load ---------------------- */
+  if (!DEPTS.length) {
+    el("loadError").innerHTML =
+      '<div class="loaderr"><b>The data files did not load.</b> This page must sit in ' +
+      '<code>tools/</code> inside the repository, so that <code>../data/</code> resolves. ' +
+      'Open it from there, not from a copy elsewhere.</div>';
+  }
+  el("pillDept").textContent = DEPTS.length + " departments";
+  el("pillTests").textContent = EXISTING.length + " tests loaded";
+
+  /* ---- Populate the controls from the real data ------------------------ */
+  var dsel = el("department");
+  dsel.innerHTML = '<option value="">— choose —</option>' +
+    DEPTS.map(function (d) {
+      return '<option value="' + d.id + '">' + text(d.name) + "  (" + d.id + ")</option>";
+    }).join("");
+
+  var tubes = (COLL.orderOfDraw || []).map(function (r) { return text(r.colour); })
+                .filter(function (v, i, a) { return v && a.indexOf(v) === i; });
+  el("containerColour").innerHTML = '<option value="">— none —</option>' +
+    tubes.map(function (c) { return '<option>' + c + "</option>"; }).join("");
+
+  el("sampleTypes").innerHTML = ["Serum", "Plasma", "EDTA whole blood", "Citrate plasma",
+    "Whole blood", "Urine", "CSF", "Stool", "Sputum", "Swab", "Body fluid", "Tissue"]
+    .map(function (s) { return "<option>" + s + "</option>"; }).join("");
+
+  el("flags").innerHTML = ["critical", "stat", "send-away", "pending"].map(function (f) {
+    return '<label><input type="checkbox" class="flag" value="' + f + '"> ' + f + "</label>";
+  }).join("");
+
+  el("appendixRefs").innerHTML = APPS.map(function (a) {
+    return '<label><input type="checkbox" class="appref" value="' + a.id + '"> ' +
+           a.number + ". " + text(a.title).slice(0, 34) + "</label>";
+  }).join("") || '<span class="hint">No appendices found.</span>';
+
+  function text(v) {
+    if (v == null) return "";
+    if (typeof v === "string") return v;
+    if (typeof v === "object" && v.en) return v.en;
+    return String(v);
+  }
+
+  /* ---- Cleaning text pasted out of Word -------------------------------- *
+     Word supplies curly quotes, en/em dashes as literal characters, and
+     non-breaking spaces. Curly quotes are harmless inside a JS string but
+     look wrong on the page; a non-breaking space is invisible and causes
+     "why does this not match" bugs later. Normalise on the way in.        */
+  function clean(s) {
+    return String(s)
+      .replace(/ /g, " ")               // non-breaking space
+      .replace(/[‘’‛]/g, "'") // curly single quotes
+      .replace(/[“”]/g, '"')       // curly double quotes
+      .replace(/…/g, "...")             // ellipsis
+      .replace(/­/g, "")                // soft hyphen
+      .replace(/[ \t]+$/gm, "")              // trailing whitespace
+      .trim();
+  }
+
+  // Escape for embedding in a double-quoted JS string literal.
+  function esc(s) {
+    return String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+  }
+
+  function lines(id) {
+    return clean(el(id).value).split("\n")
+      .map(function (l) { return l.trim(); })
+      .filter(Boolean);
+  }
+  function one(id) { return clean(el(id).value); }
+
+  function slug(s) {
+    return clean(s).toLowerCase()
+      .replace(/\([^)]*\)/g, " ")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 48);
+  }
+
+  /* ---- Build the entry object ------------------------------------------ */
+  function collect() {
+    var flags = [].slice.call(document.querySelectorAll(".flag:checked")).map(function (c) { return c.value; });
+    var refs  = [].slice.call(document.querySelectorAll(".appref:checked")).map(function (c) { return c.value; });
+
+    // Organism groups: "Group name:" then its members until a blank line.
+    var organisms = [], cur = null;
+    clean(el("organisms").value).split("\n").forEach(function (raw) {
+      var l = raw.trim();
+      if (!l) { if (cur) { organisms.push(cur); cur = null; } return; }
+      var nm = l.match(/^note:\s*(.+)$/i);
+      if (nm) { if (cur) cur.note = nm[1].trim(); return; }
+      if (/:$/.test(l)) { if (cur) organisms.push(cur); cur = { group: l.replace(/:$/, ""), items: [] }; }
+      else if (cur) cur.items.push(l);
+      else cur = { group: "Reported organisms", items: [l] };
+    });
+    if (cur) organisms.push(cur);
+
+    return {
+      id: one("id"), name: one("name"), synonyms: lines("synonyms"),
+      department: el("department").value, limsCode: one("limsCode"), flags: flags,
+      summary: one("summary"), description: one("description"),
+      indications: lines("indications"), referenceRange: lines("referenceRange"),
+      analyticalLimitations: lines("analyticalLimitations"),
+      sampleType: one("sampleType"), containerColour: el("containerColour").value,
+      sampleRequirements: lines("sampleRequirements"),
+      storageTransport: one("storageTransport"), rejection: one("rejection"),
+      methodology: one("methodology"),
+      turnaround: { routine: one("tatRoutine"), urgent: one("tatUrgent") },
+      criticalAlert: one("criticalAlert"),
+      diseaseAssociations: lines("diseaseAssociations"),
+      conversionFactors: one("conversionFactors"),
+      organismsReported: organisms.length ? organisms : null,
+      appendixRefs: refs, lastReviewed: one("lastReviewed")
+    };
+  }
+
+  /* ---- Render one entry as source, matching the file's house style ------ */
+  function str(v)  { return '"' + esc(v) + '"'; }
+  function arr(a, indent) {
+    if (!a.length) return "[]";
+    if (a.length === 1) return "[" + str(a[0]) + "]";
+    var pad = " ".repeat(indent);
+    return "[\n" + a.map(function (x) { return pad + "  " + str(x); }).join(",\n") + "\n" + pad + "]";
+  }
+  // A one-item array reads better as a plain string; the renderer accepts both.
+  function scalarOrArr(a, indent) {
+    if (!a.length) return '""';
+    if (a.length === 1) return str(a[0]);
+    return arr(a, indent);
+  }
+
+  function render(t) {
+    var L = [];
+    L.push("{");
+    L.push('  id: ' + str(t.id) + ',');
+    L.push('  name: ' + str(t.name) + ',');
+    L.push('  synonyms: ' + arr(t.synonyms, 2) + ',');
+    L.push('  department: ' + str(t.department) + ',');
+    L.push('  limsCode: ' + str(t.limsCode) + ',');
+    L.push('  flags: [' + t.flags.map(str).join(", ") + '],');
+    L.push("");
+    L.push('  summary: ' + str(t.summary) + ',');
+    L.push('  description: ' + str(t.description) + ',');
+    L.push("");
+    L.push('  indications: ' + arr(t.indications, 2) + ',');
+    L.push('  referenceRange: ' + scalarOrArr(t.referenceRange, 2) + ',');
+    L.push('  analyticalLimitations: ' + arr(t.analyticalLimitations, 2) + ',');
+    L.push("");
+    L.push('  sampleType: ' + str(t.sampleType) + ',');
+    L.push('  containerColour: ' + str(t.containerColour) + ',');
+    L.push('  sampleRequirements: ' + scalarOrArr(t.sampleRequirements, 2) + ',');
+    L.push('  storageTransport: ' + str(t.storageTransport) + ',');
+    L.push('  rejection: ' + str(t.rejection) + ',');
+    L.push('  methodology: ' + str(t.methodology) + ',');
+    L.push("");
+    L.push('  turnaround: { routine: ' + str(t.turnaround.routine) +
+           ', urgent: ' + str(t.turnaround.urgent) + ' },');
+    L.push('  criticalAlert: ' + str(t.criticalAlert) + ',');
+    L.push('  diseaseAssociations: ' + arr(t.diseaseAssociations, 2) + ',');
+    L.push('  conversionFactors: ' + str(t.conversionFactors) + ',');
+
+    if (t.organismsReported) {
+      L.push('  organismsReported: [');
+      t.organismsReported.forEach(function (g, i) {
+        L.push('    { group: ' + str(g.group) + ', items: [');
+        g.items.forEach(function (x, j) {
+          L.push('      ' + str(x) + (j < g.items.length - 1 ? "," : ""));
+        });
+        L.push('    ]' + (g.note ? ', note: ' + str(g.note) : "") + ' }' +
+               (i < t.organismsReported.length - 1 ? "," : ""));
+      });
+      L.push('  ],');
+    } else {
+      L.push('  organismsReported: null,');
+    }
+    L.push("");
+    L.push('  appendixRefs: [' + t.appendixRefs.map(str).join(", ") + '],');
+    L.push('  lastReviewed: ' + str(t.lastReviewed));
+    L.push("}");
+    return L.join("\n");
+  }
+
+  /* ---- Validation ------------------------------------------------------- */
+  function validate(t) {
+    var problems = [];
+    var takenIds = EXISTING.map(function (x) { return x.id; })
+                     .concat(queue.map(function (x) { return x.id; }));
+
+    setField("f-name", !t.name, "");
+    setField("f-id", !t.id, "");
+    setField("f-department", !t.department, "");
+
+    if (!t.name) problems.push("name");
+    if (!t.department) problems.push("department");
+
+    var m = "";
+    if (!t.id) { problems.push("id"); }
+    else if (takenIds.indexOf(t.id) > -1) {
+      m = "This id is already used — it must be unique."; problems.push("id");
+      el("f-id").classList.add("bad");
+    } else if (!/^[a-z0-9-]+$/.test(t.id)) {
+      m = "Lowercase letters, digits and hyphens only."; problems.push("id");
+      el("f-id").classList.add("bad");
+    } else { m = "Available."; }
+    el("idMsg").textContent = m;
+    el("idMsg").className = "msg " + (problems.indexOf("id") > -1 ? "err" : "ok");
+
+    // A critical value described but not flagged is the mismatch that matters.
+    var ca = t.criticalAlert;
+    var meaningful = ca && !/^not applicable\.?$/i.test(ca) && !/appendi(x|ces)/i.test(ca);
+    if (meaningful && t.flags.indexOf("critical") === -1) {
+      el("critMsg").textContent = 'This describes a critical alert — should the "critical" flag be ticked?';
+      el("critMsg").className = "msg err";
+    } else { el("critMsg").textContent = ""; }
+
+    return problems;
+  }
+  function setField(id, bad) {
+    var n = el(id); if (n) n.classList.toggle("bad", !!bad);
+  }
+
+  /* ---- Live preview ----------------------------------------------------- */
+  function refresh() {
+    var t = collect();
+    var problems = validate(t);
+    el("preview").textContent = t.name ? render(t) : "// Fill in a name to begin.";
+    el("btnAdd").disabled = problems.length > 0;
+  }
+
+  document.addEventListener("input", refresh);
+  document.addEventListener("change", refresh);
+
+  // Suggest an id from the name, until the id is edited by hand.
+  var idTouched = false;
+  el("id").addEventListener("input", function () { idTouched = true; });
+  el("name").addEventListener("input", function () {
+    if (!idTouched) el("id").value = slug(el("name").value);
+  });
+
+  /* ---- Queue ------------------------------------------------------------ */
+  function drawQueue() {
+    el("queueBody").innerHTML = queue.map(function (t, i) {
+      return "<tr><td>" + escHtml(t.name) + '<br><span class="qid">' + escHtml(t.id) +
+             " · " + escHtml(t.department) + '</span></td>' +
+             '<td style="text-align:right;width:70px"><button data-i="' + i + '">remove</button></td></tr>';
+    }).join("") || '<tr><td class="hint" style="padding:14px">Nothing queued yet.</td></tr>';
+    el("queueCount").textContent = queue.length + " queued";
+  }
+  function escHtml(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  el("queueBody").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-i]");
+    if (!b) return;
+    queue.splice(+b.dataset.i, 1); drawQueue(); refresh();
+  });
+
+  el("btnAdd").addEventListener("click", function () {
+    var t = collect();
+    if (validate(t).length) return;
+    queue.push(t); drawQueue(); clearForm();
+    el("name").focus();
+  });
+
+  function clearForm() {
+    ["name","id","limsCode","synonyms","summary","description","indications","referenceRange",
+     "analyticalLimitations","sampleType","sampleRequirements","storageTransport","rejection",
+     "methodology","tatRoutine","tatUrgent","criticalAlert","diseaseAssociations",
+     "conversionFactors","organisms","lastReviewed"].forEach(function (k) { el(k).value = ""; });
+    el("containerColour").value = "";
+    // department and lastReviewed habits are usually repeated — keep department.
+    [].slice.call(document.querySelectorAll(".flag:checked,.appref:checked"))
+      .forEach(function (c) { c.checked = false; });
+    idTouched = false;
+    refresh();
+  }
+  el("btnClear").addEventListener("click", clearForm);
+
+  el("btnCopy").addEventListener("click", function () {
+    var txt = el("preview").textContent;
+    navigator.clipboard.writeText(txt).then(function () {
+      flash(el("btnCopy"), "Copied");
+    }, function () {
+      // Clipboard API is blocked on some file:// origins — fall back.
+      var ta = document.createElement("textarea");
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); flash(el("btnCopy"), "Copied"); }
+      catch (e) { flash(el("btnCopy"), "Select and copy manually"); }
+      document.body.removeChild(ta);
+    });
+  });
+  function flash(btn, msg) {
+    var old = btn.textContent; btn.textContent = msg;
+    setTimeout(function () { btn.textContent = old; }, 1400);
+  }
+
+  /* ---- Export ----------------------------------------------------------- */
+  var HEADER = [
+"/* =========================================================================",
+"   tests.js — THE TEST DIRECTORY",
+"   -------------------------------------------------------------------------",
+"   Generated in part by tools/entry-form.html. Safe to edit by hand.",
+"",
+"   Every clinical value here must be verified by a qualified scientist before",
+"   the handbook is released, and `lastReviewed` set on each entry.",
+"",
+"   Field reference: TEMPLATE_GUIDE.md",
+"   Validate after editing:  node tools/check-data.js",
+"   ========================================================================= */",
+"",
+"window.TESTS = [",
+""].join("\n");
+
+  var FOOTER = [
+"",
+"];",
+""].join("\n");
+
+  function download(name, body) {
+    var blob = new Blob([body], { type: "text/javascript;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); document.body.removeChild(a); }, 0);
+  }
+
+  function renderExisting(t) {
+    // Re-emit a loaded entry through the same renderer, so the file stays uniform.
+    return render({
+      id: t.id || "", name: text(t.name), synonyms: toArr(t.synonyms),
+      department: t.department || "", limsCode: text(t.limsCode || t.schuylabCode),
+      flags: t.flags || [], summary: text(t.summary), description: text(t.description),
+      indications: toArr(t.indications), referenceRange: toArr(t.referenceRange),
+      analyticalLimitations: toArr(t.analyticalLimitations),
+      sampleType: text(t.sampleType), containerColour: text(t.containerColour),
+      sampleRequirements: toArr(t.sampleRequirements),
+      storageTransport: text(t.storageTransport), rejection: text(t.rejection),
+      methodology: text(t.methodology),
+      turnaround: { routine: text((t.turnaround || {}).routine), urgent: text((t.turnaround || {}).urgent) },
+      criticalAlert: text(t.criticalAlert), diseaseAssociations: toArr(t.diseaseAssociations),
+      conversionFactors: text(t.conversionFactors),
+      organismsReported: t.organismsReported
+        ? t.organismsReported.map(function (g) {
+            var o = { group: text(g.group), items: toArr(g.items) };
+            if (g.note) o.note = text(g.note);
+            return o;
+          })
+        : null,
+      appendixRefs: t.appendixRefs || [], lastReviewed: text(t.lastReviewed)
+    });
+  }
+  function toArr(v) {
+    if (v == null) return [];
+    if (Array.isArray(v)) return v.map(text).filter(Boolean);
+    var s = text(v); return s ? [s] : [];
+  }
+
+  el("btnExport").addEventListener("click", function () {
+    if (!EXISTING.length && !queue.length) { alert("Nothing to export."); return; }
+    var all = EXISTING.map(renderExisting).concat(queue.map(render));
+    download("tests.js", HEADER + all.join(",\n\n") + FOOTER);
+  });
+
+  el("btnExportQueue").addEventListener("click", function () {
+    if (!queue.length) { alert("The queue is empty."); return; }
+    download("tests-queue.js",
+      "/* Queued entries only — paste these into data/tests.js */\n\n" +
+      queue.map(render).join(",\n\n") + "\n");
+  });
+
+  drawQueue();
+  refresh();
+})();
+</script>
+</body>
+</html>

@@ -84,7 +84,25 @@ the fields in Handbook v9.3.
 | `appendixRefs` | — | Array of appendix ids, e.g. `["appendix-7"]`. Renders as "See also" links |
 | `lastReviewed` | — | Governance field. Recommended for accreditation |
 
-### Adding a test
+### Adding a test — two ways
+
+**With the entry form (easier).** Open `tools/entry-form.html` in a browser.
+It loads your real departments, tubes and appendices, so the department is a
+dropdown rather than a string you can mistype. Fill it in, press *Add to
+queue*, repeat, then *Export tests.js* and replace `data/tests.js` with the
+downloaded file.
+
+It removes the three things that go wrong when typing by hand: comma errors,
+forgotten fields, and curly quotes pasted out of Word. It also refuses an id
+that is already used.
+
+Two things to know. It cannot save to disk — no static page can — so it
+writes a file for you to put in place. And exporting rewrites the whole
+file, so any hand-written comments inside `data/tests.js` are replaced by a
+standard header. Keep notes in commit messages rather than in the file.
+
+**By hand.** Equally valid, and reading each entry as you type it is itself a
+form of checking:
 
 1. Open `data/tests.js`.
 2. Scroll to the bottom, to the block marked **BLANK TEMPLATE**.
