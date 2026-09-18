@@ -155,7 +155,114 @@ TESTS.forEach(t => (t.flags || []).forEach(f => {
       `Valid: ${VALID.join(", ")}`);
 }));
 
-/* --- 7. Draft notice vs readiness ----------------------------------------- */
+/* --- 7. Internal contradictions -------------------------------------------
+   Things a careful reader skims past because each half looks right on its
+   own. These are the errors that survive proofreading.                     */
+
+// Tube words that must not disagree with the chosen container.
+const TUBE_WORDS = [
+  { re: /\bEDTA\b/i,                     tube: /edta/i,              name: "EDTA" },
+  { re: /\bcitrate\b/i,                  tube: /citrate/i,           name: "citrate" },
+  { re: /\bheparin\b/i,                  tube: /heparin/i,           name: "heparin" },
+  { re: /\b(SST|serum separat)/i,         tube: /(sst|serum separat)/i, name: "serum separator" },
+  { re: /\b(fluoride|oxalate)\b/i,       tube: /(fluoride|oxalate)/i, name: "fluoride oxalate" },
+  { re: /\bblood culture bottle/i,        tube: /blood culture/i,     name: "blood culture bottle" }
+];
+
+TESTS.forEach(t => {
+  const name = txt(t.name);
+  const flags = t.flags || [];
+  const req   = txt(t.sampleRequirements);
+  const cont  = txt(t.containerColour);
+  const range = txt(t.referenceRange);
+  const tat   = t.turnaround || {};
+  const ca    = txt(t.criticalAlert);
+  const skip  = (v) => !v || v.includes("[FILL IN");
+
+  // a) The specimen requirement names a tube the container field contradicts.
+  if (!skip(req) && !skip(cont)) {
+    TUBE_WORDS.forEach(w => {
+      if (w.re.test(req) && !w.tube.test(cont))
+        W(`tests.js: "${name}" — sample requirements say ${w.name}, but the ` +
+          `container is "${cont}".\n      One of the two is wrong, and a ward ` +
+          `reading the card sees both.`);
+    });
+  }
+
+  // b) Referred away, yet turned around same-day.
+  if (flags.includes("send-away") && /same.?day|within (1|2|3|4|a few) ?h/i.test(txt(tat.routine)))
+    W(`tests.js: "${name}" is flagged SEND-AWAY but the routine turnaround is ` +
+      `"${txt(tat.routine)}". A referred test cannot return same day — the badge ` +
+      `and the time contradict each other.`);
+
+  // c) Not in service, yet carries a reference range.
+  if (flags.includes("pending") && !skip(range) && !/see |appendi/i.test(range))
+    W(`tests.js: "${name}" is flagged PENDING but gives a reference range. ` +
+      `If the test is not yet offered, a range invites clinicians to request it; ` +
+      `if it is offered, remove the flag.`);
+
+  // d) Flagged critical, but the alert field denies it.
+  if (flags.includes("critical") && /^not applicable\.?$/i.test(ca))
+    E(`tests.js: "${name}" is flagged CRITICAL but its critical/alert field says ` +
+      `"Not applicable". The badge promises a telephone call the entry denies.`);
+
+  // e) STAT offered with no urgent time given.
+  if (flags.includes("stat") && skip(txt(tat.urgent)))
+    W(`tests.js: "${name}" is flagged STAT but gives no urgent turnaround, so a ` +
+      `clinician cannot tell how fast urgent actually is.`);
+
+  // f) A numeric range with no unit — the classic transcription slip.
+  if (!skip(range) && /\d/.test(range) &&
+      !/[a-zA-Z]\/[a-zA-Z]|%|mmol|µmol|umol|mg|g\/|IU|U\/|mL|dL|L\b|sec|second|min|ratio|cells|fL|pg|nmol|ng|pmol|mmHg|kPa|copies|titre|index/i.test(range) &&
+      !/negative|positive|no growth|not detected|A, B|absent/i.test(range))
+    W(`tests.js: "${name}" — reference range "${range}" has numbers but no ` +
+      `recognisable unit. Check the unit was not lost in transcription.`);
+
+  // g) No rejection guidance at all.
+  if (skip(txt(t.rejection)))
+    W(`tests.js: "${name}" gives no rejection guidance. Most entries cite the ` +
+      `rejection appendix; an empty one leaves reception without a rule.`);
+});
+
+// h) Two tests sharing a name, or a LIMS code, or a name used as another's synonym.
+const nameKey = (v) => txt(v).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+
+const byName = {};
+TESTS.forEach(t => {
+  const k = nameKey(t.name); if (!k) return;
+  (byName[k] = byName[k] || []).push(t.id);
+});
+Object.keys(byName).forEach(k => {
+  if (byName[k].length > 1)
+    W(`tests.js: ${byName[k].length} tests share the name "${k}" (${byName[k].join(", ")}). ` +
+      `Search results will be indistinguishable.`);
+});
+
+const byCode = {};
+TESTS.forEach(t => {
+  const c = txt(t.limsCode || t.schuylabCode).trim().toLowerCase();
+  if (!c || c.includes("[fill in")) return;
+  (byCode[c] = byCode[c] || []).push(txt(t.name));
+});
+Object.keys(byCode).forEach(c => {
+  if (byCode[c].length > 1)
+    W(`tests.js: LIMS code "${c}" is used by ${byCode[c].length} tests ` +
+      `(${byCode[c].join("; ")}). Check against the LIMS — codes are normally unique.`);
+});
+
+TESTS.forEach(t => {
+  const k = nameKey(t.name); if (!k) return;
+  TESTS.forEach(o => {
+    if (o.id === t.id) return;
+    if ((txt(o.synonyms) ? toList(o.synonyms) : []).some(sy => nameKey(sy) === k))
+      W(`tests.js: "${txt(t.name)}" is also listed as a synonym of ` +
+        `"${txt(o.name)}". A clinician searching that term gets two cards and ` +
+        `cannot tell which to follow.`);
+  });
+});
+function toList(v) { return Array.isArray(v) ? v.map(txt) : [txt(v)]; }
+
+/* --- 8. Draft notice vs readiness ----------------------------------------- */
 const totalPlaceholders = DATA.reduce((n, f) => n + countPlaceholders(path.join("data", f + ".js")), 0);
 const draftOn = !!(SITE.draftNotice && SITE.draftNotice.show);
 
@@ -169,7 +276,7 @@ if (!draftOn && unreviewed.length)
   E(`site.js: draftNotice.show is false, but ${unreviewed.length} test(s) have no ` +
     `lastReviewed date — they have not been recorded as clinically verified`);
 
-/* --- 8. Progress ---------------------------------------------------------- */
+/* --- 9. Progress ---------------------------------------------------------- */
 N(`${TESTS.length} tests, ${DEPTS.length} departments, ${APPS.length} appendices`);
 N(`draft notice: ${draftOn ? "ON (site shows the not-for-clinical-use banner)" : "OFF"}`);
 if (totalPlaceholders) {
