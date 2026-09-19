@@ -1,147 +1,148 @@
 # Keeping the Word document and the website in step
 
-There are now two copies of the same clinical content: `PATHOLOGY HANDBOOK
-v9.x.docx` and `data/tests.js`. Both are edited. Two edited copies of clinical
-content drift, and drift in a reference range or a critical value is a patient
-safety problem, not a tidiness problem.
+## The decision
 
-This describes how to manage that.
+**The Word document is master.** It is the controlled document. The website is
+a published copy of it.
+
+Nothing reaches the website that has not first been changed in the Word
+document and authorised.
+
+```
+    change or new test
+            ↓
+    Word document  (v9.x)          ← master
+            ↓
+    authorised
+            ↓
+    data/tests.js  →  website      ← published copy
+```
+
+This is recorded in two places so that a reader of either copy can see it:
+
+- The Word document's title page
+- `data/site.js` → `sourceDocument`, which shows in the site footer
 
 ---
 
-## 1. First, name a master — this costs nothing and matters most
+## Why this matters more than the tooling
 
-The dangerous situation is not that the two copies differ. It is that **when
-they differ, nobody knows which one is right.** A ward reads the website, a
-scientist reads the document, and each believes theirs is current.
+The danger is not that the two copies differ. It is that **when they differ,
+nobody knows which is right.** A ward reads the website, a scientist reads the
+document, and each believes theirs is current.
 
-So decide, write it down, and put it where both copies can see it:
+Naming a master removes that question. Everything below is mechanism for
+keeping the copy faithful; the decision above is what makes disagreements
+resolvable.
 
-- In the Word document, on the title page
-- In `data/site.js` → `sourceDocument`, which shows in the site footer
-
-Everything below is mechanism. This is the decision.
-
-### The full hierarchy, which has three levels, not two
+### The hierarchy has three levels, not two
 
 | Rank | Source | Authoritative for |
 |---|---|---|
 | 1 | **SchuyLab** | Reference ranges and results. Analyser-specific, changes when methods change |
-| 2 | **The approved handbook** (whichever copy is master) | Specimen requirements, turnaround, rejection rules, procedure |
-| 3 | The other copy | Nothing. It is a derivative |
+| 2 | **The Word document** | Specimen requirements, turnaround, rejection rules, procedure |
+| 3 | The website | Nothing of its own. It publishes level 2 |
 
-The site already tells clinicians that the LIMS report is authoritative for
-ranges. That is correct and should stay, whatever you decide below.
-
----
-
-## 2. Recommended: Word is master now, the website becomes master later
-
-**While you are reviewing and while Ministry approval is pending — Word is
-master.** You are editing it daily, approval processes want a document, and
-the site is not approved yet. Fighting that is pointless.
-
-**Once the handbook is approved and the site is live — the website becomes
-master**, and you generate a PDF from it for formal circulation.
-
-The reason to plan the flip now is that the arguments reverse once the content
-is stable:
-
-| | Word as master | Website as master |
-|---|---|---|
-| Suits daily authoring | Yes | Less so |
-| Suits formal approval and signature | Yes | Needs an export |
-| Validation of content | None | `check-data.js` on every change |
-| Per-change history | Track changes, if remembered | Every commit, permanently |
-| Who changed this value, and when | Hard | `git log` |
-| Per-test review dates | Impossible | `lastReviewed` |
-| Search, filter, phone, ward use | No | Yes |
-| Risk when two people edit | High | Merge conflict, visible |
-
-The second column is what an accreditation auditor asks for. The first is what
-a Ministry signature process asks for. You need both, at different times.
+The site tells clinicians that the SchuyLab report is authoritative for ranges.
+That stays true regardless of anything here.
 
 ---
 
-## 3. The working loop while Word is master
+## The working loop
 
-Every time you finish a session of edits in Word:
+Never edit the website first. The order is always document → authorise → site.
+
+**1. Change the Word document** and have the change authorised.
+
+**2. See what moved:**
 
 ```bash
 cd ~/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web
-
-node tools/sync-check.js        # what changed in the document?
-# ...bring those changes into data/tests.js...
-node tools/check-data.js        # is the result internally consistent?
-git add -A && git commit -m "Sync tests with v9.4: potassium critical values"
+node tools/sync-check.js
 ```
 
-`sync-check.js` reports four things:
+It reports four things:
 
-- **In the document, not on the site** — new tests you have not entered yet
-- **On the site, not in the document** — deleted from Word, or the name changed
-- **Different wording or values** — the important one, shown side by side
-- **In the document, blank on the site** — fields you have not filled in
+- **In the document, not on the site** — new tests to add
+- **On the site, not in the document** — removed from the document, or renamed
+- **Different wording or values** — shown side by side
+- **In the document, blank on the site** — fields not yet filled
 
-It finds the newest `*HANDBOOK*.docx` in the parent folder automatically, so
-it keeps working when v9.3 becomes v9.4. Pass a path to override.
+It finds the newest `*HANDBOOK*.docx` in the parent folder automatically, so it
+keeps working when v9.3 becomes v9.4.
 
-Useful during a focused review:
+**3. Bring the change across** — by hand, or with `tools/entry-form.html`.
+
+**4. Mark it, so readers can see it changed.** On the entry:
+
+- A brand-new test → set `added` to today
+- A revised test → set `updated` to today
+
+**5. Check and commit:**
 
 ```bash
-node tools/sync-check.js --field referenceRange   # ranges only, all tests
-node tools/sync-check.js --quiet                  # skip the not-yet-entered list
+node tools/check-data.js
+git add -A && git commit -m "Sync with v9.4: potassium critical values authorised 2026-10-02"
+git push
 ```
 
-**It reports drift. It does not say which copy is right.** That is the
-judgement you are paid for, and the script deliberately refuses to make it.
+Put the document version and the authorisation in the commit message. That
+gives you an audit trail the Word document cannot produce on its own: who
+changed which value, when, and under what authority.
+
+**6. Update `sourceDocument`** in `data/site.js` when the document version
+changes, so the footer names the document the site was built from.
 
 ---
 
-## 4. Two habits that prevent most drift
+## What readers see when something changes
 
-**Change one copy, then immediately the other.** Not "I will update the site
-later". Later is where drift lives. If you cannot do both, note it in the
-commit message so the gap is recorded rather than forgotten.
+Entries carry two dates, and the site turns them into markers that **expire on
+their own**:
 
-**Put the version in both.** When the document becomes v9.4, update
-`site.js` → `sourceDocument` in the same sitting. The site footer then tells
-any reader which document it was built from, and `sync-check.js` output shows
-the document's modification date beside it. A reader can see for themselves
-whether the two are plausibly in step.
+| Field | Marker | Default window |
+|---|---|---|
+| `added` | **NEW** | 60 days |
+| `updated` | **UPDATED** | 30 days |
 
----
+Both are set in `site.js` → `whatsNew`, and `show: false` turns them off.
 
-## 5. When the flip happens
+The markers are outlined rather than filled, so they are visibly different from
+the clinical badges (CRITICAL, STAT, SEND-AWAY, PENDING). A clinician should
+never read **NEW** as a warning about the test itself.
 
-Once the content is approved:
+The Test Directory also has a **Recently added or changed** filter, so anyone
+returning from leave can see everything that moved in one view. Each card shows
+its full history — *Added … · Last changed …* — under the fields.
 
-1. Confirm `node tools/sync-check.js` reports **in sync**
-2. Confirm `node tools/check-data.js` reports no errors
-3. Every test has a `lastReviewed` date
-4. Tag the release — `git tag -a v1.0`
-5. Set `draftNotice.show: false` in `site.js`
-6. Generate the PDF from the site (print to PDF, or `pandoc`) and file it as
-   the approved document
-7. Record in both copies that the website is now master, and that the Word
-   document is archived rather than maintained
-
-From then on, changes are made in `data/tests.js`, reviewed as pull requests,
-and a fresh PDF is generated whenever the Ministry needs a document. One
-source, two outputs.
+Dates expiring by themselves is deliberate. A marker someone has to remember to
+clear is still there in two years, and by then it means nothing.
 
 ---
 
-## 6. What not to do
+## Two habits that prevent most drift
 
-**Do not maintain both by hand indefinitely.** It doubles the work and
-guarantees drift. `sync-check.js` exists to manage a transition, not to make a
-permanent two-master arrangement survivable.
+**Do both in the same sitting.** Change the document, then bring it across. If
+you cannot, say so in the commit message so the gap is recorded rather than
+forgotten.
 
-**Do not let the website be edited by someone who is not also updating the
-master.** While Word is master, a change made only on the site is lost the
-next time content is brought across from the document.
+**Run `sync-check.js` before every release**, not only after editing. It is the
+evidence that the published copy still matches the controlled document — which
+is exactly what an auditor will ask you to demonstrate.
 
-**Do not assume matching text means matching meaning.** The script compares
-wording. It cannot tell you that a range is wrong, only that the two copies
-disagree — or that they agree, which is not the same as being right.
+---
+
+## What not to do
+
+**Do not edit the website first.** A change made only on the site is
+unauthorised, and it will be silently overwritten the next time content comes
+across from the document.
+
+**Do not assume matching text means correct text.** `sync-check.js` compares
+wording. It can tell you the two copies disagree, or that they agree. It cannot
+tell you the value is right — that is the scientist's judgement, recorded in
+`lastReviewed`.
+
+**Do not let the document version drift from `sourceDocument`.** If the footer
+says v9.3 and the laboratory is working from v9.5, the site is lying about its
+own provenance even if every value happens to match.

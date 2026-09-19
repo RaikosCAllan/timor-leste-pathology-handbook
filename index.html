@@ -117,6 +117,7 @@
           <option value="stat">STAT available</option>
           <option value="send-away">Referred / send-away</option>
           <option value="pending">Not yet available</option>
+          <option value="recent">Recently added or changed</option>
         </select>
       </div>
       <button type="button" class="btn-ghost" id="clearFilters">Clear</button>
@@ -127,6 +128,10 @@
       <span><b class="badge badge-stat">STAT</b> Urgent processing available on request.</span>
       <span><b class="badge badge-away">SEND-AWAY</b> Not performed here. Referred to an external laboratory, so expect days to weeks.</span>
       <span><b class="badge badge-pending">PENDING</b> Not in service yet. Telephone the department before collecting a specimen.</span>
+    </div>
+    <div class="legend legend-admin">
+      <span><b class="mark mark-new">NEW</b> Recently added to the handbook.</span>
+      <span><b class="mark mark-updated">UPDATED</b> Recently changed — worth re-reading if you knew the old entry.</span>
     </div>
 
     <p class="result-count" id="resultCount"></p>

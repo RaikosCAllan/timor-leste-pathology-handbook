@@ -227,6 +227,19 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
         <label>Last reviewed <span class="note">when a scientist verified this entry</span></label>
         <input type="text" id="lastReviewed" autocomplete="off" placeholder="2026-09">
       </div>
+      <div class="row">
+        <div class="f">
+          <label>Added <span class="note">shows a NEW marker for a while</span></label>
+          <input type="text" id="added" autocomplete="off" placeholder="YYYY-MM-DD">
+        </div>
+        <div class="f">
+          <label>Last changed <span class="note">shows an UPDATED marker</span></label>
+          <input type="text" id="updated" autocomplete="off" placeholder="YYYY-MM-DD">
+        </div>
+      </div>
+      <p class="hint" style="margin:0">Both markers expire on their own — nothing to clear later.
+      For a brand-new entry fill in <b>Added</b> only; use <b>Last changed</b> when revising an
+      entry that is already published.</p>
     </div>
   </div>
 
@@ -391,7 +404,8 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
       diseaseAssociations: lines("diseaseAssociations"),
       conversionFactors: one("conversionFactors"),
       organismsReported: organisms.length ? organisms : null,
-      appendixRefs: refs, lastReviewed: one("lastReviewed")
+      appendixRefs: refs, lastReviewed: one("lastReviewed"),
+      added: one("added"), updated: one("updated")
     };
   }
 
@@ -456,7 +470,9 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
     }
     L.push("");
     L.push('  appendixRefs: [' + t.appendixRefs.map(str).join(", ") + '],');
-    L.push('  lastReviewed: ' + str(t.lastReviewed));
+    L.push('  lastReviewed: ' + str(t.lastReviewed) + ',');
+    L.push('  added: ' + str(t.added) + ',');
+    L.push('  updated: ' + str(t.updated));
     L.push("}");
     return L.join("\n");
   }
@@ -549,7 +565,8 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
     ["name","id","limsCode","synonyms","summary","description","indications","referenceRange",
      "analyticalLimitations","sampleType","sampleRequirements","storageTransport","rejection",
      "methodology","tatRoutine","tatUrgent","criticalAlert","diseaseAssociations",
-     "conversionFactors","organisms","lastReviewed"].forEach(function (k) { el(k).value = ""; });
+     "conversionFactors","organisms","lastReviewed","updated"].forEach(function (k) { el(k).value = ""; });
+    el("added").value = new Date().toISOString().slice(0, 10);   // today, by default
     el("containerColour").value = "";
     // department and lastReviewed habits are usually repeated — keep department.
     [].slice.call(document.querySelectorAll(".flag:checked,.appref:checked"))
@@ -630,7 +647,8 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
             return o;
           })
         : null,
-      appendixRefs: t.appendixRefs || [], lastReviewed: text(t.lastReviewed)
+      appendixRefs: t.appendixRefs || [], lastReviewed: text(t.lastReviewed),
+      added: text(t.added), updated: text(t.updated)
     });
   }
   function toArr(v) {
@@ -652,6 +670,7 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
       queue.map(render).join(",\n\n") + "\n");
   });
 
+  el("added").value = new Date().toISOString().slice(0, 10);
   drawQueue();
   refresh();
 })();

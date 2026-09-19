@@ -188,6 +188,33 @@
     pending: ["PENDING", "badge-pending"]
   };
 
+  /* --- Recently added or changed ---------------------------------------
+     Driven by the `added` and `updated` dates on each test, so the marker
+     expires on its own. A manual "new" flag someone must remember to clear
+     is still there two years later.
+
+     Windows come from site.whatsNew; the defaults below apply if it is
+     absent, so no configuration is needed to get sensible behaviour.      */
+  function days(v) {
+    var s = String(t(v) || "").trim();
+    if (!/^\d{4}-\d{2}(-\d{2})?$/.test(s)) return null;   // YYYY-MM or YYYY-MM-DD
+    var d = new Date(s.length === 7 ? s + "-01" : s);
+    if (isNaN(d)) return null;
+    return Math.floor((Date.now() - d.getTime()) / 86400000);
+  }
+
+  function recency(test) {
+    var cfg = (window.SITE && window.SITE.whatsNew) || {};
+    if (cfg.show === false) return null;
+    var newFor = cfg.newForDays === undefined ? 60 : cfg.newForDays;
+    var updFor = cfg.updatedForDays === undefined ? 30 : cfg.updatedForDays;
+
+    var a = days(test.added), u = days(test.updated);
+    if (a !== null && a >= 0 && a <= newFor) return "new";
+    if (u !== null && u >= 0 && u <= updFor) return "updated";
+    return null;
+  }
+
   // The LIMS code field. `limsCode` is the portable name; `schuylabCode` is
   // accepted so instances written against the earlier schema still work.
   function code(test) {
@@ -229,6 +256,16 @@
       return '<b class="badge ' + d[1] + '">' + d[0] + "</b>";
     }).join(" ");
 
+    // Administrative, not clinical — styled apart so it cannot be mistaken
+    // for a warning about the test itself.
+    var r = recency(test);
+    var recentMark = r
+      ? '<b class="mark mark-' + r + '" title="' +
+        (r === "new" ? "Added to the handbook recently"
+                     : "Changed recently — check what differs") + '">' +
+        (r === "new" ? "NEW" : "UPDATED") + "</b>"
+      : "";
+
     var tat = test.turnaround || {};
     var tatHtml = "";
     if (has(tat.routine)) tatHtml += "<b>" + fmt(t(tat.routine)) + "</b>Routine";
@@ -257,7 +294,7 @@
     var html =
       '<details class="test-card" id="test-' + esc(test.id) + '">' +
         "<summary>" +
-          '<div><div class="test-head-name">' + hl(esc(t(test.name)), query) + " " + flags + "</div>" +
+          '<div><div class="test-head-name">' + hl(esc(t(test.name)), query) + " " + recentMark + flags + "</div>" +
           '<div class="test-head-meta">' + meta.join(" &nbsp;·&nbsp; ") + "</div></div>" +
           '<div class="test-head-tat">' + tatHtml + "</div>" +
           (has(test.summary) ? '<div class="test-head-summary">' + fmt(t(test.summary)) + "</div>" : "") +
@@ -278,6 +315,13 @@
           organisms +
           (links ? '<div class="field field-full"><h4>See also</h4><div class="appendix-links">' + links + "</div></div>" : "") +
           (has(test.lastReviewed) ? '<div class="field field-full"><h4>Last reviewed</h4>' + body(test.lastReviewed) + "</div>" : "") +
+          (has(test.added) || has(test.updated)
+            ? '<div class="field field-full"><h4>Handbook history</h4><p>' +
+              (has(test.added) ? "Added " + fmt(t(test.added)) : "") +
+              (has(test.added) && has(test.updated) ? " &middot; " : "") +
+              (has(test.updated) ? "Last changed " + fmt(t(test.updated)) : "") +
+              "</p></div>"
+            : "") +
         "</div></div>" +
       "</details>";
     return html;
@@ -309,7 +353,8 @@
 
     var out = TESTS.filter(function (x) {
       if (dept && x.department !== dept) return false;
-      if (flag && (x.flags || []).indexOf(flag) === -1) return false;
+      if (flag === "recent") { if (!recency(x)) return false; }
+      else if (flag && (x.flags || []).indexOf(flag) === -1) return false;
       if (q && haystack(x).indexOf(q) === -1) return false;
       return true;
     });

@@ -191,6 +191,16 @@ h3.sub{margin:34px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)
 .badge-away{background:#e8eef6;color:var(--navy-light);border:1px solid #c9d8e9}
 .badge-pending{background:#fbf1dd;color:var(--amber);border:1px solid #eddcb9}
 
+/* Administrative markers. Deliberately unlike the clinical badges above —
+   outlined, not filled — so NEW is never read as a clinical warning. */
+.mark{
+  display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;
+  padding:2px 7px;border-radius:3px;text-transform:uppercase;line-height:1.4;
+  background:transparent;
+}
+.mark-new{color:var(--teal);border:1px dashed var(--teal)}
+.mark-updated{color:var(--ink-faint);border:1px dashed var(--line)}
+
 .result-count{font-size:13.5px;color:var(--ink-faint);margin:18px 0 10px}
 .test-list{display:grid;gap:10px}
 

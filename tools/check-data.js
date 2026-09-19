@@ -262,6 +262,25 @@ TESTS.forEach(t => {
 });
 function toList(v) { return Array.isArray(v) ? v.map(txt) : [txt(v)]; }
 
+// i) Handbook-history dates must parse, or the NEW/UPDATED marker silently
+//    never appears — a failure you cannot see by looking at the page.
+const DATE_RE = /^\d{4}-\d{2}(-\d{2})?$/;
+TESTS.forEach(t => {
+  ["added", "updated", "lastReviewed"].forEach(f => {
+    const v = txt(t[f]).trim();
+    if (!v || v.includes("[FILL IN")) return;
+    if (!DATE_RE.test(v))
+      W(`tests.js: "${txt(t.name)}" has ${f} "${v}", which is not YYYY-MM-DD ` +
+        `or YYYY-MM.` + (f === "lastReviewed" ? "" :
+        ` The ${f === "added" ? "NEW" : "UPDATED"} marker will never appear.`));
+  });
+  const a = txt(t.added).trim(), u = txt(t.updated).trim();
+  if (DATE_RE.test(a) && DATE_RE.test(u) && u < a)
+    W(`tests.js: "${txt(t.name)}" was updated (${u}) before it was added (${a}).`);
+  if (DATE_RE.test(u) && !a)
+    W(`tests.js: "${txt(t.name)}" has an updated date but no added date.`);
+});
+
 /* --- 8. Draft notice vs readiness ----------------------------------------- */
 const totalPlaceholders = DATA.reduce((n, f) => n + countPlaceholders(path.join("data", f + ".js")), 0);
 const draftOn = !!(SITE.draftNotice && SITE.draftNotice.show);
