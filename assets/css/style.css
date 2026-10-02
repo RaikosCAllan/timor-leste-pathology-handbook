@@ -44,15 +44,20 @@ a:hover{color:var(--navy)}
 .skip-link:focus{left:0}
 
 /* ---------------------------------------------------------- HEADER --- */
-.site-header{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;box-shadow:0 1px 0 rgba(0,0,0,.15)}
+.site-header{position:sticky;top:0;z-index:50;background:var(--green);color:#fff;box-shadow:0 1px 0 rgba(0,0,0,.15)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand-logos{display:flex;align-items:center;gap:8px}
 .brand-logo{
-  width:52px;height:52px;flex:0 0 52px;border-radius:50%;background:rgba(255,255,255,.14);
-  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;letter-spacing:.5px;
-  overflow:hidden;
+  height:46px;flex:0 0 auto;border-radius:10px;background:#fff;padding:5px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  font-weight:700;font-size:15px;letter-spacing:.5px;color:var(--green);
 }
-.brand-logo img{width:100%;height:100%;object-fit:contain}
+.brand-logo img{height:100%;width:auto;max-width:96px;object-fit:contain;display:block}
+/* Shown only when no logo file is configured. */
+.brand-logo-initials{width:46px;background:rgba(255,255,255,.14);color:#fff}
+.header-flag{display:flex;align-items:center;flex:0 0 auto}
+.header-flag img{height:46px;width:auto;display:block;border-radius:3px;box-shadow:0 0 0 1px rgba(255,255,255,.4)}
 .brand-org{margin:0;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.72)}
 .brand-title{margin:1px 0 0;font-size:21px;line-height:1.2;font-weight:650}
 .brand-parent{margin:2px 0 0;font-size:12.5px;color:rgba(255,255,255,.6)}
@@ -290,6 +295,20 @@ figcaption{font-size:13px;color:var(--ink-faint);margin-top:6px}
   .section{padding:40px 0}
 }
 @media (max-width:560px){
+  /* Four logos, a flag and the title cannot sit side by side on a phone,
+     so everything in the header shrinks rather than wrapping or hiding. */
+  /* A grid keeps the flag beside the title instead of letting it wrap onto
+     a line of its own, which would make the header very tall. */
+  .header-inner{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;row-gap:10px}
+  .brand{grid-column:1;grid-row:1;flex-wrap:wrap}
+  .brand-text{min-width:0}
+  .header-flag{grid-column:2;grid-row:1}
+  .header-actions{grid-column:1 / -1;grid-row:2}
+  .brand-logos{gap:5px}
+  .brand-logo{height:30px;padding:3px;border-radius:7px}
+  .brand-logo img{max-width:62px}
+  .brand-logo-initials{width:30px;font-size:11px}
+  .header-flag img{height:30px}
   .hero-search{flex-direction:column}
   .hero-search button{padding:12px}
   .header-actions{width:100%}

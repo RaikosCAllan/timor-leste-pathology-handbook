@@ -32,7 +32,7 @@
   function fmt(s) {
     return esc(s).replace(/\[FILL IN[^\]]*\]/g, function (m) {
       return '<span class="placeholder">' + m + "</span>";
-    });
+    }).replace(/\n/g, "<br>");   // line breaks entered in the form
   }
 
   function has(v) {
@@ -67,16 +67,57 @@
     set("brandParent", esc(t(S.parentBody)));
     set("heroTagline", fmt(t(S.tagline)));
 
-    var logo = el("brandLogo");
-    if (logo) {
-      if (S.logo) {
+    // Header logos. site.js -> logos: [{ src, alt, href }], shown left to
+    // right in the order listed. A single logo: "path" still works. With
+    // neither, the organisation initials are shown instead.
+    var logoBox = el("brandLogos");
+    if (logoBox) {
+      logoBox.innerHTML = "";
+      var logoList = (S.logos && S.logos.length) ? S.logos
+                   : (S.logo ? [{ src: S.logo, alt: t(S.organisation) + " logo" }] : []);
+      if (!logoList.length) {
+        var mark = document.createElement("div");
+        mark.className = "brand-logo brand-logo-initials";
+        mark.textContent = initials(t(S.organisationShort || S.organisation));
+        logoBox.appendChild(mark);
+      }
+      logoList.forEach(function (item) {
+        if (!item || !item.src) return;
+        var tile = document.createElement(item.href ? "a" : "div");
+        tile.className = "brand-logo";
+        if (item.href) { tile.href = item.href; tile.target = "_blank"; tile.rel = "noopener"; }
         var img = new Image();
-        img.alt = t(S.organisation) + " logo";
-        img.onerror = function () { logo.textContent = initials(t(S.organisationShort || S.organisation)); };
-        img.src = S.logo;
-        logo.appendChild(img);
-      } else {
-        logo.textContent = initials(t(S.organisationShort || S.organisation));
+        img.alt = t(item.alt) || "";
+        // A missing file would otherwise leave an empty white tile. If every
+        // logo is missing, fall back to the organisation initials.
+        img.onerror = function () {
+          if (tile.parentNode) tile.parentNode.removeChild(tile);
+          if (!logoBox.children.length) {
+            var fb = document.createElement("div");
+            fb.className = "brand-logo brand-logo-initials";
+            fb.textContent = initials(t(S.organisationShort || S.organisation));
+            logoBox.appendChild(fb);
+          }
+        };
+        img.src = item.src;
+        tile.appendChild(img);
+        logoBox.appendChild(tile);
+      });
+    }
+
+    // Flag at the far right of the header. site.js -> flag: { src, alt }.
+    var flagBox = el("headerFlag");
+    if (flagBox) {
+      flagBox.innerHTML = "";
+      flagBox.hidden = true;
+      var flag = typeof S.flag === "string" ? { src: S.flag } : S.flag;
+      if (flag && flag.src) {
+        var fimg = new Image();
+        fimg.alt = t(flag.alt) || "";
+        fimg.onerror = function () { flagBox.hidden = true; };
+        fimg.src = flag.src;
+        flagBox.appendChild(fimg);
+        flagBox.hidden = false;
       }
     }
 
@@ -377,7 +418,9 @@
     }).join(""));
 
     set("formsTable", (R.forms || []).map(function (f) {
-      var name = f.file ? '<a href="' + esc(f.file) + '">' + esc(t(f.name)) + "</a>" : "<b>" + esc(t(f.name)) + "</b>";
+      // A bare file name is looked for in assets/downloads/; a full path or web address is used as written.
+      var href = f.file && (/[\/:]/.test(f.file) ? f.file : "assets/downloads/" + f.file);
+      var name = f.file ? '<a href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(t(f.name)) + "</a>" : "<b>" + esc(t(f.name)) + "</b>";
       return "<tr><td>" + name + "</td><td>" + fmt(t(f.note)) + "</td></tr>";
     }).join(""));
 

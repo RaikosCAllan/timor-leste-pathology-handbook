@@ -353,7 +353,8 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
 
   // Escape for embedding in a double-quoted JS string literal.
   function esc(s) {
-    return String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+    return String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"')
+      .replace(/\r?\n/g, "\\n");   // line breaks must be escaped inside "..."
   }
 
   function lines(id) {

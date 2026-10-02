@@ -15,7 +15,7 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <div class="brand">
-      <div class="brand-logo" id="brandLogo"></div>
+      <div class="brand-logos" id="brandLogos"></div>
       <div class="brand-text">
         <p class="brand-org" id="brandOrg"></p>
         <h1 class="brand-title"><span class="draft-chip" id="draftChip" hidden>DRAFT</span><span id="brandTitle"></span></h1>
@@ -26,6 +26,9 @@
       <div class="lang-toggle" id="langToggle" hidden></div>
       <a class="btn-ghost" id="handbookDownload" hidden>Download full handbook (PDF)</a>
     </div>
+
+    <!-- Far right of the header. Hidden unless site.js sets a flag. -->
+    <div class="header-flag" id="headerFlag" hidden></div>
   </div>
 
   <nav class="site-nav" aria-label="Main">

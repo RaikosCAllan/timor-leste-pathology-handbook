@@ -16,137 +16,137 @@ window.COLLECTION = {
   orderOfDraw: [
     {
       order: "1",
-      colour: "Blood gas syringe (POC)",
+      colour: "",
       swatch: "#c8ccd4",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/syringe_poc_2.png",
       additive: "No additive — syringe bleed, point-of-care testing",
       uses: "Arterial blood gas"
     },
     {
       order: "2",
-      colour: "Blood culture bottles",
+      colour: "",
       swatch: "#3f6fb5",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/bc_bottles_2.png",
       additive: "Aerobic Plus (blue), Anaerobic Lytic (purple), Paediatric Plus (pink)",
       uses: "Aerobic and anaerobic blood culture"
     },
     {
       order: "3",
-      colour: "Light blue Sodium Citrate",
+      colour: "",
       swatch: "#7fb9e0",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/citrate.jpg",
       additive: "Sodium citrate, 13 × 75 mm / 2.7 mL",
       uses: "Coagulation: INR, APTT, PT, fibrinogen, D-dimer"
     },
     {
       order: "4",
-      colour: "Gold/Yellow SST II",
+      colour: "",
       swatch: "#d9a520",
-      image: "",
-      additive: "Serum separating tube — clot activator and gel. 13 × 75 mm / 3.5 mL, 13 × 100 mm / 5 mL",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/sst.jpg",
+      additive: "Serum separating tube SST — clot activator and gel. 13 × 75 mm / 3.5 mL, 13 × 100 mm / 5 mL",
       uses: "Biochemistry, immunochemistry, serology, rapid tests"
     },
     {
       order: "5",
-      colour: "Red top / clot tube",
+      colour: "",
       swatch: "#b93b3b",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/clot_tube.jpg",
       additive: "No preservative, with clot activator",
       uses: "Biochemistry, immunochemistry, serology, therapeutic drug monitoring"
     },
     {
       order: "6",
-      colour: "Green PST Heparin (gel)",
+      colour: "",
       swatch: "#4f9d69",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/lithhep_lightgreen.png",
       additive: "Sodium or lithium heparin with gel",
       uses: "Biochemistry (plasma sample)"
     },
     {
       order: "6",
-      colour: "Dark green Lithium Heparin",
+      colour: "",
       swatch: "#2f6b47",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/lithhep_darkgreen.png",
       additive: "Sodium or lithium heparin, with or without gel",
       uses: "Biochemistry plasma or whole blood tests, cardiac markers including troponin"
     },
     {
       order: "7",
-      colour: "Lavender EDTA",
+      colour: "",
       swatch: "#9b7fc4",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/edta.jpg",
       additive: "K₂EDTA, 13 × 75 mm / 3 mL, 13 × 100 mm / 6 mL",
       uses: "Haematology, ESR, HbA1c, blood film, malaria thick/thin film"
     },
     {
       order: "7",
-      colour: "Pink EDTA",
+      colour: "",
       swatch: "#e09ab5",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/edtabb.jpg",
       additive: "K₂EDTA, 13 × 100 mm / 6 mL",
       uses: "Transfusion / blood bank"
     },
     {
       order: "8",
-      colour: "Grey Fluoride Oxalate",
+      colour: "",
       swatch: "#8d9199",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/flox.jpg",
       additive: "Sodium fluoride / potassium oxalate, 13 × 75 mm / 2 mL",
       uses: "Glucose, lactate, tolerance tests"
     },
     {
       order: "—",
-      colour: "Specimen jar",
+      colour: "",
       swatch: "#ffffff",
-      image: "",
-      additive: "No additive",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/urine_jar_3.png",
+      additive: "Sterile, no additive",
       uses: "Urine, body fluid, biopsy, skin scraping"
     },
     {
       order: "—",
-      colour: "Stool jar",
+      colour: "",
       swatch: "#d8cbb4",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/stool_jar.png",
       additive: "No additive",
-      uses: "Stool / faeces"
+      uses: "Stool sample."
     },
     {
       order: "—",
-      colour: "Sterile collection jar",
+      colour: "",
       swatch: "#ffffff",
-      image: "",
-      additive: "No additive",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/csf_jar.png",
+      additive: "CSF Fluid, No additive",
       uses: "Cerebrospinal fluid (CSF)"
     },
     {
       order: "—",
-      colour: "Fine needle aspirate",
+      colour: "",
       swatch: "#e6e2d8",
-      image: "",
-      additive: "No additive",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/fna.jpg",
+      additive: "Fine needle aspirate. No additive",
       uses: "FNA"
     },
     {
       order: "—",
-      colour: "Swab",
+      colour: "",
       swatch: "#e6e2d8",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/swab.png",
       additive: "None / gel swab / nasal swab",
       uses: "Microbiology, molecular, histology"
     },
     {
       order: "—",
-      colour: "Media plate",
+      colour: "",
       swatch: "#c9b98a",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/culture_plate.png",
       additive: "Agar gel",
       uses: "Microbiology"
     },
     {
       order: "—",
-      colour: "Slides",
+      colour: "",
       swatch: "#dfe4ea",
-      image: "",
+      image: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/img/tubes/blood_slides.png",
       additive: "Fixative and stains",
       uses: "Blood film, thick/thin film, Gram stain, TB screening, bone marrow"
     }

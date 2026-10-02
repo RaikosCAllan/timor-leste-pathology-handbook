@@ -12,15 +12,15 @@ window.DEPARTMENTS = [
     id: "biochemistry",
     name: "Biochemistry",
     services: "Routine chemistry, endocrine, metabolic, cardiac markers, tumour markers",
-    location: "[FILL IN — building / floor]",
+    location: "Laboratório da Saúde do INSP-TL",
     contact: "[FILL IN — extension]"
   },
 
   {
     id: "haematology",
     name: "Haematology",
-    services: "General haematology, coagulation, limited specialised haematology",
-    location: "[FILL IN]",
+    services: "General haematology, coagulation, blood film morphology",
+    location: "Laboratório da Saúde do INSP-TL",
     contact: "[FILL IN]"
   },
 
@@ -28,23 +28,23 @@ window.DEPARTMENTS = [
     id: "microbiology",
     name: "Microbiology",
     services: "Bacteriology, mycology, parasitology, molecular",
-    location: "[FILL IN]",
-    contact: "[FILL IN]"
+    location: "Laboratório da Saúde do INSP-TL",
+    contact: "WhatsApp +67078454546"
   },
 
   {
     id: "blood-bank",
     name: "Blood Bank and Transfusion",
     services: "Transfusion and laboratory services",
-    location: "[FILL IN]",
-    contact: "[FILL IN]"
+    location: "Hospital Nacional Guido Valadares",
+    contact: "73502087"
   },
 
   {
     id: "molecular",
     name: "Molecular Biology",
     services: "[FILL IN — e.g. PCR for TB, HIV viral load, respiratory panel, arbovirus]",
-    location: "[FILL IN]",
+    location: "Laboratório da Saúde do INSP-TL",
     contact: "[FILL IN]"
   },
 
@@ -52,7 +52,7 @@ window.DEPARTMENTS = [
     id: "serology",
     name: "Serology / Immunology",
     services: "[FILL IN — e.g. hepatitis, HIV, syphilis, dengue, rubella serology]",
-    location: "[FILL IN]",
+    location: "Laboratório da Saúde do INSP-TL",
     contact: "[FILL IN]"
   },
 
@@ -60,7 +60,7 @@ window.DEPARTMENTS = [
     id: "parasitology",
     name: "Parasitology",
     services: "Malaria microscopy, ova cysts and parasites",
-    location: "[FILL IN]",
+    location: "Laboratório da Saúde do INSP-TL",
     contact: "[FILL IN]"
   },
 
@@ -68,15 +68,15 @@ window.DEPARTMENTS = [
     id: "cytology",
     name: "Cytology / Histology",
     services: "[FILL IN — e.g. cervical cytology, fine needle aspiration]",
-    location: "[FILL IN]",
-    contact: "[FILL IN]"
+    location: "Hospital Nacional Guido Valadares",
+    contact: "73499016"
   },
 
   {
-    id: "poc",
-    name: "Point of Care",
-    services: "[FILL IN — e.g. blood gas, troponin, glucose meters]",
-    location: "[FILL IN]",
+    id: "icu",
+    name: "Point of Care (ICU)",
+    services: "Point-of-care testing",
+    location: "Hospital Nacional Guido Valadares",
     contact: "[FILL IN]"
   }
 

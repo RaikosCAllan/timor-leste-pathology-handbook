@@ -12,7 +12,7 @@ window.REQUEST = {
   steps: [
     {
       title: "Use the correct request form",
-      body: "Each service has its own form. Using the wrong form delays processing. See the list of forms below."
+      body: "Each location has its own request form.",
     },
     {
       title: "Complete every required field",
@@ -32,18 +32,18 @@ window.REQUEST = {
     },
     {
       title: "Send the specimen promptly, in the right conditions",
-      body: "Check the storage and transport requirement for the test in the Test Directory before sending. [FILL IN — local transport arrangements, porter times, pneumatic tube, cool box.]"
+      body: "Check the storage and transport requirement for the test in the Test Directory before sending. See Appendix 9a: Storage / Transport – Quick Reference Table (All Disciplines) and 9b: Microbiology Specimen Handling",
     },
     {
       title: "Adding a test after the specimen has arrived",
-      body: "[FILL IN — e.g. telephone the department within X hours; add-on only possible if the original specimen is still within stability.]"
+      body: "Telephone the laboratory specimen reception on 3310151; add-on only possible if the original specimen is still within stability."
     }
   ],
 
   /* --- Request forms in use -------------------------------------------- */
   // Put PDFs in assets/downloads/ and set `file` to make the name a link.
   forms: [
-    { name: "General pathology request form",     file: "", note: "Biochemistry, haematology, serology" },
+    { name: "General pathology request form",     file: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/downloads/pathology_request_form_example.pdf", note: "Biochemistry, haematology, serology" },
     { name: "Blood bank / transfusion request",   file: "", note: "Group & screen, crossmatch, product request" },
     { name: "Tuberculosis request form",          file: "", note: "TB smear, GeneXpert MTB/RIF, TB culture" },
     { name: "Molecular / surveillance request",   file: "", note: "[FILL IN]" },
@@ -54,9 +54,8 @@ window.REQUEST = {
   outOfHours: {
     heading: "Out-of-hours requests",
     body: [
-      "Outside full-service hours only urgent (STAT) tests are performed.",
-      "[FILL IN — which tests are available out of hours, and how to contact the on-call scientist before sending.]"
-    ]
+      "Out of hours service are not available. For urgent testing, please refer to Hospital Nacional Guido Valadares.",
+      ]
   },
 
   /* --- Minimum acceptance criteria ------------------------------------- */
@@ -137,8 +136,7 @@ window.REQUEST = {
     body: [
       "A critical result indicates that a patient's condition may deteriorate rapidly without immediate medical intervention.",
       "The laboratory telephones critical results to the requesting clinician or ward. Make sure a reachable contact number is on every request form.",
-      "Tests with a critical-value alert are marked CRITICAL in the Test Directory. The full alert list is in Appendix 4 and the notification policy in Appendix 5."
-    ]
+        ]
   }
 
 };

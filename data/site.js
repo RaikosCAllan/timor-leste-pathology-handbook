@@ -43,15 +43,26 @@ window.SITE = {
   },
 
   /* --- Identity -------------------------------------------------------- */
-  organisation: "Laboratório Nacional de Saúde",
+  organisation: "Laboratório da Saúde do INSP-TL",
   organisationShort: "LNS",
-  parentBody: "Ministério da Saúde, Timor-Leste",
+  parentBody: "Ministério da Saúde, Dili, Timor-Leste",
   siteTitle: "Pathology Services Handbook",
   tagline: "Laboratory test directory, specimen requirements and reporting guidance for clinicians and ward staff across Timor-Leste.",
 
-  // Path to the crest/logo. Put the image file in assets/img/ and name it here.
-  // Leave as "" to show the organisation initials instead.
-  logo: "assets/img/logo.png",
+  // Logos at the left of the header, shown in the order listed. Add, remove
+  // or reorder freely. Paths are relative to index.html, so they must start
+  // with assets/ - an absolute path like /Users/... works only on one machine
+  // and breaks on the intranet, the USB and GitHub Pages.
+  logos: [
+    { src: "assets/img/MOH_logo_2026.jpg",     alt: "Ministerio da Saude" },
+    { src: "assets/img/insp_tl_logo_2026.png", alt: "INSP-TL" },
+    { src: "assets/img/LNS.logo.PNG",          alt: "Laboratorio Nacional da Saude" },
+    { src: "assets/img/republica-democratica-timor-leste-logo-png_seeklogo-199783.png",
+      alt: "Republica Democratica de Timor-Leste" }
+  ],
+
+  // Flag at the far right of the header. Set to "" to hide it.
+  flag: { src: "assets/img/flag-timor-leste.svg", alt: "Flag of Timor-Leste" },
 
   // Version banner shown in the footer.
   sourceDocument: "Pathology Handbook v9.3 (working)",
@@ -102,31 +113,31 @@ window.SITE = {
   /* --- Laboratory hours ------------------------------------------------ */
   // Add or remove rows freely. "note" is optional.
   hours: [
-    { service: "Full service — weekdays",        time: "[FILL IN — e.g. 08:00–12:00, 13:00–17:00]", note: "All departments" },
-    { service: "Out of hours — weekdays",        time: "[FILL IN — e.g. 17:00–08:00]",              note: "Urgent requests only" },
-    { service: "Weekends and public holidays",   time: "[FILL IN]",                                  note: "Urgent requests only" },
-    { service: "Phlebotomy / specimen reception",time: "[FILL IN]",                                  note: "" },
-    { service: "Result dispatch",                time: "[FILL IN]",                                  note: "Results also available in SchuyNet as soon as authorised" }
+    { service: "Full service — weekdays",        time: "08:00–12:00, 14:00–17:30", note: "All departments" },
+    { service: "Out of hours — weekdays",        time: "17:00–07:00",              note: "No service" },
+    { service: "Weekends and public holidays",   time: "09:00–17:00",              note: "Confirm with laboratory" },
+    { service: "Phlebotomy / specimen reception",time: "08:00–12:00, 14:00–16:30",              note: "Weekdays" },
+    { service: "Result dispatch",                time: "08:00–12:00, 14:00–17:30",              note: "Results also available in SchuyNet as soon as authorised" }
   ],
 
   hoursNotes: [
-    "Outside full-service hours, only urgent (STAT) tests are performed. Telephone the on-call scientist before sending an urgent specimen.",
-    "[FILL IN — any local rule about what counts as urgent.]"
+    "Outside full-service hours, only urgent (STAT) tests are performed at Laboratorio Hospital Nacional Guido Valadares",
+    "See test list for urgent and critical test samples"
   ],
 
   /* --- Contacts -------------------------------------------------------- */
   // One row per department or contact point.
   contacts: [
-    { name: "Specimen reception",  phone: "[FILL IN]", extension: "[FILL IN]", email: "[FILL IN]" },
+    { name: "Specimen reception",  phone: "331 0151", extension: "+670", email: "[FILL IN]" },
     { name: "Biochemistry",        phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
     { name: "Haematology",         phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
     { name: "Microbiology",        phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
-    { name: "Blood Bank",          phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
+    { name: "Blood Bank",          phone: "73502087", extension: "563", email: "" },
     { name: "Molecular Biology",   phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
     { name: "On-call (after hours)", phone: "[FILL IN]", extension: "", email: "" }
   ],
 
-  address: "[FILL IN — street address, Dili, Timor-Leste]",
+  address: "Rua Bidau, Toko Baru, Dili, Timor-Leste",
 
   /* --- SchuyNet / LIMS panel ------------------------------------------- */
   limsPanel: {

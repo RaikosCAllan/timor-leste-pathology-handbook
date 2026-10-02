@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" role="img" aria-label="Flag of Timor-Leste">
+  <title>Flag of Timor-Leste</title>
+  <rect width="200" height="100" fill="#DA291C"/>
+  <path d="M0,0 L100,50 L0,100 Z" fill="#FFC72C"/>
+  <path d="M0,0 L66.667,50 L0,100 Z" fill="#000000"/>
+  <polygon points="8.222,50.000 17.896,46.857 17.896,36.685 23.875,44.914 33.548,41.771 27.570,50.000 33.548,58.229 23.875,55.086 17.896,63.315 17.896,53.143" fill="#FFFFFF"/>
+</svg>
