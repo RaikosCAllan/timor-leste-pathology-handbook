@@ -32,13 +32,6 @@ window.DEPARTMENTS = [
     contact: "WhatsApp +67078454546"
   },
 
-  {
-    id: "blood-bank",
-    name: "Blood Bank and Transfusion",
-    services: "Transfusion and laboratory services",
-    location: "Hospital Nacional Guido Valadares",
-    contact: "73502087"
-  },
 
   {
     id: "molecular",
@@ -73,8 +66,8 @@ window.DEPARTMENTS = [
   },
 
   {
-    id: "icu",
-    name: "Point of Care (ICU)",
+    id: "icu",                                    // was "ICU"
+    name: "Point of Care (ICU)",                  // was "Intensive Care Unit"
     services: "Point-of-care testing",
     location: "Hospital Nacional Guido Valadares",
     contact: "[FILL IN]"

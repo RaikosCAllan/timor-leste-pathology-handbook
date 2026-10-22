@@ -65,7 +65,7 @@ window.SITE = {
   flag: { src: "assets/img/flag-timor-leste.svg", alt: "Flag of Timor-Leste" },
 
   // Version banner shown in the footer.
-  sourceDocument: "Pathology Handbook v9.3 (working)",
+  sourceDocument: "Pathology Handbook v9.4 (working)",
   lastReviewed: "[FILL IN — e.g. September 2026]",
   nextReview:   "[FILL IN — e.g. September 2027]",
   documentOwner: "[FILL IN — e.g. Quality Manager, LNS]",
@@ -99,13 +99,15 @@ window.SITE = {
     {
       heading: "Units of measurement",
       body: [
-        "[FILL IN — copy from Handbook v9.3, 'Units of Measurement' section.]"
+        "Results are reported using Système International (SI) units unless otherwise stated.",
+        "Units are indicated in this handbook and on all laboratory reports."
       ]
     },
     {
       heading: "Interpretation of results",
       body: [
-        "[FILL IN — copy from Handbook v9.3, 'Notes on Interpretation of Results' section.]"
+        "Test descriptions and the notes accompanying them are provided as a general guide only.",
+        "Clinicians seeking further clarification or detailed interpretation are advised to consult the appropriate senior laboratory staff."
       ]
     }
   ],

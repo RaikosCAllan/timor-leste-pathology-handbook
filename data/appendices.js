@@ -25,7 +25,7 @@ window.APPENDICES = [
   title: "Pathology Request Form",
   blocks: [
     { type: "text", body: "The standard pathology request form used across all departments." },
-    { type: "file", label: "Pathology request form example.", file: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/downloads/pathology_request_form_example.pdf" },
+    { type: "file", label: "Pathology request form example.", file: "assets/downloads/pathology_request_form_example.pdf" },
     { type: "image", file: "", caption: "Example of how to fill out the pathology request form." }
   ]
 },
@@ -36,7 +36,7 @@ window.APPENDICES = [
   title: "Pathology Results Report",
   blocks: [
     { type: "text", body: "The pathology report contains full patient identification and details, tests requested, final results with reference ranges (corrected for age and sex), alert flags, scientist comments and the signature of the head of department." },
-    { type: "file", label: "Final pathology report.", file: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/downloads/pathology_report_lns.pdf"},
+    { type: "file", label: "Final pathology report.", file: "assets/downloads/pathology_report_lns.pdf"},
     { type: "image", file: "", caption: "Example pathology report." }
   ]
 },
@@ -152,24 +152,38 @@ window.APPENDICES = [
   blocks: [
     { type: "text", body: "Results at or beyond these limits are telephoned to the requesting clinician or ward as soon as they are verified." },
     { type: "table",
-      columns: ["Department", "Test", "Low critical", "High critical", "Units", "Clinical significance"],
+      columns: ["Category", "Analyte / Test", "Critical value (alert threshold)", "Clinical significance / action"],
       rows: [
-        ["Biochemistry", "Potassium", "<2.5 mmol/L", ">6.5 mmol/L", "mmol/L", "Risk of arrhythmia / cardiac arrest; confirm immediately"],
-        ["Biochemistry", "Sodium",    "<120 mmol/L", ">160 mmol/L", "mmol/L", "Severe electrolyte imbalance"],
-        ["Biochemistry", "Glucose", "<2.5 mmol/L", "> 25 mmol/L", "mmol/L", "Hypoglycaemia / DKA / HHS"],
-        ["Biochemistry", "Creatinine (new finding)", ">400 µmol/L", "", "µmol/L", "Suggest severe renal impairment"],
-        ["Biochemistry", "Troponin I", "Above MI decision threshold ", "", "", "Suggestive of acute myocardial infarction"],
-        ["Haematology",  "Haemoglobin","<60 g/L","> 200 g/L", "g/L",    "Severe anaemia / polycythaemia risk"],
-        ["Haematology", "Platelets", "<20 ×10⁹/L", ">1000 x10⁹/L", "×10⁹/L", "Bleeding risk / thrombocytosis Urgent review required"],
-        ["Haematology", "White Cell Count ", ">100 ×10⁹/L", "", "×10⁹/L", "Possible acute leukaemia "],
-        ["Haematology", "Neutrophils", "<0.5 ×10⁹/L", "", "×10⁹/L", "Phone immediatelyRisk of neutropenic sepsis; treat urgently"],
-        ["Microbiology", "Blood culture", "—", "Any positive Gram stain", "—", "Immediate clinical review; start empiric therapy"],
-        ["Microbiology", "CSF Gram Stain", "—", "Organisms seen on Gram stain", "—", "Bacterial meningitis until proven otherwise / urgent treatment needed"],
-        ["Microbiology", "Malaria Smear", "", "Any positive", "", "Urgent antimalarial therapy needed"],
-        ["Coagulation", "INR", "", ">6.0 ", "ratio", "Phone immediately"],
+        ["Haematology", "Haemoglobin (Hb)", "<60 g/L, >200 g/L", "Severe anaemia / polycythaemia risk"],
+        ["Haematology", "Platelets", "<20 ×10⁹/L, >1000 ×10⁹/L", "Bleeding risk / thrombocytosis. Urgent review required"],
+        ["Haematology", "White Cell Count (WCC)", ">100 ×10⁹/L", "Possible acute leukaemia"],
+        ["Haematology", "Neutrophils", "<0.5 ×10⁹/L", "Risk of neutropenic sepsis; treat urgently"],
+        ["Haematology", "Haematocrit (HCT)", "<0.20 L/L, >0.60 L/L", "Severe anaemia / polycythaemia risk; confirm against age-specific requirements"],
+        ["Haematology", "Erythrocyte Sedimentation Rate (ESR)", ">100 mm/h", "Urgent clinical assessment for an underlying cause"],
+        ["Biochemistry", "Potassium", "<2.5 mmol/L, >6.5 mmol/L", "Risk of arrhythmia / cardiac arrest; confirm immediately"],
+        ["Biochemistry", "Sodium", "<120 mmol/L, >160 mmol/L", "Severe electrolyte imbalance"],
+        ["Biochemistry", "Calcium (corrected)", "<1.75 mmol/L, >3.75 mmol/L", "Risk of tetany / arrhythmia / coma"],
+        ["Biochemistry", "Glucose", "<2.5 mmol/L, >25 mmol/L", "Hypoglycaemia / DKA / HHS"],
+        ["Biochemistry", "Creatinine (new finding)", ">400 µmol/L", "Suggests severe renal impairment"],
+        ["Biochemistry", "Troponin I", "Above MI decision threshold (per assay)", "Suggestive of acute myocardial infarction"],
+        ["Biochemistry", "Magnesium", "<0.4 mmol/L, >2.0 mmol/L", "Risk of neurological, respiratory or cardiac complications"],
+        ["Biochemistry", "eGFR (new or unexpected)", "<15 mL/min/1.73 m²", "Severe or acute kidney impairment; urgent clinical review"],
+        ["Biochemistry", "Creatine Kinase (CK)", ">1,000 U/L, or >5 × upper reference limit", "Suspected rhabdomyolysis; assess renal function and potassium urgently"],
+        ["Biochemistry", "Lactate Dehydrogenase (LDH)", ">1,000 U/L", "Assess for tumour lysis syndrome; check potassium, phosphate, calcium, urate and renal function"],
+        ["Biochemistry", "Triglyceride", "≥10 mmol/L", "Risk of acute pancreatitis"],
+        ["Biochemistry", "Urine Protein", ">3.5 g/24 h (adults); new proteinuria in pregnancy with hypertension", "Nephrotic-range proteinuria; in pregnancy, urgent obstetric review"],
+        ["Coagulation", "INR", ">6.0 (if not anticoagulated, or with bleeding risk)", "High risk of spontaneous haemorrhage"],
+        ["Coagulation", "APTT", ">120 seconds (if not on heparin therapy)", "High risk of bleeding"],
+        ["Coagulation", "Fibrinogen", "<1.0 g/L", "Risk of DIC or severe bleeding"],
+        ["Microbiology", "Blood Culture", "Any positive Gram stain", "Immediate clinical review; start empiric therapy"],
+        ["Microbiology", "CSF Gram Stain", "Organisms seen on Gram stain", "Bacterial meningitis until proven otherwise / urgent treatment needed"],
+        ["Microbiology", "CSF Biochemistry", "Glucose <1.5 mmol/L, Neutrophils >100 ×10⁶/L", "Strongly suggests bacterial meningitis risk"],
+        ["Microbiology", "Malaria Smear", "Any positive", "Urgent antimalarial therapy needed"]
+        ["Serology / Molecular", "CD4 Count", "≤200 cells/µL (HIV, age ≥5 years)", "Advanced HIV disease; prompt clinical assessment and linkage to advanced HIV care"],
+        ["Serology / Molecular", "HIV Viral Load", ">100,000 copies/mL", "Unsuppressed viraemia; prompt clinical review (urgent in pregnancy)"]
       ]
     },
-    { type: "note", body: "Add one row per alert-listed test. Any test appearing here should also carry the \"critical\" flag in tests.js so it is badged in the Test Directory." }
+    { type: "note", body: "Tests on this list carry the CRITICAL label in the test directory. Refer to Appendix 5 for the communication policy for critical / high-risk results." }
   ]
 },
 {
@@ -249,10 +263,8 @@ window.APPENDICES = [
         ["Hormones / Special Chemistry", "Serum", "2–8 °C", "Refrigerated", "See test description"],
         ["Cytology – Pap Smear", "Slide / LBC vial", "Room temp", "Room temp", "Fix slides immediately. LBC stable at room temp."],
         ["Urine (Routine)", "Urine", "Refrigerate", "Refrigerate", "Analyse within 2 hr or refrigerate ≤24 hr."],
-        ["Blood Bank", "EDTA whole blood", "2–8 °C", "Refrigerate", "Sample valid ≤72 hr in transfused/ pregnant patients."],
         ["Molecular / TB (GeneXpert)", "Sputum / fluids", "2–8 °C", "Refrigerated", "Do not freeze. Process within 2–3 days."],
         ["Other body fluids (pleural, ascitic, pericardial, CSF)", "Sterile container", "Room temp, urgent", "ASAP", "Large volumes improve diagnostic yield."],
-        ["Blood Bank",   "EDTA whole blood", "2–8 °C",    "Room temperature ≤ 24 hours", "[FILL IN]"],
         ]
     }
   ]
@@ -305,7 +317,15 @@ window.APPENDICES = [
         ["BUN", "1 mg/dL", "0.357 mmol/L (Urea)", "× 0.357"],
         ["Urea", "1 mmol/L", "2.8 mg/dL (BUN equivalent)", "÷ 0.357"],
         ["Creatinine", "1 mg/dL", "88.4 µmol/L", "× 88.4"],
-        ["Creatinine", "1 µmol/L", "0.0113 mg/dL", "÷ 88.4 "],
+        ["Creatinine", "0.0113 mg/dL", "1 µmol/L", "÷ 88.4 "],
+        ["Urine Creatinine", "1 mg/dL", "88.4 µmol/L = 0.0884 mmol/L."],
+        ["Urine Creatinine", "11.3 mg/dL", "= 1 mmol/L ", ""],
+        ["Urine Creatinine Timed excretion", "113.1 mg/day", "= 1 mmol/day ", ""],
+        ["Urine Creatinine Timed excretion", "1 mg/day ", "= 0.00884 mmol/day", ""],
+        ["Urine Culture", "1 CFU/mL ", "= 1,000 CFU/L", ""],
+        ["Urine Culture", "10⁵ CFU/mL ", "= 10⁸ CFU/L"],
+        ["Urine Protein", "1 mg/dL", "= 0.01 g/L", ""],
+        ["Urine Protein", "1,000 mg/24 hours", "= 1 g/24 hours ", ""],
       ]
     }
   ]
@@ -333,89 +353,101 @@ window.APPENDICES = [
       ]
   },
 
+
   {
     id: "appendix-12",
     number: 12,
     title: "General Guide to Reference Ranges",
     blocks: [
       {
-        type: "text", body: [
-          "This appendix provides a concise overview of how reference ranges are managed in Laboratorio Nacional Da Saude Do INSPTL.",
-          "Detailed numerical ranges are not reproduced in the handbook because:",
-          "- Reference ranges may vary by analyser, methodology, and reagent lot.",
-          "- CGM Schuylab (LIMS) is the authoritative and automatically updated source.",
-          "- Ranges are periodically reviewed to align with RCPA, CLSI, WHO, and manufacturer guidance.",
-          "- All clinicians must refer to the ranges displayed on the patient's report."
+        type: "text",
+        body: [
+          "This appendix explains how reference ranges are managed at the Laboratório Nacional de Saúde do INSP-TL."
         ]
       },
       {
-        type: "text", body: [
-          "All LIMS-generated reports include:",
-          "• Age and sex-specific reference ranges (where applicable)",
-          "• SI units",
-          "• Abnormal flags (L/H/Critical)",
-          "• Analyser and method-specific interpretive comments",
-          "The reference range printed on the patient's report is the correct value for interpretation."
+        type: "note",
+        body: "IMPORTANT: The reference interval printed on the patient's LIMS-generated pathology report is authoritative for that reported result. Handbook examples are for general guidance only."
+      },
+      {
+        type: "list",
+        heading: "Why Reference Ranges May Differ",
+        items: [
+          "Analyser and testing methodology",
+          "Patient age and sex",
+          "Reagent and assay specifications",
+          "Locally validated laboratory reference intervals"
         ]
       },
       {
-        type: "text", body: [
-          "Ranges integrated into the LIMS are derived from:",
-          "• RCPA Manual – Pathology Tests",
-          "• Pathology Tests Explained (Australia)",
-          "• CLSI reference interval standards",
-          "• Manufacturer-validated analyser ranges",
-          "• WHO / international guidelines for infectious disease and microbiology",
-          "• Local review by pathology specialists where population-specific adjustments are required",
-          "",
-          "Major Test Categories — Summary Notes",
-          "1. Haematology",
-          "• Full adult, paediatric, and neonatal intervals embedded in the LIMS.",
-          "• Covers FBC, WBC differential, reticulocytes, ESR, coagulation screens, etc.",
-          "• See LIMS report for true reference interval.",
-          "",
-          "2. Biochemistry",
-          "• All reference intervals are analyser specific.",
-          "• Includes electrolytes, renal and liver profiles, lipids, glucose, cardiac markers, iron studies.",
-          "• See LIMS report for analyser-validated ranges.",
-          "",
-          "3. Serology / Immunology",
-          "• Most tests are qualitative (Reactive / Non-reactive).",
-          "• Quantitative tests (e.g., CRP, ferritin, HIV viral load) follow assay-specific ranges.",
-          "• Interpretation appears automatically on LIMS reports.",
-          "",
-          "4. Microbiology",
-          "• No numeric \"reference ranges.\"",
-          "• Culture results follow CLSI/EUCAST interpretive categories:",
-          "S = Susceptible, I = Intermediate, R = Resistant.",
-          "• Expected microscopy values (e.g., urine WBCs, CSF counts) are displayed on the report.",
-          "",
-          "5. Molecular Biology",
-          "• PCR assays report:",
-          "Detected",
-          "Not detected",
-          "Invalid / Inhibited",
-          "WHO standards (IU/mL) or manufacturer thresholds apply.",
-          "See LIMS report for method-specific interpretation.",
-          "",
-          "6. Blood Bank / Transfusion",
-          "No numerical ranges.",
-          "Reports provide:",
-          "ABO/RhD group",
-          "Antibody screen",
-          "Compatibility results (e.g., \"Compatible\", \"Incompatible\")",
-          "Interpretation follows national transfusion guidelines.",
-          "",
-          "Use of Reference Ranges in This Handbook",
-          "Reference ranges shown within individual test descriptions are provided for general orientation and educational purposes only. They reflect commonly used adult reference intervals and typical clinical thresholds.",
-          "These examples do not replace the analyser, method, age, and sex-specific reference range printed on the patient pathology report, which remains the only authoritative range for clinical interpretation.",
-          "",
-          "Important Note",
-          "The LIMS-generated reference range is the only authoritative reference. It supersedes all handbook examples, external textbooks, or previous versions.",
+        type: "list",
+        heading: "Information on LIMS Reports",
+        items: [
+          "Age- and sex-specific reference intervals, where applicable",
+          "SI units or other validated reporting units",
+          "Abnormal and critical result flags, where configured",
+          "Method-specific interpretive comments, where applicable"
+        ]
+      },
+      {
+        type: "list",
+        heading: "Sources Used by the Laboratory",
+        items: [
+          "RCPA Manual – Pathology Tests",
+          "Pathology Tests Explained (Australia)",
+          "CLSI reference interval standards",
+          "Manufacturer-validated analyser and assay documentation",
+          "WHO and other relevant international guidelines",
+          "Local review and validation by pathology specialists"
+        ]
+      },
+      {
+        type: "table",
+        heading: "Major Test Categories – Summary",
+        columns: [
+          "Department",
+          "Reference Range and Reporting Guidance"
         ],
+        rows: [
+          [
+            "Haematology",
+            "Adult, paediatric and neonatal intervals where applicable. Includes FBC, WBC differential, reticulocytes, ESR and coagulation tests."
+          ],
+          [
+            "Biochemistry",
+            "Method- and analyser-specific intervals. Includes electrolytes, renal and liver profiles, lipids, glucose, cardiac markers and iron studies."
+          ],
+          [
+            "Serology / Immunology",
+            "Qualitative assays may report Reactive or Non-reactive. Quantitative assays require method-specific interpretation."
+          ],
+          [
+            "Microbiology",
+            "Culture and susceptibility results require organism-, method- and standard-specific interpretation. Microscopy may have numerical reference intervals."
+          ],
+          [
+            "Molecular Biology",
+            "PCR results may be reported as Detected, Not Detected or Invalid. Quantitative assays may use IU/mL or other validated units."
+          ]
+        ]
       },
-    ],
+      {
+        type: "list",
+        heading: "Use of Reference Ranges in This Handbook",
+        items: [
+          "Reference ranges in individual test descriptions are for general orientation and education.",
+          "Examples may reflect commonly used adult intervals or clinical decision thresholds.",
+          "The patient's reported reference interval takes precedence over handbook examples.",
+          "Clinical decision limits must be interpreted according to the relevant test and guideline."
+        ]
+      },
+      {
+        type: "note",
+        body: "Clinical Reminder: Always interpret laboratory results using the reference intervals, units and interpretive comments supplied with the patient's report."
+      }
+    ]
   },
+
 
   {
     id: "appendix-13",
@@ -601,7 +633,11 @@ window.APPENDICES = [
         ["INR", "(Patient PT ÷ mean normal PT)^ISI", "Standardisation of prothrombin time"],
         ["Corrected Reticulocyte Count", "Reticulocyte % adjusted for patient haematocrit", "Assessment of marrow response to anaemia"],
         ["Absolute Cell Counts", "WBC × cell percentage", "Absolute lymphocyte, eosinophil, monocyte etc. counts"],
+        ["If Hb is expressed in g/dL:","MCH (pg) = [Hb (g/dL) × 10] ÷ RBC count (×10¹²/L)."],
         ["Mentzer Index", "MCV ÷ RBC count", "Screening aid when considering iron deficiency versus thalassaemia trait; not diagnostic"],
+        ["Calculated from Hb concentration and Hct:", "MCHC (g/L) = Hb (g/L) ÷ Hct (L/L)."],
+        ["Mean Cell Volume MCV (fL)", "[haematocrit (L/L) × 1,000] ÷ RBC count (×10¹²/L)."],
+        ["Reticulocyte Absolute count:", "1 × 10⁹/L = 1,000 cells/µL."],
         ["CSF/Serum Glucose Ratio", "CSF glucose ÷ serum glucose", "Interpretation of CSF glucose"],
         ["CSF/Serum Albumin Quotient", "CSF albumin ÷ serum albumin, with unit correction where required", "Assessment of blood–CSF barrier function"],
         ["Body Fluid/Serum Creatinine Ratio", "Fluid creatinine ÷ serum creatinine", "Helps investigate suspected urine leakage into a body cavity"],
@@ -609,6 +645,7 @@ window.APPENDICES = [
         ["24-hour Urine Excretion", "Urine concentration × 24-hour urine volume", "Quantification of analyte excretion"],
         ["Bicarbonate from Blood Gas", "Calculated using pH and pCO₂", "Acid–base assessment"],
         ["Base Excess", "Derived from blood-gas parameters", "Assessment of metabolic component of acid–base disturbance"],
+        ["Percentage parasitaemia =", "(infected red cells ÷ total red cells counted) × 100."],
       ]
     }
   ]
@@ -622,8 +659,46 @@ window.APPENDICES = [
    ========================================================================= */
 
 window.REFERENCES = [
-  { group: "A. Core clinical and laboratory test references", items: ["[FILL IN — copy from Handbook v9.3 References section]"] },
-  { group: "B. Analytical and pre-analytical standards (CLSI, WHO)", items: ["[FILL IN]"] },
-  { group: "C. Governance, accreditation and national standards", items: ["[FILL IN]"] },
-  { group: "D. Infectious disease and parasitology references", items: ["[FILL IN]"] }
+  {
+    group: "A. Core clinical and laboratory test references", items: [
+      "Bain, B. J., Bates, I., Laffan, M. A., & Lewis, S. M. (2017). Dacie and Lewis Practical Haematology (12th ed.). Elsevier.",
+      "Pathology Tests Explained. Australian Government Initiative. https://pathologytestsexplained.org.au",
+      "Royal College of Pathologists of Australasia (RCPA). RCPA Manual: Pathology Tests (2022). https://www.rcpa.edu.au/Manuals",
+      "Sullivan Nicolaides Pathology. (2018). Pathology Test Reference Manual (7th ed.).",
+      "The Royal Children’s Hospital Melbourne. Blood Culture. Specimen Collection. Melbourne: The Royal Children’s Hospital; [cited 7 Oct 2026]. Available from: RCH – Blood Culture"
+        ],
+
+  },
+  {
+    group: "B. Analytical and pre-analytical standards (CLSI, WHO)", items: [
+      "Clinical and Laboratory Standards Institute (CLSI). GP26-A4: Collection of Diagnostic Venous Blood Specimens.",
+      "Clinical and Laboratory Standards Institute (CLSI). EP23-A: Laboratory Quality Control Based on Risk Management.",
+      "Clinical and Laboratory Standards Institute (CLSI). QMS01-A4: Quality Management System for Laboratory Services.",
+      "Clinical and Laboratory Standards Institute (CLSI). M100: Performance Standards for Antimicrobial Susceptibility Testing (33rd ed.).",
+      "World Health Organization (WHO). Laboratory Quality Management System Handbook (2011).",
+      "World Health Organization (WHO). Basic Laboratory Quality Manual (2010).",
+      "World Health Organization (WHO). GLASS Manual for Early Implementation (2016).",
+      "World Health Organization (WHO). Guide for National Surveillance of Antimicrobial Resistance (2021).",
+      "World Health Organization (WHO). Manual for Laboratory Diagnosis of Infectious Diseases (2022).",
+        ],
+
+  },
+  {
+    group: "C. Governance, accreditation and national standards", items: [
+      "International Organization for Standardization (ISO). ISO 15189:2022 – Medical Laboratories: Requirements for Quality and Competence.",
+      "International Organization for Standardization (ISO). ISO/IEC 27001:2022 – Information Security Management Systems.",
+      "National Pathology Accreditation Advisory Council (NPAAC). Requirements for Medical Pathology Services (2022).",
+      "Royal College of Pathologists of Australasia (RCPA). Critical Results / High-Risk Results: Consensus Statement (2021).",
+      "NSW Health Pathology. High-Risk Results Communication Protocol (2020).",
+      "Capital Pathology. Capital Pathology Handbook (5th ed.).",
+      "CompuGroup Medical US. CGM SCHUYLAB User Guide. Version 3.4.1. Owings Mills (MD): CompuGroup Medical US; 2021 Apr."
+    ],
+  },
+  {
+    group: "D. Infectious disease and parasitology references", items: [
+      "World Health Organization (WHO). Diagnostic Manual for Enteric Parasitic Infections (2022).",
+      "World Health Organization (WHO). Basic Malaria Microscopy: Parts I & II (2022).",
+      "EUCAST. Breakpoint Tables for Interpretation of MICs and Zone Diameters (2025).",
+      ],
+  }
 ];

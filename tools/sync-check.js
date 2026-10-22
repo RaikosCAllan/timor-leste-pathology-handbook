@@ -74,9 +74,13 @@ try {
 /* --- Parse the Test Description section ----------------------------------- */
 // Entries look like:   ##### Test Name
 // then                 **Field:** value     or     **Field**\n\nvalue
-const lines = md.split("\n");
+// Highlighting in Word ([text]{.mark}) and empty anchors would hide the field
+// labels from the parser, so remove them first.
+const unmark = (l) => { let prev; do { prev = l; l = l.replace(/\[\]\{[^}]*\}/g, "").replace(/\[([^\[\]]*)\]\{[^}]*\}/g, "$1"); } while (l !== prev); return l; };
+const lines = md.split("\n").map(unmark);
 let start = lines.findIndex(l => l.trim() === "### Test Description");
-let end = lines.findIndex((l, i) => i > start && /^### Appendix/.test(l));
+let end = lines.findIndex((l, i) => i > start && (/^### Appendix/.test(l) || /^#{1,2}\s/.test(l) ||
+  (/^[-=]{3,}\s*$/.test(lines[i + 1] || "") && /^\S/.test(l))));   // "Appendices" + underline
 if (start < 0) { console.error("No '### Test Description' heading found in the document."); process.exit(2); }
 if (end < 0) end = lines.length;
 
@@ -119,7 +123,7 @@ for (let i = start; i < end; i++) {
   const h = raw.match(/^#####\s+(.*?)\s*$/);
   if (h) {
     if (cur) source.push(cur);
-    cur = { name: stripMd(h[1]), fields: {} };
+    cur = stripMd(h[1]) ? { name: stripMd(h[1]), fields: {} } : null;   // skip empty headings
     field = null;
     continue;
   }
@@ -140,7 +144,21 @@ for (let i = start; i < end; i++) {
     field = SRC_FIELDS[block[1].replace(/:$/, "").trim()];
     continue;
   }
-  if (block) { field = null; continue; }        // a field we do not track
+  if (block) {
+    // A bold line followed by "**Department:**" is a test heading without the
+    // Heading 5 style. Anything else bold is a sub-heading inside the field.
+    let j = i + 1; while (j < end && !lines[j].trim()) j++;
+    if (/^\*\*Department:\*\*/.test(lines[j] || "")) {
+      if (cur) source.push(cur);
+      cur = { name: stripMd(block[1]), fields: {} };
+      field = null; continue;
+    }
+    if (field) {
+      const v = stripMd(block[1]);
+      if (v) cur.fields[field] = (cur.fields[field] ? cur.fields[field] + " " : "") + v;
+    }
+    continue;
+  }
 
   if (field) {
     const v = stripMd(raw);
@@ -201,8 +219,10 @@ TESTS.forEach(t => {
 const matched = [], missingFromSite = [], notInSource = [];
 const usedIds = new Set();
 
+const fullName = (s) => txt(s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+const byFull = new Map(TESTS.map(t => [fullName(t.name), t]));
 source.forEach(s => {
-  const t = bySiteKey.get(key(s.name));
+  const t = byFull.get(fullName(s.name)) || bySiteKey.get(key(s.name));
   if (t) { matched.push({ s, t }); usedIds.add(t.id); }
   else missingFromSite.push(s);
 });

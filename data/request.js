@@ -43,8 +43,7 @@ window.REQUEST = {
   /* --- Request forms in use -------------------------------------------- */
   // Put PDFs in assets/downloads/ and set `file` to make the name a link.
   forms: [
-    { name: "General pathology request form",     file: "/Users/raikosallan/Documents/work_menzies/FF/Pathology_Handbook/pathology_handbook_web/assets/downloads/pathology_request_form_example.pdf", note: "Biochemistry, haematology, serology" },
-    { name: "Blood bank / transfusion request",   file: "", note: "Group & screen, crossmatch, product request" },
+    { name: "General pathology request form",     file: "assets/downloads/pathology_request_form_example.pdf", note: "Biochemistry, haematology, serology" },
     { name: "Tuberculosis request form",          file: "", note: "TB smear, GeneXpert MTB/RIF, TB culture" },
     { name: "Molecular / surveillance request",   file: "", note: "[FILL IN]" },
     { name: "Cytology / histology request",       file: "", note: "[FILL IN]" }

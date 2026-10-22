@@ -125,10 +125,23 @@ if (alertApp) {
     .flatMap(b => (b.rows || []).flat())
     .map(txt).join(" | ").toLowerCase();
 
+  // A test matches the alert list if any distinctive word of its name, or an
+  // abbreviation in brackets (INR, APTT, WBC), appears in the list.
+  const GENERIC = new Set(["serum", "plasma", "test", "tests", "count", "total",
+    "level", "rapid", "blood", "random", "fasting", "analyser", "specific", "entry"]);
   flaggedCritical.forEach(t => {
-    const name = txt(t.name).toLowerCase().replace(/\([^)]*\)/g, "").trim();
-    const key = name.split(/[\s/]+/).filter(w => w.length > 3)[0];
-    if (key && alertText && !alertText.includes(key))
+    // The name and the synonyms both count: a panel such as a full blood count
+    // is on the alert list through its components (haemoglobin, platelets).
+    const full = [txt(t.name)].concat(Array.isArray(t.synonyms) ? t.synonyms.map(txt) : [])
+      .join(" / ").toLowerCase();
+    const abbrev = (full.match(/\(([^)]*)\)/g) || [])
+      .flatMap(x => x.replace(/[()]/g, "").split(/[\s/,]+/)).filter(w => w.length >= 3);
+    const words = full.replace(/\([^)]*\)/g, " ").split(/[\s/–—-]+/)
+      .filter(w => w.length > 3 && !GENERIC.has(w));
+    const keys = [...words, ...abbrev].map(w => w.replace(/[^a-z0-9]/g, "")).filter(Boolean);
+    const found = keys.some(k => alertText.includes(k) ||
+      (k.endsWith("s") ? false : alertText.includes(k + "s")));
+    if (keys.length && alertText && !found)
       W(`"${txt(t.name)}" is flagged CRITICAL in tests.js but does not appear in ` +
         `${txt(alertApp.title)}.\n      The badge promises a telephone call the ` +
         `alert list does not record. Reconcile the two.`);
@@ -142,9 +155,13 @@ TESTS.forEach(t => {
   const ca = txt(t.criticalAlert).trim();
   const flagged = (t.flags || []).includes("critical");
   const meaningful = ca && !/^not applicable\.?$/i.test(ca) && !ca.includes("[FILL IN");
-  if (meaningful && !flagged && !/appendi(x|ces)/i.test(ca) && !/see individual/i.test(ca))
-    W(`tests.js: "${txt(t.name)}" describes a critical alert but is not flagged ` +
-      `"critical", so it carries no CRITICAL badge and is missed by the filter`);
+  // CRITICAL means "telephoned at a defined value" (the alert list). Text
+  // alone does not earn the badge, but a numeric threshold without it may be
+  // a missed flag.
+  if (meaningful && !flagged && /[<>≤≥]\s*\d/.test(ca))
+    W(`tests.js: "${txt(t.name)}" gives a numeric critical value but is not flagged ` +
+      `"critical". If the laboratory telephones this value, add the flag and add the ` +
+      `test to the alert list.`);
 });
 
 /* --- 6. Flags must be spelled correctly ----------------------------------- */
@@ -166,8 +183,18 @@ const TUBE_WORDS = [
   { re: /\bheparin\b/i,                  tube: /heparin/i,           name: "heparin" },
   { re: /\b(SST|serum separat)/i,         tube: /(sst|serum separat)/i, name: "serum separator" },
   { re: /\b(fluoride|oxalate)\b/i,       tube: /(fluoride|oxalate)/i, name: "fluoride oxalate" },
-  { re: /\bblood culture bottle/i,        tube: /blood culture/i,     name: "blood culture bottle" }
+  { re: /\bblood culture bottle/i,        tube: /(blood culture|aerobic)/i, name: "blood culture bottle" }
 ];
+
+// A sentence that names a tube only as an alternative, or as something to
+// avoid, is not a contradiction: "Lithium-heparin plasma is acceptable",
+// "EDTA contamination falsely raises potassium". Only the sentences that say
+// what to collect are compared with the container.
+const QUALIFIED = /\b(acceptable|accepted|may be|can be|alternative|alternatively|if validated|where validated|validated for|not |avoid|unsuitable|reject|contaminat|unless|interfere|instead)/i;
+// Containers that are not blood collection tubes (slides, syringes, jars, swabs)
+// are not compared with tube words.
+const NOT_A_TUBE = /\b(slide|syringe|jar|swab|cup|pot|container|strip|point-of-care|none)\b/i;
+const sentences = (v) => v.split(/(?<=[.;:])\s+|\n/).filter(Boolean);
 
 TESTS.forEach(t => {
   const name = txt(t.name);
@@ -180,9 +207,17 @@ TESTS.forEach(t => {
   const skip  = (v) => !v || v.includes("[FILL IN");
 
   // a) The specimen requirement names a tube the container field contradicts.
-  if (!skip(req) && !skip(cont)) {
+  if (!skip(req) && !skip(cont) && !NOT_A_TUBE.test(cont)) {
+    // "Serum or lithium-heparin plasma" with an SST container: the sentence
+    // names the container's own type, so the other tube is an alternative.
+    const isSerumTube = /(sst|serum|gold|yellow|plain)/i.test(cont);
+    const ownType = (x) => TUBE_WORDS.some(w => w.re.test(x) && w.tube.test(cont)) ||
+                           (isSerumTube && /\bserum\b/i.test(x));
+    const direct = sentences(req)
+      .filter(x => !QUALIFIED.test(x) && !(/\bor\b/i.test(x) && ownType(x)))
+      .join(" ");
     TUBE_WORDS.forEach(w => {
-      if (w.re.test(req) && !w.tube.test(cont))
+      if (w.re.test(direct) && !w.tube.test(cont))
         W(`tests.js: "${name}" — sample requirements say ${w.name}, but the ` +
           `container is "${cont}".\n      One of the two is wrong, and a ward ` +
           `reading the card sees both.`);
