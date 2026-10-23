@@ -101,7 +101,9 @@ const SRC_FIELDS = {
   "Turnaround Time": "turnaround",
   "Critical / Alert": "criticalAlert",
   "Disease Associations": "diseaseAssociations",
-  "Conversion Factors": "conversionFactors"
+  "Conversion Factors": "conversionFactors",
+  "Organisms Reported": "_organisms",   // read only so it is not added to the field above
+  "Test Name": "_name"
 };
 
 function stripMd(s) {

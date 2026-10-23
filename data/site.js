@@ -132,11 +132,10 @@ window.SITE = {
   contacts: [
     { name: "Specimen reception",  phone: "331 0151", extension: "+670", email: "[FILL IN]" },
     { name: "Biochemistry",        phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
-    { name: "Haematology",         phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
-    { name: "Microbiology",        phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
+    { name: "Haematology",         phone: "[FILL IN]", extension: "[FILL IN]", email: "micro.nhl.tl@gmail.com" },
+    { name: "Microbiology",        phone: "[FILL IN]", extension: "[FILL IN]", email: "micro.nhl.tl@gmail.com" },
     { name: "Blood Bank",          phone: "73502087", extension: "563", email: "" },
     { name: "Molecular Biology",   phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
-    { name: "On-call (after hours)", phone: "[FILL IN]", extension: "", email: "" }
   ],
 
   address: "Rua Bidau, Toko Baru, Dili, Timor-Leste",

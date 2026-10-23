@@ -12,69 +12,6 @@
 
 window.TESTS = [
 {
-  id: "abo-rhd",
-  name: "ABO Group and RhD Typing",
-  synonyms: ["ABO/RhD Blood Group", "Blood Group Typing", "ABO and RhD Grouping"],
-  department: "blood-bank",
-  limsCode: "BLD GRP",
-  flags: ["stat"],
-  summary: "Determines ABO blood group and RhD status for transfusion, antenatal screening and donor compatibility.",
-  description: "Determines the patient's ABO blood group (A, B, AB or O) and Rhesus D (RhD) antigen status using red cell agglutination testing.",
-  indications: [
-    "Pre-transfusion blood grouping",
-    "Antenatal screening",
-    "Blood donor grouping",
-    "Pre-transplant assessment",
-    "Investigation of haemolytic disease of the fetus and newborn (HDFN)"
-  ],
-  referenceRange: [
-    "Not applicable. Results are reported as:",
-    "ABO: A, B, AB or O",
-    "RhD: Positive or Negative"
-  ],
-  analyticalLimitations: [
-    "Recent transfusion or stem cell transplantation may cause mixed-field reactions.",
-    "Weak or variant ABO/RhD antigen expression may require additional investigation.",
-    "Autoantibodies, cold agglutinins or paraproteins may interfere with grouping.",
-    "ABO discrepancies must be resolved before routine blood group assignment."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Pink EDTA",
-  sampleRequirements: [
-    "EDTA whole blood, typically 4–6 mL for adults, or an appropriately validated paediatric volume.",
-    "Positive patient identification and correct specimen labelling are essential."
-  ],
-  storageTransport: "Transport promptly. Store at 2–8 °C if testing is delayed. Follow local validated specimen stability and pre-transfusion sample validity requirements.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).",
-  methodology: "Forward and reverse ABO grouping and RhD typing using tube or column agglutination methods, as validated by the laboratory.",
-  turnaround: {
-    routine: "Same day.",
-    urgent: "Urgent testing available according to laboratory capability."
-  },
-  criticalAlert: [
-    "Unresolved ABO/RhD discrepancies, suspected incorrect patient identification or transfusion incompatibility require immediate laboratory investigation and communication.",
-    "See Appendix 5: Critical / High-Risk Results Policy Summary."
-  ],
-  diseaseAssociations: [
-    "Acute haemolytic transfusion reactions due to ABO-incompatible transfusion",
-    "Haemolytic disease of the fetus and newborn (HDFN) due to maternal red cell alloantibodies"
-  ],
-  conversionFactors: "Not applicable.",
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-7"
-  ],
-  lastReviewed: "2026-09",
-  added: "2026-10-02",
-  updated: "2026-10-12"
-},
-
-{
   id: "acid-fast-bacilli-stain",
   name: "Acid-Fast Bacilli (AFB) Stain",
   synonyms: ["AFB Smear", "Acid-Fast Smear Microscopy", "Ziehl–Neelsen Stain"],
@@ -121,13 +58,9 @@ window.TESTS = [
   methodology: "Ziehl–Neelsen staining with bright-field microscopy.",
   turnaround: {
     routine: "Same day, subject to laboratory operating hours and specimen receipt.",
-    urgent: ""
+    urgent: "Within 4 hours."
   },
-  criticalAlert: [
-    "New positive AFB smear results in patients with suspected pulmonary TB require prompt notification to the requesting clinician and relevant TB/infection prevention services, according to local policy.",
-    "Organisms Reported",
-    "Acid-fast bacilli detected or not detected, with smear grading where applicable. Species identification requires additional molecular testing or culture."
-  ],
+  criticalAlert: "New positive AFB smear results in patients with suspected pulmonary TB require prompt notification to the requesting clinician and relevant TB/infection prevention services, according to local policy.",
   diseaseAssociations: [
     "Pulmonary and extrapulmonary tuberculosis.",
     "Non-tuberculous mycobacterial infections.",
@@ -242,7 +175,23 @@ window.TESTS = [
   synonyms: [
     "Full Blood Count (FBC)",
     "Complete Blood Count (CBC)",
-    "Full Blood Examination (FBE)"
+    "Full Blood Examination (FBE)",
+    "Haemoglobin (Hb)",
+    "Haematocrit (HCT)",
+    "Packed Cell Volume (PCV)",
+    "Red Blood Cell (RBC) Count",
+    "Red Cell Count",
+    "Mean Corpuscular Volume (MCV)",
+    "Mean Corpuscular Haemoglobin (MCH)",
+    "Mean Corpuscular Haemoglobin Concentration (MCHC)",
+    "Red Cell Distribution Width (RDW)",
+    "Platelet Count",
+    "PLT Count",
+    "White Blood Cell Count (WBC)",
+    "White Cell Count",
+    "WCC",
+    "White Cell Differential",
+    "Differential Leucocyte Count"
   ],
   department: "haematology",
   limsCode: "CBC",
@@ -250,23 +199,44 @@ window.TESTS = [
   summary: "Complete Blood Count",
   description: [
     "Measures haemoglobin, red blood cell count, haematocrit, red cell indices, white blood cell count and platelet count. A white cell differential is reported according to the validated local service.",
-    "Blood film examination is performed when indicated. See individual component entries for interpretation."
+    "The analyser measures these parameters together as one panel; they are not requested separately.",
+    "Blood film examination is performed when indicated.",
+    "Haemoglobin (Hb) — code HGB, unit g/L: Concentration of haemoglobin, the oxygen-carrying protein in red blood cells. Identifies anaemia or raised haemoglobin.",
+    "Red Blood Cell (RBC) Count — code RBC, unit ×10¹²/L: Number of circulating red cells. Interpret with Hb, HCT and red cell indices.",
+    "Haematocrit (HCT) — code HCT, unit L/L: Proportion of whole blood volume occupied by red cells.",
+    "Mean Corpuscular Volume (MCV) — code MCV, unit fL: Average red cell volume. Classifies anaemia as microcytic, normocytic or macrocytic.",
+    "Mean Corpuscular Haemoglobin (MCH) — code MCH, unit pg: Average haemoglobin mass per red cell. Calculated: Hb ÷ RBC.",
+    "Mean Corpuscular Haemoglobin Concentration (MCHC) — code MCHC, unit g/L: Average haemoglobin concentration within red cells. Calculated: Hb ÷ HCT.",
+    "Red Cell Distribution Width (RDW) — code RDW, unit % (RDW-CV) or fL (RDW-SD): Variation in red cell size (anisocytosis). RDW-CV and RDW-SD are not interchangeable.",
+    "Platelet Count — code PLAT, unit ×10⁹/L: Number of circulating platelets. Does not measure platelet function.",
+    "White Blood Cell Count (WBC) — code WBC, unit ×10⁹/L: Total leucocyte count. Interpret with the differential.",
+    "White Cell Differential — code WBCC, unit ×10⁹/L and %: Absolute counts and proportions of neutrophils, lymphocytes, monocytes, eosinophils and basophils."
   ],
   indications: [
     "Investigation of suspected anaemia, infection, bleeding or haematological disease.",
-    "Assessment of unexplained symptoms or clinically indicated baseline testing.",
+    "Classify anaemia as microcytic, normocytic or macrocytic, alongside red cell indices, reticulocyte count and blood film findings.",
+    "Investigate bleeding, bruising or petechiae; identify and monitor thrombocytopenia or thrombocytosis, including in dengue.",
+    "Support assessment of infection and inflammation; investigate leucocytosis, leucopenia and abnormalities of individual leucocyte populations.",
+    "Support investigation of suspected leukaemia, myelodysplastic syndromes and other marrow disorders.",
     "Monitoring chronic disease, chemotherapy and other treatments affecting blood cells.",
-    "FBC findings support assessment but do not independently establish the cause of an abnormality."
+    "Assessment of unexplained symptoms or clinically indicated baseline testing.",
+    "FBC findings support assessment but do not independently establish the cause of an abnormality. Hb alone does not determine transfusion need."
   ],
   referenceRange: [
-    "Refer to the validated LIMS report and individual component entries. Intervals depend on age, sex and relevant physiological circumstances, including pregnancy.",
+    "Use the validated age- and sex-appropriate intervals on the LIMS report. Intervals depend on age, sex and relevant physiological circumstances, including pregnancy. Neonates and children require age-specific intervals.",
+    "Assess absolute white cell counts alongside percentages.",
+    "Confirm whether RDW is reported as RDW-CV (%) or RDW-SD (fL).",
     "See Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Clotting, inadequate mixing, unsuitable tube filling and collection-related dilution can produce unreliable results.",
-    "Storage delay may alter cell size, differential results and blood film morphology.",
-    "Lipaemia, cold agglutinins and other interferences may affect haemoglobin or red cell indices.",
-    "Platelet clumping may cause a falsely low platelet count and requires laboratory verification.",
+    "Storage delay may alter cell size (MCV), differential results and blood film morphology.",
+    "Lipaemia, cold agglutinins and other interferences may affect haemoglobin or red cell indices. Cold agglutination may falsely increase MCV and MCHC and reduce the measured RBC count.",
+    "EDTA-associated platelet clumping may cause a falsely low platelet count (pseudothrombocytopenia) and requires laboratory verification. Giant platelets may be undercounted; red-cell fragments may be counted as platelets.",
+    "Nucleated red blood cells may falsely increase WBC if not adequately distinguished or corrected by the analyser.",
+    "Blasts, atypical lymphocytes and other abnormal cells may be misclassified or missed by automated analysis.",
+    "Dehydration increases Hb and HCT; haemodilution lowers them. Hb and HCT may initially remain normal after acute blood loss.",
+    "Mixed red-cell populations may produce a normal average MCV or MCH. Recent transfusion may obscure the underlying pattern.",
     "Analyser flags suggest possible abnormalities; they are not diagnoses. Blood film review follows validated local criteria.",
     "A normal FBC does not exclude all haematological disease."
   ],
@@ -278,38 +248,54 @@ window.TESTS = [
     "Mix gently by inversion immediately after collection according to tube instructions.",
     "Avoid contamination or dilution from intravenous infusions.",
     "Do not centrifuge the specimen.",
+    "If cold agglutination is suspected, discuss collection and transport with the laboratory.",
     "See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Transport promptly and analyse within locally validated limits.",
-    "Protect from excessive heat and freezing. If testing is delayed, follow approved storage instructions; requirements may differ for counts, differential and morphology.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "Protect from excessive heat and freezing. If testing is delayed, follow approved storage instructions; requirements may differ for counts, differential and morphology. Prepare a blood film promptly if morphology assessment is required.",
+    "See Appendix 9a: Storage / Transport \\– Quick Reference Table (All Departments)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen.",
     "Clotted specimen or incorrect anticoagulant.",
     "Insufficient or unsuitable tube filling that compromises testing.",
     "Deterioration, contamination or interference preventing reliable results.",
-    "Platelet clumping requires investigation and may require recollection under laboratory direction.",
+    "Platelet clumping requires investigation and may require recollection under laboratory direction. An unreliable platelet count must not be presented as confirmed thrombocytopenia.",
     "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: [
-    "Automated haematology analyser for cell counts, haemoglobin and red cell indices, with differential classification according to local capability.",
+    "Automated haematology analyser for cell counts, haemoglobin and red cell indices, with differential classification according to local capability. Hb is measured photometrically after red cell lysis; cells are counted by impedance, optical and/or fluorescence methods depending on the analyser. MCH and MCHC are calculated.",
     "Manual differential and blood film examination are performed when indicated."
   ],
   turnaround: {
-    routine: "Usually same day.",
+    routine: "Usually same day. Morphology examination may extend to the next day.",
     urgent: "Urgent testing and additional blood film review depend on local service arrangements."
   },
   criticalAlert: [
-    "Refer to individual component entries and approved thresholds.",
-    "Critical counts or significant blood film findings require prompt notification according to Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary.",
-    "Suspected artefacts require verification without unnecessary delay in clinical communication."
+    "Notify results meeting approved criteria in Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary. Appendix 4 lists critical values for haemoglobin, haematocrit, platelets, white cell count and neutrophils.",
+    "Newly identified blasts or findings suspicious for acute leukaemia require urgent verification and clinical communication, irrespective of total WBC. Fever or suspected sepsis in a neutropenic patient requires immediate clinical assessment.",
+    "MCV, MCH, MCHC and RDW have no generally established independent critical threshold.",
+    "Suspected artefacts require verification without unnecessary delay in clinical communication. Critical notification thresholds and transfusion thresholds are distinct."
   ],
   diseaseAssociations: [
-    "Refer to individual components. Relevant conditions include anaemia, infection, cytopenias, marrow disorders and haematological malignancy."
+    "Reduced Hb / RBC / HCT: iron deficiency, haemoglobinopathies, haemolysis, blood loss, marrow disease, chronic inflammation, vitamin B12/folate deficiency or kidney disease.",
+    "Raised Hb / HCT: polycythaemia vera, secondary erythrocytosis associated with hypoxia or erythropoietin exposure, or haemoconcentration.",
+    "Low MCV / MCH: iron deficiency, thalassaemia and some cases of anaemia of chronic inflammation. Microcytosis with a preserved RBC count and normal RDW may suggest thalassaemia trait.",
+    "High MCV: vitamin B12/folate deficiency, reticulocytosis, alcohol-related effects, liver disease, hypothyroidism, selected medicines or marrow disorders.",
+    "Low platelets: marrow failure or suppression; sepsis and other infections, including dengue; immune thrombocytopenia; drug-related thrombocytopenia; platelet consumption; hypersplenism. High platelets: reactive thrombocytosis, post-splenectomy states and myeloproliferative neoplasms.",
+    "Neutrophilia: infection, inflammation, stress, corticosteroids and myeloproliferative neoplasms. Neutropenia: severe infection/sepsis, viral infection, medicines, chemotherapy and marrow failure.",
+    "Lymphocytosis: reactive viral infections; chronic lymphocytic leukaemia and other lymphoproliferative disorders. Eosinophilia: allergy/asthma, drug reactions, helminth infection."
   ],
-  conversionFactors: "No single conversion factor applies to the complete panel. Refer to individual component entries and Appendix 10: Unit Conversion Factors (SI Conventional Units).",
+  conversionFactors: [
+    "Hb: g/dL × 10 = g/L; g/L ÷ 10 = g/dL.",
+    "HCT: L/L × 100 = %; % ÷ 100 = L/L.",
+    "RBC: 1 × 10¹²/L = 1 × 10⁶/µL.",
+    "WBC, platelets and absolute differential counts: 1 × 10⁹/L = 1,000 cells/µL.",
+    "MCHC: g/dL × 10 = g/L.",
+    "MCV: 1 fL = 10⁻¹⁵ L.",
+    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+  ],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -679,80 +665,6 @@ window.TESTS = [
 },
 
 {
-  id: "red-cell-antibody-screen",
-  name: "Red Cell Antibody Screen (Indirect Antiglobulin Test – IAT)",
-  synonyms: [
-    "Antibody Screen",
-    "Indirect Coombs Test",
-    "Red Cell Alloantibody Screen"
-  ],
-  department: "blood-bank",
-  limsCode: "IAGT",
-  flags: ["stat"],
-  summary: "Detects unexpected red cell antibodies in patient plasma.",
-  description: "Detects unexpected red cell antibodies in patient plasma that may cause haemolytic transfusion reactions or haemolytic disease of the fetus and newborn (HDFN).",
-  indications: [
-    "Pre-transfusion compatibility assessment.",
-    "Routine antenatal antibody screening.",
-    "Investigation of red cell alloimmunisation following pregnancy or transfusion.",
-    "Investigation of suspected immune-mediated haemolysis."
-  ],
-  referenceRange: [
-    "Negative: No red cell antibodies detected by the screening method.",
-    "Positive: Red cell antibody reactivity detected; further identification required."
-  ],
-  analyticalLimitations: [
-    "Low-concentration or weakly reactive antibodies may not be detected.",
-    "Previously formed antibodies may become undetectable over time but remain clinically significant.",
-    "Autoantibodies may interfere with antibody screening and identification.",
-    "A negative screen does not exclude all clinically significant red cell antibodies."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "EDTA whole blood in a correctly filled tube, typically 4–10 mL for adults or an appropriately validated paediatric volume.",
-    "Correct patient identification, specimen labelling and collection date/time are essential."
-  ],
-  storageTransport: [
-    "Transport promptly. Refrigerate at 2–8 °C if testing is delayed, according to laboratory procedures.",
-    "Pre-transfusion specimen validity must follow the laboratory's approved policy, including the 72-hour requirement where applicable."
-  ],
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).",
-  methodology: "Indirect antiglobulin test using column agglutination (gel card) or conventional tube technique, as validated by the laboratory.",
-  turnaround: {
-    routine: "Same day. Positive screens requiring antibody identification may take longer.",
-    urgent: "Urgent testing according to laboratory capability."
-  },
-  criticalAlert: [
-    "A positive antibody screen requires further investigation before routine issue of compatible red cells. Clinically significant antibodies must be communicated to the transfusion service and requesting clinician as appropriate.",
-    "See Appendix 5: Critical / High-Risk Results Policy Summary."
-  ],
-  diseaseAssociations: [
-    "Red cell alloimmunisation following pregnancy or transfusion",
-    "Haemolytic transfusion reactions",
-    "Haemolytic disease of the fetus and newborn (HDFN)",
-    "Immune-mediated haemolysis"
-  ],
-  conversionFactors: "Not applicable.",
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-10-14",
-  updated: ""
-},
-
-{
   id: "aspartate-aminotransferase",
   name: "Aspartate Aminotransferase (AST)",
   synonyms: [
@@ -761,7 +673,7 @@ window.TESTS = [
   ],
   department: "biochemistry",
   limsCode: "AST",
-  flags: [""],
+  flags: [],
   summary: "Enzymatic test for cellular injury.",
   description: "Enzyme found in the liver, skeletal muscle, cardiac muscle and red blood cells. Elevated levels indicate cellular injury but are not specific to liver disease.",
   indications: [
@@ -817,6 +729,81 @@ window.TESTS = [
   ],
   lastReviewed: "",
   added: "2026-10-14",
+  updated: ""
+},
+
+{
+  id: "bicarbonate-total-co2",
+  name: "Bicarbonate (Total CO2)",
+  synonyms: [
+    "Total Carbon Dioxide",
+    "Total CO2",
+    "tCO2",
+    "ECO2",
+    "Serum Bicarbonate",
+    "HCO3"
+  ],
+  department: "biochemistry",
+  limsCode: "ECO2",
+  flags: ["stat"],
+  summary: "Measures total CO2 (bicarbonate) for acid–base and kidney function assessment.",
+  description: [
+    "Measures total carbon dioxide (bicarbonate plus dissolved CO2) in serum or plasma. Bicarbonate is part of the carbonic acid–bicarbonate buffer system that helps maintain blood pH.",
+    "Reported with sodium, potassium, chloride, urea and creatinine as part of the kidney function and electrolyte panel."
+  ],
+  indications: [
+    "Investigate acid–base disturbances, interpreted with arterial pH and pCO2 where available.",
+    "Support calculation and interpretation of the anion gap with sodium and chloride.",
+    "Monitor patients with renal disease, gastrointestinal fluid losses or disturbances related to fluid therapy."
+  ],
+  referenceRange: [
+    "Use the age-appropriate reference interval on the validated LIMS report. See Appendix 12.",
+    "Manufacturer adult reference interval: 22–30 mmol/L (VITROS ECO2). Each laboratory should confirm this interval for its own population.",
+    "Measuring range: 5.0–40.0 mmol/L."
+  ],
+  analyticalLimitations: [
+    "Under-filled vacuum tubes may lower results by up to 3 mmol/L.",
+    "Uncapped specimens lose CO2 to the air: results may fall by up to 6 mmol/L after one hour of exposure.",
+    "Very high total protein (100 g/L or more) and haemolysis may falsely lower results.",
+    "Total CO2 alone does not establish an acid–base diagnosis; arterial pH and pCO2 are needed to classify the disturbance.",
+    "Certain medicines and clinical conditions alter CO2 concentration in the patient."
+  ],
+  sampleType: "Serum",
+  containerColour: "Gold/Yellow SST II",
+  sampleRequirements: [
+    "Serum, or lithium or sodium heparin plasma. Citrate plasma is not suitable.",
+    "Fill vacuum tubes completely. Do not collect from an arm receiving an intravenous infusion. Use the laboratory-approved tube and minimum volume; see Appendix 6."
+  ],
+  storageTransport: [
+    "Keep the tube capped. Centrifuge and separate serum or plasma from cells within 4 hours of collection.",
+    "Stability of separated, tightly capped specimens: room temperature (18–28 °C) up to 24 hours; refrigerated (2–8 °C) up to 3 days; frozen (≤ −18 °C) up to 1 month. See Appendix 9a."
+  ],
+  rejection: [
+    "See Appendix 7. Reject identification errors, citrate plasma, insufficient volume or confirmed contamination according to laboratory policy.",
+    "Under-filled tubes, specimens left uncapped and specimens not separated within 4 hours require assessment, because they may give falsely low results."
+  ],
+  methodology: "Enzymatic endpoint assay (phosphoenolpyruvate carboxylase and malate dehydrogenase) measured by reflectance spectrophotometry at 340 nm on VITROS ECO2 dry slides (VITROS chemistry system).",
+  turnaround: { routine: "Same day.", urgent: "<2 hours." },
+  criticalAlert: [
+    "See Appendices 4 and 5.",
+    "Marked abnormalities require clinical assessment alongside blood gas results, other electrolytes and the patient's condition."
+  ],
+  diseaseAssociations: [
+    "High: metabolic alkalosis, compensation for respiratory acidosis and excessive alkali intake.",
+    "Low: metabolic acidosis, compensation for respiratory alkalosis and renal disorders in which hydrogen ions cannot be excreted."
+  ],
+  conversionFactors: "For bicarbonate: 1 mmol/L = 1 mEq/L. See Appendix 10.",
+  appendixRefs: [
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-9a",
+    "appendix-10",
+    "appendix-12"
+  ],
+  lastReviewed: "",
+  added: "2026-10-21",
   updated: ""
 },
 
@@ -946,30 +933,12 @@ window.TESTS = [
   ],
   methodology: "Automated continuous-monitoring blood culture system, followed by Gram stain, organism identification and antimicrobial susceptibility testing when growth is detected.",
   turnaround: {
-    routine: "Positive culture: Preliminary Gram stain reported promptly when growth is detected; identification and susceptibility results follow. Negative culture: Final report generally after 5 days, or according to the validated incubation protocol. Special investigations: Additional incubation or referral testing may be required.",
-    urgent: ""
+    routine: "Preliminary result (Gram stain): 24–48 hours. Positive culture, with identification and sensitivities: 48–72 hours. Negative culture: reported after 5 days of incubation.",
+    urgent: "Positive Gram stain results are telephoned as soon as available; see Appendix 4."
   },
   criticalAlert: [
     "Positive blood culture Gram stain findings require urgent notification to the treating clinician according to laboratory policy.",
-    "See Appendix 4: Alert List (Critical / Life-Threatening Results Requiring Immediate Notification) and Appendix 5: Critical / High-Risk Results Policy Summary",
-    "Organisms Reported",
-    "Common bloodstream pathogens:",
-    "Staphylococcus aureus",
-    "Streptococcus pneumoniae",
-    "Escherichia coli",
-    "Klebsiella pneumoniae",
-    "Salmonella Typhi and Paratyphi",
-    "Pseudomonas aeruginosa",
-    "Other clinically significant organisms:",
-    "Enterococcus spp.",
-    "Acinetobacter spp.",
-    "Candida spp.",
-    "Potential skin contaminants:",
-    "Coagulase-negative staphylococci",
-    "Corynebacterium spp.",
-    "Bacillus spp. (excluding B. anthracis)",
-    "Cutibacterium acnes",
-    "These organisms may also cause genuine bloodstream infection. Interpretation requires clinical correlation and consideration of the number of positive sets."
+    "See Appendix 4: Alert List (Critical / Life-Threatening Results Requiring Immediate Notification) and Appendix 5: Critical / High-Risk Results Policy Summary"
   ],
   diseaseAssociations: [
     "Sepsis and bacteraemia",
@@ -1224,10 +1193,7 @@ window.TESTS = [
     "See Appendix 7."
   ],
   methodology: "Enzymatic urea assay with photometric detection; confirm the local analyser/reagent method and whether results are reported as urea or BUN.",
-  turnaround: {
-    routine: "Same day for routine requests; confirm local urgent-testing availability.",
-    urgent: ""
-  },
+  turnaround: { routine: "Same day.", urgent: "<2 hours." },
   criticalAlert: [
     "Notify results meeting locally approved critical or high-risk criteria according to Appendices 4 and 5.",
     "Interpret markedly elevated results with creatinine, electrolytes, urine output and clinical condition."
@@ -1769,9 +1735,8 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "In people living with HIV aged five years or older, CD4 ≤200 cells/µL meets the WHO 2025 immunological definition of advanced HIV disease and warrants prompt clinical assessment and linkage to the advanced HIV care pathway.",
-    "Children younger than five years require age-specific assessment under current HIV guidance.",
-    "This is a clinical decision threshold, not automatically a laboratory critical value. Follow approved notification arrangements in Appendices 4 and 5 where applicable."
+    "Telephone immediately: CD4 ≤200 cells/µL in people living with HIV aged five years or older (advanced HIV disease). See Appendices 4 and 5.",
+    "Prompt clinical assessment and linkage to the advanced HIV care pathway are required. Children younger than five years require age-specific assessment under current HIV guidance."
   ],
   diseaseAssociations: [
     "Low: HIV-associated immune suppression, selected primary or secondary immunodeficiencies, immunosuppressive treatment and severe acute illness.",
@@ -1924,10 +1889,7 @@ window.TESTS = [
     "Haemolysed, lipaemic or icteric specimens require assessment against validated interference limits."
   ],
   methodology: "Potentiometric assay.",
-  turnaround: {
-    routine: "Same day for routine testing.",
-    urgent: "Urgent availability and turnaround time depend on the local service."
-  },
+  turnaround: { routine: "Same day.", urgent: "<2 hours." },
   criticalAlert: [
     "See Appendices 4 and 5.",
     "Marked abnormalities require clinical assessment alongside other electrolytes, acid–base findings and the patient's condition."
@@ -2068,8 +2030,7 @@ window.TESTS = [
   methodology: "Multipoint rate assay.",
   turnaround: { routine: "Same day.", urgent: "Confirm urgent testing availability locally." },
   criticalAlert: [
-    "No universal CK-specific critical threshold. Apply locally approved notification requirements; see Appendices 4 and 5.",
-    "CK >5 times the upper reference limit or >1,000 U/L commonly supports rhabdomyolysis in the appropriate clinical context; this is not an automatic critical-result threshold.",
+    "Telephone immediately: CK >1,000 U/L, or more than 5 times the upper reference limit. See Appendices 4 and 5.",
     "Suspected rhabdomyolysis requires prompt assessment of renal function, potassium and other relevant electrolytes."
   ],
   diseaseAssociations: [
@@ -2137,7 +2098,7 @@ window.TESTS = [
     "Assess haemolysis, lipaemia and icterus against validated interference limits. Clotting during serum preparation is expected; clotted anticoagulated specimens are unsuitable."
   ],
   methodology: "Two-point rate assay.",
-  turnaround: { routine: "2–6 hours.", urgent: "<2 hour" },
+  turnaround: { routine: "2–6 hours.", urgent: "<2 hours." },
   criticalAlert: [
     "Apply locally approved absolute-value and significant-change notification criteria. See Appendices 4 and 5.",
     "A new or rapidly rising creatinine may require urgent assessment even below an absolute alert threshold. Interpret with urine output, potassium and clinical findings."
@@ -2164,84 +2125,6 @@ window.TESTS = [
     "appendix-9a",
     "appendix-10",
     "appendix-11",
-    "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-10-15",
-  updated: ""
-},
-
-{
-  id: "crossmatch",
-  name: "Crossmatch (Compatibility Testing)",
-  synonyms: ["Red cell compatibility testing", "crossmatch"],
-  department: "blood-bank",
-  limsCode: "X-MATCH",
-  flags: ["stat"],
-  summary: "Assesses compatibility between the recipient and selected donor red cells.",
-  description: [
-    "Assesses compatibility between the recipient and selected donor red cell units before transfusion. Serological crossmatching tests recipient plasma against donor red cells; validated electronic crossmatching checks compatibility using laboratory information system rules.",
-    "Crossmatching forms part of pretransfusion testing alongside ABO/RhD typing, antibody screening and review of previous results."
-  ],
-  indications: [
-    "Select compatible red cell units for planned transfusion.",
-    "Support transfusion in patients with current or historical clinically significant red cell antibodies.",
-    "Investigate incompatibility identified during pretransfusion testing.",
-    "Emergency transfusion may require release before testing is complete under an approved protocol."
-  ],
-  referenceRange: [
-    "Expected result: compatible with the selected donor unit using the approved method.",
-    "For serological testing, no incompatible reaction is detected."
-  ],
-  analyticalLimitations: [
-    "Compatibility does not exclude all acute or delayed transfusion reactions.",
-    "Previously detected antibodies may become undetectable; antibody history remains important.",
-    "Autoantibodies or panreactivity may obscure clinically significant alloantibodies and require specialist investigation.",
-    "Incorrect patient identification can invalidate otherwise satisfactory compatibility testing."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Pink EDTA",
-  sampleRequirements: [
-    "EDTA whole blood in the approved transfusion tube; confirm the required volume locally. See Appendix 6.",
-    "Positively identify the patient and label immediately at the bedside after collection. Include approved patient identifiers, collection date/time and collector identification.",
-    "Provide transfusion and pregnancy history, previous antibodies, urgency, number of units and special requirements."
-  ],
-  storageTransport: [
-    "Transport promptly and store according to validated blood bank requirements. See Appendix 9a.",
-    "Specimen validity is separate from storage stability. Recent red cell transfusion or pregnancy within the preceding three months normally requires a specimen valid for no more than 72 hours after collection. Apply the approved local expiry policy and obtain a new specimen when required."
-  ],
-  rejection: [
-    "See Appendix 7 and the blood bank identification policy.",
-    "Reject unlabelled or mismatched specimens, unsuitable tubes, clotted EDTA samples, insufficient volume or specimens outside the approved validity period."
-  ],
-  methodology: [
-    "Serological rapid tests and tube or column agglutination techniques.",
-    "Immediate-spin crossmatch: restricted to eligible patients with a negative current antibody screen and no history of clinically significant antibodies.",
-    "Indirect antiglobulin crossmatch: used when clinically significant antibodies are present or historical; select appropriately antigen-negative units."
-  ],
-  turnaround: {
-    routine: "1–2 hours. Antibody investigation or referral may cause substantial delays. For life-threatening urgency, contact the blood bank immediately.",
-    urgent: "approximately 30–60 minutes, subject to local confirmation and suitable unit availability."
-  },
-  criticalAlert: [
-    "An incompatible crossmatch requires immediate communication to the treating team and blood bank senior staff. Do not routinely release the implicated unit as compatible. See Appendices 4 and 5.",
-    "If transfusion is life-saving and compatible blood cannot be provided in time, emergency release requires documented clinical authorisation and blood bank consultation under the approved protocol."
-  ],
-  diseaseAssociations: [
-    "Incompatibility may reflect ABO incompatibility, red cell alloantibodies or autoantibodies; it is not itself a diagnosis of a haemolytic transfusion reaction."
-  ],
-  conversionFactors: "Not applicable.",
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
     "appendix-12"
   ],
   lastReviewed: "",
@@ -2308,13 +2191,7 @@ window.TESTS = [
   criticalAlert: [
     "Immediately communicate organisms seen on Gram stain and clinically significant positive culture results to the treating team, with documented notification.",
     "Do not wait for final identification or AST before reporting an important preliminary finding. Escalate uncertain positive results promptly to the microbiologist.",
-    "See Appendices 4 and 5.",
-    "Organisms Reported",
-    "Identify recovered organisms to the level supported by the validated method. Important examples include:",
-    "Community-acquired infection: Neisseria meningitidis, Streptococcus pneumoniae, Haemophilus influenzae, Streptococcus agalactiae, Listeria monocytogenes and enteric Gram-negative bacilli.",
-    "Healthcare/device-associated infection: Staphylococcus aureus, coagulase-negative staphylococci, Cutibacterium acnes, Pseudomonas aeruginosa and other Gram-negative bacilli.",
-    "Fungal investigations: Cryptococcus species, Candida species and other fungi recovered by the requested method.",
-    "Do not classify skin organisms as contaminants solely because growth is scanty."
+    "See Appendices 4 and 5."
   ],
   diseaseAssociations: [
     "Bacterial meningitis, ventriculitis and CSF shunt-associated infection. Fungal meningitis where appropriately investigated."
@@ -2654,9 +2531,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Promptly communicate positive results according to the approved local clinical and public-health notification requirements; see Appendices 4 and 5.",
-    "Suspected dengue with warning signs or severe disease requires urgent clinical assessment regardless of PCR availability or results. Do not await serotyping before clinical action.",
-    "Organisms Reported",
-    "Dengue virus serotypes DENV-1, DENV-2, DENV-3 and DENV-4, where identified."
+    "Suspected dengue with warning signs or severe disease requires urgent clinical assessment regardless of PCR availability or results. Do not await serotyping before clinical action."
   ],
   diseaseAssociations: [
     "Acute dengue virus infection.",
@@ -2672,88 +2547,6 @@ window.TESTS = [
       ]
     }
   ],
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-10-15",
-  updated: ""
-},
-
-{
-  id: "direct-antiglobulin-test",
-  name: "Direct Antiglobulin Test (DAT / Direct Coombs)",
-  synonyms: ["Direct Coombs Test", "Direct Antiglobulin Test"],
-  department: "blood-bank",
-  limsCode: "DAT",
-  flags: [],
-  summary: "Detects immunoglobulin and/or complement bound to red blood cells",
-  description: "Detects immunoglobulin and/or complement bound to red blood cells in vivo. Supports investigation of immune-mediated haemolysis but does not, by itself, demonstrate haemolysis.",
-  indications: [
-    "Suspected autoimmune haemolytic anaemia.",
-    "Investigation of acute or delayed haemolytic transfusion reactions.",
-    "Investigation of haemolytic disease of the fetus and newborn.",
-    "Suspected drug-induced immune haemolysis."
-  ],
-  referenceRange: [
-    "Negative: no red-cell-bound immunoglobulin or complement detected by the reagents used."
-  ],
-  analyticalLimitations: [
-    "A positive DAT may occur without haemolysis. Interpret with clinical findings and available haemolysis investigations.",
-    "A negative routine DAT does not completely exclude immune haemolysis; specialist testing may be required when suspicion remains high.",
-    "Detection depends on reagent specificity and method sensitivity. Anti-IgG-only testing does not detect complement-only sensitisation.",
-    "Recent transfusion, medications or passive antibodies may affect interpretation; these do not necessarily represent analytical false positives.",
-    "Reaction strength alone does not reliably indicate the severity of haemolysis."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Pink EDTA",
-  sampleRequirements: [
-    "EDTA whole blood in the laboratory-approved tube.",
-    "Confirm minimum volume and tube fill requirements locally, particularly for neonates and children.",
-    "Include recent transfusion history, suspected reaction, relevant medications and neonatal/maternal details where applicable."
-  ],
-  storageTransport: [
-    "Transport promptly, urgently if a transfusion reaction or significant haemolysis is suspected.",
-    "Follow locally validated temperature and specimen stability requirements.",
-    "Avoid collection-related haemolysis; do not freeze whole blood.",
-    "See Appendix 9a."
-  ],
-  rejection: [
-    "Unlabelled or mismatched specimens, incorrect tube, clotted EDTA blood, leakage or inadequate volume.",
-    "Assess haemolysed specimens with the blood bank: haemolysis may reflect the patient's condition or a transfusion reaction.",
-    "Assess repeat requests according to clinical need rather than automatically rejecting duplicates.",
-    "See Appendix 7 and blood bank identification requirements."
-  ],
-  methodology: [
-    "Antiglobulin testing by column agglutination or tube method.",
-    "Polyspecific testing and/or monospecific anti-IgG and anti-C3d testing may be used to characterise sensitisation. Confirm local availability; further antibody investigation may require referral."
-  ],
-  turnaround: {
-    routine: "Same-day reporting is the stated service target.",
-    urgent: "Urgent testing for suspected transfusion reactions or significant haemolysis; confirm local availability and turnaround time."
-  },
-  criticalAlert: [
-    "Promptly communicate clinically significant findings in suspected haemolysis or transfusion reactions according to approved local policy; see Appendices 4 and 5.",
-    "A strong positive DAT alone is not a universal critical result. Suspected acute transfusion reactions require immediate clinical and blood bank assessment without awaiting the DAT."
-  ],
-  diseaseAssociations: [
-    "Warm autoimmune haemolytic anaemia.",
-    "Cold antibody-mediated haemolysis, including cold agglutinin disease.",
-    "Haemolytic disease of the fetus and newborn.",
-    "Acute or delayed immune haemolytic transfusion reactions.",
-    "Drug-induced immune haemolytic anaemia."
-  ],
-  conversionFactors: "Not applicable — qualitative test, with reaction grading where reported.",
-  organismsReported: null,
   appendixRefs: [
     "appendix-1",
     "appendix-2",
@@ -2891,8 +2684,8 @@ window.TESTS = [
   methodology: "Manual Westergren method, as stated in the existing entry; confirm the local collection and dilution procedure.",
   turnaround: { routine: "Same day, subject to the local testing schedule.", urgent: "" },
   criticalAlert: [
-    "No universal numerical critical threshold.",
-    "A markedly elevated ESR, such as >100 mm/h, warrants clinical assessment for an underlying cause. Urgency depends on the clinical presentation; immediate notification follows approved local policy in Appendices 4 and 5."
+    "Telephone immediately: ESR >100 mm/h. See Appendices 4 and 5.",
+    "A markedly elevated ESR warrants urgent clinical assessment for an underlying cause."
   ],
   diseaseAssociations: [
     "Increased ESR: inflammatory/autoimmune disease, infection and some malignancies, particularly plasma cell myeloma. Anaemia and pregnancy may also increase ESR.",
@@ -3372,10 +3165,7 @@ window.TESTS = [
   criticalAlert: [
     "Organisms detected on Gram stain or clinically significant growth from a normally sterile site require prompt clinical communication according to the approved local policy.",
     "Notify designated resistant organisms according to local alert requirements.",
-    "See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary.",
-    "Organisms Reported",
-    "Examples include Staphylococcus aureus, Streptococcus pneumoniae, other Streptococcus species, Enterococcus species, Escherichia coli, Klebsiella species, Pseudomonas aeruginosa, anaerobes and Candida species.",
-    "Interpret skin commensals in context; they may represent contamination or true infection, particularly with prosthetic material. Report identification to the level supported by validated methods."
+    "See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Spontaneous or secondary bacterial peritonitis.",
@@ -4086,9 +3876,8 @@ window.TESTS = [
   ],
   turnaround: { routine: "Reported with creatinine, usually same day.", urgent: "" },
   criticalAlert: [
-    "A new or unexpected markedly reduced result, particularly <15 mL/min/1.73 m², or suspected acute deterioration requires prompt clinical assessment.",
-    "G5 is a CKD classification category, not automatically a critical laboratory threshold. Routine eGFR is unreliable during AKI.",
-    "Notification follows Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "Telephone immediately: a new or unexpected eGFR <15 mL/min/1.73 m², or suspected acute deterioration. See Appendices 4 and 5.",
+    "Routine eGFR is unreliable during acute kidney injury."
   ],
   diseaseAssociations: [
     "Reduced filtration may occur with diabetic or hypertensive kidney disease, glomerular disease, tubulointerstitial disease, inherited kidney disease or urinary obstruction.",
@@ -4388,186 +4177,6 @@ window.TESTS = [
 },
 
 {
-  id: "haematocrit",
-  name: "Haematocrit (HCT)",
-  synonyms: ["Haematocrit", "Packed Cell Volume (PCV)"],
-  department: "haematology",
-  limsCode: "HCT",
-  flags: [],
-  summary: "Measure the proportion of whole blood volume occupied by red blood cells.",
-  description: [
-    "The proportion of whole blood volume occupied by red blood cells, reported in L/L or as a percentage.",
-    "Reflects red cell number and volume and is usually reported within the full blood count (FBC)."
-  ],
-  indications: [
-    "Support assessment of anaemia and erythrocytosis.",
-    "Interpret changes associated with plasma volume, including dehydration or haemodilution.",
-    "Monitor relevant haematological disorders and treatment.",
-    "HCT alone should not determine transfusion need."
-  ],
-  referenceRange: [
-    "Use the validated age- and sex-appropriate interval on the LIMS report, with pregnancy and other relevant physiological circumstances considered.",
-    "See Appendix 12: General Guide to Reference Ranges."
-  ],
-  analyticalLimitations: [
-    "Dehydration may increase HCT through haemoconcentration; haemodilution may lower it.",
-    "Intravenous fluid contamination can produce falsely low results.",
-    "Cold agglutinins, specimen clotting and haemolysis may compromise automated results.",
-    "Delayed analysis can alter red cell volume and HCT.",
-    "HCT may initially remain normal after acute blood loss.",
-    "Interpret with haemoglobin (Hb), red blood cell count and red cell indices.",
-    "Centrifuged PCV methods may be affected by trapped plasma or inadequate centrifugation."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "Whole blood in an approved ethylenediaminetetraacetic acid (EDTA) tube.",
-    "Fill to the specified tube volume; confirm minimum and paediatric volumes locally.",
-    "Mix gently by inversion immediately after collection according to tube instructions.",
-    "Avoid contamination from intravenous infusions.",
-    "Do not centrifuge specimens intended for automated FBC analysis.",
-    "See Appendix 6: Order of Draw Quick Guide and Tube Reference."
-  ],
-  storageTransport: [
-    "Transport promptly and analyse within locally validated limits for HCT and red cell indices.",
-    "Protect from excessive heat and freezing. Follow approved storage instructions if analysis is delayed.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
-  ],
-  rejection: [
-    "Unlabelled or mislabelled specimen.",
-    "Clotted specimen or incorrect anticoagulant.",
-    "Unsuitable tube filling, contamination or deterioration preventing reliable testing.",
-    "See Appendix 7: Sample Rejection Criteria (All Departments)."
-  ],
-  methodology: [
-    "Automated haematology analyser: HCT is calculated or derived from red cell volume measurements according to the platform.",
-    "Manual centrifuged PCV may be used where locally validated. Confirm the routine method."
-  ],
-  turnaround: { routine: "Usually same day", urgent: "Urgent testing according to local arrangements." },
-  criticalAlert: [
-    "Notify results meeting approved criteria in Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary.",
-    "Proposed limits of HCT <0.20 L/L or >0.60 L/L require confirmation against local policy, including age-specific requirements.",
-    "These are notification limits, not standalone transfusion or treatment thresholds."
-  ],
-  diseaseAssociations: [
-    "Reduced HCT: anaemia, blood loss or haemodilution.",
-    "Increased HCT: polycythaemia vera, secondary erythrocytosis associated with hypoxia or erythropoietin exposure, or relative erythrocytosis from reduced plasma volume."
-  ],
-  conversionFactors: [
-    "HCT in L/L × 100 = HCT in %.",
-    "HCT in % ÷ 100 = HCT in L/L.",
-    "Example: 0.40 L/L = 40%.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
-  ],
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-10",
-    "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-10-16",
-  updated: ""
-},
-
-{
-  id: "haemoglobin",
-  name: "Haemoglobin (Hb)",
-  synonyms: ["Hb", "Haemoglobin Concentration"],
-  department: "haematology",
-  limsCode: "HGB",
-  flags: ["critical", "stat"],
-  summary: "Measures the concentration of haemoglobin.",
-  description: [
-    "Measures the concentration of haemoglobin, the oxygen-carrying protein in red blood cells. Usually reported as part of the full blood count (FBC).",
-    "Used to identify anaemia or raised haemoglobin; the concentration also depends on plasma volume."
-  ],
-  indications: [
-    "Identify anaemia and assess its severity.",
-    "Support investigation of erythrocytosis.",
-    "Monitor treatment of anaemia and therapies affecting blood cell production.",
-    "Assess patients with suspected blood loss alongside clinical findings.",
-    "Support transfusion assessment with symptoms, bleeding and other patient factors.",
-    "Hb alone does not identify the cause of anaemia or determine transfusion need."
-  ],
-  referenceRange: [
-    "Use the validated age- and sex-appropriate interval on the LIMS report, considering pregnancy and relevant physiological circumstances.",
-    "Anaemia diagnostic cut-offs, severity categories and transfusion or critical-notification thresholds serve different purposes.",
-    "See Appendix 12: General Guide to Reference Ranges."
-  ],
-  analyticalLimitations: [
-    "Inadequate mixing, clotting or intravenous fluid contamination may produce unreliable results.",
-    "Lipaemia and marked leucocytosis may falsely increase Hb in some photometric methods.",
-    "Specimen haemolysis may compromise FBC interpretation but does not necessarily lower measured Hb.",
-    "Dehydration increases concentration; haemodilution lowers it.",
-    "Hb may initially remain normal after acute haemorrhage.",
-    "Interpret with red cell indices, reticulocytes, blood film and targeted investigations as indicated."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "Whole blood in an approved ethylenediaminetetraacetic acid (EDTA) tube.",
-    "Fill to the specified tube volume; confirm minimum and paediatric volumes locally.",
-    "Mix gently by inversion immediately after collection according to tube instructions.",
-    "Avoid contamination from intravenous infusions.",
-    "Do not centrifuge specimens intended for automated FBC analysis.",
-    "See Appendix 6: Order of Draw Quick Guide and Tube Reference."
-  ],
-  storageTransport: [
-    "Transport promptly and follow validated FBC storage and stability requirements.",
-    "Protect from excessive heat and freezing. Delayed storage must preserve the other requested FBC parameters as well as Hb.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
-  ],
-  rejection: [
-    "Unlabelled or mislabelled specimen, clotting, incorrect anticoagulant or other specimen defects preventing reliable testing.",
-    "Assess haemolysis and interference according to the validated method and local policy.",
-    "See Appendix 7: Sample Rejection Criteria (All Departments)."
-  ],
-  methodology: "Photometric measurement after red cell lysis on an automated haematology analyser.",
-  turnaround: { routine: "Usually same day", urgent: "Urgent testing according to local arrangements." },
-  criticalAlert: [
-    "Notify results meeting approved criteria in Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary.",
-    "Proposed limits of Hb <60 g/L or >200 g/L require confirmation against local policy, including age-specific requirements.",
-    "Notification limits are not standalone transfusion or treatment thresholds."
-  ],
-  diseaseAssociations: [
-    "Reduced Hb: iron deficiency, haemoglobinopathies, haemolysis, blood loss, marrow disease, chronic inflammation, vitamin B12/folate deficiency or kidney disease.",
-    "Raised Hb: polycythaemia vera, secondary erythrocytosis associated with hypoxia or erythropoietin exposure, or haemoconcentration."
-  ],
-  conversionFactors: [
-    "g/dL × 10 = g/L.",
-    "g/L ÷ 10 = g/dL.",
-    "If molar units are required: g/dL × 0.6206 = mmol/L using the haemoglobin monomer/haem-equivalent convention. Do not apply this factor to tetramer-based reporting.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
-  ],
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-10",
-    "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-10-16",
-  updated: ""
-},
-
-{
   id: "hba1c-glycated-haemoglobin",
   name: "HbA1c – Glycated Haemoglobin",
   synonyms: ["HbA1c", "A1c", "Glycated Haemoglobin", "Glycosylated Haemoglobin"],
@@ -4695,72 +4304,6 @@ window.TESTS = [
   diseaseAssociations: [
     "HBeAg positive: active replication, high infectivity, chronic active hepatitis",
     "anti-HBe positive: resolution of acute infection, inactive carrier state, or precore mutant infection"
-  ],
-  conversionFactors: "Not applicable",
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-12",
-    "appendix-13",
-    "appendix-14"
-  ],
-  lastReviewed: "",
-  added: "2026-09-23",
-  updated: ""
-},
-
-{
-  id: "hepatitis-b-core-igg-igm-antibodies",
-  name: "Hepatitis B Core IgG/IgM Antibodies (anti-HBc)",
-  synonyms: ["anti-HBc IgG/IgM", "Hepatitis B Core Antibody"],
-  department: "serology",
-  limsCode: "AHBC",
-  flags: [],
-  summary: "Antibodies to HBc appear during acute HBV infection",
-  description: [
-    "Antibodies to HBc appear during acute HBV infection and persist for life.",
-    "IgM anti-HBc → recent/acute infection",
-    "IgG anti-HBc → past or chronic infection"
-  ],
-  indications: [
-    "Diagnose acute HBV (IgM anti-HBc)",
-    "Evidence of past exposure or chronic infection (IgG)",
-    "Evaluate \"isolated anti-HBc\" profiles (occult infection)",
-    "Used with HBsAg, anti-HBs, HBeAg, HBV DNA"
-  ],
-  referenceRange: [
-    "See Appendix 13 and 14.",
-    "Negative: no evidence of exposure",
-    "IgM anti-HBc positive: acute/recent infection",
-    "IgG anti-HBc positive, HBsAg negative: past infection & immunity",
-    "IgG anti-HBc positive, HBsAg positive: chronic infection"
-  ],
-  analyticalLimitations: [
-    "False positives (isolated anti-HBc)",
-    "May be absent in immunocompromised despite infection",
-    "Cannot alone distinguish current vs past infection"
-  ],
-  sampleType: "Serum",
-  containerColour: "Gold/Yellow SST II",
-  sampleRequirements: "2–5 mL serum",
-  storageTransport: "2–8 °C ≤72 h; freeze at –20 °C if longer",
-  rejection: "See Appendix 7",
-  methodology: "EIA or CLIA",
-  turnaround: { routine: "1–3 working days", urgent: "" },
-  criticalAlert: "IgM anti-HBc positive = acute HBV → urgent notification",
-  diseaseAssociations: [
-    "Acute HBV (IgM)",
-    "Chronic HBV (IgG + HBsAg)",
-    "Past resolved HBV (IgG + HBsAg negative)",
-    "Occult HBV (isolated anti-HBc, HBV DNA ±)"
   ],
   conversionFactors: "Not applicable",
   organismsReported: null,
@@ -5178,7 +4721,7 @@ window.TESTS = [
   synonyms: ["HIV Antibody Test", "HIV-1/2 Serology"],
   department: "serology",
   limsCode: "HIV",
-  flags: ["critical"],
+  flags: [],
   summary: "Detects antibodies to human immunodeficiency virus.",
   description: "Detects antibodies to human immunodeficiency virus types 1 and 2 (HIV-1 and HIV-2). Used within an approved diagnostic testing algorithm. A single reactive screening result does not establish HIV infection.",
   indications: [
@@ -5311,10 +4854,7 @@ window.TESTS = [
     "Validated HIV-1/2 antibody immunoassay.",
     "Reactive results proceed through the approved national algorithm. WHO recommends a validated three-test serial strategy; repeated testing with the same assay does not constitute three independent diagnostic tests."
   ],
-  turnaround: {
-    routine: "1–3 working days, subject to the confirmed testing schedule. Supplementary or referral testing may take longer.",
-    urgent: ""
-  },
+  turnaround: { routine: "<2 hours.", urgent: "<2 hours." },
   criticalAlert: [
     "No numeric critical threshold.",
     "Communicate newly reactive screening results and confirmed diagnoses promptly and confidentially according to approved policy. Clearly identify results awaiting diagnostic completion.",
@@ -5356,7 +4896,7 @@ window.TESTS = [
   ],
   department: "serology",
   limsCode: "HIV-VL",
-  flags: [],
+  flags: ["critical"],
   summary: "Quantifies human immunodeficiency virus (HIV) ribonucleic acid (RNA) in plasma.",
   description: "Quantifies human immunodeficiency virus (HIV) ribonucleic acid (RNA) in plasma to assess viral replication and response to antiretroviral therapy (ART). Most routine assays measure HIV-1 RNA.",
   indications: [
@@ -5404,9 +4944,8 @@ window.TESTS = [
     urgent: "Discuss urgent pregnancy-related or diagnostic requests with the laboratory."
   },
   criticalAlert: [
-    "Notify according to the approved alert list and high-risk results policy; see Appendices 4 and 5.",
-    "Unexpected results suggesting new infection, significant virological rebound or unsuppressed viraemia during pregnancy require prompt clinical review and communication according to the agreed pathway.",
-    "Do not classify every detectable result or >100,000 copies/mL as automatically critical."
+    "Telephone immediately: viral load >100,000 copies/mL. See Appendices 4 and 5.",
+    "Unexpected results suggesting new infection, significant virological rebound or unsuppressed viraemia during pregnancy also require prompt clinical review and communication."
   ],
   diseaseAssociations: [
     "HIV infection; serial viral load reflects viral replication and response to ART.",
@@ -5427,7 +4966,7 @@ window.TESTS = [
 {
   id: "international-normalised-ratio",
   name: "International Normalised Ratio (INR)",
-  synonyms: ["INR", "Standardised Prothrombin Time Ratio"],
+  synonyms: ["INR", "Standardised Time Ratio"],
   department: "haematology",
   limsCode: "INR",
   flags: ["critical", "stat"],
@@ -5449,42 +4988,35 @@ window.TESTS = [
   analyticalLimitations: [
     "INR standardisation is intended for vitamin K antagonist monitoring; results may be less comparable between methods in other causes of prolonged PT.",
     "INR does not reliably measure direct oral anticoagulant (DOAC) activity. A normal result does not exclude a clinically significant drug concentration.",
-    "Underfilling, unadjusted high haematocrit, clotting or heparin contamination may produce misleading results.",
-    "Haemolysis, lipaemia, icterus and paraproteins may affect some methods; assess against validated assay limits.",
     "A normal PT/INR does not exclude all bleeding disorders.",
-    "INR alone does not reliably predict bleeding risk in liver disease or before invasive procedures."
+    "INR alone does not reliably predict bleeding risk in liver disease or before invasive procedures.",
+    "CoaguChek point-of-care testing: not suitable for patients on direct thrombin inhibitors (e.g. argatroban, bivalirudin). Direct oral anticoagulants (e.g. rivaroxaban, apixaban, dabigatran) may affect the INR; confirm by another method.",
+    "Antiphospholipid antibodies, including lupus anticoagulant, may falsely prolong the result and give a falsely high INR.",
+    "Haematocrit between 25% and 55%, and haemolysis, bilirubin and lipaemia within the manufacturer's tested limits, do not significantly affect the result."
   ],
-  sampleType: "Citrate plasma",
-  containerColour: "Light blue Sodium Citrate",
+  sampleType: "Capillary whole blood (finger prick)",
+  containerColour: "Point-of-care test strip (finger prick)",
   sampleRequirements: [
-    "Venous blood collected into a laboratory-approved 3.2% sodium citrate tube.",
-    "Fill to the marked volume to maintain a 9:1 blood-to-citrate ratio; mix gently immediately after collection.",
-    "If haematocrit is >0.55 L/L (55%), contact the laboratory before collection for citrate adjustment.",
-    "Avoid contamination from anticoagulant-containing intravenous lines.",
-    "See Appendix 6 for tube and order-of-draw."
+    "Fresh capillary whole blood from a finger prick, applied directly to the CoaguChek test strip. Plasma and serum cannot be used; a citrate tube is not needed.",
+    "Clean the finger with warm soapy water or alcohol and let it dry completely. Warming the hand and holding it below waist level improves blood flow.",
+    "After lancing, massage gently from the base of the finger to form a drop. Do not press or squeeze the finger.",
+    "Apply one drop of at least 8 µL to the strip within 15 seconds of lancing. Do not add more blood after the test has started.",
+    "Do not collect from an arm receiving an intravenous infusion. Record anticoagulant medicines, including warfarin dose and any DOAC or heparin."
   ],
   storageTransport: [
-    "Transport promptly at controlled ambient temperature; avoid excessive heat.",
-    "Do not refrigerate or place citrated whole blood on ice.",
-    "Follow locally validated collection-to-testing limits. If delay is expected, contact the laboratory for plasma separation and storage instructions.",
-    "See Appendix 9a for approved local requirements."
+    "Not applicable: the sample is tested immediately at the point of care and is not transported.",
+    "Store test strips in the original container with the cap tightly closed, at 2–30 °C. Use a strip within 10 minutes of removing it from the container. Do not use strips after the expiry date."
   ],
   rejection: [
     "See Appendix 7.",
-    "Unlabelled or mismatched specimen.",
-    "Clotted specimen, incorrect tube or unacceptable filling volume.",
-    "Handling or transport outside validated stability limits.",
-    "Interference exceeding validated assay limits.",
-    "Haemolysis alone is not an automatic rejection criterion. Duplicate requests should be assessed according to clinical need and local requesting policy."
+    "Repeat the test if the meter shows an error, if the drop was applied more than 15 seconds after lancing, if the finger was squeezed, or if blood was added after the test started.",
+    "A result that does not match the clinical picture, or an error that recurs on repeat testing, requires checking by another method where available and prompt clinical review."
   ],
   methodology: [
-    "PT measured by a clot-based assay after adding thromboplastin and calcium to citrated plasma.",
-    "INR = (patient PT ÷ mean normal PT)^ISI, using the validated reagent–instrument system."
+    "Point-of-care test on the CoaguChek XS system (Roche Diagnostics).",
+    "Coagulation is activated on the test strip by human recombinant thromboplastin, and the clotting time is measured electrochemically. The meter reports the result as INR. Reportable range: INR 0.8–8.0 (CoaguChek XS PT Test). The result is available about 1 minute after the blood is applied."
   ],
-  turnaround: {
-    routine: "Same day for routine testing, subject to local service arrangements.",
-    urgent: "Confirm availability and turnaround time for urgent requests."
-  },
+  turnaround: { routine: "Point-of-care test: under 30 minutes.", urgent: "Under 30 minutes." },
   criticalAlert: [
     "Apply the approved alert threshold and notification procedure in Appendices 4 and 5.",
     "The proposed INR >5.0 threshold requires local confirmation. Significant bleeding requires urgent clinical assessment regardless of INR."
@@ -5637,8 +5169,7 @@ window.TESTS = [
     urgent: "Confirm availability and turnaround time for urgent requests."
   },
   criticalAlert: [
-    "Apply locally approved notification criteria; see Appendices 4 and 5.",
-    "A markedly elevated or rapidly rising LDH warrants clinical interpretation, but LDH >1,000 U/L alone is not a universal critical threshold.",
+    "Telephone immediately: LDH >1,000 U/L. See Appendices 4 and 5.",
     "Suspected tumour lysis syndrome requires urgent assessment of potassium, phosphate, calcium, urate and renal function; LDH alone is not diagnostic."
   ],
   diseaseAssociations: [
@@ -5723,8 +5254,7 @@ window.TESTS = [
     urgent: "Confirm availability and turnaround time for urgent requests."
   },
   criticalAlert: [
-    "Apply approved notification thresholds and procedures in Appendices 4 and 5.",
-    "The proposed thresholds of <0.4 mmol/L and >2.0 mmol/L.",
+    "Telephone immediately: magnesium <0.4 mmol/L or >2.0 mmol/L. See Appendices 4 and 5.",
     "Severe neurological, respiratory or cardiac symptoms require urgent clinical assessment regardless of the numerical result."
   ],
   diseaseAssociations: [
@@ -5761,7 +5291,9 @@ window.TESTS = [
   synonyms: [
     "Malaria Smear",
     "Malaria Thick and Thin Films",
-    "Blood Parasite Microscopy"
+    "Blood Parasite Microscopy",
+    "Blood Parasite Detection",
+    "Parasite Film"
   ],
   department: "parasitology",
   limsCode: "MALTK, MALTN",
@@ -5772,7 +5304,8 @@ window.TESTS = [
     "Urgent investigation of suspected malaria, including compatible fever or neurological illness with relevant exposure/travel history.",
     "Determine species and parasite density to support clinical assessment.",
     "Monitor asexual parasite clearance during treatment when clinically indicated.",
-    "Investigate suspected recurrent malaria."
+    "Investigate suspected recurrent malaria.",
+    "Other blood parasites (e.g. microfilariae, trypanosomes) may be reported if seen; state the suspected parasite on the request."
   ],
   referenceRange: [
     "Expected result: No malaria parasites seen.",
@@ -5829,20 +5362,13 @@ window.TESTS = [
     "Urgently notify the treating clinician when malaria parasites are first detected, including a preliminary positive result while species identification is pending.",
     "Communicate species and parasite density promptly, with particular attention to P. falciparum, suspected P. knowlesi, mixed infection or rising/high parasite density.",
     "Apply the approved repeat-positive and parasite-density notification criteria in Appendices 4 and 5. Parasitaemia >2% is not a universal definition of severe malaria.",
-    "Follow the applicable national malaria surveillance/reporting pathway.",
-    "Organisms Reported",
-    "Plasmodium falciparum",
-    "Plasmodium vivax",
-    "Plasmodium malariae",
-    "Plasmodium ovale",
-    "Plasmodium knowlesi, where reliably identified or confirmed",
-    "Mixed Plasmodium infection",
-    "Plasmodium species, identification pending or uncertain"
+    "Follow the applicable national malaria surveillance/reporting pathway."
   ],
   diseaseAssociations: [
     "P. falciparum and P. knowlesi can cause rapidly progressive severe malaria.",
     "P. vivax and P. ovale may relapse from dormant liver stages; P. vivax can also cause severe disease.",
-    "P. malariae may persist as a chronic low-density blood-stage infection."
+    "P. malariae may persist as a chronic low-density blood-stage infection.",
+    "Other blood parasites, where examined: filariasis, trypanosomiasis, babesiosis (rare)."
   ],
   conversionFactors: [
     "No fixed conversion exists between percentage parasitaemia and parasites/µL; conversion requires the patient's red-cell concentration and the counting method.",
@@ -5939,12 +5465,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Urgently notify the treating clinician of an initial positive malaria RDT, including pan-antigen-only results.",
-    "Arrange microscopy promptly where available for species identification and parasite quantification.",
-    "Organisms Reported",
-    "Report only antigen categories supported by the kit, such as:",
-    "P. falciparum-associated antigen detected.",
-    "Pan-Plasmodium antigen detected.",
-    "Other species-specific antigen detected, where applicable."
+    "Arrange microscopy promptly where available for species identification and parasite quantification."
   ],
   diseaseAssociations: [
     "Malaria. Positive results may also reflect persistent antigen following recently treated infection."
@@ -5971,261 +5492,6 @@ window.TESTS = [
     "appendix-8",
     "appendix-9a",
     "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-10-17",
-  updated: ""
-},
-
-{
-  id: "mean-corpuscular-haemoglobin",
-  name: "Mean Corpuscular Haemoglobin (MCH)",
-  synonyms: ["Mean Cell Haemoglobin", "Average Haemoglobin Content per Red Cell"],
-  department: "haematology",
-  limsCode: "MCH",
-  flags: [],
-  summary: "Measures average mass of haemoglobin.",
-  description: "Calculated red-cell index representing the average mass of haemoglobin (Hb) per red blood cell (RBC), reported in picograms (pg). Usually reported as part of the full blood count (FBC).",
-  indications: [
-    "Support investigation of anaemia alongside Hb, mean corpuscular volume (MCV), mean corpuscular haemoglobin concentration (MCHC), red-cell distribution width (RDW) and blood-film findings.",
-    "Identify reduced haemoglobin content per cell, supporting investigation of iron deficiency or thalassaemia.",
-    "Contribute to assessment of microcytic or macrocytic patterns; cell-size classification is based primarily on MCV.",
-    "MCH alone does not diagnose anaemia or distinguish its cause."
-  ],
-  referenceRange: [
-    "Use the locally validated, age-appropriate reference interval on the laboratory information management system (LIMS) report; see Appendix 12.",
-    "The proposed adult interval of 27–33 pg requires local confirmation."
-  ],
-  analyticalLimitations: [
-    "Calculated from Hb and RBC count; errors in either measurement affect MCH.",
-    "Cold agglutination may reduce the measured RBC count and falsely increase MCH.",
-    "Lipaemia or other turbidity affecting Hb measurement may falsely increase MCH, depending on the analyser.",
-    "Specimen haemolysis may disrupt the relationship between intact RBC count and measured Hb.",
-    "Mixed red-cell populations may produce a normal average despite clinically important abnormalities.",
-    "Interpret with the other FBC results, analyser flags and blood-film findings where indicated."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "EDTA-anticoagulated whole blood in a correctly filled, laboratory-approved tube.",
-    "Confirm the collection volume and paediatric tube requirements locally.",
-    "Mix gently immediately after collection to prevent clotting.",
-    "See Appendix 6 for tube guidance."
-  ],
-  storageTransport: [
-    "Transport promptly and analyse within the locally validated FBC stability limits.",
-    "If delayed, follow the laboratory's approved temperature and storage requirements. The proposed limits of 24 hours at room temperature and 48 hours at 2–8 °C require validation for the local analyser.",
-    "Prepare a blood film promptly if morphology assessment is required; acceptable numerical stability does not guarantee preserved cell morphology.",
-    "See Appendix 9a."
-  ],
-  rejection: [
-    "See Appendix 7.",
-    "Incorrect identification, clotted specimens, unacceptable tube or filling volume, leakage, or handling outside validated stability limits may make testing unsuitable.",
-    "Investigate suspected interference according to laboratory policy; haemolysis, lipaemia or icterus should not trigger automatic rejection without assessing their effect on reportable results."
-  ],
-  methodology: [
-    "Calculated from measured Hb concentration and RBC count:",
-    "MCH (pg) = Hb (g/L) ÷ RBC count (×10¹²/L)."
-  ],
-  turnaround: {
-    routine: "Same day as part of the FBC, subject to local service arrangements.",
-    urgent: "Urgent reporting follows the FBC service pathway."
-  },
-  criticalAlert: [
-    "No generally established independent critical threshold for MCH.",
-    "Apply approved FBC alert criteria, including Hb and other clinically significant findings; see Appendices 4 and 5. Unexpected or implausible MCH results require laboratory verification."
-  ],
-  diseaseAssociations: [
-    "Low MCH: commonly associated with iron deficiency and thalassaemia.",
-    "High MCH: commonly accompanies macrocytosis, including vitamin B12/folate deficiency or reticulocytosis; does not establish the cause."
-  ],
-  conversionFactors: [
-    "Reported in pg per cell.",
-    "If Hb is expressed in g/dL:",
-    "MCH (pg) = [Hb (g/dL) × 10] ÷ RBC count (×10¹²/L).",
-    "See Appendix 10 and 17 where applicable."
-  ],
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-10",
-    "appendix-12",
-    "appendix-17"
-  ],
-  lastReviewed: "",
-  added: "2026-10-17",
-  updated: ""
-},
-
-{
-  id: "mean-corpuscular-haemoglobin-concentration",
-  name: "Mean Corpuscular Haemoglobin Concentration (MCHC)",
-  synonyms: [
-    "Mean Cell Haemoglobin Concentration",
-    "Average Red-Cell Haemoglobin Concentration"
-  ],
-  department: "haematology",
-  limsCode: "MCHC",
-  flags: [],
-  summary: "Measure average haemoglobin (Hb) concentration.",
-  description: "Calculated red-cell index representing the average haemoglobin (Hb) concentration within the red-cell volume, reported in g/L. Reported as part of the full blood count (FBC).",
-  indications: [
-    "Assess hypochromia and support interpretation of anaemia alongside other red-cell indices and blood-film findings.",
-    "Support investigation of spherocytosis when consistent with the clinical history and blood film.",
-    "Help identify potentially unreliable Hb or haematocrit results when MCHC is unexpectedly high.",
-    "MCHC alone does not diagnose anaemia, iron deficiency, thalassaemia or hereditary spherocytosis."
-  ],
-  referenceRange: [
-    "Use the locally validated, age-appropriate reference interval on the laboratory information management system (LIMS) report; see Appendix 12.",
-    "The proposed interval of 320–360 g/L requires local confirmation."
-  ],
-  analyticalLimitations: [
-    "Depends on accurate Hb and haematocrit (Hct) measurements.",
-    "Lipaemia or other turbidity may falsely increase measured Hb and calculated MCHC.",
-    "Cold agglutination may distort red-cell measurements and falsely increase MCHC.",
-    "Specimen haemolysis may increase calculated MCHC by disrupting the relationship between measured Hb and intact red-cell volume.",
-    "Delayed analysis may alter cell volume and Hct, affecting MCHC.",
-    "Unexpected results require review of analyser flags, specimen quality and blood-film findings where indicated."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "EDTA-anticoagulated whole blood in a correctly filled, laboratory-approved tube.",
-    "Confirm the collection volume and paediatric tube requirements locally.",
-    "Mix gently immediately after collection to prevent clotting.",
-    "See the FBC entry and Appendix 6."
-  ],
-  storageTransport: [
-    "Follow the locally validated FBC storage and transport requirements; see the FBC entry and Appendix 9a.",
-    "Transport promptly. Prepare a blood film promptly if morphology assessment is required; numerical stability does not guarantee preserved cell morphology."
-  ],
-  rejection: [
-    "See the FBC entry and Appendix 7.",
-    "Incorrect identification, clotting, unacceptable tube or filling volume, leakage, or handling outside validated stability limits may make testing unsuitable.",
-    "Assess suspected haemolysis, lipaemia, icterus or agglutination according to their effect on reliable reporting rather than rejecting automatically."
-  ],
-  methodology: "Calculated from Hb concentration and Hct: MCHC (g/L) = Hb (g/L) ÷ Hct (L/L).",
-  turnaround: {
-    routine: "Same day as part of the FBC, subject to local service arrangements.",
-    urgent: "Urgent reporting follows the FBC service pathway."
-  },
-  criticalAlert: [
-    "No generally established independent critical threshold for MCHC.",
-    "Unexpectedly high or implausible results require laboratory verification before release. Clinical notification follows approved FBC alert criteria; see Appendices 4 and 5."
-  ],
-  diseaseAssociations: [
-    "Low MCHC: hypochromic red cells, commonly associated with iron deficiency and some thalassaemias.",
-    "Raised MCHC: may occur with spherocytosis or red-cell dehydration.",
-    "Apparent elevation may instead reflect analytical interference; exclude artefact before attributing it to disease."
-  ],
-  conversionFactors: ["g/dL × 10 = g/L.", "g/L ÷ 10 = g/dL.", "See Appendix 10."],
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-10",
-    "appendix-12",
-    "appendix-17"
-  ],
-  lastReviewed: "",
-  added: "2026-10-17",
-  updated: ""
-},
-
-{
-  id: "mean-corpuscular-volume",
-  name: "Mean Corpuscular Volume (MCV)",
-  synonyms: ["Mean Cell Volume", "Average Red-Cell Volume"],
-  department: "haematology",
-  limsCode: "MCV",
-  flags: [],
-  summary: "",
-  description: "Represents the average volume of red blood cells (RBCs), reported in femtolitres (fL). Usually reported as part of the full blood count (FBC).",
-  indications: [
-    "Classify anaemia as microcytic, normocytic or macrocytic.",
-    "Guide further investigation of anaemia alongside haemoglobin (Hb), other red-cell indices, reticulocyte count and blood-film findings.",
-    "Support investigation of suspected iron deficiency, thalassaemia, vitamin B12/folate deficiency or marrow disorders.",
-    "Assess changes in red-cell size during follow-up, alongside other measures of treatment response.",
-    "MCV alone does not diagnose anaemia or determine its cause."
-  ],
-  referenceRange: [
-    "Use the locally validated, age-appropriate reference interval on the laboratory information management system (LIMS) report; see Appendix 12.",
-    "Adult anaemia is commonly classified using MCV <80 fL as microcytic and >100 fL as macrocytic. These conventions should not replace the local interval or be applied to children."
-  ],
-  analyticalLimitations: [
-    "Cold agglutination may falsely increase MCV and reduce the measured RBC count.",
-    "Marked hyperglycaemia or extreme leucocytosis may cause misleading results, depending on the analyser.",
-    "Delayed analysis may cause red-cell swelling and increase MCV.",
-    "Mixed microcytic and macrocytic populations may produce a normal average.",
-    "Recent transfusion may alter the red-cell population and obscure the underlying pattern.",
-    "Normal MCV does not exclude iron deficiency or vitamin B12/folate deficiency.",
-    "Interpret with red-cell distribution width (RDW), analyser flags and blood-film findings where indicated."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "EDTA-anticoagulated whole blood in a correctly filled, laboratory-approved tube.",
-    "Confirm the collection volume and paediatric tube requirements locally.",
-    "Mix gently immediately after collection to prevent clotting.",
-    "See the FBC entry and Appendix 6."
-  ],
-  storageTransport: [
-    "Follow the locally validated FBC storage and transport requirements; see the FBC entry and Appendix 9a.",
-    "Transport promptly. Storage time and temperature can affect MCV; prepare a blood film promptly if morphology assessment is required."
-  ],
-  rejection: [
-    "See the FBC entry and Appendix 7.",
-    "Incorrect identification, clotting, unacceptable tube or filling volume, leakage, or handling outside validated stability limits may make testing unsuitable.",
-    "Assess suspected interference according to its effect on reliable reporting rather than rejecting automatically."
-  ],
-  methodology: "Automated red-cell sizing, commonly using electrical impedance or optical methods. MCV may be reported from cell-volume measurements or calculated from haematocrit and RBC count, depending on the analyser.",
-  turnaround: {
-    routine: "Same day as part of the FBC, subject to local service arrangements.",
-    urgent: "Urgent reporting follows the FBC service pathway."
-  },
-  criticalAlert: [
-    "No generally established independent critical threshold for MCV.",
-    "Unexpected or implausible results require laboratory verification. Clinical notification follows approved FBC alert criteria; see Appendices 4 and 5."
-  ],
-  diseaseAssociations: [
-    "Low MCV: iron deficiency, thalassaemia and some cases of anaemia of chronic inflammation.",
-    "High MCV: vitamin B12/folate deficiency, reticulocytosis, alcohol-related effects, liver disease, hypothyroidism, selected medicines or marrow disorders.",
-    "Anaemia with normal MCV: may occur with renal disease, chronic inflammation, acute blood loss, haemolysis or early/mixed nutritional deficiency.",
-    "Haemolysis may produce an increased MCV when accompanied by reticulocytosis."
-  ],
-  conversionFactors: [
-    "1 fL = 10⁻¹⁵ L.",
-    "Where calculated: MCV (fL) = [haematocrit (L/L) × 1,000] ÷ RBC count (×10¹²/L)."
-  ],
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-10",
-    "appendix-12",
-    "appendix-17"
   ],
   lastReviewed: "",
   added: "2026-10-17",
@@ -6296,10 +5562,7 @@ window.TESTS = [
   criticalAlert: [
     "Promptly communicate detected measles RNA to the treating clinician and designated public health service through the approved pathway.",
     "Suspected measles requires immediate infection-control assessment and prompt public health communication; do not await laboratory confirmation.",
-    "Follow the applicable Timor-Leste surveillance requirements and approved notification procedures in Appendices 4 and 5.",
-    "Organisms Reported",
-    "Measles virus RNA: detected or not detected.",
-    "Report vaccine/wild-type discrimination or genotype only when established by appropriate specialist testing."
+    "Follow the applicable Timor-Leste surveillance requirements and approved notification procedures in Appendices 4 and 5."
   ],
   diseaseAssociations: [
     "Measles virus infection.",
@@ -6478,11 +5741,7 @@ window.TESTS = [
     routine: "Confirm with the testing laboratory. Referral transport, batching and confirmatory testing may extend reporting time.",
     urgent: ""
   },
-  criticalAlert: [
-    "Public health notification is separate from critical-result reporting and must follow applicable local requirements.",
-    "Organisms Reported",
-    "Each detected viral target is reported according to the validated panel. Confirm whether dengue serotypes and West Nile/Kunjin targets are distinguished."
-  ],
+  criticalAlert: "Public health notification is separate from critical-result reporting and must follow applicable local requirements.",
   diseaseAssociations: [
     "Dengue: Acute febrile illness; severe dengue may involve plasma leakage, bleeding or organ impairment.",
     "Ross River and Barmah Forest: Febrile illness, rash and arthralgia/polyarthritis.",
@@ -6650,16 +5909,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Report pathogenic parasites promptly.",
-    "Detection of Strongyloides in an immunocompromised patient or suspected hyperinfection requires urgent reporting.",
-    "Organisms Reported",
-    "Report organisms and developmental stages to the level reliably supported by the methods used. Examples include:",
-    "Protozoa: Giardia duodenalis cysts/trophozoites; Entamoeba histolytica/dispar complex cysts/trophozoites, with a comment explaining the limits of microscopy.",
-    "Coccidia: Cryptosporidium spp. oocysts, where a suitable detection method is performed.",
-    "Nematodes: Ascaris lumbricoides and Trichuris trichiura eggs; hookworm eggs; Strongyloides larvae.",
-    "Cestodes: Taenia spp. eggs; species identification requires additional evidence.",
-    "Trematodes: Eggs compatible with Fasciola spp. or Clonorchis/Opisthorchis, with specialist confirmation where required.",
-    "Enterobius: Eggs may occasionally be detected in stool, but perianal tape testing is preferred.",
-    "Other parasites or non-pathogenic protozoa may be reported according to laboratory policy. The list does not imply that every organism is routinely tested for or reliably excluded."
+    "Detection of Strongyloides in an immunocompromised patient or suspected hyperinfection requires urgent reporting."
   ],
   diseaseAssociations: [
     "Intestinal protozoal and helminth infections. Clinical significance depends on the organism, burden and patient context.",
@@ -6775,98 +6025,6 @@ window.TESTS = [
 },
 
 {
-  id: "platelet-count",
-  name: "Platelet Count",
-  synonyms: ["Thrombocyte Count", "PLT Count"],
-  department: "microbiology",
-  limsCode: "PLAT",
-  flags: ["critical"],
-  summary: "Measures the number of circulating platelets.",
-  description: [
-    "Measures the number of circulating platelets, usually as part of the full blood count (FBC).",
-    "Used to identify thrombocytopenia or thrombocytosis and support assessment of bleeding, platelet consumption and bone marrow disorders. It does not measure platelet function."
-  ],
-  indications: [
-    "Investigate bleeding, bruising or petechiae.",
-    "Identify and monitor thrombocytopenia or thrombocytosis.",
-    "Monitor chemotherapy, marrow disorders and treatments affecting platelet production or survival.",
-    "Monitor selected infections, including dengue, and suspected platelet-consumption disorders.",
-    "Assess patients before surgery or invasive procedures when clinically indicated.",
-    "Assess response to platelet transfusion where indicated."
-  ],
-  referenceRange: [
-    "Use the validated reference interval on the LIMS report; see Appendix 12.",
-    "Interpret with the clinical presentation, other FBC results and previous counts. A normal count does not exclude a platelet-function disorder."
-  ],
-  analyticalLimitations: [
-    "EDTA-associated platelet clumping may cause a falsely low count (pseudothrombocytopenia).",
-    "Giant platelets may be undercounted, particularly by impedance methods.",
-    "Red-cell fragments or very small red cells may be misclassified as platelets and cause falsely high counts.",
-    "Clots, poor mixing and specimen deterioration may produce unreliable results.",
-    "New or unexplained thrombocytopenia, relevant analyser flags or unexpected changes require assessment for artefact and blood-film review according to laboratory criteria.",
-    "If clumping prevents reliable counting, recollection in an alternative tube or another validated counting method may be required. Follow laboratory advice; alternative anticoagulants do not always resolve clumping."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "EDTA-anticoagulated whole blood in a correctly filled collection tube.",
-    "Mix gently immediately after collection. Confirm the required volume and acceptable paediatric tubes with the laboratory.",
-    "Do not separate or centrifuge the specimen.",
-    "See Appendix 6."
-  ],
-  storageTransport: [
-    "Transport promptly and analyse within the laboratory's validated interval.",
-    "Storage temperature and maximum delay depend on the analyser, specimen condition and whether blood-film morphology is required. Prepare films promptly when indicated.",
-    "Do not freeze. Confirm refrigeration requirements with the laboratory.",
-    "See Appendix 9a and Appendix 9b."
-  ],
-  rejection: [
-    "See Appendix 7.",
-    "Reject clotted specimens for platelet counting. Incorrect tubes, unacceptable filling or storage outside validated limits require laboratory assessment.",
-    "Platelet clumping requires investigation and an appropriate reporting comment; an unreliable count must not be presented as confirmed thrombocytopenia."
-  ],
-  methodology: [
-    "Automated counting using impedance, optical and/or fluorescence methods, depending on the analyser.",
-    "Blood-film examination and an alternative validated counting method may be used to investigate unreliable results."
-  ],
-  turnaround: {
-    routine: "Same day, if confirmed locally.",
-    urgent: "Confirm urgent testing availability with the laboratory."
-  },
-  criticalAlert: [
-    "Immediately notify results meeting approved criteria in Appendix 4 and Appendix 5.",
-    "Severe thrombocytopenia, active bleeding or a rapid unexplained fall may require urgent clinical assessment. Extreme thrombocytosis requires assessment of the underlying cause and possible bleeding or thrombotic complications.",
-    "Critical notification thresholds, transfusion thresholds and procedural targets are distinct. Platelet count alone does not determine the need for transfusion."
-  ],
-  diseaseAssociations: [
-    "Low: Marrow failure or suppression; sepsis and other infections, including dengue; immune thrombocytopenia; drug-related thrombocytopenia; platelet consumption; and hypersplenism.",
-    "High: Reactive thrombocytosis associated with inflammation, infection or iron deficiency; post-splenectomy states; and myeloproliferative neoplasms.",
-    "EDTA-associated pseudothrombocytopenia is a specimen-related artefact, not a clinical cause of thrombocytopenia."
-  ],
-  conversionFactors: [
-    "1 × 10⁹/L = 1 × 10³/µL.",
-    "For example, 150 × 10⁹/L = 150,000 platelets/µL.",
-    "See Appendix 10."
-  ],
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-10-18",
-  updated: ""
-},
-
-{
   id: "potassium",
   name: "Potassium",
   synonyms: ["Serum Potassium", "Plasma Potassium", "K⁺"],
@@ -6919,10 +6077,7 @@ window.TESTS = [
     "Potentially dangerous results or urgent recollection must be communicated urgently."
   ],
   methodology: "Potentiometric.",
-  turnaround: {
-    routine: "Same day, if confirmed locally.",
-    urgent: "Urgent requests require prioritised testing; confirm emergency availability with the laboratory."
-  },
+  turnaround: { routine: "Same day.", urgent: "<2 hours." },
   criticalAlert: [
     "Severe potassium disturbances may cause life-threatening arrhythmias. Symptoms, electrocardiogram (ECG) changes or a rapid change require urgent clinical assessment.",
     "A normal ECG does not exclude dangerous hyperkalaemia. When severe hyperkalaemia is clinically plausible, urgent assessment and management must not be delayed while awaiting repeat testing."
@@ -7230,42 +6385,34 @@ window.TESTS = [
     "PT sensitivity varies with the reagent and analyser. INR improves comparability principally for vitamin K antagonist monitoring.",
     "A normal PT does not exclude platelet disorders, von Willebrand disease, haemophilia or other bleeding disorders.",
     "Direct oral anticoagulants may prolong PT to a variable extent. PT/INR must not be used to quantify their anticoagulant effect; a normal result does not exclude a clinically relevant drug concentration.",
-    "Underfilling, clotting, incorrect anticoagulant or contamination from an anticoagulated line may produce unreliable results.",
-    "High haematocrit alters the plasma-to-citrate balance and may falsely prolong clotting times unless citrate is adjusted.",
-    "Haemolysis, lipaemia and icterus may affect results, particularly optical detection; assess against validated method limits.",
-    "PT/INR alone does not reliably predict procedural bleeding risk, particularly in liver disease."
+    "PT/INR alone does not reliably predict procedural bleeding risk, particularly in liver disease.",
+    "CoaguChek point-of-care testing: not suitable for patients on direct thrombin inhibitors (e.g. argatroban, bivalirudin). Direct oral anticoagulants (e.g. rivaroxaban, apixaban, dabigatran) may affect the INR; confirm by another method.",
+    "Antiphospholipid antibodies, including lupus anticoagulant, may falsely prolong the result and give a falsely high INR.",
+    "Haematocrit between 25% and 55%, and haemolysis, bilirubin and lipaemia within the manufacturer's tested limits, do not significantly affect the result."
   ],
-  sampleType: "Citrate plasma",
-  containerColour: "Light blue Sodium Citrate",
+  sampleType: "Capillary whole blood (finger prick)",
+  containerColour: "Point-of-care test strip (finger prick)",
   sampleRequirements: [
-    "Whole blood collected into a 3.2% sodium citrate tube, maintaining nine parts blood to one part citrate.",
-    "Fill to the marked level and mix gently immediately after collection.",
-    "Confirm the correct tube size and minimum acceptable filling with the laboratory.",
-    "For haematocrit above 0.55 L/L (55%), contact the laboratory before collection to arrange citrate adjustment.",
-    "Avoid anticoagulant contamination.",
-    "Record anticoagulant medicines, treatment indication and relevant recent dosing.",
-    "The laboratory prepares citrated plasma for testing.",
-    "See Appendix 6."
+    "Fresh capillary whole blood from a finger prick, applied directly to the CoaguChek test strip. Plasma and serum cannot be used; a citrate tube is not needed.",
+    "Clean the finger with warm soapy water or alcohol and let it dry completely. Warming the hand and holding it below waist level improves blood flow.",
+    "After lancing, massage gently from the base of the finger to form a drop. Do not press or squeeze the finger.",
+    "Apply one drop of at least 8 µL to the strip within 15 seconds of lancing. Do not add more blood after the test has started.",
+    "Do not collect from an arm receiving an intravenous infusion. Record anticoagulant medicines, including warfarin dose and any DOAC or heparin."
   ],
   storageTransport: [
-    "Transport promptly under validated laboratory conditions.",
-    "Fresh coagulation specimens are generally transported at controlled room temperature; confirm the acceptable temperature and testing interval locally. Do not refrigerate or freeze whole blood unless specifically directed by the laboratory.",
-    "For delayed or referral testing, the laboratory should arrange validated plasma preparation, freezing and transport.",
-    "See Appendix 9a."
+    "Not applicable: the sample is tested immediately at the point of care and is not transported.",
+    "Store test strips in the original container with the cap tightly closed, at 2–30 °C. Use a strip within 10 minutes of removing it from the container. Do not use strips after the expiry date."
   ],
   rejection: [
     "See Appendix 7.",
-    "Reject clotted specimens, incorrect anticoagulant tubes and specimens outside validated filling limits.",
-    "Assess excessive delay, contamination, haemolysis, lipaemia and icterus according to laboratory policy and assay-specific limits."
+    "Repeat the test if the meter shows an error, if the drop was applied more than 15 seconds after lancing, if the finger was squeezed, or if blood was added after the test started.",
+    "A result that does not match the clinical picture, or an error that recurs on repeat testing, requires checking by another method where available and prompt clinical review."
   ],
   methodology: [
-    "Clot-based assay using thromboplastin and calcium, with optical or mechanical clot detection.",
-    "INR is calculated using the mean normal PT and the international sensitivity index (ISI) for the validated reagent–instrument combination."
+    "Point-of-care test on the CoaguChek XS system (Roche Diagnostics).",
+    "Coagulation is activated on the test strip by human recombinant thromboplastin, and the clotting time is measured electrochemically. The meter reports the result as INR. Reportable range: INR 0.8–8.0 (CoaguChek XS PT Test). The result is available about 1 minute after the blood is applied."
   ],
-  turnaround: {
-    routine: "Confirm the local routine reporting interval and urgent testing availability.",
-    urgent: ""
-  },
+  turnaround: { routine: "Point-of-care test: under 30 minutes.", urgent: "Under 30 minutes." },
   criticalAlert: [
     "Markedly elevated INR during warfarin therapy requires prompt clinical assessment. Active significant bleeding requires urgent assessment irrespective of the INR.",
     "PT/INR abnormalities alone do not determine the need for plasma transfusion or anticoagulant reversal."
@@ -7293,170 +6440,6 @@ window.TESTS = [
     "appendix-10",
     "appendix-12",
     "appendix-17"
-  ],
-  lastReviewed: "",
-  added: "2026-10-18",
-  updated: ""
-},
-
-{
-  id: "red-blood-cell-count",
-  name: "Red Blood Cell (RBC) Count",
-  synonyms: ["Erythrocyte Count", "Red Cell Count", "RCC"],
-  department: "haematology",
-  limsCode: "RBC",
-  flags: ["stat"],
-  summary: "Measures the number of circulating erythrocytes per unit volume of blood.",
-  description: [
-    "Measures the number of circulating erythrocytes per unit volume of blood, usually as part of the full blood count (FBC).",
-    "Supports assessment of anaemia and erythrocytosis when interpreted with haemoglobin, haematocrit and red-cell indices. RBC count alone does not determine oxygen-carrying capacity or anaemia severity."
-  ],
-  indications: [
-    "Support investigation and classification of anaemia as part of the FBC.",
-    "Investigate and monitor suspected erythrocytosis.",
-    "Monitor changes during treatment affecting red cells, alongside haemoglobin and other appropriate tests.",
-    "Support assessment of microcytosis, including possible thalassaemia trait.",
-    "Contribute to investigation of marrow disorders; reticulocyte count is required when assessing red-cell production or marrow response."
-  ],
-  referenceRange: [
-    "Use the age- and sex-appropriate reference interval on the validated LIMS report; see Appendix 12.",
-    "Interpret with pregnancy status, hydration, haemoglobin, haematocrit and red-cell indices.",
-    "A normal or increased RBC count does not exclude anaemia, particularly when cells are small or contain less haemoglobin."
-  ],
-  analyticalLimitations: [
-    "Cold agglutinins may cause red-cell clumping, a falsely low RBC count and misleading calculated indices.",
-    "Specimen haemolysis, clotting, poor mixing or dilution by intravenous fluids may produce unreliable results.",
-    "Analyser flags or discordance between RBC count, haemoglobin, haematocrit and indices require laboratory review, with blood-film examination where indicated.",
-    "Dehydration and haemodilution alter circulating cell concentrations; these are clinical interpretation factors rather than assay interference."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "EDTA-anticoagulated whole blood in a correctly filled collection tube.",
-    "Mix gently immediately after collection. Confirm required volume and accepted paediatric tubes with the laboratory.",
-    "Avoid contamination or dilution from intravenous fluids. Do not separate or centrifuge the specimen.",
-    "If cold agglutination is suspected, discuss collection and transport with the laboratory.",
-    "See Appendix 6."
-  ],
-  storageTransport: [
-    "Transport promptly and analyse within the laboratory's validated interval.",
-    "Confirm allowable storage temperature and delay for the actual analyser. Blood-film morphology may require earlier preparation than automated counting.",
-    "Do not freeze.",
-    "See Appendix 9a."
-  ],
-  rejection: [
-    "See Appendix 7.",
-    "Reject clotted specimens. Assess incorrect tubes, unacceptable filling, significant specimen haemolysis, contamination and excessive delay according to validated laboratory criteria.",
-    "Suspected cold agglutination requires investigation before reporting an unreliable count."
-  ],
-  methodology: [
-    "Automated haematology analyser using impedance and/or optical methods, depending on the platform.",
-    "Blood-film examination may be used to investigate counting artefacts or abnormal morphology."
-  ],
-  turnaround: {
-    routine: "Same day, if confirmed locally.",
-    urgent: "Confirm urgent testing availability with the laboratory."
-  },
-  criticalAlert: [
-    "Assess anaemia urgency using haemoglobin, symptoms, active bleeding and clinical context. RBC count alone must not be used to define severe anaemia or determine transfusion need.",
-    "A markedly abnormal or unexpected count requires verification and appropriate clinical review."
-  ],
-  diseaseAssociations: [
-    "Reduced: May accompany blood loss, haemolysis, nutritional deficiencies, chronic kidney disease, chronic inflammation or marrow failure/suppression.",
-    "Increased: May occur with polycythaemia vera, secondary erythrocytosis associated with hypoxia or high altitude, and relative haemoconcentration from dehydration.",
-    "Microcytosis with a relatively preserved or increased count: May suggest thalassaemia trait; confirm with appropriate investigations."
-  ],
-  conversionFactors: [
-    "1 × 10¹²/L = 1 × 10⁶/µL.",
-    "For example, 4.5 × 10¹²/L = 4.5 million cells/µL.",
-    "See Appendix 10."
-  ],
-  organismsReported: null,
-  appendixRefs: [],
-  lastReviewed: "",
-  added: "2026-10-18",
-  updated: ""
-},
-
-{
-  id: "red-cell-distribution-width",
-  name: "Red Cell Distribution Width (RDW)",
-  synonyms: ["Red Cell Size Variation", "Anisocytosis Index"],
-  department: "haematology",
-  limsCode: "RDW",
-  flags: [],
-  summary: "Measures variation in red blood cell size.",
-  description: [
-    "Measures variation in red blood cell size (anisocytosis), usually as part of the full blood count (FBC).",
-    "Depending on the analyser, it may be reported as RDW-CV, a relative measure expressed as a percentage, or RDW-SD, an absolute distribution width expressed in femtolitres."
-  ],
-  indications: [
-    "Support assessment of anaemia alongside haemoglobin, red-cell indices and blood-film findings.",
-    "Support investigation of microcytosis, including iron deficiency and thalassaemia.",
-    "Identify variation in cell size associated with mixed deficiencies or mixed red-cell populations.",
-    "Provide supplementary information during treatment; haemoglobin and, where indicated, reticulocyte count are more direct measures of response."
-  ],
-  referenceRange: [
-    "Use the analyser-specific reference interval on the validated LIMS report; see Appendix 12.",
-    "Confirm which parameter is reported:",
-    "RDW-CV: Percentage (%).",
-    "RDW-SD: Femtolitres (fL).",
-    "These parameters and their reference intervals are not interchangeable."
-  ],
-  analyticalLimitations: [
-    "RDW is non-specific and cannot independently diagnose the cause or severity of anaemia.",
-    "RDW-CV is influenced by mean cell volume (MCV); interpret both together.",
-    "Cold agglutination, specimen haemolysis, clotting or an abnormal red-cell distribution may produce unreliable results.",
-    "Delayed analysis and unsuitable storage may alter cell volumes and derived indices.",
-    "Results may differ between analyser methods; use the same method for serial comparisons where practicable.",
-    "Recent transfusion, reticulocytosis and treatment-related changes may increase RDW without indicating a new deficiency.",
-    "A normal RDW does not exclude iron deficiency, thalassaemia or other causes of anaemia."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "EDTA-anticoagulated whole blood in a correctly filled collection tube.",
-    "Mix gently immediately after collection. Confirm required volume and accepted paediatric tubes with the laboratory.",
-    "Record recent transfusion and relevant treatment when interpreting serial results.",
-    "Do not separate or centrifuge the specimen. See Appendix 6."
-  ],
-  storageTransport: [
-    "Transport promptly and analyse within the laboratory's validated interval for red-cell indices.",
-    "Confirm acceptable storage temperature and maximum delay for the actual analyser. Prepare blood films promptly where indicated.",
-    "Do not freeze. See Appendix 9a."
-  ],
-  rejection: [
-    "See Appendix 7.",
-    "Reject clotted specimens. Assess incorrect tubes, unacceptable filling, significant specimen haemolysis and excessive delay against validated laboratory requirements."
-  ],
-  methodology: [
-    "Derived from the red-cell volume distribution measured by an automated haematology analyser.",
-    "Confirm whether the local analyser and LIMS report RDW-CV, RDW-SD or both."
-  ],
-  turnaround: { routine: "Same day as the FBC, if confirmed locally.", urgent: "" },
-  criticalAlert: [
-    "An isolated increased RDW is not a standalone critical result.",
-    "Assess clinical urgency using haemoglobin, symptoms, associated cytopenias, analyser flags and blood-film findings. Apply approved notification criteria in Appendix 4 and Appendix 5.",
-    "Film review should follow validated laboratory criteria rather than an assumed universal RDW threshold."
-  ],
-  diseaseAssociations: [
-    "Increased: May occur with iron deficiency, vitamin B12 or folate deficiency, mixed deficiencies, reticulocytosis, myelodysplastic disorders or mixed red-cell populations following transfusion.",
-    "Microcytosis with normal RDW: May support consideration of thalassaemia trait, but is not diagnostic.",
-    "Macrocytosis: Investigate using the complete FBC, film, clinical history and appropriate additional tests; RDW alone does not identify the cause."
-  ],
-  conversionFactors: "Not applicable.",
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-12"
   ],
   lastReviewed: "",
   added: "2026-10-18",
@@ -7523,14 +6506,7 @@ window.TESTS = [
     routine: "Confirm with the testing laboratory. Reporting time includes transport, laboratory workload and any repeat testing, not just cartridge run time.",
     urgent: ""
   },
-  criticalAlert: [
-    "Promptly communicate results requiring clinical or infection-control action according to approved local policy.",
-    "Organisms Reported",
-    "Influenza A virus.",
-    "Influenza B virus.",
-    "Respiratory syncytial virus.",
-    "SARS-CoV-2."
-  ],
+  criticalAlert: "Promptly communicate results requiring clinical or infection-control action according to approved local policy.",
   diseaseAssociations: [
     "Influenza A/B: Influenza and associated respiratory complications, including pneumonia.",
     "RSV: Upper-respiratory infection, bronchiolitis and pneumonia; severe disease may occur in infants, older adults and immunocompromised patients.",
@@ -7694,9 +6670,7 @@ window.TESTS = [
   turnaround: { routine: "Same day.", urgent: "<2 hour." },
   criticalAlert: [
     "Communicate positive results promptly to the treating team and infection-control service where required by local policy, particularly for hospitalised patients or suspected outbreaks.",
-    "A positive result is not automatically a critical laboratory result.",
-    "Organisms Reported",
-    "Rotavirus antigen detected or not detected."
+    "A positive result is not automatically a critical laboratory result."
   ],
   diseaseAssociations: ["Rotavirus gastroenteritis."],
   conversionFactors: "Not applicable — qualitative test.",
@@ -7922,11 +6896,7 @@ window.TESTS = [
   ],
   methodology: "Real-time RT-PCR for rubella virus RNA.",
   turnaround: { routine: "Confirm with the testing laboratory.", urgent: "" },
-  criticalAlert: [
-    "Communicate positive results promptly to the treating clinician and designated public-health/infection-control service, especially in pregnancy or suspected congenital infection.",
-    "Organisms Reported",
-    "Rubella virus RNA detected or not detected."
-  ],
+  criticalAlert: "Communicate positive results promptly to the treating clinician and designated public-health/infection-control service, especially in pregnancy or suspected congenital infection.",
   diseaseAssociations: [
     "Acquired rubella infection; congenital rubella infection, with or without congenital rubella syndrome."
   ],
@@ -8149,10 +7119,7 @@ window.TESTS = [
     "Clotting during serum preparation is expected. Do not automatically reject haemolysed, lipaemic or icteric specimens; assess suitability for the method used. See Appendix 7."
   ],
   methodology: "Potentiometric assay.",
-  turnaround: {
-    routine: "Same day.",
-    urgent: "Confirm urgent testing availability and reporting time with the laboratory."
-  },
+  turnaround: { routine: "Same day.", urgent: "<2 hours." },
   criticalAlert: [
     "<120 mmol/L and >160 mmol/L",
     "Clinical urgency also depends on symptoms and the rate of sodium change."
@@ -8247,10 +7214,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Promptly communicate clinically significant findings or important resistance patterns according to local policy, particularly in severe infection or suspected healthcare-associated transmission.",
-    "MRSA or resistant Gram-negative growth may represent colonisation; interpret with clinical findings.",
-    "Organisms Reported",
-    "Clinically significant isolates may include Streptococcus pneumoniae, Haemophilus influenzae, Moraxella catarrhalis, Staphylococcus aureus, Pseudomonas aeruginosa and other Gram-negative bacilli.",
-    "Reporting and susceptibility testing depend on specimen type, predominance, microscopy and clinical relevance. Candida in respiratory specimens usually represents colonisation rather than pneumonia."
+    "MRSA or resistant Gram-negative growth may represent colonisation; interpret with clinical findings."
   ],
   diseaseAssociations: [
     "Bacterial pneumonia, bronchiectasis exacerbation and selected suppurative respiratory infections.",
@@ -8281,58 +7245,6 @@ window.TESTS = [
   ],
   lastReviewed: "",
   added: "2026-10-18",
-  updated: ""
-},
-
-{
-  id: "stool-routine-microscopy",
-  name: "Stool Routine Microscopy",
-  synonyms: ["Faeces Microscopy"],
-  department: "microbiology",
-  limsCode: "STOOL-MIC",
-  flags: [],
-  summary: "Direct microscopic exam of fresh stool",
-  description: "Direct microscopic exam of fresh stool to assess cells (WBC/RBC), mucus, fat droplets, yeast, and to screen for obvious ova/cysts/larvae.",
-  indications: [
-    "Initial work-up of acute or persistent diarrhoea.",
-    "Detect faecal leukocytes/RBCs suggesting inflammatory diarrhoea.",
-    "Rapid screen for obvious parasites before full O&P, culture, or antigen/PCR testing."
-  ],
-  referenceRange: "Normal: No WBC, no RBC, no pathogenic parasites seen on direct prep.",
-  analyticalLimitations: [
-    "Low sensitivity, especially at low parasite burden.",
-    "Trophozoites degrade quickly; rapid processing essential.",
-    "Requires trained staff to distinguish yeasts vs cysts etc.",
-    "Negative direct microscopy does not exclude parasites (O&P needed)."
-  ],
-  sampleType: "Stool",
-  containerColour: "Stool jar",
-  sampleRequirements: "Fresh stool (≥5 g) in clean, leak-proof container",
-  storageTransport: "Fresh: deliver/process within ~2 hrs.",
-  rejection: "Leaking/contaminated or unlabelled containers.\nProlonged room-temperature delay without preservative.",
-  methodology: "Direct saline and iodine wet mounts; basic semi-quantitative reporting of cells and parasites.\nReflex to Ova & Parasite examination with concentration and special stains when indicated.",
-  turnaround: { routine: "Same day", urgent: "" },
-  criticalAlert: "Heavy parasite load or numerous WBC/RBC suggesting dysentery, especially in infants or immunocompromised patients, should be urgently reported.",
-  diseaseAssociations: [
-    "Inflammatory diarrhoea, amoebic dysentery, helminth infections, malabsorption (fat droplets – screening only)."
-  ],
-  conversionFactors: "Not applicable.",
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-9b",
-    "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-09-25",
   updated: ""
 },
 
@@ -8396,16 +7308,7 @@ window.TESTS = [
     routine: "Preliminary: usually 24–48 hours. Final routine culture: usually 48–72 hours. Confirm with the testing laboratory. Susceptibility testing, specialist identification may take longer.",
     urgent: ""
   },
-  criticalAlert: [
-    "Promptly communicate suspected or confirmed Salmonella Typhi/Paratyphi, Shigella, STEC/Shiga toxin detection and suspected cholera according to approved local policy.",
-    "Organisms Reported",
-    "Subject to confirmed local testing coverage:",
-    "Salmonella species.",
-    "Shigella species.",
-    "Campylobacter species.",
-    "Vibrio and Yersinia species where specifically investigated.",
-    "STEC and other diarrhoeagenic E. coli pathotypes should be reported only when demonstrated by validated additional testing. Do not classify ordinary stool E. coli growth as pathogenic."
-  ],
+  criticalAlert: "Promptly communicate suspected or confirmed Salmonella Typhi/Paratyphi, Shigella, STEC/Shiga toxin detection and suspected cholera according to approved local policy.",
   diseaseAssociations: [
     "Non-typhoidal Salmonella: gastroenteritis, sometimes invasive infection.",
     "Salmonella Typhi/Paratyphi: enteric fever.",
@@ -8980,7 +7883,7 @@ window.TESTS = [
     urgent: "Suspected acute pancreatitis follows the urgent testing pathway."
   },
   criticalAlert: [
-    "Marked elevation, particularly ≥10 mmol/L, warrants prompt clinical assessment because pancreatitis risk increases with severe hypertriglyceridaemia. This is a clinical risk flag, not automatically a local critical-result threshold.",
+    "Telephone immediately: triglyceride ≥10 mmol/L (risk of acute pancreatitis). See Appendices 4 and 5.",
     "Severe abdominal pain or other features suggesting acute pancreatitis require urgent assessment regardless of fasting status."
   ],
   diseaseAssociations: [
@@ -9170,10 +8073,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Promptly communicate newly identified MTBC and clinically significant drug resistance.",
-    "Follow the National TB Programme's reporting and notification requirements.",
-    "Organisms Reported",
-    "Mycobacterium tuberculosis complex; individual species identification where available and indicated.",
-    "NTM identified to the level supported by the laboratory or reference service, for example Mycobacterium avium complex, M. kansasii and M. fortuitum."
+    "Follow the National TB Programme's reporting and notification requirements."
   ],
   diseaseAssociations: [
     "Pulmonary and extrapulmonary TB.",
@@ -9276,9 +8176,7 @@ window.TESTS = [
   criticalAlert: [
     "Promptly communicate newly detected MTBC according to the approved laboratory alert policy.",
     "MTB detected with rifampicin resistance requires urgent communication to the treating clinician and National TB Programme, with further resistance testing arranged through the approved pathway.",
-    "Rifampicin resistance indeterminate requires timely follow-up; do not report it as susceptible.",
-    "Organisms Reported",
-    "Mycobacterium tuberculosis complex DNA detected or not detected."
+    "Rifampicin resistance indeterminate requires timely follow-up; do not report it as susceptible."
   ],
   diseaseAssociations: [
     "Pulmonary and extrapulmonary TB, including rifampicin-resistant TB."
@@ -9535,10 +8433,7 @@ window.TESTS = [
   criticalAlert: [
     "Confirmed RBC casts or other significant pathological sediment findings warrant prompt clinician communication, particularly with acute kidney injury.",
     "WBC casts require clinical assessment for renal inflammation; they do not alone establish severe pyelonephritis. WBC clumps are not equivalent to casts.",
-    "Marked microscopic haematuria is not automatically a critical result.",
-    "Organisms Reported",
-    "Bacteria or yeast may be described when observed. Microscopy generally does not identify the organism or antimicrobial susceptibility.",
-    "Interpret with collection quality, symptoms and culture where indicated."
+    "Marked microscopic haematuria is not automatically a critical result."
   ],
   diseaseAssociations: [
     "RBC: glomerular disease, stones, urinary tract lesions, trauma or UTI.",
@@ -9736,11 +8631,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Prompt communication may be required for clinically important resistant organisms, unexpected pathogens or findings affecting immediate management.",
-    "A positive urine culture or resistance phenotype alone is not automatically a critical result. Interpret with the patient's clinical condition.",
-    "Organisms Reported",
-    "Common isolates include Escherichia coli, Klebsiella species, Proteus species, Enterococcus species and Staphylococcus saprophyticus.",
-    "Pseudomonas aeruginosa and other organisms may occur in complicated or catheter-associated infection.",
-    "Candida species may represent contamination, colonisation or infection. Report identification, growth quantity and susceptibility results according to local policy and clinical significance."
+    "A positive urine culture or resistance phenotype alone is not automatically a critical result. Interpret with the patient's clinical condition."
   ],
   diseaseAssociations: [
     "Cystitis.",
@@ -9938,8 +8829,8 @@ window.TESTS = [
     urgent: "Suspected pre-eclampsia or acute renal disease may require urgent testing."
   },
   criticalAlert: [
-    "Nephrotic-range proteinuria (>3.5 g/24 h) warrants prompt assessment of serum albumin, renal function, and oedema. This threshold defines nephrotic-range proteinuria in adults but does not, by itself, constitute a diagnosis of nephrotic syndrome.",
-    "In pregnancy, new proteinuria accompanied by hypertension or other concerning symptoms requires urgent obstetric review. Note that pre-eclampsia may present without proteinuria."
+    "Telephone immediately: proteinuria >3.5 g/24 h (nephrotic range, adults), or new proteinuria in pregnancy with hypertension or other concerning symptoms. See Appendices 4 and 5.",
+    "Nephrotic-range proteinuria warrants prompt assessment of serum albumin, renal function and oedema. Pre-eclampsia may present without proteinuria."
   ],
   diseaseAssociations: [
     "Increased protein excretion may occur with glomerular disease, diabetic kidney disease, tubular disorders, monoclonal protein disorders and pre-eclampsia.",
@@ -10136,171 +9027,6 @@ window.TESTS = [
 },
 
 {
-  id: "white-blood-cell-count",
-  name: "White Blood Cell Count (WBC)",
-  synonyms: ["White Cell Count", "WCC", "Total Leucocyte Count", "TLC"],
-  department: "haematology",
-  limsCode: "WBC",
-  flags: ["critical"],
-  summary: "Measures the total number of leucocytes in whole blood.",
-  description: "Measures the total number of leucocytes in whole blood. Usually reported as part of the full blood count (FBC). Interpret with the white cell differential, other FBC parameters and clinical findings.",
-  indications: [
-    "Support investigation and monitoring of infection and inflammation.",
-    "Assess leucopenia or leucocytosis and suspected bone marrow disorders.",
-    "Support investigation of leukaemia and other haematological malignancies.",
-    "Monitor chemotherapy, marrow suppression and treatment response."
-  ],
-  referenceRange: [
-    "Use the age-appropriate, locally validated reference interval on the laboratory information management system (LIMS) report; see Appendix 12.",
-    "Neonates and children require age-specific intervals. Pregnancy may also increase WBC."
-  ],
-  analyticalLimitations: [
-    "WBC is non-specific; a normal result does not exclude infection or haematological disease.",
-    "Stress, exercise, pregnancy, corticosteroids and other medicines may alter the count; these are biological effects rather than assay interference.",
-    "Nucleated red blood cells (NRBCs) may falsely increase WBC if not adequately distinguished or corrected by the analyser.",
-    "Abnormal cells or analyser flags may require blood film review and verification.",
-    "Clotting, inadequate mixing and delayed analysis may compromise results, particularly the differential and cell morphology.",
-    "Total WBC alone does not identify which leucocyte population is increased or reduced; assess absolute differential counts."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "EDTA-anticoagulated whole blood in a laboratory-approved tube.",
-    "Fill to the tube's specified volume and mix gently immediately after collection. Confirm minimum volume, including paediatric requirements; see Appendix 6."
-  ],
-  storageTransport: [
-    "Transport promptly and analyse as soon as practicable.",
-    "Use locally validated temperature and stability limits for the analyser, differential and blood film requirements; see Appendices 9a. Protect from excessive heat and do not freeze whole blood."
-  ],
-  rejection: "Reject clotted specimens and apply the identification, container, volume and stability criteria in Appendix 7.",
-  methodology: [
-    "Automated haematology analyser using impedance and/or optical methods. Blood film review or alternative counting methods may be required for flagged or unreliable results.",
-    "Confirm the local analyser and verification procedures."
-  ],
-  turnaround: {
-    routine: "Same day.",
-    urgent: "Confirm availability and turnaround time for urgent requests with the testing laboratory."
-  },
-  criticalAlert: [
-    "Assess low WBC with the Absolute Neutrophil Count (ANC). Fever or suspected sepsis in a neutropenic patient requires immediate clinical assessment.",
-    "Marked leucocytosis, particularly with suspected blasts or acute clinical deterioration, requires prompt review; notification follows approved local policy."
-  ],
-  diseaseAssociations: [
-    "Increased: Infection, inflammation, physiological stress, corticosteroid use, leukaemia and myeloproliferative neoplasms.",
-    "Decreased: Some viral infections, severe infection/sepsis, drug-related or chemotherapy-related marrow suppression, aplastic anaemia and autoimmune disease.",
-    "Interpret with the differential and blood film where indicated."
-  ],
-  conversionFactors: [
-    "1 × 10⁹/L = 1,000 cells/µL.",
-    "1 cell/µL = 0.001 × 10⁹/L.",
-    "See Appendix 10."
-  ],
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-10",
-    "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-10-19",
-  updated: ""
-},
-
-{
-  id: "white-blood-cell-count-differential",
-  name: "White Blood Cell Count & Differential",
-  synonyms: ["WBC with Differential", "Differential Leucocyte Count"],
-  department: "haematology",
-  limsCode: "WBCC",
-  flags: ["critical"],
-  summary: "Absolute counts and relative proportions of neutrophils, lymphocytes, monocytes, eosinophils and basophils.",
-  description: [
-    "Measures total white blood cell (WBC) count and the absolute counts and relative proportions of neutrophils, lymphocytes, monocytes, eosinophils and basophils. Usually reported within the full blood count (FBC).",
-    "Interpret with other FBC parameters, clinical findings and blood film morphology where indicated."
-  ],
-  indications: [
-    "Support assessment of infection and inflammation.",
-    "Investigate leucocytosis, leucopenia and abnormalities of individual leucocyte populations.",
-    "Monitor chemotherapy, immunosuppressive treatment and marrow suppression.",
-    "Support investigation of suspected leukaemia, myelodysplastic syndromes and other marrow disorders.",
-    "Investigate eosinophilia associated with allergic disease, drug reactions or helminth infection."
-  ],
-  referenceRange: [
-    "Use the age-appropriate, locally validated intervals on the laboratory information management system (LIMS) report; see Appendix 12.",
-    "Assess absolute counts alongside percentages. A change in one population may alter other percentages without changing their absolute counts."
-  ],
-  analyticalLimitations: [
-    "Differential patterns are non-specific and cannot independently distinguish bacterial from viral infection or determine severity.",
-    "Blasts, atypical lymphocytes and other abnormal cells may be misclassified or missed by automated analysis. Apply validated blood film-review criteria.",
-    "Nucleated red blood cells may affect WBC and differential results if not adequately distinguished or corrected.",
-    "Clotting, inadequate mixing and delayed analysis can compromise counts and cell morphology.",
-    "Corticosteroids, physiological stress and pregnancy may alter the differential; these are biological effects.",
-    "A routine differential does not measure lymphocyte subsets or establish immune function."
-  ],
-  sampleType: "EDTA whole blood",
-  containerColour: "Lavender EDTA",
-  sampleRequirements: [
-    "EDTA-anticoagulated whole blood in a laboratory-approved tube.",
-    "Fill to the specified tube volume and mix gently immediately after collection. Confirm minimum volume, including paediatric requirements; see Appendix 6."
-  ],
-  storageTransport: [
-    "Transport promptly and analyse as soon as practicable.",
-    "Use locally validated temperature and stability limits for the differential and blood film; see Appendices 9a and 9b. Protect from excessive heat and do not freeze whole blood."
-  ],
-  rejection: "Reject clotted specimens. Apply identification, container, volume and stability criteria in Appendix 7.",
-  methodology: [
-    "Automated WBC count and differential using analyser-specific optical, fluorescence and/or impedance methods.",
-    "Manual blood film examination and differential counting when indicated."
-  ],
-  turnaround: { routine: "Same day to next day if morphology examination is required.", urgent: "" },
-  criticalAlert: [
-    "Notify results meeting approved criteria in Appendices 4 and 5.",
-    "Absolute neutrophil count (ANC) <0.5 × 10⁹/L indicates severe neutropenia. Fever or suspected sepsis in a neutropenic patient requires immediate clinical assessment.",
-    "Newly identified blasts or findings suspicious for acute leukaemia require urgent verification and clinical communication, irrespective of total WBC.",
-    "Apply approved local notification criteria for marked leucocytosis and other high-risk abnormalities."
-  ],
-  diseaseAssociations: [
-    "Neutrophilia: Infection, inflammation, stress, corticosteroids and myeloproliferative neoplasms.",
-    "Neutropenia: Severe infection/sepsis, viral infection, medicines, chemotherapy and marrow failure.",
-    "Lymphocytosis: Reactive viral infections, including Epstein–Barr virus and cytomegalovirus; chronic lymphocytic leukaemia and other lymphoproliferative disorders.",
-    "Lymphopenia: Immunodeficiency, corticosteroids and chemotherapy.",
-    "Eosinophilia: Allergy/asthma, drug reactions, helminth infection and hypereosinophilic disorders.",
-    "Monocytosis: Chronic infection, including tuberculosis, inflammation and haematological malignancy.",
-    "Basophilia: Particularly persistent basophilia in myeloproliferative neoplasms; may also be reactive."
-  ],
-  conversionFactors: [
-    "For total WBC and absolute differential counts:",
-    "1 × 10⁹/L = 1,000 cells/µL.",
-    "1 cell/µL = 0.001 × 10⁹/L.",
-    "Relative differential results are reported as percentages."
-  ],
-  organismsReported: null,
-  appendixRefs: [
-    "appendix-1",
-    "appendix-2",
-    "appendix-3",
-    "appendix-4",
-    "appendix-5",
-    "appendix-6",
-    "appendix-7",
-    "appendix-8",
-    "appendix-9a",
-    "appendix-12"
-  ],
-  lastReviewed: "",
-  added: "2026-10-19",
-  updated: ""
-},
-
-{
   id: "wound-swab-culture",
   name: "Wound Swab Culture",
   synonyms: ["Wound Culture", "Pus Swab Culture"],
@@ -10353,20 +9079,12 @@ window.TESTS = [
     "Gram stain and anaerobic culture were indicated and available. AST follows the laboratory's adopted current CLSI or EUCAST standard. Confirm specialist referral arrangements."
   ],
   turnaround: {
-    routine: "Confirm with the testing laboratory. Preliminary microscopy, routine culture/AST and specialist cultures may have different turnaround times.",
-    urgent: ""
+    routine: "Identification and sensitivities 48–72 hours.",
+    urgent: "Gram stain 24–48 hours."
   },
   criticalAlert: [
     "Notify resistant organisms according to local clinical and infection prevention policies. An isolate from a superficial swab does not establish invasive infection.",
-    "Suspected necrotising infection or systemic deterioration requires immediate clinical assessment; do not wait for culture results.",
-    "Organisms Reported",
-    "Report clinically relevant isolates with AST where indicated. Mixed flora and relative growth may be described according to laboratory policy; growth quantity does not establish infection severity.",
-    "Common isolates include:",
-    "Staphylococcus aureus, including methicillin-resistant strains, and β-haemolytic streptococci.",
-    "Enterobacterales, including Escherichia coli, Klebsiella and Proteus species.",
-    "Pseudomonas aeruginosa.",
-    "Enterococcus species and other organisms, depending on site and clinical significance.",
-    "Anaerobes, yeasts or moulds require appropriate investigation where indicated."
+    "Suspected necrotising infection or systemic deterioration requires immediate clinical assessment; do not wait for culture results."
   ],
   diseaseAssociations: [
     "Infected wounds, abscesses, surgical-site infection, diabetic foot infection and necrotising soft-tissue infection."

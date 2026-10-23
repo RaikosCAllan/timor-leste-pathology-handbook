@@ -91,7 +91,9 @@ const FIELDS = {
   "Analytical Limitations": "analyticalLimitations", "Sample Requirements": "sampleRequirements",
   "Storage / Transport": "storageTransport", "Rejection": "rejection", "Methodology": "methodology",
   "Turnaround Time": "turnaround", "Critical / Alert": "criticalAlert",
-  "Disease Associations": "diseaseAssociations", "Conversion Factors": "conversionFactors"
+  "Disease Associations": "diseaseAssociations", "Conversion Factors": "conversionFactors",
+  // Sections read only so that their text is not swallowed by the field above them.
+  "Organisms Reported": "_organisms", "Test Name": "_name"
 };
 const LIST_FIELDS = new Set(["indications", "referenceRange", "analyticalLimitations", "diseaseAssociations"]);
 

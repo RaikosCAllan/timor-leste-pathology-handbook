@@ -178,7 +178,7 @@ window.APPENDICES = [
         ["Microbiology", "Blood Culture", "Any positive Gram stain", "Immediate clinical review; start empiric therapy"],
         ["Microbiology", "CSF Gram Stain", "Organisms seen on Gram stain", "Bacterial meningitis until proven otherwise / urgent treatment needed"],
         ["Microbiology", "CSF Biochemistry", "Glucose <1.5 mmol/L, Neutrophils >100 ×10⁶/L", "Strongly suggests bacterial meningitis risk"],
-        ["Microbiology", "Malaria Smear", "Any positive", "Urgent antimalarial therapy needed"]
+        ["Microbiology", "Malaria Smear", "Any positive", "Urgent antimalarial therapy needed"],
         ["Serology / Molecular", "CD4 Count", "≤200 cells/µL (HIV, age ≥5 years)", "Advanced HIV disease; prompt clinical assessment and linkage to advanced HIV care"],
         ["Serology / Molecular", "HIV Viral Load", ">100,000 copies/mL", "Unsuppressed viraemia; prompt clinical review (urgent in pregnancy)"]
       ]

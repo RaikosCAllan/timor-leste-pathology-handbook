@@ -291,6 +291,18 @@
     return '<div class="field' + (full ? " field-full" : "") + '"><h4>' + esc(label) + "</h4>" + body(value) + "</div>";
   }
 
+  // First sentence or clause of a turnaround text, at most about 55 characters.
+  function shortTat(s) {
+    s = String(s || "").replace(/\s+/g, " ").trim();
+    var m = s.match(/^.*?[.;](?=\s|$)/);
+    var first = (m ? m[0] : s).replace(/[.;]$/, "");
+    if (first.length <= 56) return first;
+    var clause = first.split(/,\s/)[0];          // "Same day, subject to …" → "Same day"
+    if (clause.length >= 6 && clause.length <= 56) return clause;
+    var cut = first.slice(0, 52);
+    return cut.slice(0, cut.lastIndexOf(" ") > 20 ? cut.lastIndexOf(" ") : 52) + "…";
+  }
+
   function testCard(test, query) {
     var flags = (test.flags || []).map(function (f) {
       var d = FLAG_LABEL[f]; if (!d) return "";
@@ -307,10 +319,16 @@
         (r === "new" ? "NEW" : "UPDATED") + "</b>"
       : "";
 
+    // The card header shows a short turnaround (first sentence, trimmed) so a
+    // long entry cannot push the test name aside. The full text is shown in the
+    // "Turnaround time" field when the card is opened.
     var tat = test.turnaround || {};
     var tatHtml = "";
-    if (has(tat.routine)) tatHtml += "<b>" + fmt(t(tat.routine)) + "</b>Routine";
-    if (has(tat.urgent)) tatHtml += "<br><b>" + fmt(t(tat.urgent)) + "</b>Urgent";
+    if (has(tat.routine)) tatHtml += "<b>" + fmt(shortTat(t(tat.routine))) + "</b>Routine";
+    if (has(tat.urgent)) tatHtml += "<b>" + fmt(shortTat(t(tat.urgent))) + "</b>Urgent";
+    var tatFull = [];
+    if (has(tat.routine)) tatFull.push("<p><b>Routine:</b> " + fmt(t(tat.routine)) + "</p>");
+    if (has(tat.urgent)) tatFull.push("<p><b>Urgent:</b> " + fmt(t(tat.urgent)) + "</p>");
 
     var meta = [];
     if (has(test.department)) meta.push("<b>" + esc(deptName(test.department)) + "</b>");
@@ -347,6 +365,7 @@
           field("Sample requirements", test.sampleRequirements) +
           field("Container", test.containerColour) +
           field("Storage / transport", test.storageTransport) +
+          (tatFull.length ? '<div class="field"><h4>Turnaround time</h4>' + tatFull.join("") + "</div>" : "") +
           field("Rejection", test.rejection) +
           field("Methodology", test.methodology) +
           field("Analytical limitations", test.analyticalLimitations) +

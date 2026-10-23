@@ -221,8 +221,9 @@ h3.sub{margin:34px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)
 .test-head-meta{font-size:13px;color:var(--ink-faint);margin-top:3px}
 .test-head-meta b{color:var(--ink-soft);font-weight:600}
 .test-head-summary{font-size:14px;color:var(--ink-soft);margin-top:6px;grid-column:1/-1;max-width:80ch}
-.test-head-tat{text-align:right;font-size:12.5px;color:var(--ink-faint);white-space:nowrap;line-height:1.5}
-.test-head-tat b{display:block;color:var(--ink);font-weight:600;font-size:13.5px}
+.test-head-tat{text-align:right;font-size:12.5px;color:var(--ink-faint);line-height:1.4;max-width:15rem}
+.test-head-tat b{display:block;color:var(--ink);font-weight:600;font-size:13.5px;margin-top:2px}
+.test-head-tat b:first-child{margin-top:0}
 
 .test-body{border-top:1px solid var(--line-soft);padding:20px 18px 22px;background:#fcfdfe}
 .test-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 26px}
