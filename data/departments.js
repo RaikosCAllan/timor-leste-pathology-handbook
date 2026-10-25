@@ -54,7 +54,7 @@ window.DEPARTMENTS = [
     name: "Parasitology",
     services: "Malaria microscopy, ova cysts and parasites",
     location: "Laboratório da Saúde do INSP-TL",
-    contact: "[FILL IN]"
+    contact: "WhatsApp +67078454546"
   },
 
   {

@@ -332,7 +332,7 @@
 
     var meta = [];
     if (has(test.department)) meta.push("<b>" + esc(deptName(test.department)) + "</b>");
-    if (has(code(test))) meta.push("Code " + esc(t(code(test))));
+    if (has(code(test))) meta.push(esc(t((window.SITE || {}).limsLabel) || "LIMS") + " Code " + esc(t(code(test))));
     if (has(test.sampleType)) meta.push(esc(t(test.sampleType)));
     if (has(test.synonyms)) meta.push("Also: " + esc((t(test.synonyms) || []).join(", ")));
 

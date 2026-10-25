@@ -33,3 +33,6 @@ build/
 # Source extract of the handbook document — kept outside the repo,
 # ignored here as a second line of defence against publishing it.
 handbook_source_extract/
+
+# Internal LIMS test list - do not publish
+Schuylab_test_list.xlsx

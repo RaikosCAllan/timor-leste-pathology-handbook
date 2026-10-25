@@ -98,7 +98,7 @@ window.TESTS = [
   name: "Activated Partial Thromboplastin Time (APTT)",
   synonyms: ["Partial Thromboplastin Time (PTT)", "Activated PTT"],
   department: "haematology",
-  limsCode: "APTT",
+  limsCode: "PTT",
   flags: ["critical", "stat"],
   summary: "Assay assessing the intrinsic and common coagulation pathways.",
   description: "Clotting assay assessing the intrinsic and common coagulation pathways. Used to investigate bleeding disorders and monitor unfractionated heparin therapy.",

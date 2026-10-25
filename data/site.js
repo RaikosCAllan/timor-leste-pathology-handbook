@@ -68,7 +68,7 @@ window.SITE = {
   sourceDocument: "Pathology Handbook v9.4 (working)",
   lastReviewed: "[FILL IN — e.g. September 2026]",
   nextReview:   "[FILL IN — e.g. September 2027]",
-  documentOwner: "[FILL IN — e.g. Quality Manager, LNS]",
+  documentOwner: "Gabinete de Kualidade, LNS",
 
   // Optional: link to the downloadable PDF of the full handbook.
   // Put the PDF in assets/downloads/ and name it here. "" hides the button.
@@ -131,11 +131,11 @@ window.SITE = {
   // One row per department or contact point.
   contacts: [
     { name: "Specimen reception",  phone: "331 0151", extension: "+670", email: "[FILL IN]" },
-    { name: "Biochemistry",        phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
+    { name: "Biochemistry",        phone: "[FILL IN]", extension: "[FILL IN]", email: "[FILL IN]" },
     { name: "Haematology",         phone: "[FILL IN]", extension: "[FILL IN]", email: "micro.nhl.tl@gmail.com" },
     { name: "Microbiology",        phone: "[FILL IN]", extension: "[FILL IN]", email: "micro.nhl.tl@gmail.com" },
-    { name: "Blood Bank",          phone: "73502087", extension: "563", email: "" },
-    { name: "Molecular Biology",   phone: "[FILL IN]", extension: "[FILL IN]", email: "" },
+    { name: "Blood Bank",          phone: "73502087", extension: "563", email: "[FILL IN]" },
+    { name: "Molecular Biology",   phone: "[FILL IN]", extension: "[FILL IN]", email: "[FILL IN]" },
   ],
 
   address: "Rua Bidau, Toko Baru, Dili, Timor-Leste",
