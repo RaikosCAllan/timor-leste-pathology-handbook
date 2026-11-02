@@ -36,7 +36,7 @@ window.DEPARTMENTS = [
   {
     id: "molecular",
     name: "Molecular Biology",
-    services: "[FILL IN — e.g. PCR for TB, HIV viral load, respiratory panel, arbovirus]",
+    services: "PCR testing, HIV viral load, respiratory panel, arbovirus",
     location: "Laboratório da Saúde do INSP-TL",
     contact: "[FILL IN]"
   },
@@ -60,8 +60,8 @@ window.DEPARTMENTS = [
   {
     id: "cytology",
     name: "Cytology / Histology",
-    services: "[FILL IN — e.g. cervical cytology, fine needle aspiration]",
-    location: "Hospital Nacional Guido Valadares",
+    services: "cervical cytology, fine needle aspiration",
+    location: "Hospital Nacional Guido Valadares Cytology Department",
     contact: "73499016"
   },
 
@@ -69,7 +69,7 @@ window.DEPARTMENTS = [
     id: "icu",                                    // was "ICU"
     name: "Point of Care (ICU)",                  // was "Intensive Care Unit"
     services: "Point-of-care testing",
-    location: "Hospital Nacional Guido Valadares",
+    location: "Hospital Nacional Guido Valadares ICU ward",
     contact: "[FILL IN]"
   }
 

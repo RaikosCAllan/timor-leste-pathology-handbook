@@ -66,8 +66,8 @@ window.SITE = {
 
   // Version banner shown in the footer.
   sourceDocument: "Pathology Handbook v9.4 (working)",
-  lastReviewed: "[FILL IN — e.g. September 2026]",
-  nextReview:   "[FILL IN — e.g. September 2027]",
+  lastReviewed: "September 2026",
+  nextReview:   "September 2027",
   documentOwner: "Gabinete de Kualidade, LNS",
 
   // Optional: link to the downloadable PDF of the full handbook.
@@ -118,8 +118,8 @@ window.SITE = {
     { service: "Full service — weekdays",        time: "08:00–12:00, 14:00–17:30", note: "All departments" },
     { service: "Out of hours — weekdays",        time: "17:00–07:00",              note: "No service" },
     { service: "Weekends and public holidays",   time: "09:00–17:00",              note: "Confirm with laboratory" },
-    { service: "Phlebotomy / specimen reception",time: "08:00–12:00, 14:00–16:30",              note: "Weekdays" },
-    { service: "Result dispatch",                time: "08:00–12:00, 14:00–17:30",              note: "Results also available in SchuyNet as soon as authorised" }
+    { service: "Phlebotomy / specimen reception",time: "08:00–12:00, 14:00–16:30", note: "Weekdays" },
+    { service: "Result dispatch",                time: "08:00–12:00, 14:00–17:30", note: "Results also available in SchuyNet as soon as authorised" }
   ],
 
   hoursNotes: [
@@ -133,6 +133,7 @@ window.SITE = {
     { name: "Specimen reception",  phone: "331 0151", extension: "+670", email: "[FILL IN]" },
     { name: "Biochemistry",        phone: "[FILL IN]", extension: "[FILL IN]", email: "[FILL IN]" },
     { name: "Haematology",         phone: "[FILL IN]", extension: "[FILL IN]", email: "micro.nhl.tl@gmail.com" },
+    { name: "Serology/Immunology", phone:"[FILL IN}", extension: "[FILL IN]", email: "[FILL IN]"},
     { name: "Microbiology",        phone: "[FILL IN]", extension: "[FILL IN]", email: "micro.nhl.tl@gmail.com" },
     { name: "Blood Bank",          phone: "73502087", extension: "563", email: "[FILL IN]" },
     { name: "Molecular Biology",   phone: "[FILL IN]", extension: "[FILL IN]", email: "[FILL IN]" },
