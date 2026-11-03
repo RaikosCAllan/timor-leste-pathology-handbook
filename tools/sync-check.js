@@ -265,6 +265,12 @@ matched.forEach(({ s, t }) => {
         rows.push({ f, kind: "differs", src: sv, site: tv });
       return;
     }
+    // Turnaround: the site stores routine and urgent separately, so ignore the
+    // "Routine:" / "Urgent:" labels and the order of the sentences.
+    if (f === "turnaround") {
+      const bag = x => norm(x).replace(/\b(routine|urgent)\b/g, " ").split(/\s+/).filter(Boolean).sort().join(" ");
+      if (bag(sv) === bag(tv)) return;
+    }
     const a = norm(sv), b = norm(tv);
     if (a && b && a !== b && !b.includes(a) && !a.includes(b))
       rows.push({ f, kind: "differs", src: sv, site: tv });

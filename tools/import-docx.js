@@ -190,7 +190,7 @@ TESTS.forEach(t => {
 function asField(k, items) {
   items = (items || []).map(s => s.trim()).filter(Boolean);
   if (!items.length) return undefined;
-  if (k === "synonyms") return items.join(", ").split(/\s*[,;]\s*/).map(s => s.replace(/\.$/, "")).filter(s => s && !/^none$/i.test(s));
+  if (k === "synonyms") { const j = items.join("; "); return j.split(j.includes(";") ? /\s*;\s*/ : /\s*,\s*/).map(s => s.replace(/\.$/, "")).filter(s => s && !/^none$/i.test(s)); }
   if (k === "limsCode" || k === "department") return items.join(" ");
   if (LIST_FIELDS.has(k)) return items;
   return items.length === 1 ? items[0] : items;

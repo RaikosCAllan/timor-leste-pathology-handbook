@@ -11,8 +11,6 @@
    ========================================================================= */
 
 window.TESTS = [
-
-
 {
   id: "activated-partial-thromboplastin-time",
   name: "Activated Partial Thromboplastin Time (APTT)",
@@ -114,7 +112,7 @@ window.TESTS = [
     "Differential Leucocyte Count"
   ],
   department: "haematology",
-  limsCode: "CBC",
+  limsCode: "CBC (Panel)",
   flags: ["critical", "stat"],
   summary: "Complete Blood Count",
   description: [
@@ -307,7 +305,7 @@ window.TESTS = [
 
 {
   id: "albumin-serum",
-  name: "Albumin - Serum",
+  name: "Albumin (Serum)",
   synonyms: ["Serum Albumin", "Plasma Albumin"],
   department: "biochemistry",
   limsCode: "ALB",
@@ -449,7 +447,7 @@ window.TESTS = [
 
 {
   id: "amylase",
-  name: "Amylase",
+  name: "Amylase (Serum)",
   synonyms: ["Serum Amylase", "Total Amylase"],
   department: "biochemistry",
   limsCode: "AMY",
@@ -654,7 +652,7 @@ window.TESTS = [
 
 {
   id: "bicarbonate-total-co2",
-  name: "Bicarbonate (Total CO2)",
+  name: "Bicarbonate (Total CO₂)",
   synonyms: [
     "Total Carbon Dioxide",
     "Total CO2",
@@ -664,7 +662,7 @@ window.TESTS = [
     "HCO3"
   ],
   department: "biochemistry",
-  limsCode: "ECO2",
+  limsCode: "CO2",
   flags: ["stat"],
   summary: "Measures total CO2 (bicarbonate) for acid–base and kidney function assessment.",
   description: [
@@ -812,7 +810,7 @@ window.TESTS = [
 
 {
   id: "m-c-s-blood",
-  name: "M C & S  - Blood",
+  name: "M C & S - Blood",
   synonyms: ["Blood Culture and Sensitivity", "Blood C&S", "Bacteraemia Culture"],
   department: "microbiology",
   limsCode: "BC",
@@ -1223,7 +1221,7 @@ window.TESTS = [
 
 {
   id: "calcium",
-  name: "Calcium",
+  name: "Calcium (Serum)",
   synonyms: ["Serum calcium; total calcium"],
   department: "biochemistry",
   limsCode: "CA",
@@ -1689,7 +1687,7 @@ window.TESTS = [
 
 {
   id: "chloride",
-  name: "Chloride",
+  name: "Chloride (Serum)",
   synonyms: ["Serum chloride"],
   department: "biochemistry",
   limsCode: "CL",
@@ -1759,7 +1757,7 @@ window.TESTS = [
 
 {
   id: "cholesterol",
-  name: "Cholesterol",
+  name: "Cholesterol (Serum)",
   synonyms: ["Total cholesterol"],
   department: "biochemistry",
   limsCode: "CHOL",
@@ -1836,7 +1834,7 @@ window.TESTS = [
   limsCode: "CPK",
   flags: ["critical"],
   summary: "Measures total creatine kinase (CK).",
-  description: "Measures total creatine kinase (CK) enzyme activity. Circulating CK predominantly reflects skeletal muscle; increased activity commonly indicates muscle injury.",
+  description: "Measures total serum creatine kinase (CK) enzyme activity. Circulating CK predominantly reflects skeletal muscle; increased activity commonly indicates muscle injury.",
   indications: [
     "Investigate and monitor rhabdomyolysis or significant muscle injury.",
     "Assess suspected myositis, muscular dystrophy or other myopathy.",
@@ -1974,16 +1972,17 @@ window.TESTS = [
 {
   id: "m-c-s-bronchoalveolar-lavage",
   name: "M C & S - Bronchoalveolar Lavage",
-  synonyms: ["BAL culture; Bronchoalveolar lavage microscopy, culture and susceptibility testing"],
+  synonyms: [
+    "BAL culture",
+    "Bronchoalveolar lavage microscopy, culture and susceptibility testing"
+  ],
   department: "microbiology",
   limsCode: "BAL",
   flags: ["critical"],
-
   summary: "Microscopy and culture of bronchoalveolar lavage (BAL) fluid.",
   description: "Microscopy and culture of bronchoalveolar lavage (BAL) fluid to identify clinically significant lower respiratory tract bacteria and guide antimicrobial selection. Additional investigations require specific requests and confirmation of local or referral availability.",
-
   indications: [
-    "•	Selected cases of severe, persistent or unexplained pneumonia when less invasive specimens are unavailable or non-diagnostic.",
+    "Selected cases of severe, persistent or unexplained pneumonia when less invasive specimens are unavailable or non-diagnostic.",
     "Investigation of hospital-acquired pneumonia (HAP) or ventilator-associated pneumonia (VAP) when bronchoscopic sampling is clinically indicated.",
     "Suspected opportunistic infection in immunocompromised patients, with targeted additional tests.",
     "Suspected infection in bronchiectasis or other structural lung disease when suitable sputum cannot be obtained."
@@ -2000,7 +1999,6 @@ window.TESTS = [
     "Routine bacterial culture does not exclude tuberculosis, fungal, viral or Pneumocystis infection.",
     "Candida isolation usually reflects airway colonisation; Aspergillus isolation alone does not establish invasive disease."
   ],
-
   sampleType: "Body fluid",
   containerColour: "Sterile collection jar",
   sampleRequirements: [
@@ -2011,24 +2009,63 @@ window.TESTS = [
     "Label the anatomical site and collection date/time. Provide clinical findings, immune status, antimicrobial treatment and requested additional tests.",
     "Identify bronchial washings separately; they are not interchangeable with BAL for quantitative interpretation."
   ],
-  storageTransport: "Transport promptly, ideally within 2 hours.\nIf delayed, refrigerate at 2–8 °C for routine bacterial culture according to locally validated requirements.\nDo not freeze the routine culture specimen.\nConfirm separate storage requirements for additional or referral tests.\nSee Appendix 9a: Storage / Transport – Quick Reference Table (All Departments).",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nIdentification errors, leakage, unsuitable containers, fixative or unacceptable transport conditions require assessment under local policy.\nDiscuss low-volume, delayed or potentially contaminated BAL specimens with Microbiology before rejection, as repeat collection is invasive.\nDo not apply sputum epithelial-cell or neutrophil-count rejection thresholds automatically to BAL.",
-  methodology: "Gram stain and routine bacterial culture with organism identification.\nQuantitative or semiquantitative reporting according to the validated laboratory method.\nAntimicrobial susceptibility testing of clinically significant isolates using the laboratory's adopted current standard.\nMycobacterial, fungal, Legionella, Nocardia and Pneumocystis investigations require specific methods; confirm local testing or referral arrangements.\nBAL cellular differential and cytology are separate investigations.",
-
-  turnaround: { routine: "Microscopy: prompt preliminary reporting.", urgent: "" },
-  criticalAlert: "Examples requiring prompt assessment include suspected or confirmed Mycobacterium tuberculosis complex, locally designated resistant organisms and findings suggesting serious opportunistic infection in a high-risk patient.",
-  diseaseAssociations: ["Bacterial pneumonia, including HAP and VAP; selected opportunistic pulmonary infections; infection associated with structural lung disease."],
-  conversionFactors: "Not applicable.",
-  organismsReported: [
-    { group: "Reported organisms", items: [
-      "•	Clinically significant routine bacterial isolates may include Streptococcus pneumoniae, Haemophilus influenzae, Staphylococcus aureus, Pseudomonas aeruginosa, Acinetobacter spp. and Enterobacterales.",
-      "Report mixed respiratory flora and potential colonisers according to laboratory policy and clinical context.",
-      "Additional investigations may detect mycobacteria, fungi, Legionella spp., Nocardia spp. or Pneumocystis jirovecii.",
-      "Pneumocystis jirovecii is detected by molecular testing or microscopy, not routine culture."
-    ] }
+  storageTransport: [
+    "Transport promptly, ideally within 2 hours.",
+    "If delayed, refrigerate at 2–8 °C for routine bacterial culture according to locally validated requirements.",
+    "Do not freeze the routine culture specimen.",
+    "Confirm separate storage requirements for additional or referral tests.",
+    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b", "appendix-12"],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Identification errors, leakage, unsuitable containers, fixative or unacceptable transport conditions require assessment under local policy.",
+    "Discuss low-volume, delayed or potentially contaminated BAL specimens with Microbiology before rejection, as repeat collection is invasive.",
+    "Do not apply sputum epithelial-cell or neutrophil-count rejection thresholds automatically to BAL."
+  ],
+  methodology: [
+    "Gram stain and routine bacterial culture with organism identification.",
+    "Quantitative or semiquantitative reporting according to the validated laboratory method.",
+    "Antimicrobial susceptibility testing of clinically significant isolates using the laboratory's adopted current standard.",
+    "Mycobacterial, fungal, Legionella, Nocardia and Pneumocystis investigations require specific methods; confirm local testing or referral arrangements.",
+    "BAL cellular differential and cytology are separate investigations."
+  ],
+  turnaround: {
+    routine: "Microscopy: Prompt preliminary reporting according to laboratory availability. Routine bacterial culture and susceptibility testing: Usually several days; confirm the local reporting interval. Additional and referral tests: Test-dependent; confirm with the performing laboratory.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Notify clinically urgent findings according to Appendix 4: Alert List (Critical / Life-Threatening Results Requiring Immediate Notification) and Appendix 5: Critical / High-Risk Results Policy Summary.",
+    "Examples requiring prompt assessment include suspected or confirmed Mycobacterium tuberculosis complex, locally designated resistant organisms and findings suggesting serious opportunistic infection in a high-risk patient. Apply relevant infection prevention and public health notification requirements.",
+    "Positive BAL culture alone is not automatically a critical result."
+  ],
+  diseaseAssociations: [
+    "Bacterial pneumonia, including HAP and VAP; selected opportunistic pulmonary infections; infection associated with structural lung disease."
+  ],
+  conversionFactors: "Not applicable. Quantitative bacterial growth is reported in CFU/mL.",
+  organismsReported: [
+    {
+      group: "Reported organisms",
+      items: [
+        "•\tClinically significant routine bacterial isolates may include Streptococcus pneumoniae, Haemophilus influenzae, Staphylococcus aureus, Pseudomonas aeruginosa, Acinetobacter spp. and Enterobacterales.",
+        "Report mixed respiratory flora and potential colonisers according to laboratory policy and clinical context.",
+        "Additional investigations may detect mycobacteria, fungi, Legionella spp., Nocardia spp. or Pneumocystis jirovecii.",
+        "Pneumocystis jirovecii is detected by molecular testing or microscopy, not routine culture."
+      ]
+    }
+  ],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b",
+    "appendix-12"
+  ],
   lastReviewed: "",
   added: "2026-10-31",
   updated: ""
@@ -2037,14 +2074,16 @@ window.TESTS = [
 {
   id: "m-c-s-cerebral-spinal-f",
   name: "M C & S - Cerebral Spinal Fluid",
-  synonyms: ["Cerebrospinal fluid M,C&S"],
+  synonyms: ["Cerebrospinal fluid culture"],
   department: "microbiology",
   limsCode: "CSF",
-  flags: ["critical", "stat"],
-
+  flags: ["stat"],
   summary: "Culture of cerebrospinal fluid (CSF) to detect bacterial causes of disease.",
-  description: "Culture of cerebrospinal fluid (CSF) to detect bacterial causes of meningitis and ventriculitis, with organism identification and antimicrobial susceptibility testing where appropriate.\nFungal, mycobacterial and molecular investigations require specific requests.\nCSF Culture test includes CSF sample description, Gram stain, AFB stain, WBC count, RBC count, Lymphocyte and Neutrophil differential count.",
-
+  description: [
+    "Culture of cerebrospinal fluid (CSF) to detect bacterial causes of meningitis and ventriculitis, with organism identification and antimicrobial susceptibility testing where appropriate.",
+    "Fungal, mycobacterial and molecular investigations require specific requests.",
+    "CSF Culture test includes CSF sample description, Gram stain, AFB stain, WBC count, RBC count, Lymphocyte and Neutrophil differential count."
+  ],
   indications: [
     "Investigate suspected bacterial meningitis or ventriculitis.",
     "Identify pathogens and support selection of antimicrobial therapy.",
@@ -2061,7 +2100,6 @@ window.TESTS = [
     "Routine bacterial culture does not adequately investigate viral, tuberculous or all fungal causes.",
     "Interpret possible skin contaminants with clinical findings, CSF results, collection source and repeat cultures; these organisms may cause shunt-associated infection."
   ],
-
   sampleType: "CSF",
   containerColour: "Sterile collection jar",
   sampleRequirements: [
@@ -2069,23 +2107,46 @@ window.TESTS = [
     "Confirm volume and tube allocation locally. Contact microbiology when volume is limited or additional investigations are required.",
     "Include suspected diagnosis, antimicrobial exposure, immune status and any neurosurgical device. Obtain before antibiotics where feasible, without delaying urgent treatment."
   ],
-  storageTransport: "Notify the laboratory and transport immediately at room temperature for routine bacterial culture.\nDo not refrigerate or freeze the specimen intended for routine bacterial culture. If transport is delayed, contact microbiology for instructions. Separate aliquots for other tests may require different handling.\nSee Appendix 9a and 9b.",
-  rejection: "See Appendix 7.\nIdentification errors, leakage, inappropriate containers or suspected contamination require urgent laboratory assessment.\nDo not automatically discard low-volume or otherwise compromised CSF. Discuss with the microbiologist, document limitations and prioritise testing under the approved policy. Identity must be resolved before patient-specific reporting.",
-  methodology: "Direct Gram stain and bacterial culture using validated media and incubation methods.\nIdentification of isolates and antimicrobial susceptibility testing (AST)\nAdditional anaerobic or prolonged culture where indicated, particularly for device-associated infection.\nFungal culture and cryptococcal antigen (CrAg) testing when indicated; CrAg is preferred to India ink where available.\nSuspected tuberculous meningitis requires a WHO-recommended molecular test and dedicated mycobacterial investigations.",
-
-  turnaround: { routine: "Preliminary bacterial culture: usually 24–48 hours.", urgent: "Gram stain urgent. Report ASAP" },
-  criticalAlert: "Immediately communicate organisms seen on Gram stain and clinically significant positive culture results to the treating team, with documented notification.\nDo not wait for final identification or AST before reporting an important preliminary finding. Escalate uncertain positive results promptly to the microbiologist.",
-  diseaseAssociations: ["Bacterial meningitis, ventriculitis and CSF shunt-associated infection. Fungal meningitis where appropriately investigated."],
+  storageTransport: [
+    "Notify the laboratory and transport immediately at room temperature for routine bacterial culture.",
+    "Do not refrigerate or freeze the specimen intended for routine bacterial culture. If transport is delayed, contact microbiology for instructions. Separate aliquots for other tests may require different handling.",
+    "See Appendix 9a and 9b."
+  ],
+  rejection: [
+    "See Appendix 7.",
+    "Identification errors, leakage, inappropriate containers or suspected contamination require urgent laboratory assessment.",
+    "Do not automatically discard low-volume or otherwise compromised CSF. Discuss with the microbiologist, document limitations and prioritise testing under the approved policy. Identity must be resolved before patient-specific reporting."
+  ],
+  methodology: [
+    "Direct Gram stain and bacterial culture using validated media and incubation methods.",
+    "Identification of isolates and antimicrobial susceptibility testing (AST)",
+    "Additional anaerobic or prolonged culture where indicated, particularly for device-associated infection.",
+    "Fungal culture and cryptococcal antigen (CrAg) testing when indicated; CrAg is preferred to India ink where available.",
+    "Suspected tuberculous meningitis requires a WHO-recommended molecular test and dedicated mycobacterial investigations."
+  ],
+  turnaround: {
+    routine: "Preliminary bacterial culture: usually 24–48 hours. Routine final report: typically 2–5 days, subject to local confirmation. Device-associated, fungal and mycobacterial investigations may require longer incubation or referral.",
+    urgent: "Gram stain: urgent, as soon as possible after receipt."
+  },
+  criticalAlert: [
+    "Immediately communicate organisms seen on Gram stain and clinically significant positive culture results to the treating team, with documented notification.",
+    "Do not wait for final identification or AST before reporting an important preliminary finding. Escalate uncertain positive results promptly to the microbiologist."
+  ],
+  diseaseAssociations: [
+    "Bacterial meningitis, ventriculitis and CSF shunt-associated infection. Fungal meningitis where appropriately investigated."
+  ],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "Identify recovered organisms to the level supported by the validated method. Important examples include", items: [
-      "Community-acquired infection: Neisseria meningitidis, Streptococcus pneumoniae, Haemophilus influenzae, Streptococcus agalactiae, Listeria monocytogenes and enteric Gram-negative bacilli.",
-      "Healthcare/device-associated infection: Staphylococcus aureus, coagulase-negative staphylococci, Cutibacterium acnes, Pseudomonas aeruginosa and other Gram-negative bacilli.",
-      "Fungal investigations: Cryptococcus species, Candida species and other fungi recovered by the requested method.",
-      "Do not classify skin organisms as contaminants solely because growth is scanty."
-    ] }
+    {
+      group: "Identify recovered organisms to the level supported by the validated method. Important examples include",
+      items: [
+        "Community-acquired infection: Neisseria meningitidis, Streptococcus pneumoniae, Haemophilus influenzae, Streptococcus agalactiae, Listeria monocytogenes and enteric Gram-negative bacilli.",
+        "Healthcare/device-associated infection: Staphylococcus aureus, coagulase-negative staphylococci, Cutibacterium acnes, Pseudomonas aeruginosa and other Gram-negative bacilli.",
+        "Fungal investigations: Cryptococcus species, Candida species and other fungi recovered by the requested method.",
+        "Do not classify skin organisms as contaminants solely because growth is scanty."
+      ]
+    }
   ],
-
   appendixRefs: [
     "appendix-1",
     "appendix-2",
@@ -2097,8 +2158,8 @@ window.TESTS = [
     "appendix-8",
     "appendix-9a",
     "appendix-9b",
-    "appendix-12"],
-
+    "appendix-12"
+  ],
   lastReviewed: "",
   added: "2026-10-31",
   updated: ""
@@ -2107,14 +2168,16 @@ window.TESTS = [
 {
   id: "m-c-s-ear",
   name: "M C & S - Ear",
-  synonyms: ["Ear swab culture; ear discharge culture; ear microscopy, culture and susceptibility (MCS)."],
+  synonyms: [
+    "Ear swab culture",
+    "ear discharge culture",
+    "ear microscopy, culture and susceptibility (MCS)"
+  ],
   department: "microbiology",
   limsCode: "EAR",
   flags: ["critical"],
-
   summary: "Culture of ear discharge or pus to identify clinically significant organisms.",
   description: "Culture of ear discharge or pus to identify clinically significant organisms and guide antimicrobial selection. Interpret results according to the collection site and clinical findings.",
-
   indications: [
     "Severe, persistent or recurrent otitis externa, or failure to respond to treatment.",
     "Discharging otitis media with tympanic membrane perforation or tympanostomy tubes, when microbiological investigation is indicated.",
@@ -2132,7 +2195,6 @@ window.TESTS = [
     "Routine bacterial culture does not exclude fungal, anaerobic or mycobacterial infection unless appropriate additional investigations are performed.",
     "Ear-swab culture alone cannot establish mastoiditis or invasive infection."
   ],
-
   sampleType: "Swab",
   containerColour: "Swab",
   sampleRequirements: [
@@ -2142,24 +2204,54 @@ window.TESTS = [
     "Include recent antimicrobial treatment, surgery or tympanostomy tubes, relevant immunocompromise and suspected fungal or invasive infection.",
     "Middle-ear aspirate or operative material must be collected by an appropriately trained clinician. Send fluid or tissue in an approved sterile, leakproof container; discuss additional testing and transport requirements with the laboratory."
   ],
-  storageTransport: "Transport promptly using the approved specimen container or transport medium. Follow locally validated temperature and maximum transport-time requirements.\nSee Appendix 9a and Appendix 9b.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nApply locally validated criteria for unsuitable collection devices, leaking containers and specimens outside accepted transport conditions. Discuss compromised, difficult-to-repeat aspirates or operative specimens with the laboratory before rejection.",
-  methodology: "Bacterial culture, identification and antimicrobial susceptibility testing of clinically significant isolates according to laboratory policy.\nGram stain of pus where appropriate. Fungal microscopy and culture when indicated; confirm whether included routinely or requiring a separate request or referral. Additional investigations require laboratory discussion.",
-
-  turnaround: { routine: "Routine bacterial culture: 2–3 days", urgent: "" },
-  criticalAlert: "Notify significant findings requiring urgent action according to the approved local policy; see Appendices 4 and 5. A positive ear culture alone is not automatically critical.\nSuspected necrotising otitis externa or mastoiditis requires urgent clinical assessment; do not await culture results.",
-  diseaseAssociations: ["Otitis externa, including otomycosis; suppurative otitis media; postoperative ear infection."],
+  storageTransport: [
+    "Transport promptly using the approved specimen container or transport medium. Follow locally validated temperature and maximum transport-time requirements.",
+    "See Appendix 9a and Appendix 9b."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Apply locally validated criteria for unsuitable collection devices, leaking containers and specimens outside accepted transport conditions. Discuss compromised, difficult-to-repeat aspirates or operative specimens with the laboratory before rejection."
+  ],
+  methodology: [
+    "Bacterial culture, identification and antimicrobial susceptibility testing of clinically significant isolates according to laboratory policy.",
+    "Gram stain of pus where appropriate. Fungal microscopy and culture when indicated; confirm whether included routinely or requiring a separate request or referral. Additional investigations require laboratory discussion."
+  ],
+  turnaround: {
+    routine: "Routine bacterial culture: 2–3 days, subject to local confirmation. Additional identification, susceptibility testing, fungal culture or referral testing may take longer.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Notify significant findings requiring urgent action according to the approved local policy; see Appendices 4 and 5. A positive ear culture alone is not automatically critical.",
+    "Suspected necrotising otitis externa or mastoiditis requires urgent clinical assessment; do not await culture results."
+  ],
+  diseaseAssociations: [
+    "Otitis externa, including otomycosis; suppurative otitis media; postoperative ear infection."
+  ],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "Clinically significant isolates, according to specimen source and laboratory reporting policy. Examples include", items: [
-      "•	Otitis externa: Pseudomonas aeruginosa and Staphylococcus aureus; Aspergillus spp. and Candida spp. in fungal infection.",
-      "•	Acute middle-ear infection: Streptococcus pneumoniae, Haemophilus influenzae and Moraxella catarrhalis.",
-      "•	Chronic suppurative middle-ear or postoperative infection: Pseudomonas aeruginosa, Staphylococcus aureus and other clinically significant organisms.",
-      "Normal flora or mixed growth may be reported with an interpretative comment. Isolation does not by itself confirm pathogenic significance."
-    ] }
+    {
+      group: "Clinically significant isolates, according to specimen source and laboratory reporting policy. Examples include",
+      items: [
+        "•\tOtitis externa: Pseudomonas aeruginosa and Staphylococcus aureus; Aspergillus spp. and Candida spp. in fungal infection.",
+        "•\tAcute middle-ear infection: Streptococcus pneumoniae, Haemophilus influenzae and Moraxella catarrhalis.",
+        "•\tChronic suppurative middle-ear or postoperative infection: Pseudomonas aeruginosa, Staphylococcus aureus and other clinically significant organisms.",
+        "Normal flora or mixed growth may be reported with an interpretative comment. Isolation does not by itself confirm pathogenic significance."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b", "appendix-12"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b",
+    "appendix-12"
+  ],
   lastReviewed: "",
   added: "2026-10-31",
   updated: ""
@@ -2168,14 +2260,20 @@ window.TESTS = [
 {
   id: "m-c-s-genital",
   name: "M C & S - Genital",
-  synonyms: ["Genital microscopy, culture and susceptibility; genital MCS; urogenital MCS."],
+  synonyms: [
+    "Genital microscopy, culture and susceptibility",
+    "genital MCS",
+    "urogenital MCS"
+  ],
   department: "microbiology",
   limsCode: "VAG, PENIS, URETH",
   flags: [],
-
   summary: "Microscopy and culture of site-specific genital specimens.",
-  description: "Microscopy and culture of site-specific genital specimens to investigate infection. Antimicrobial susceptibility testing is performed on clinically significant isolates where indicated.\nRoutine genital MCS is not a comprehensive screen for sexually transmitted infections (STIs).\nTest includes Vaginal, penis, and urethral culture.",
-
+  description: [
+    "Microscopy and culture of site-specific genital specimens to investigate infection. Antimicrobial susceptibility testing is performed on clinically significant isolates where indicated.",
+    "Routine genital MCS is not a comprehensive screen for sexually transmitted infections (STIs).",
+    "Test includes Vaginal, penis, and urethral culture."
+  ],
   indications: [
     "Vaginal discharge, irritation or suspected candidiasis or bacterial vaginosis.",
     "Urethral discharge or mucopurulent cervicitis: request appropriate STI NAAT and gonococcal culture where indicated.",
@@ -2187,49 +2285,79 @@ window.TESTS = [
     "Microscopy findings and targeted screening results are reported separately. Interpret the validated LIMS report in the context of specimen site, symptoms and pregnancy status."
   ],
   analyticalLimitations: [
-    "•	Growth may represent colonisation rather than infection. Candida or GBS isolation alone does not establish the cause of genital symptoms.",
-    "•	Routine culture does not detect Chlamydia trachomatis, Mycoplasma genitalium, Treponema pallidum or genital viruses. These require specific investigations.",
-    "•	Bacterial vaginosis is assessed using validated microscopy or other diagnostic criteria; Gardnerella vaginalis culture alone is not diagnostic.",
-    "•	Wet-film microscopy has limited sensitivity for Trichomonas vaginalis, particularly after delay. A negative wet film does not exclude infection.",
-    "•	Previous antimicrobial treatment, unsuitable transport and inadequate sampling may reduce recovery, particularly of Neisseria gonorrhoeae.",
-    "•	A negative lower-genital-tract specimen does not exclude upper-genital-tract infection."
+    "Growth may represent colonisation rather than infection. Candida or GBS isolation alone does not establish the cause of genital symptoms.",
+    "Routine culture does not detect Chlamydia trachomatis, Mycoplasma genitalium, Treponema pallidum or genital viruses. These require specific investigations.",
+    "Bacterial vaginosis is assessed using validated microscopy or other diagnostic criteria; Gardnerella vaginalis culture alone is not diagnostic.",
+    "Wet-film microscopy has limited sensitivity for Trichomonas vaginalis, particularly after delay. A negative wet film does not exclude infection.",
+    "Previous antimicrobial treatment, unsuitable transport and inadequate sampling may reduce recovery, particularly of Neisseria gonorrhoeae.",
+    "A negative lower-genital-tract specimen does not exclude upper-genital-tract infection."
   ],
-
   sampleType: "Swab",
   containerColour: "Swab",
   sampleRequirements: [
     "Select the specimen according to the anatomical site and requested investigation:",
-    "•	Vaginal swab for vaginitis assessment, microscopy and culture.",
-    "•	Endocervical swab collected during speculum examination when indicated, including gonococcal culture.",
-    "•	Urethral discharge or urethral swab collected using an appropriate fine swab.",
-    "•	Penile swab from the affected site; specify glans, subpreputial area, lesion or urethral discharge.",
-    "•	Combined lower vaginal–rectal swab for antenatal GBS screening; explicitly request GBS screening.",
-    "•	For STI NAAT: assay-approved vaginal, endocervical or urethral swab, or first-pass urine, according to the target and validated assay. First-pass urine is not a substitute for vaginal microscopy, yeast culture or GBS screening.",
+    "Vaginal swab for vaginitis assessment, microscopy and culture.",
+    "Endocervical swab collected during speculum examination when indicated, including gonococcal culture.",
+    "Urethral discharge or urethral swab collected using an appropriate fine swab.",
+    "Penile swab from the affected site; specify glans, subpreputial area, lesion or urethral discharge.",
+    "Combined lower vaginal–rectal swab for antenatal GBS screening; explicitly request GBS screening.",
+    "For STI NAAT: assay-approved vaginal, endocervical or urethral swab, or first-pass urine, according to the target and validated assay. First-pass urine is not a substitute for vaginal microscopy, yeast culture or GBS screening.",
     "Use laboratory-approved collection devices. Label the exact site and include symptoms, pregnancy status, recent antimicrobial treatment and requested targets. Separate specimens may be required for culture, microscopy."
   ],
-  storageTransport: "Transport culture specimens promptly in approved transport medium. Gonococcal culture requires particular attention to transport conditions.\nWet-film specimens require prompt examination; contact the laboratory before collection if delay is expected.\nSubmit direct smears only when requested, in a protective slide holder; slides do not replace culture specimens. Follow assay-specific requirements for NAAT.\nSee Appendix 9a and Appendix 9b.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nApply test-specific criteria for unsuitable collection devices, inadequate specimens and transport outside validated limits. Clarify unidentified specimen sites or requests before processing.",
-  methodology: "Wet-film microscopy where indicated; Gram stain; site- and indication-specific bacterial and yeast culture, with identification and susceptibility testing where appropriate.\nAntenatal GBS screening requires a validated targeted method, including selective enrichment when culture is used.\nSTI NAAT, viral testing and syphilis serology are separate investigations. Confirm local availability and referral arrangements.",
-
-  turnaround: { routine: "Routine culture: 2–3 days", urgent: "" },
-  criticalAlert: "Communicate significant findings requiring urgent action according to the approved local policy; see Appendices 4 and 5.\nGBS carriage or Candida isolation alone is not automatically a critical result. Suspected postpartum sepsis or severe pelvic infection requires urgent clinical assessment without waiting for culture.",
+  storageTransport: [
+    "Transport culture specimens promptly in approved transport medium. Gonococcal culture requires particular attention to transport conditions.",
+    "Wet-film specimens require prompt examination; contact the laboratory before collection if delay is expected.",
+    "Submit direct smears only when requested, in a protective slide holder; slides do not replace culture specimens. Follow assay-specific requirements for NAAT.",
+    "See Appendix 9a and Appendix 9b."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Apply test-specific criteria for unsuitable collection devices, inadequate specimens and transport outside validated limits. Clarify unidentified specimen sites or requests before processing."
+  ],
+  methodology: [
+    "Wet-film microscopy where indicated; Gram stain; site- and indication-specific bacterial and yeast culture, with identification and susceptibility testing where appropriate.",
+    "Antenatal GBS screening requires a validated targeted method, including selective enrichment when culture is used.",
+    "STI NAAT, viral testing and syphilis serology are separate investigations. Confirm local availability and referral arrangements."
+  ],
+  turnaround: {
+    routine: "Routine culture: 2–3 days, subject to local confirmation. Microscopy may be available earlier; additional identification, susceptibility testing and referral investigations may take longer.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Communicate significant findings requiring urgent action according to the approved local policy; see Appendices 4 and 5.",
+    "GBS carriage or Candida isolation alone is not automatically a critical result. Suspected postpartum sepsis or severe pelvic infection requires urgent clinical assessment without waiting for culture."
+  ],
   diseaseAssociations: [
     "Vulvovaginal candidiasis, bacterial vaginosis, urethritis and cervicitis. Genital specimens may support investigation of upper-genital-tract or postpartum infection.",
     "Antenatal GBS carriage is associated with neonatal infection risk."
   ],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "According to specimen site, requested testing and clinical significance", items: [
-      "•	Candida spp., including Candida albicans.",
-      "•	Neisseria gonorrhoeae when specifically investigated by appropriate culture.",
-      "•	Streptococcus agalactiae (Group B streptococcus), particularly for requested antenatal screening.",
-      "•	Other clinically significant isolates according to laboratory policy.",
-      "Microscopy may report yeasts, inflammatory cells, findings consistent with bacterial vaginosis or motile Trichomonas vaginalis.",
-      "NAAT results are reported separately and are not implied by a routine MCS request."
-    ] }
+    {
+      group: "According to specimen site, requested testing and clinical significance",
+      items: [
+        "•\tCandida spp., including Candida albicans.",
+        "•\tNeisseria gonorrhoeae when specifically investigated by appropriate culture.",
+        "•\tStreptococcus agalactiae (Group B streptococcus), particularly for requested antenatal screening.",
+        "•\tOther clinically significant isolates according to laboratory policy.",
+        "Microscopy may report yeasts, inflammatory cells, findings consistent with bacterial vaginosis or motile Trichomonas vaginalis.",
+        "NAAT results are reported separately and are not implied by a routine MCS request."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b", "appendix-12"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b",
+    "appendix-12"
+  ],
   lastReviewed: "",
   added: "2026-10-31",
   updated: ""
@@ -2238,17 +2366,23 @@ window.TESTS = [
 {
   id: "m-c-s-eye",
   name: "M C & S - Eye",
-  synonyms: ["Eye microscopy, culture and susceptibility; eye MCS; conjunctival culture; corneal scraping microscopy and culture, where applicable."],
+  synonyms: [
+    "Eye microscopy, culture and susceptibility",
+    "eye MCS",
+    "conjunctival culture",
+    "corneal scraping microscopy and culture, where applicable"
+  ],
   department: "microbiology",
   limsCode: "EYE",
   flags: [],
-
   summary: "Microscopy and culture of site-specific ocular specimens.",
-  description: "Microscopy and culture of site-specific ocular specimens to identify clinically significant bacteria and fungi. Antimicrobial susceptibility testing is performed where appropriate.\nAcanthamoeba, viral and chlamydial investigations require specific requests and suitable specimens.",
-
+  description: [
+    "Microscopy and culture of site-specific ocular specimens to identify clinically significant bacteria and fungi. Antimicrobial susceptibility testing is performed where appropriate.",
+    "Acanthamoeba, viral and chlamydial investigations require specific requests and suitable specimens."
+  ],
   indications: [
-    "•	Suspected infectious keratitis or corneal ulceration, particularly severe, atypical, postoperative or treatment-unresponsive disease.",
-    "•	Severe, persistent or recurrent conjunctivitis, or suspected neonatal or gonococcal conjunctivitis.",
+    "Suspected infectious keratitis or corneal ulceration, particularly severe, atypical, postoperative or treatment-unresponsive disease.",
+    "Severe, persistent or recurrent conjunctivitis, or suspected neonatal or gonococcal conjunctivitis.",
     "Routine culture is generally unnecessary for uncomplicated conjunctivitis. Suspected keratitis requires urgent ophthalmic assessment."
   ],
   referenceRange: [
@@ -2262,36 +2396,65 @@ window.TESTS = [
     "Routine bacterial and fungal culture does not exclude Acanthamoeba, viral or chlamydial infection. Additional investigations must be specifically arranged.",
     "Microscopy may demonstrate fungal elements but generally cannot establish fungal species."
   ],
-
   sampleType: "Swab",
   containerColour: "Swab",
   sampleRequirements: [
     "Contact the laboratory before collecting corneal specimens to arrange media, specimen allocation and additional tests.",
-    "•	Corneal scraping: collected by an ophthalmologist or appropriately trained ophthalmic clinician using a sterile instrument. Directly inoculate laboratory-provided culture media and prepare slides according to the agreed collection protocol.",
-    "•	Conjunctival swab: sample the affected conjunctiva using an approved swab and transport system, avoiding the eyelid margin and eyelashes.",
-    "•	Label the exact site and right or left eye. Submit separate specimens from each eye.",
-    "•	Collect before antimicrobial treatment where practicable, without delaying urgent care.",
-    "•	Provide details of contact lens use, trauma involving soil or plant material, previous surgery, antimicrobial treatment and suspected fungal or Acanthamoeba infection.",
-    "•	Separate assay-approved specimens may be needed for molecular testing. Intraocular fluid requires a separate specialist collection and laboratory pathway."
+    "Corneal scraping: collected by an ophthalmologist or appropriately trained ophthalmic clinician using a sterile instrument. Directly inoculate laboratory-provided culture media and prepare slides according to the agreed collection protocol.",
+    "Conjunctival swab: sample the affected conjunctiva using an approved swab and transport system, avoiding the eyelid margin and eyelashes.",
+    "Label the exact site and right or left eye. Submit separate specimens from each eye.",
+    "Collect before antimicrobial treatment where practicable, without delaying urgent care.",
+    "Provide details of contact lens use, trauma involving soil or plant material, previous surgery, antimicrobial treatment and suspected fungal or Acanthamoeba infection.",
+    "Separate assay-approved specimens may be needed for molecular testing. Intraocular fluid requires a separate specialist collection and laboratory pathway."
   ],
-  storageTransport: "Send promptly. Transport corneal scrapings, inoculated media and slides immediately using the laboratory-agreed system.\nFollow locally validated storage and transport requirements for each specimen and requested investigation; see Appendix 9a and Appendix 9b.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nOrdinary cotton-tipped swabs are not preferred for corneal sampling because recovery may be inadequate. Apply specimen- and device-specific acceptance criteria rather than rejecting all eye swabs.\nDiscuss compromised or difficult-to-repeat corneal specimens with the laboratory before rejection.",
-  methodology: "Gram stain; bacterial and fungal culture according to specimen type and clinical indication; identification and susceptibility testing of significant isolates where appropriate.\nFungal microscopy may be added. Acanthamoeba requires specifically arranged microscopy, specialised culture and/or nucleic acid amplification testing (NAAT). Viral and chlamydial NAAT are separate investigations.\nConfirm which investigations are performed locally, and which require referral.",
-
-  turnaround: { routine: "Routine bacterial culture: 2–3 days", urgent: "" },
-  criticalAlert: "Suspected microbial keratitis or gonococcal conjunctivitis requires urgent ophthalmic assessment; do not await culture results.\nCommunicate clinically urgent microscopy or culture findings promptly according to the approved local policy; see Appendices 4 and 5. Not every positive conjunctival culture is a critical result.",
+  storageTransport: [
+    "Send promptly. Transport corneal scrapings, inoculated media and slides immediately using the laboratory-agreed system.",
+    "Follow locally validated storage and transport requirements for each specimen and requested investigation; see Appendix 9a and Appendix 9b."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Ordinary cotton-tipped swabs are not preferred for corneal sampling because recovery may be inadequate. Apply specimen- and device-specific acceptance criteria rather than rejecting all eye swabs.",
+    "Discuss compromised or difficult-to-repeat corneal specimens with the laboratory before rejection."
+  ],
+  methodology: [
+    "Gram stain; bacterial and fungal culture according to specimen type and clinical indication; identification and susceptibility testing of significant isolates where appropriate.",
+    "Fungal microscopy may be added. Acanthamoeba requires specifically arranged microscopy, specialised culture and/or nucleic acid amplification testing (NAAT). Viral and chlamydial NAAT are separate investigations.",
+    "Confirm which investigations are performed locally, and which require referral."
+  ],
+  turnaround: {
+    routine: "Routine bacterial culture: 2–3 days, subject to local confirmation. Microscopy may be available earlier. Fungal culture, additional identification, susceptibility testing and referral investigations may take longer.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Suspected microbial keratitis or gonococcal conjunctivitis requires urgent ophthalmic assessment; do not await culture results.",
+    "Communicate clinically urgent microscopy or culture findings promptly according to the approved local policy; see Appendices 4 and 5. Not every positive conjunctival culture is a critical result."
+  ],
   diseaseAssociations: ["Infectious keratitis, corneal ulceration and conjunctivitis."],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "Clinically significant isolates according to specimen source and laboratory policy. Examples include", items: [
-      "•	Bacteria: Staphylococcus aureus, Streptococcus pneumoniae, Pseudomonas aeruginosa, Haemophilus influenzae and Neisseria gonorrhoeae.",
-      "•	Coagulase-negative staphylococci: may represent conjunctival flora or clinically significant corneal infection.",
-      "•	Fungi: Fusarium spp., Aspergillus spp. and other significant yeasts or moulds when fungal culture is performed.",
-      "Acanthamoeba, HSV, adenovirus and Chlamydia trachomatis are reported only when the relevant specific investigations are performed."
-    ] }
+    {
+      group: "Clinically significant isolates according to specimen source and laboratory policy. Examples include",
+      items: [
+        "•\tBacteria: Staphylococcus aureus, Streptococcus pneumoniae, Pseudomonas aeruginosa, Haemophilus influenzae and Neisseria gonorrhoeae.",
+        "•\tCoagulase-negative staphylococci: may represent conjunctival flora or clinically significant corneal infection.",
+        "•\tFungi: Fusarium spp., Aspergillus spp. and other significant yeasts or moulds when fungal culture is performed.",
+        "Acanthamoeba, HSV, adenovirus and Chlamydia trachomatis are reported only when the relevant specific investigations are performed."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b", "appendix-12"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b",
+    "appendix-12"
+  ],
   lastReviewed: "",
   added: "2026-10-31",
   updated: ""
@@ -2300,18 +2463,16 @@ window.TESTS = [
 {
   id: "m-c-s-mouth",
   name: "M C & S - Mouth",
-  synonyms: ["Mouth swab MCS; oral swab microscopy, culture and susceptibility."],
+  synonyms: ["Mouth swab MCS", "oral swab microscopy, culture and susceptibility"],
   department: "microbiology",
   limsCode: "MOUTH",
   flags: ["critical"],
-
   summary: "Microscopy and culture of specimens from oral lesions.",
   description: "Microscopy and culture of specimens from oral lesions to investigate selected bacterial or fungal infections. Interpret findings alongside the lesion's appearance and clinical history because normal oral flora may be recovered.",
-
   indications: [
     "Suspected oral candidiasis when the diagnosis is uncertain, or infection is persistent, recurrent or treatment-unresponsive.",
     "Suspected secondary infection of oral lesions, particularly in immunocompromised patients.",
-    "•	Selected cases of denture-associated stomatitis or angular cheilitis where microbiological investigation may assist diagnosis.",
+    "Selected cases of denture-associated stomatitis or angular cheilitis where microbiological investigation may assist diagnosis.",
     "A superficial mouth swab is not the preferred specimen for dental abscess or deep oral infection. Throat infection and suspected sexually transmitted infection require site-specific requests."
   ],
   referenceRange: [
@@ -2319,13 +2480,12 @@ window.TESTS = [
     "Candida may be present without infection. Interpret the validated LIMS report with clinical findings."
   ],
   analyticalLimitations: [
-    "•	Mixed oral flora and Candida carriage may make it difficult to distinguish colonisation from infection.",
-    "•	A superficial swab does not reliably represent a dental abscess or deep infection and cannot establish tissue invasion.",
-    "•	Previous antimicrobial treatment, antiseptic mouthwash, inadequate sampling and transport delays may reduce recovery. A negative result does not exclude infection.",
-    "•	Routine culture does not exclude viral infection or reliably investigate gonorrhoea, diphtheria, Mycoplasma or unusual fungal infections without targeted testing.",
-    "•	Persistent or suspicious oral lesions require clinical assessment; culture does not exclude non-infectious disease or malignancy."
+    "Mixed oral flora and Candida carriage may make it difficult to distinguish colonisation from infection.",
+    "A superficial swab does not reliably represent a dental abscess or deep infection and cannot establish tissue invasion.",
+    "Previous antimicrobial treatment, antiseptic mouthwash, inadequate sampling and transport delays may reduce recovery. A negative result does not exclude infection.",
+    "Routine culture does not exclude viral infection or reliably investigate gonorrhoea, diphtheria, Mycoplasma or unusual fungal infections without targeted testing.",
+    "Persistent or suspicious oral lesions require clinical assessment; culture does not exclude non-infectious disease or malignancy."
   ],
-
   sampleType: "Swab",
   containerColour: "Swab",
   sampleRequirements: [
@@ -2334,25 +2494,56 @@ window.TESTS = [
     "Collect before antimicrobial treatment where practicable. Follow local preparation instructions concerning food, drink, toothbrushing and antiseptic mouthwash.",
     "For dental abscess or deep infection requiring culture, submit aspirated pus or deep tissue using the appropriate collection and anaerobic transport pathway. Discuss unusual infections with the laboratory before collection."
   ],
-  storageTransport: "Send promptly in the approved transport system. Follow locally validated temperature and maximum transport-time requirements.\nSee Appendix 9a and Appendix 9b. Deep specimens requiring anaerobic culture have separate transport requirements.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nApply locally validated criteria for unsuitable collection devices, leaking containers and specimens outside accepted transport conditions. Clarify the specimen site or intended investigation where necessary.",
-  methodology: "Gram stain or fungal microscopy where indicated; bacterial and yeast culture according to clinical details and local laboratory policy.\nIdentify clinically significant isolates and perform susceptibility testing where appropriate. Antifungal susceptibility testing is not routine for every Candida isolate; consider it for persistent or recurrent infection, suspected resistance or significant immunocompromise.\nSpecialised culture, molecular testing and histopathology require separate arrangements; confirm local availability and referral pathways.",
-
-  turnaround: { routine: "Routine culture: 2–3 days", urgent: "" },
-  criticalAlert: "Suspected diphtheria requires immediate laboratory and public health discussion. Severe spreading oral infection or airway compromise requires urgent clinical assessment without waiting for culture.",
-  diseaseAssociations: ["Oral candidiasis; denture-associated stomatitis; angular cheilitis; secondary infection of oral mucosal lesions."],
+  storageTransport: [
+    "Send promptly in the approved transport system. Follow locally validated temperature and maximum transport-time requirements.",
+    "See Appendix 9a and Appendix 9b. Deep specimens requiring anaerobic culture have separate transport requirements."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Apply locally validated criteria for unsuitable collection devices, leaking containers and specimens outside accepted transport conditions. Clarify the specimen site or intended investigation where necessary."
+  ],
+  methodology: [
+    "Gram stain or fungal microscopy where indicated; bacterial and yeast culture according to clinical details and local laboratory policy.",
+    "Identify clinically significant isolates and perform susceptibility testing where appropriate. Antifungal susceptibility testing is not routine for every Candida isolate; consider it for persistent or recurrent infection, suspected resistance or significant immunocompromise.",
+    "Specialised culture, molecular testing and histopathology require separate arrangements; confirm local availability and referral pathways."
+  ],
+  turnaround: {
+    routine: "Routine culture: 2–3 days, subject to local confirmation. Microscopy may be available earlier. Additional identification, susceptibility testing, extended fungal culture or referral investigations may take longer.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Communicate findings requiring urgent action according to the approved local policy; see Appendices 4 and 5. Candida isolation or mixed oral flora alone is not automatically critical.",
+    "Suspected diphtheria requires immediate laboratory and public health discussion. Severe spreading oral infection or airway compromise requires urgent clinical assessment without waiting for culture."
+  ],
+  diseaseAssociations: [
+    "Oral candidiasis; denture-associated stomatitis; angular cheilitis; secondary infection of oral mucosal lesions."
+  ],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "According to clinical significance and laboratory reporting policy", items: [
-      "•	Candida spp., including Candida albicans.",
-      "•	Selected bacterial isolates, such as Staphylococcus aureus or Group A streptococcus, where clinically relevant.",
-      "•	Other predominant opportunistic organisms when supported by the clinical context, particularly in immunocompromised patients.",
-      "Mixed commensal growth may be reported as normal oral flora without individual identification or susceptibility testing.",
-      "Neisseria gonorrhoeae, Corynebacterium diphtheriae, Mycoplasma and unusual fungi are not implied targets of routine mouth culture."
-    ] }
+    {
+      group: "According to clinical significance and laboratory reporting policy",
+      items: [
+        "•\tCandida spp., including Candida albicans.",
+        "•\tSelected bacterial isolates, such as Staphylococcus aureus or Group A streptococcus, where clinically relevant.",
+        "•\tOther predominant opportunistic organisms when supported by the clinical context, particularly in immunocompromised patients.",
+        "Mixed commensal growth may be reported as normal oral flora without individual identification or susceptibility testing.",
+        "Neisseria gonorrhoeae, Corynebacterium diphtheriae, Mycoplasma and unusual fungi are not implied targets of routine mouth culture."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b", "appendix-12"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b",
+    "appendix-12"
+  ],
   lastReviewed: "",
   added: "2026-10-31",
   updated: ""
@@ -2361,18 +2552,19 @@ window.TESTS = [
 {
   id: "m-c-s-nose",
   name: "M C & S - Nose",
-  synonyms: ["Nasal swab culture; nasal MCS; anterior nares culture."],
+  synonyms: ["Nasal swab culture", "nasal MCS", "anterior nares culture"],
   department: "microbiology",
   limsCode: "NOSE",
   flags: [],
-
   summary: "Nasal carriage screening and lesion culture.",
-  description: "Bacterial culture primarily used to detect nasal carriage of Staphylococcus aureus. Culture of a specimen taken directly from an infected nasal lesion may assist investigation of local infection.\nCarriage screening and lesion culture require clearly distinguished requests.",
-
+  description: [
+    "Bacterial culture primarily used to detect nasal carriage of Staphylococcus aureus. Culture of a specimen taken directly from an infected nasal lesion may assist investigation of local infection.",
+    "Carriage screening and lesion culture require clearly distinguished requests."
+  ],
   indications: [
-    "•	Staphylococcus aureus carriage screening during outbreak investigations or other approved infection prevention programmes.",
-    "•	MRSA screening when specifically requested under local policy.",
-    "•	Selected cases of localised nasal infection, using material collected directly from the lesion.",
+    "Staphylococcus aureus carriage screening during outbreak investigations or other approved infection prevention programmes.",
+    "MRSA screening when specifically requested under local policy.",
+    "Selected cases of localised nasal infection, using material collected directly from the lesion.",
     "Routine anterior nasal culture is not recommended for diagnosing sinusitis or uncomplicated upper respiratory infection. Pertussis and respiratory virus testing require separate requests and appropriate specimens."
   ],
   referenceRange: [
@@ -2387,35 +2579,62 @@ window.TESTS = [
     "Routine nasal culture may not include a validated MRSA screening method unless specifically requested.",
     "An anterior nasal swab does not reliably identify sinus pathogens and is unsuitable for pertussis diagnosis. Pertussis requires an appropriate nasopharyngeal specimen and specific testing."
   ],
-
   sampleType: "Swab",
   containerColour: "Swab",
   sampleRequirements: [
-    "•	Carriage screening: swab both anterior nares using a laboratory-approved collection device, generally with the same swab. Follow local instructions on moistening and collection technique.",
-    "•	Local infection: collect pus or material directly from the lesion using a separate approved specimen system; aspirated pus is preferable where feasible.",
-    "•	Label the exact site and state whether the request is for carriage screening, MRSA screening or investigation of a lesion.",
-    "•	Include outbreak details and recent antibiotic or decolonisation treatment where relevant. Additional screening sites depend on local policy."
+    "Carriage screening: swab both anterior nares using a laboratory-approved collection device, generally with the same swab. Follow local instructions on moistening and collection technique.",
+    "Local infection: collect pus or material directly from the lesion using a separate approved specimen system; aspirated pus is preferable where feasible.",
+    "Label the exact site and state whether the request is for carriage screening, MRSA screening or investigation of a lesion.",
+    "Include outbreak details and recent antibiotic or decolonisation treatment where relevant. Additional screening sites depend on local policy."
   ],
-  storageTransport: "Send promptly in approved bacterial transport medium. Follow locally validated temperature and maximum transport-time requirements.\nSee Appendix 9a and Appendix 9b.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nApply locally validated criteria for unsuitable collection devices, leaking containers and specimens outside accepted transport conditions. Clarify the intended investigation where screening and lesion culture are not distinguished.",
-  methodology: "Bacterial culture with identification and susceptibility testing as appropriate to the requested investigation.\nMRSA screening requires a validated screening and confirmation method. Gram stain of lesion material may be performed where indicated.\nMolecular MRSA screening, pertussis testing and respiratory virus testing are separate investigations.",
-
-  turnaround: { routine: "2–3 days", urgent: "" },
-  criticalAlert: "",
+  storageTransport: [
+    "Send promptly in approved bacterial transport medium. Follow locally validated temperature and maximum transport-time requirements.",
+    "See Appendix 9a and Appendix 9b."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Apply locally validated criteria for unsuitable collection devices, leaking containers and specimens outside accepted transport conditions. Clarify the intended investigation where screening and lesion culture are not distinguished."
+  ],
+  methodology: [
+    "Bacterial culture with identification and susceptibility testing as appropriate to the requested investigation.",
+    "MRSA screening requires a validated screening and confirmation method. Gram stain of lesion material may be performed where indicated.",
+    "Molecular MRSA screening, pertussis testing and respiratory virus testing are separate investigations; confirm local availability and referral arrangements."
+  ],
+  turnaround: {
+    routine: "Routine culture: 2–3 days, subject to local confirmation. Additional identification, resistance confirmation or referral testing may take longer.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Nasal Staphylococcus aureus carriage alone is not automatically a critical result.",
+    "Communicate MRSA or outbreak-related findings according to the approved infection prevention and laboratory notification policies. See Appendices 4 and 5 for critical or high-risk reporting requirements."
+  ],
   diseaseAssociations: [
     "Local staphylococcal infection, including nasal vestibulitis or furunculosis.",
     "Nasal carriage is a colonisation state and may be relevant to transmission or subsequent infection."
   ],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "Reported organisms", items: [
-      "Staphylococcus aureus, with methicillin susceptibility or resistance reported according to the testing performed.",
-      "Other clinically significant bacteria from a directly sampled lesion",
-      "Normal nasal flora may be reported."
-    ] }
+    {
+      group: "Reported organisms",
+      items: [
+        "Staphylococcus aureus, with methicillin susceptibility or resistance reported according to the testing performed.",
+        "Other clinically significant bacteria from a directly sampled lesion",
+        "Normal nasal flora may be reported."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b"
+  ],
   lastReviewed: "",
   added: "2026-11-01",
   updated: ""
@@ -2423,15 +2642,16 @@ window.TESTS = [
 
 {
   id: "m-c-s-rectal-swab-culture",
-  name: "M, C & S - Rectal Swab Culture (Anal Swab)",
-  synonyms: ["Rectal swab culture; Anorectal swab culture"],
+  name: "M C & S - Rectal Swab Culture (Anal Swab)",
+  synonyms: ["Rectal swab culture", "Anorectal swab culture"],
   department: "microbiology",
   limsCode: "ANUS",
   flags: [],
-
   summary: "Culture of an anal or rectal swab for a specified bacterial pathogen.",
-  description: "Culture of an anal or rectal swab for a specified bacterial pathogen or colonisation screen. The clinical indication and target organism must be stated because normal bowel flora limit the value of an unspecified culture.\nRectal sexually transmitted infection (STI) testing, enteric investigations, resistant-organism screening and antenatal group B streptococcal (GBS) screening require distinct requests and validated collection methods.",
-
+  description: [
+    "Culture of an anal or rectal swab for a specified bacterial pathogen or colonisation screen. The clinical indication and target organism must be stated because normal bowel flora limit the value of an unspecified culture.",
+    "Rectal sexually transmitted infection (STI) testing, enteric investigations, resistant-organism screening and antenatal group B streptococcal (GBS) screening require distinct requests and validated collection methods."
+  ],
   indications: [
     "Suspected gonococcal proctitis, particularly when culture is needed for antimicrobial susceptibility testing.",
     "Targeted screening for intestinal carriage of resistant organisms under infection prevention policy.",
@@ -2453,7 +2673,6 @@ window.TESTS = [
     "Rectal colonisation with Candida or bowel bacteria does not establish invasive infection.",
     "Molecular screening detects only the targets included in the assay; negative screening does not exclude all resistant organisms."
   ],
-
   sampleType: "",
   containerColour: "",
   sampleRequirements: [
@@ -2466,28 +2685,65 @@ window.TESTS = [
     "Collect before antimicrobials where feasible, without delaying urgent treatment.",
     "Provide patient identifiers, site, collection date/time, symptoms, antimicrobial exposure and requested target."
   ],
-  storageTransport: "Send promptly in the approved transport system.\nGonococcal culture requires particular attention to transport conditions and timely processing.\nStorage temperature and maximum delay depend on the organism, device and test; follow locally validated instructions.\nDo not apply a universal refrigeration rule or assumed 72-hour/seven-day stability.\nSee Appendix 9a: Storage / Transport – Quick Reference Table (All Departments).",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nIdentification errors, leakage, unsuitable devices, inadequate sampling or transport outside validated limits require assessment under local policy.\nDo not reject intestinal surveillance specimens solely because faecal material is present.\nFor excessive faecal material in an STI collection kit, follow the manufacturer's acceptance criteria.\nClarify an unspecified indication or target with the requester before selecting tests.",
-  methodology: "Targeted culture using validated selective or enrichment methods, followed by organism identification.\nAntimicrobial susceptibility testing where indicated, using the laboratory's adopted current standard.\nGonorrhoea/chlamydia NAAT, LGV typing and other specialist investigations are separate tests; confirm local or referral availability.\nResistant-organism screening may use selective culture and/or molecular methods.\nAntenatal GBS testing uses the dedicated validated screening method.\nMicroscopy may assess inflammation in selected specimens but does not identify the cause reliably.",
-
-  turnaround: { routine: "2 - 3 days. Longer if further testing required", urgent: "" },
-  criticalAlert: "",
+  storageTransport: [
+    "Send promptly in the approved transport system.",
+    "Gonococcal culture requires particular attention to transport conditions and timely processing.",
+    "Storage temperature and maximum delay depend on the organism, device and test; follow locally validated instructions.",
+    "Do not apply a universal refrigeration rule or assumed 72-hour/seven-day stability.",
+    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Identification errors, leakage, unsuitable devices, inadequate sampling or transport outside validated limits require assessment under local policy.",
+    "Do not reject intestinal surveillance specimens solely because faecal material is present.",
+    "For excessive faecal material in an STI collection kit, follow the manufacturer's acceptance criteria.",
+    "Clarify an unspecified indication or target with the requester before selecting tests."
+  ],
+  methodology: [
+    "Targeted culture using validated selective or enrichment methods, followed by organism identification.",
+    "Antimicrobial susceptibility testing where indicated, using the laboratory's adopted current standard.",
+    "Gonorrhoea/chlamydia NAAT, LGV typing and other specialist investigations are separate tests; confirm local or referral availability.",
+    "Resistant-organism screening may use selective culture and/or molecular methods.",
+    "Antenatal GBS testing uses the dedicated validated screening method.",
+    "Microscopy may assess inflammation in selected specimens but does not identify the cause reliably."
+  ],
+  turnaround: {
+    routine: "2 - 3 days. Screening, molecular and referral turnaround times depend on the requested test and performing laboratory.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "See Appendix 4: Alert List (Critical / Life-Threatening Results Requiring Immediate Notification) and Appendix 5: Critical / High-Risk Results Policy Summary.",
+    "Promptly communicate suspected gonococcal treatment failure or clinically important resistance, and designated resistant-organism screening results, to the appropriate clinical or infection prevention team."
+  ],
   diseaseAssociations: [
     "Gonococcal proctitis; selected bacterial enteric infections.",
     "Intestinal resistant-organism carriage and maternal GBS carriage represent colonisation and associated transmission risks, rather than infection alone."
   ],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "Report only the targets included in the requested investigation", items: [
-      "•	Gonococcal culture: Neisseria gonorrhoeae.",
-      "•	Intestinal resistance screening: specified targets, such as vancomycin-resistant enterococci or carbapenem-resistant/carbapenemase-producing Enterobacterales.",
-      "•	Enteric testing: pathogens included in the validated local investigation.",
-      "•	Antenatal GBS screening: Streptococcus agalactiae.",
-      "Chlamydia, LGV and syphilis results require separate appropriate investigations. Perianal lesion organisms are reported under the relevant skin, wound or abscess investigation."
-    ] }
+    {
+      group: "Report only the targets included in the requested investigation",
+      items: [
+        "•\tGonococcal culture: Neisseria gonorrhoeae.",
+        "•\tIntestinal resistance screening: specified targets, such as vancomycin-resistant enterococci or carbapenem-resistant/carbapenemase-producing Enterobacterales.",
+        "•\tEnteric testing: pathogens included in the validated local investigation.",
+        "•\tAntenatal GBS screening: Streptococcus agalactiae.",
+        "Chlamydia, LGV and syphilis results require separate appropriate investigations. Perianal lesion organisms are reported under the relevant skin, wound or abscess investigation."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b"
+  ],
   lastReviewed: "",
   added: "2026-11-01",
   updated: ""
@@ -2495,15 +2751,18 @@ window.TESTS = [
 
 {
   id: "m-c-s-tissue",
-  name: "M, C & S - Tissue",
-  synonyms: ["Tissue microscopy, culture and susceptibility; tissue MCS; biopsy culture; operative tissue culture."],
+  name: "M C & S - Tissue",
+  synonyms: [
+    "Tissue microscopy, culture and susceptibility",
+    "tissue MCS",
+    "biopsy culture",
+    "operative tissue culture"
+  ],
   department: "microbiology",
   limsCode: "TISSUE",
   flags: ["critical"],
-
   summary: "Microscopy and culture of tissue to identify organisms causing infection.",
   description: "Microscopy and culture of tissue obtained by biopsy or surgery to identify organisms causing infection. Antimicrobial susceptibility testing is performed on clinically significant isolates where appropriate.",
-
   indications: [
     "Suspected deep soft-tissue, surgical-site or organ infection.",
     "Persistent or atypical infection requiring tissue sampling.",
@@ -2515,13 +2774,12 @@ window.TESTS = [
     "For tissue from normally sterile sites, any growth requires assessment for clinical significance. Interpret findings according to the anatomical site, collection method and validated LIMS report."
   ],
   analyticalLimitations: [
-    "•	Previous antimicrobial treatment, inadequate sampling, drying and transport delays may reduce recovery. Negative microscopy or culture does not exclude infection.",
-    "•	Contamination with skin or mucosal flora may occur during collection. Organisms commonly regarded as commensals may nevertheless cause deep or implant-associated infection.",
-    "•	Superficial swabs do not reliably represent infection within deeper tissue.",
-    "•	Routine bacterial culture does not exclude fungal, mycobacterial, viral or other fastidious infections. Additional investigations require appropriate specimens and specific requests.",
-    "•	Culture identifies recoverable organisms but does not establish tissue invasion; correlate with clinical and histopathological findings."
+    "Previous antimicrobial treatment, inadequate sampling, drying and transport delays may reduce recovery. Negative microscopy or culture does not exclude infection.",
+    "Contamination with skin or mucosal flora may occur during collection. Organisms commonly regarded as commensals may nevertheless cause deep or implant-associated infection.",
+    "Superficial swabs do not reliably represent infection within deeper tissue.",
+    "Routine bacterial culture does not exclude fungal, mycobacterial, viral or other fastidious infections. Additional investigations require appropriate specimens and specific requests.",
+    "Culture identifies recoverable organisms but does not establish tissue invasion; correlate with clinical and histopathological findings."
   ],
-
   sampleType: "Tissue",
   containerColour: "Sterile collection jar",
   sampleRequirements: [
@@ -2533,25 +2791,55 @@ window.TESTS = [
     "Where multiple specimens are indicated, collect separately using separate sterile instruments and label each exact site; do not pool specimens.",
     "Include the anatomical site, procedure, suspected diagnosis, relevant exposures, implant details and recent antimicrobial treatment. Explicitly request fungal or mycobacterial investigations when indicated."
   ],
-  storageTransport: "and transport system; minimise air exposure where anaerobic recovery is required.\nStorage temperature and maximum transport time depend on the specimen and requested investigations. See Appendix 9a and Appendix 9b. Contact the laboratory before collection if delay or specialist testing is anticipated.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nFormalin-fixed tissue is unsuitable for culture. Unsuitable containers, drying, leakage or transport outside validated conditions may compromise testing.\nDiscuss compromised or difficult-to-repeat tissue specimens with the laboratory before rejection; document any limitations.",
-  methodology: "Direct Gram stain where appropriate; tissue processing, aerobic and anaerobic bacterial culture as indicated, organism identification and antimicrobial susceptibility testing.\nFungal microscopy and culture, mycobacterial testing and molecular investigations require specific arrangements. Confirm local availability and referral pathways.",
-
-  turnaround: { routine: "2–3 days for preliminary report.", urgent: "" },
-  criticalAlert: "See Appendices 4 and 5. Interpret positive results according to the tissue site and clinical context.\nSuspected necrotising infection or sepsis requires urgent clinical assessment and management without waiting for culture results.",
-  diseaseAssociations: ["Deep soft-tissue infection, surgical-site infection and infected tissue or organ lesions."],
+  storageTransport: [
+    "Transport promptly, preferably immediately after collection. Use the approved container and transport system; minimise air exposure where anaerobic recovery is required.",
+    "Storage temperature and maximum transport time depend on the specimen and requested investigations. See Appendix 9a and Appendix 9b. Contact the laboratory before collection if delay or specialist testing is anticipated."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Formalin-fixed tissue is unsuitable for culture. Unsuitable containers, drying, leakage or transport outside validated conditions may compromise testing.",
+    "Discuss compromised or difficult-to-repeat tissue specimens with the laboratory before rejection; document any limitations."
+  ],
+  methodology: [
+    "Direct Gram stain where appropriate; tissue processing, aerobic and anaerobic bacterial culture as indicated, organism identification and antimicrobial susceptibility testing.",
+    "Fungal microscopy and culture, mycobacterial testing and molecular investigations require specific arrangements. Confirm local availability and referral pathways."
+  ],
+  turnaround: {
+    routine: "Initial bacterial culture findings may be available in 2–3 days, subject to local confirmation. Final results may take longer for anaerobes, slow-growing organisms, additional identification or susceptibility testing. Fungal, mycobacterial and referral investigations have separate turnaround times.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "See Appendices 4 and 5. Interpret positive results according to the tissue site and clinical context.",
+    "Suspected necrotising infection or sepsis requires urgent clinical assessment and management without waiting for culture results."
+  ],
+  diseaseAssociations: [
+    "Deep soft-tissue infection, surgical-site infection and infected tissue or organ lesions."
+  ],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "Clinically significant isolates according to anatomical site and requested investigations. Examples include", items: [
-      "•	Staphylococcus aureus, Streptococcus pyogenes and other streptococci.",
-      "•	Enterobacterales, including Escherichia coli and Klebsiella pneumoniae; Pseudomonas aeruginosa.",
-      "•	Anaerobes, including Bacteroides fragilis group, Prevotella spp., Fusobacterium spp. and anaerobic Gram-positive cocci.",
-      "•	Coagulase-negative staphylococci, Cutibacterium acnes and Corynebacterium spp. where clinically significant.",
-      "Fungi and mycobacteria are reported when the relevant investigations are performed. Interpretation may depend on recovery from multiple separately collected specimens."
-    ] }
+    {
+      group: "Clinically significant isolates according to anatomical site and requested investigations. Examples include",
+      items: [
+        "•\tStaphylococcus aureus, Streptococcus pyogenes and other streptococci.",
+        "•\tEnterobacterales, including Escherichia coli and Klebsiella pneumoniae; Pseudomonas aeruginosa.",
+        "•\tAnaerobes, including Bacteroides fragilis group, Prevotella spp., Fusobacterium spp. and anaerobic Gram-positive cocci.",
+        "•\tCoagulase-negative staphylococci, Cutibacterium acnes and Corynebacterium spp. where clinically significant.",
+        "Fungi and mycobacteria are reported when the relevant investigations are performed. Interpretation may depend on recovery from multiple separately collected specimens."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b"
+  ],
   lastReviewed: "",
   added: "2026-11-02",
   updated: ""
@@ -2559,15 +2847,13 @@ window.TESTS = [
 
 {
   id: "m-c-s-throat",
-  name: "M, C & S - Throat",
-  synonyms: ["Throat swab culture; throat MCS; pharyngeal culture."],
+  name: "M C & S - Throat",
+  synonyms: ["Throat swab culture", "throat MCS", "pharyngeal culture"],
   department: "microbiology",
   limsCode: "THROAT",
   flags: ["critical"],
-
   summary: "Bacterial culture of a throat swab.",
   description: "Bacterial culture of a throat swab, primarily to detect Group A Streptococcus (Streptococcus pyogenes) in suspected streptococcal pharyngitis or tonsillitis. Other organisms are investigated according to clinical details and laboratory policy.",
-
   indications: [
     "Suspected streptococcal pharyngitis or tonsillitis when testing is indicated under the local clinical pathway.",
     "Suspected scarlet fever where microbiological confirmation is required.",
@@ -2585,7 +2871,6 @@ window.TESTS = [
     "Candida and several bacterial species may colonise the throat without causing disease. Isolation alone does not establish the cause of symptoms.",
     "A throat swab does not replace an aspirate or operative specimen when investigating a deep neck or peritonsillar abscess."
   ],
-
   sampleType: "",
   containerColour: "",
   sampleRequirements: [
@@ -2594,27 +2879,56 @@ window.TESTS = [
     "State symptoms, recent antibiotics and any suspected unusual pathogen. Contact the laboratory before collection if diphtheria is suspected.",
     "Separate specimens may be required for gonococcal culture, fungal investigation or nucleic acid amplification testing (NAAT). Use the collection device and medium specified for each assay; viral transport medium is not universally suitable for all molecular tests."
   ],
-  storageTransport: "Send promptly in the approved transport system. Follow locally validated temperature and maximum transport-time requirements.\nSee Appendix 9a and Appendix 9b. Specialised investigations may have different requirements.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nUse laboratory-approved swabs and transport media. Do not apply a blanket rejection rule based solely on a cotton tip; suitability depends on the device and requested test.",
-  methodology: "Culture for β-haemolytic streptococci, with identification or grouping and antimicrobial susceptibility testing where indicated.\nInvestigation for Arcanobacterium haemolyticum or other unusual bacteria depends on clinical details and local capability. Gram stain is not routine for uncomplicated pharyngitis; it may assist investigation of suspected Vincent's angina.\nSuspected diphtheria requires targeted culture, identification and referral for toxin assessment. Gonococcal culture and NAAT, fungal testing and viral NAAT are separate investigations. Confirm local availability and referral arrangements.",
-
-  turnaround: { routine: "2–3 days", urgent: "" },
-  criticalAlert: "Communicate urgent findings according to the approved local policy; see Appendices 4 and 5. A positive Group A streptococcal throat culture is not automatically a critical result.\nSuspected diphtheria requires immediate clinical, laboratory and public health discussion; do not await culture confirmation.\nIf epiglottitis or threatened airway obstruction is suspected, defer throat swabbing until the airway is secured and specialist assessment permits collection.",
+  storageTransport: [
+    "Send promptly in the approved transport system. Follow locally validated temperature and maximum transport-time requirements.",
+    "See Appendix 9a and Appendix 9b. Specialised investigations may have different requirements."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Use laboratory-approved swabs and transport media. Do not apply a blanket rejection rule based solely on a cotton tip; suitability depends on the device and requested test."
+  ],
+  methodology: [
+    "Culture for β-haemolytic streptococci, with identification or grouping and antimicrobial susceptibility testing where indicated.",
+    "Investigation for Arcanobacterium haemolyticum or other unusual bacteria depends on clinical details and local capability. Gram stain is not routine for uncomplicated pharyngitis; it may assist investigation of suspected Vincent's angina.",
+    "Suspected diphtheria requires targeted culture, identification and referral for toxin assessment. Gonococcal culture and NAAT, fungal testing and viral NAAT are separate investigations. Confirm local availability and referral arrangements."
+  ],
+  turnaround: {
+    routine: "Routine bacterial culture: 2–3 days, subject to local confirmation. Specialised culture, confirmation and referral investigations may take longer.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Communicate urgent findings according to the approved local policy; see Appendices 4 and 5. A positive Group A streptococcal throat culture is not automatically a critical result.",
+    "Suspected diphtheria requires immediate clinical, laboratory and public health discussion; do not await culture confirmation.",
+    "If epiglottitis or threatened airway obstruction is suspected, defer throat swabbing until the airway is secured and specialist assessment permits collection."
+  ],
   diseaseAssociations: [
     "Streptococcal pharyngitis or tonsillitis; scarlet fever.",
     "Diphtheria, gonococcal pharyngeal infection and Vincent's angina when specifically investigated."
   ],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "Reported organisms", items: [
-      "•	Group A Streptococcus (Streptococcus pyogenes).",
-      "•	Group C or G β-haemolytic streptococci and Arcanobacterium haemolyticum, according to laboratory policy and testing performed.",
-      "•	Neisseria gonorrhoeae or potentially toxigenic Corynebacterium species when specifically investigated.",
-      "Normal oropharyngeal flora are generally reported collectively. Candida findings require clinical interpretation and appropriate fungal investigation; routine recovery does not diagnose thrush."
-    ] }
+    {
+      group: "Reported organisms",
+      items: [
+        "•\tGroup A Streptococcus (Streptococcus pyogenes).",
+        "•\tGroup C or G β-haemolytic streptococci and Arcanobacterium haemolyticum, according to laboratory policy and testing performed.",
+        "•\tNeisseria gonorrhoeae or potentially toxigenic Corynebacterium species when specifically investigated.",
+        "Normal oropharyngeal flora are generally reported collectively. Candida findings require clinical interpretation and appropriate fungal investigation; routine recovery does not diagnose thrush."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b"
+  ],
   lastReviewed: "",
   added: "2026-11-02",
   updated: ""
@@ -2622,15 +2936,17 @@ window.TESTS = [
 
 {
   id: "m-c-s-synovial-joint",
-  name: "M, C & S - Synovial / Joint",
-  synonyms: ["Synovial fluid culture; joint aspirate MCS; joint fluid microscopy, culture and susceptibility."],
+  name: "M C & S - Synovial / Joint",
+  synonyms: [
+    "Synovial fluid culture",
+    "joint aspirate MCS",
+    "joint fluid microscopy, culture and susceptibility"
+  ],
   department: "microbiology",
   limsCode: "JOINT",
   flags: [],
-
   summary: "Microscopy and culture of synovial fluid.",
   description: "Microscopy and culture of synovial fluid to identify organisms causing joint infection. Antimicrobial susceptibility testing is performed on clinically significant isolates where appropriate.",
-
   indications: [
     "Suspected septic arthritis.",
     "Investigation of prosthetic-joint infection under the appropriate specialist sampling pathway.",
@@ -2649,7 +2965,6 @@ window.TESTS = [
     "Dilution with saline or other introduced fluid may reduce diagnostic yield and compromise cell-count interpretation.",
     "Crystals do not exclude concurrent infection. Crystal examination and cell counts have separate analytical limitations."
   ],
-
   sampleType: "",
   containerColour: "",
   sampleRequirements: [
@@ -2658,29 +2973,59 @@ window.TESTS = [
     "Submit as much fluid as safely obtainable. Discuss limited specimens with the laboratory; prioritise microbiological investigation when infection is suspected.",
     "If sufficient fluid remains, inoculation into approved blood culture bottles may improve recovery under the local protocol. Do not submit the entire specimen in bottles if direct microscopy or other fluid examinations are required.",
     "Arrange separate aliquots and locally approved containers for cell count and crystal examination. Do not use an anticoagulant tube as the sole culture specimen.",
-    "Do not inject saline solely to obtain a specimen after a dry tap.	Specify the joint, right or left side, native or prosthetic status, recent surgery or injection, antibiotics and suspected unusual organisms.",
+    "Do not inject saline solely to obtain a specimen after a dry tap.",
+    "Specify the joint, right or left side, native or prosthetic status, recent surgery or injection, antibiotics and suspected unusual organisms.",
     "Prosthetic-joint infection may require multiple separately collected operative tissue specimens in addition to fluid."
   ],
-  storageTransport: "Transport immediately and alert the laboratory when septic arthritis is suspected, including outside routine hours.\nFollow locally validated conditions for unprocessed fluid, blood culture bottles and specimens for cell count or crystals. Do not refrigerate inoculated blood culture bottles.\nSee Appendix 9a and Appendix 9b. Contact the laboratory if transport will be delayed.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nDiscuss small-volume, bloody, clotted or otherwise compromised specimens with the laboratory before rejection. These findings may limit cell counts or other examinations but do not automatically preclude culture.\nFixed specimens are unsuitable for culture. Document dilution or collection problems and any resulting limitations.",
-  methodology: "Direct Gram stain; aerobic and anaerobic bacterial culture, organism identification and antimicrobial susceptibility testing as appropriate.\nCell count, differential and polarised-light crystal examination are complementary investigations; confirm whether included or separately requested.\nFungal microscopy and culture, mycobacterial culture and nucleic acid amplification testing (NAAT) require specific arrangements. Targeted molecular testing may assist selected culture-negative cases. Confirm local availability and referral pathways.",
-
-  turnaround: { routine: "2 -7 days.", urgent: "" },
-  criticalAlert: "",
+  storageTransport: [
+    "Transport immediately and alert the laboratory when septic arthritis is suspected, including outside routine hours.",
+    "Follow locally validated conditions for unprocessed fluid, blood culture bottles and specimens for cell count or crystals. Do not refrigerate inoculated blood culture bottles.",
+    "See Appendix 9a and Appendix 9b. Contact the laboratory if transport will be delayed."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Discuss small-volume, bloody, clotted or otherwise compromised specimens with the laboratory before rejection. These findings may limit cell counts or other examinations but do not automatically preclude culture.",
+    "Fixed specimens are unsuitable for culture. Document dilution or collection problems and any resulting limitations."
+  ],
+  methodology: [
+    "Direct Gram stain; aerobic and anaerobic bacterial culture, organism identification and antimicrobial susceptibility testing as appropriate.",
+    "Cell count, differential and polarised-light crystal examination are complementary investigations; confirm whether included or separately requested.",
+    "Fungal microscopy and culture, mycobacterial culture and nucleic acid amplification testing (NAAT) require specific arrangements. Targeted molecular testing may assist selected culture-negative cases. Confirm local availability and referral pathways."
+  ],
+  turnaround: {
+    routine: "Routine bacterial culture: 2–7 days, subject to local confirmation. Preliminary positive findings are reported when available. Extended incubation, prosthetic-joint investigations and fungal or mycobacterial testing may take longer.",
+    urgent: "Gram stain: urgent processing when septic arthritis is suspected; confirm local availability."
+  },
+  criticalAlert: [
+    "Organisms seen on Gram stain or clinically significant growth from synovial fluid require prompt communication to the treating team under the approved local policy; see Appendices 4 and 5.",
+    "Do not await final culture results before assessing and managing suspected septic arthritis."
+  ],
   diseaseAssociations: ["Septic arthritis; prosthetic-joint infection."],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "Clinically significant isolates, including", items: [
-      "•	Staphylococcus aureus and Streptococcus spp.",
-      "•	Gram-negative bacteria, including Escherichia coli and Pseudomonas aeruginosa.",
-      "•	Neisseria gonorrhoeae when recovered; suspected gonococcal arthritis also requires appropriate mucosal testing.",
-      "•	Coagulase-negative staphylococci and Cutibacterium acnes, particularly in prosthetic-joint infection.",
-      "•	Other bacteria according to clinical context, including Kingella kingae in young children.",
-      "Fungi and mycobacteria are reported when specifically investigated. Viral arthritis is not diagnosed by routine joint culture."
-    ] }
+    {
+      group: "Clinically significant isolates, including",
+      items: [
+        "•\tStaphylococcus aureus and Streptococcus spp.",
+        "•\tGram-negative bacteria, including Escherichia coli and Pseudomonas aeruginosa.",
+        "•\tNeisseria gonorrhoeae when recovered; suspected gonococcal arthritis also requires appropriate mucosal testing.",
+        "•\tCoagulase-negative staphylococci and Cutibacterium acnes, particularly in prosthetic-joint infection.",
+        "•\tOther bacteria according to clinical context, including Kingella kingae in young children.",
+        "Fungi and mycobacteria are reported when specifically investigated. Viral arthritis is not diagnosed by routine joint culture."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b"
+  ],
   lastReviewed: "",
   added: "2026-11-02",
   updated: ""
@@ -2688,15 +3033,20 @@ window.TESTS = [
 
 {
   id: "m-c-s-tuberculosis",
-  name: "M, C & S - Tuberculosis",
-  synonyms: ["Mycobacterial Culture, Mycobacterium tuberculosis Culture, Acid-Fast Bacilli Culture"],
+  name: "M C & S - Tuberculosis",
+  synonyms: [
+    "Mycobacterial Culture",
+    "Mycobacterium tuberculosis Culture",
+    "Acid-Fast Bacilli Culture"
+  ],
   department: "microbiology",
   limsCode: "TB Test (Panel)",
   flags: ["critical"],
-
   summary: "Culture to detect viable Mycobacterium tuberculosis complex.",
-  description: "Culture to detect viable Mycobacterium tuberculosis complex (MTBC) and non-tuberculous mycobacteria (NTM). Positive cultures support organism identification and, where indicated, drug susceptibility testing (DST).\nCulture complements rapid molecular testing and may require referral to a designated TB reference laboratory.",
-
+  description: [
+    "Culture to detect viable Mycobacterium tuberculosis complex (MTBC) and non-tuberculous mycobacteria (NTM). Positive cultures support organism identification and, where indicated, drug susceptibility testing (DST).",
+    "Culture complements rapid molecular testing and may require referral to a designated TB reference laboratory."
+  ],
   indications: [
     "Investigate pulmonary or extrapulmonary tuberculosis (TB), including persistent clinical suspicion despite negative initial testing.",
     "Obtain isolates for identification and DST.",
@@ -2712,9 +3062,8 @@ window.TESTS = [
     "Low organism numbers, poor sampling and prior anti-TB treatment reduce sensitivity.",
     "Bacterial or fungal overgrowth may make cultures uninterpretable; recollection may be required.",
     "Laboratory cross-contamination can occasionally cause false-positive results.",
-    "Some NTM require specialised culture"
+    "Some NTM require specialised culture conditions; discuss unusual, suspected infections with the laboratory."
   ],
-
   sampleType: "Sputum",
   containerColour: "Sterile collection jar",
   sampleRequirements: [
@@ -2724,22 +3073,57 @@ window.TESTS = [
     "Confirm specimen volumes and special collection requirements before sampling. Gastric aspirates require prompt handling under the receiving laboratory's protocol.",
     "Include specimen site, collection date/time, previous TB and current or recent anti-TB treatment on the request."
   ],
-  storageTransport: "Transport promptly to the designated laboratory using approved infectious-specimen packaging.\nRefrigerate sputum at 2–8 °C if transport or processing is delayed.\nFor other specimens, follow the receiving laboratory's validated storage requirements. Do not freeze unless specifically instructed.\nSee Appendices 9a and 9b.",
-  rejection: "Unlabelled or mislabelled specimens, leaking containers, or unsuitable containers.\nFormalin-fixed tissue is unsuitable for culture.\nInsufficient quantity, unsuitable specimen type or transport outside validated limits: discuss with the laboratory.\nDiscuss irreplaceable specimens before rejection; do not apply an assumed universal 24-hour cutoff.\nSee Appendix 7.",
-  methodology: "Mycobacterial culture using validated liquid and/or solid media.\nPositive cultures undergo validated identification and appropriate DST locally or by referral.",
-
-  turnaround: { routine: "", urgent: "" },
-  criticalAlert: "Promptly communicate newly identified MTBC and clinically significant drug resistance.\nFollow the National TB Programme's reporting and notification requirements.",
-  diseaseAssociations: [],
-  conversionFactors: "",
-  organismsReported: [
-    { group: "Reported organisms", items: [
-      "Mycobacterium tuberculosis complex; individual species identification where available and indicated.",
-      "NTM identified to the level supported by the laboratory or reference service, for example Mycobacterium avium complex, M. kansasii and M. fortuitum."
-    ] }
+  storageTransport: [
+    "Transport promptly to the designated laboratory using approved infectious-specimen packaging.",
+    "Refrigerate sputum at 2–8 °C if transport or processing is delayed.",
+    "For other specimens, follow the receiving laboratory's validated storage requirements. Do not freeze unless specifically instructed.",
+    "See Appendices 9a and 9b."
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b"],
+  rejection: [
+    "Unlabelled or mislabelled specimens, leaking containers, or unsuitable containers.",
+    "Formalin-fixed tissue is unsuitable for culture.",
+    "Insufficient quantity, unsuitable specimen type or transport outside validated limits: discuss with the laboratory.",
+    "Discuss irreplaceable specimens before rejection; do not apply an assumed universal 24-hour cutoff.",
+    "See Appendix 7."
+  ],
+  methodology: [
+    "Mycobacterial culture using validated liquid and/or solid media.",
+    "Positive cultures undergo validated identification and appropriate DST locally or by referral."
+  ],
+  turnaround: {
+    routine: "Positive cultures are reported when detected and appropriately confirmed. Final negative results commonly require approximately 6–8 weeks, depending on the culture system and organism sought. Identification, DST and referral transport may add time.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Promptly communicate newly identified MTBC and clinically significant drug resistance.",
+    "Follow the National TB Programme's reporting and notification requirements."
+  ],
+  diseaseAssociations: [
+    "Pulmonary and extrapulmonary TB.",
+    "NTM pulmonary, localised or disseminated disease; NTM disease is not restricted to immunocompromised patients."
+  ],
+  conversionFactors: "Not applicable.",
+  organismsReported: [
+    {
+      group: "Reported organisms",
+      items: [
+        "Mycobacterium tuberculosis complex; individual species identification where available and indicated.",
+        "NTM identified to the level supported by the laboratory or reference service, for example Mycobacterium avium complex, M. kansasii and M. fortuitum."
+      ]
+    }
+  ],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b"
+  ],
   lastReviewed: "",
   added: "2026-11-02",
   updated: ""
@@ -3200,11 +3584,7 @@ window.TESTS = [
     "See Appendix 9a."
   ],
   rejection: "Clotted specimens, incorrect collection tubes, incorrect fill or anticoagulant ratio, and specimens outside validated stability limits. Apply identification and other rejection requirements in Appendix 7.",
-  methodology: [
-    "Automated analyser method.",
-    "Manual Westergren method. "
-  ],
-
+  methodology: ["Automated analyser method.", "Manual Westergren method."],
   turnaround: { routine: "Same day, subject to the local testing schedule.", urgent: "" },
   criticalAlert: [
     "Telephone immediately: ESR >100 mm/h. See Appendices 4 and 5.",
@@ -3374,7 +3754,7 @@ window.TESTS = [
 
 {
   id: "amylase-fluid",
-  name: "Amylase - Fluid ",
+  name: "Amylase - Fluid",
   synonyms: [
     "Body Fluid Amylase",
     "Ascitic Fluid Amylase",
@@ -3398,7 +3778,7 @@ window.TESTS = [
   ],
   referenceRange: [
     "No universal reference interval applies to all body fluids.",
-    "In pleural fluid, activity above the serum upper reference limit or a fluid amylase ratio >1 indicates an amylase-rich effusion, but does not identify its cause.",
+    "In pleural fluid, activity above the serum upper reference limit or a fluid amylase ratio >1 indicates an amylase-rich effusion but does not identify its cause.",
     "Interpret peritoneal and drain fluid according to the clinical indication. Use identical units when calculating ratios. See Appendix 12 for general reference-interval guidance."
   ],
   analyticalLimitations: [
@@ -3905,7 +4285,7 @@ window.TESTS = [
     "ng/mL × 2.266 = nmol/L.",
     "nmol/L × 0.441 = ng/mL.",
     "1 ng/mL = 1 µg/L.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)"
   ],
   organismsReported: null,
   appendixRefs: [
@@ -5086,7 +5466,7 @@ window.TESTS = [
     "HBV Quantitative PCR",
     "Hepatitis B Viral Load"
   ],
-  department: "serology",
+  department: "molecular",
   limsCode: "HEPB-VL",
   flags: [],
   summary: "Quantifies hepatitis B virus (HBV) DNA in plasma or serum.",
@@ -5336,7 +5716,7 @@ window.TESTS = [
     "HIV Viral Load",
     "HIV-1 RNA Viral Load (where applicable)"
   ],
-  department: "serology",
+  department: "molecular",
   limsCode: "HIV1-VL",
   flags: ["critical"],
   summary: "Quantifies human immunodeficiency virus (HIV) ribonucleic acid (RNA) in plasma.",
@@ -5492,7 +5872,7 @@ window.TESTS = [
   name: "Japanese Encephalitis Virus (JEV) IgM Antibody",
   synonyms: ["JEV IgM", "Japanese Encephalitis Serology"],
   department: "serology",
-  limsCode: "JEV IGM",
+  limsCode: "JE IGM",
   flags: [],
   summary: "Detects immunoglobulin M (IgM) antibodies to Japanese encephalitis virus (JEV).",
   description: "Detects immunoglobulin M (IgM) antibodies to Japanese encephalitis virus (JEV) in serum or cerebrospinal fluid (CSF). Supports diagnosis of recent infection with this mosquito-borne flavivirus.",
@@ -6088,10 +6468,7 @@ window.TESTS = [
     "Incorrect identification, leakage, insufficient volume, unsuitable specimen or handling outside validated stability limits may make testing unsuitable.",
     "Assess haemolysis, lipaemia and icterus against assay-specific limits; do not reject automatically."
   ],
-  methodology: [
-    "Validated antibody immunoassay, such as enzyme-linked immunosorbent assay (ELISA) or chemiluminescent immunoassay (CLIA).",
-    "Confirm the local methods and whether IgM, IgG or both are performed under MEA-AB. Specialist confirmation requires an established referral pathway."
-  ],
+  methodology: "Validated antibody immunoassay, such as enzyme-linked immunosorbent assay (ELISA).",
   turnaround: {
     routine: "Confirm local or referral turnaround time; the proposed 3–5 working days requires verification. Suspected acute measles requires an expedited testing and communication pathway.",
     urgent: ""
@@ -6125,18 +6502,24 @@ window.TESTS = [
 {
   id: "m-c-s-endotracheal-aspirate",
   name: "M C & S - Endotracheal Aspirate",
-  synonyms: ["Endotracheal aspirate culture; tracheal aspirate culture; ETA culture; ETT aspirate MCS."],
+  synonyms: [
+    "Endotracheal aspirate culture",
+    "tracheal aspirate culture",
+    "ETA culture",
+    "ETT aspirate MCS"
+  ],
   department: "microbiology",
   limsCode: "ETT",
   flags: [],
-
   summary: "Gram stain and bacterial culture of respiratory secretions.",
-  description: "Gram stain and bacterial culture of respiratory secretions collected through an endotracheal tube, with susceptibility testing of clinically significant isolates.\nSupports investigation of lower respiratory infection in intubated patients. Culture results must be interpreted with clinical and radiological findings.",
-
+  description: [
+    "Gram stain and bacterial culture of respiratory secretions collected through an endotracheal tube, with susceptibility testing of clinically significant isolates.",
+    "Supports investigation of lower respiratory infection in intubated patients. Culture results must be interpreted with clinical and radiological findings."
+  ],
   indications: [
-    "•	Suspected ventilator-associated pneumonia (VAP), generally occurring more than 48 hours after endotracheal intubation.",
-    "•	Suspected lower respiratory infection in an intubated patient, particularly with new or worsening infiltrates, purulent secretions or deteriorating oxygenation.",
-    "•	Investigation of treatment failure and support for targeted antimicrobial selection.",
+    "Suspected ventilator-associated pneumonia (VAP), generally occurring more than 48 hours after endotracheal intubation.",
+    "Suspected lower respiratory infection in an intubated patient, particularly with new or worsening infiltrates, purulent secretions or deteriorating oxygenation.",
+    "Investigation of treatment failure and support for targeted antimicrobial selection.",
     "Prolonged ventilation alone is not an indication for diagnostic culture."
   ],
   referenceRange: [
@@ -6144,105 +6527,60 @@ window.TESTS = [
     "For quantitative culture, use the laboratory's validated interpretative criteria. Colony-count thresholds are clinical decision limits, not normal reference intervals."
   ],
   analyticalLimitations: [
-    "•	Airway colonisation and endotracheal-tube biofilm may produce positive cultures without pneumonia. Colonisation becomes increasingly common during intubation.",
-    "•	Oropharyngeal contamination may affect results. Inflammatory cells and organisms on Gram stain support interpretation but do not independently establish infection.",
-    "•	Previous antibiotics, inadequate sampling, dilution and transport delays may reduce recovery. Negative culture does not exclude pneumonia.",
-    "•	Quantitative counts cannot reliably distinguish colonisation from infection in isolation.",
-    "•	Candida usually represents airway colonisation. Aspergillus recovery requires clinical assessment and does not alone establish invasive disease.",
-    "•	Routine culture does not exclude mycobacteria, Legionella, respiratory viruses or other organisms requiring specific investigations."
-  ],
-
-  sampleType: "",
-  containerColour: "",
-  sampleRequirements: [
-    "No clinically significant bacterial pathogens isolated / normal respiratory flora only, according to laboratory reporting practice.",
-    "For quantitative culture, use the laboratory's validated interpretative criteria. Colony-count thresholds are clinical decision limits, not normal reference intervals."
-  ],
-  storageTransport: "Send promptly in the approved sterile container.\nFollow locally validated transport times and temperature requirements; refrigerate delayed specimens only according to the laboratory's protocol. See Appendix 9a and Appendix 9b.\nRoutine endotracheal aspirates are generally unsuitable for anaerobic investigation; discuss alternative specimens if anaerobic infection is suspected.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nApply validated criteria specific to endotracheal aspirates for specimen quality, collection devices, leakage and transport deviations.\nDo not automatically reject using the stated squamous-cell or neutrophil thresholds unless these form part of an approved, validated local policy.",
-  methodology: "Gram stain; bacterial culture with qualitative, semiquantitative or quantitative reporting according to the validated local method; identification and antimicrobial susceptibility testing of significant isolates.\nFungal culture, mycobacterial investigations and molecular testing require specific requests or laboratory assessment.",
-
-  turnaround: { routine: "2–3 days", urgent: "" },
-  criticalAlert: "",
-  diseaseAssociations: ["Ventilator-associated pneumonia; other lower respiratory infections in intubated patients, including clinically suspected tracheobronchitis."],
-  conversionFactors: "Not applicable.",
-  organismsReported: [
-    { group: "Clinically significant isolates according to clinical details and laboratory policy, including", items: [
-      "•	Staphylococcus aureus, including methicillin-resistant strains.",
-      "•	Pseudomonas aeruginosa and Acinetobacter spp.",
-      "•	Enterobacterales, including Klebsiella pneumoniae, Escherichia coli, Enterobacter spp. and Serratia marcescens.",
-      "•	Other relevant respiratory pathogens where recovered.",
-      "Coagulase-negative staphylococci, Enterococcus spp. and yeasts commonly represent colonisation and require cautious interpretation. Fungal findings are reported according to the investigation performed."
-    ] }
-  ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b"],
-  lastReviewed: "",
-  added: "2026-11-02",
-  updated: ""
-},
-
-{
-  id: "m-c-s-mycobacterium tuberculosis",
-  name: "M, C & S - Mycobacterium tuberculosis",
-  synonyms: ["AFB Smear", "Acid-Fast Smear Microscopy", "Ziehl–Neelsen Stain"],
-  department: "microbiology",
-  limsCode: "AFB",
-  flags: ["stat"],
-  summary: "Microscopic detection of acid-fast bacilli.",
-  description: "Microscopic detection of acid-fast bacilli in clinical specimens, primarily for the investigation of tuberculosis (TB) and other mycobacterial infections.",
-  indications: [
-    "Investigation of suspected pulmonary or extrapulmonary TB.",
-    "Assessment of potential infectiousness in pulmonary TB.",
-    "Treatment monitoring when indicated by national TB guidelines.",
-    "Investigation of suspected non-tuberculous mycobacterial infection."
-  ],
-  referenceRange: [
-    "Negative: No acid-fast bacilli seen.",
-    "Positive: Acid-fast bacilli detected; graded according to the validated microscopy reporting system."
-  ],
-  analyticalLimitations: [
-    "Less sensitive than mycobacterial culture or WHO-recommended molecular diagnostic tests.",
-    "Cannot differentiate Mycobacterium tuberculosis complex from non-tuberculous mycobacteria.",
-    "A negative smear does not exclude TB, particularly in patients with low bacillary loads.",
-    "Cannot distinguish viable from non-viable bacilli or determine drug resistance.",
-    "Sensitivity depends on specimen quality, bacillary concentration and staining technique."
+    "Airway colonisation and endotracheal-tube biofilm may produce positive cultures without pneumonia. Colonisation becomes increasingly common during intubation.",
+    "Oropharyngeal contamination may affect results. Inflammatory cells and organisms on Gram stain support interpretation but do not independently establish infection.",
+    "Previous antibiotics, inadequate sampling, dilution and transport delays may reduce recovery. Negative culture does not exclude pneumonia.",
+    "Quantitative counts cannot reliably distinguish colonisation from infection in isolation.",
+    "Candida usually represents airway colonisation. Aspergillus recovery requires clinical assessment and does not alone establish invasive disease.",
+    "Routine culture does not exclude mycobacteria, Legionella, respiratory viruses or other organisms requiring specific investigations."
   ],
   sampleType: "",
   containerColour: "",
   sampleRequirements: [
-    "Sputum collected in a sterile, leak-proof container; number and timing of specimens according to the national TB diagnostic algorithm.",
-    "Other specimens: bronchoalveolar lavage, cerebrospinal fluid, pleural fluid, tissue or aspirates, as clinically indicated.",
-    "Submit adequate specimen volume according to laboratory requirements."
+    "Endotracheal aspirate collected by trained staff using the approved airway-suction protocol and an appropriate sterile collection system.",
+    "Collect secretions into a sterile suction trap or approved leakproof container.",
+    "Routine saline instillation solely to obtain or increase the specimen is discouraged. Document any dilution.",
+    "Collect before starting or changing antibiotics where practicable, without delaying urgent treatment.",
+    "Submit sufficient material for the requested investigations; confirm the locally validated minimum volume.",
+    "Label as endotracheal aspirate and include collection date/time, clinical indication, duration of intubation, current antibiotics and relevant immunocompromise.",
+    "Specify suspected unusual organisms or additional fungal investigations.",
+    "This entry concerns aspirated secretions; an endotracheal-tube tip is a different specimen."
   ],
   storageTransport: [
-    "Transport promptly in a sealed, leak-proof container. Refrigerate at 2–8 °C if processing is delayed, according to local specimen stability requirements.",
-    "See Appendices 9a and 9b."
+    "Send promptly in the approved sterile container.",
+    "Follow locally validated transport times and temperature requirements; refrigerate delayed specimens only according to the laboratory's protocol. See Appendix 9a and Appendix 9b.",
+    "Routine endotracheal aspirates are generally unsuitable for anaerobic investigation; discuss alternative specimens if anaerobic infection is suspected."
   ],
   rejection: [
-    "Unlabelled or incorrectly labelled specimens.",
-    "Leaking or unsuitable containers.",
-    "Inadequate specimen quantity or quality, according to laboratory criteria.",
-    "Salivary specimens may require recollection when sputum is requested.",
-    "See Appendix 7: Sample Rejection Criteria (All Departments)."
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Apply validated criteria specific to endotracheal aspirates for specimen quality, collection devices, leakage and transport deviations.",
+    "Do not automatically reject using the stated squamous-cell or neutrophil thresholds unless these form part of an approved, validated local policy."
   ],
-  methodology: "Ziehl–Neelsen staining with bright-field microscopy.",
+  methodology: [
+    "Gram stain; bacterial culture with qualitative, semiquantitative or quantitative reporting according to the validated local method; identification and antimicrobial susceptibility testing of significant isolates.",
+    "Fungal culture, mycobacterial investigations and molecular testing require specific requests or laboratory assessment."
+  ],
   turnaround: {
-    routine: "Same day, subject to laboratory operating hours and specimen receipt.",
-    urgent: "Within 4 hours."
+    routine: "Gram stain: according to urgency and local service availability. Routine culture and susceptibility: usually 2–3 days, subject to local confirmation. Additional identification, resistance confirmation, fungal or referral investigations may take longer.",
+    urgent: ""
   },
-  criticalAlert: "New positive AFB smear results in patients with suspected pulmonary TB require prompt notification to the requesting clinician and relevant TB/infection prevention services, according to local policy.",
+  criticalAlert: [
+    "Communicate clinically urgent findings and specified resistant organisms promptly under approved laboratory and infection prevention policies; see Appendices 4 and 5.",
+    "MRSA, carbapenem-resistant organisms or Aspergillus may require notification depending on the clinical context and local policy. A positive aspirate culture alone is not automatically critical."
+  ],
   diseaseAssociations: [
-    "Pulmonary and extrapulmonary tuberculosis.",
-    "Non-tuberculous mycobacterial infections.",
-    "Other acid-fast organisms, depending on staining method."
+    "Ventilator-associated pneumonia; other lower respiratory infections in intubated patients, including clinically suspected tracheobronchitis."
   ],
   conversionFactors: "Not applicable.",
   organismsReported: [
     {
-      group: "Reported organisms",
+      group: "Clinically significant isolates according to clinical details and laboratory policy, including",
       items: [
-        "Acid-fast bacilli detected or not detected, with smear grading where applicable. Species identification requires additional molecular testing or culture."
+        "•\tStaphylococcus aureus, including methicillin-resistant strains.",
+        "•\tPseudomonas aeruginosa and Acinetobacter spp.",
+        "•\tEnterobacterales, including Klebsiella pneumoniae, Escherichia coli, Enterobacter spp. and Serratia marcescens.",
+        "•\tOther relevant respiratory pathogens where recovered.",
+        "Coagulase-negative staphylococci, Enterococcus spp. and yeasts commonly represent colonisation and require cautious interpretation. Fungal findings are reported according to the investigation performed."
       ]
     }
   ],
@@ -6256,17 +6594,16 @@ window.TESTS = [
     "appendix-7",
     "appendix-8",
     "appendix-9a",
-    "appendix-9b",
-    "appendix-12"
+    "appendix-9b"
   ],
   lastReviewed: "",
-  added: "2026-10-14",
+  added: "2026-11-02",
   updated: ""
 },
 
 {
   id: "ova-cysts-and-parasites-stool",
-  name: "Ova, Cysts, and Parasites (OCP) – Stool Microscopy",
+  name: "Microscopy - Ova, Cysts, and Parasites (OCP) – Stool",
   synonyms: [
     "Stool Parasite Microscopy",
     "Faecal Parasite Microscopy",
@@ -6520,7 +6857,6 @@ window.TESTS = [
   updated: ""
 },
 
-
 {
   id: "phosphorus",
   name: "Phosphorus",
@@ -6693,7 +7029,7 @@ window.TESTS = [
 
 {
   id: "pregnancy-test-rapid-test",
-  name: "Pregnancy - Rapid Test",
+  name: "Pregnancy Test",
   synonyms: [
     "Qualitative hCG Test",
     "Rapid Pregnancy Test",
@@ -7136,7 +7472,7 @@ window.TESTS = [
     "Retic Count"
   ],
   department: "haematology",
-  limsCode: "RETIC",
+  limsCode: "RET#",
   flags: [],
   summary: "Measures circulating immature red blood cells.",
   description: "Measures circulating immature red blood cells (reticulocytes), reported as an absolute count and/or percentage of red blood cells. Reflects bone marrow red cell production.",
@@ -7293,7 +7629,7 @@ window.TESTS = [
     "German Measles Antibody"
   ],
   department: "serology",
-  limsCode: "RUB-AB",
+  limsCode: "RUB-IGG, RUB-IGM",
   flags: [],
   summary: "Detects rubella-specific IgG and/or IgM antibodies.",
   description: "Detects rubella-specific immunoglobulin G (IgG) and/or immunoglobulin M (IgM) antibodies. IgG assesses evidence of immunity; IgM supports investigation of suspected recent infection.",
@@ -7658,7 +7994,7 @@ window.TESTS = [
 
 {
   id: "sodium-serum",
-  name: "Sodium - Serum",
+  name: "Sodium - (Serum)",
   synonyms: ["Plasma Sodium", "Na⁺"],
   department: "biochemistry",
   limsCode: "NA",
@@ -7735,10 +8071,9 @@ window.TESTS = [
 
 {
   id: "m-c-s-sputum",
-  name: "M, C & S - Sputum",
+  name: "M C & S - Sputum",
   synonyms: [
-    "Sputum Microscopy",
-    "Culture and Susceptibility",
+    "Sputum Microscopy, Culture and Susceptibility",
     "Sputum MCS",
     "Sputum Culture and Sensitivity"
   ],
@@ -7835,7 +8170,7 @@ window.TESTS = [
 
 {
   id: "m-c-s-stool",
-  name: "M, C & S - Stool",
+  name: "M C & S - Stool",
   synonyms: ["Faeces Culture", "Bacterial Enteric Culture"],
   department: "microbiology",
   limsCode: "STOOL",
@@ -8147,11 +8482,13 @@ window.TESTS = [
     "Haemolysis, lipaemia or icterus require rejection only where interference exceeds the assay's validated acceptance limits."
   ],
   methodology: [
-    "A competitive immunoassay technique is used, which depends on competition between testosterone present in the sample with a horseradish peroxidase (HRP)-labeled testosterone conjugate.The bound HRP conjugate is measured by a luminescent reaction.The amount of HRP conjugate bound is indirectly proportional to the concentration of testosterone present.",
+    "A competitive immunoassay technique is used, which depends on competition between testosterone present in the sample with a horseradish peroxidase (HRP)-labeled testosterone conjugate.",
+    "The bound HRP conjugate is measured by a luminescent reaction.",
+    "The amount of HRP conjugate bound is indirectly proportional to the concentration of testosterone present."
   ],
   turnaround: {
-  routine: "Proposed routine turnaround: 1–3 working days, subject to laboratory confirmation. Referral testing may take longer.",
-  urgent: ""
+    routine: "Proposed routine turnaround: 1–3 working days, subject to laboratory confirmation. Referral testing may take longer.",
+    urgent: ""
   },
   criticalAlert: "Severe androgen excess or rapidly progressive virilisation in women warrants prompt clinician communication and urgent specialist assessment. Unexpected results should undergo laboratory review and appropriate confirmation.",
   diseaseAssociations: [
@@ -8505,7 +8842,7 @@ window.TESTS = [
   id: "troponin-i-poc-quidel-triage",
   name: "Troponin I - POC Quidel-Triage (Analyser specific test entry)",
   synonyms: ["Cardiac Troponin I; cTnI; TnI; Troponin I"],
-  department: "icu",
+  department: "biochemistry",
   limsCode: "TROPI",
   flags: ["critical", "stat"],
   summary: "Measures the Cardiac troponin I (cTnI) protein released into the circulation following myocardial injury.",
@@ -8770,7 +9107,7 @@ window.TESTS = [
   id: "urine-analysis-dipstick",
   name: "Urine Analysis – Dipstick",
   synonyms: ["Dipstick Urinalysis", "Urine Dipstick Test"],
-  department: "microbiology",
+  department: "biochemistry",
   limsCode: "UR-DIP",
   flags: [],
   summary: "Qualitative or semi-quantitative assessment of urine chemistry.",
@@ -8860,9 +9197,9 @@ window.TESTS = [
 
 {
   id: "microscopy-urine",
-  name: "Microscopy - Urine (RBC, WBC, Casts, Crystals)",
+  name: "Microscopy (RBC, WBC, Casts, Crystals) - Urine",
   synonyms: ["Urine Sediment Examination", "Urine Microscopy"],
-  department: "microbiology",
+  department: "biochemistry",
   limsCode: "UMIC",
   flags: [],
   summary: "Microscopic examination of urine.",
@@ -9053,7 +9390,7 @@ window.TESTS = [
 
 {
   id: "m-c-s-urine",
-  name: "M, C & S - Urine",
+  name: "M C & S - Urine",
   synonyms: [
     "Urine Bacterial Culture",
     "Urine MCS where microscopy and susceptibility testing are included"
@@ -9163,7 +9500,7 @@ window.TESTS = [
 
 {
   id: "urine-electrolytes",
-  name: "Urine Electrolytes (Sodium, Potassium)",
+  name: "Electrolytes (Sodium, Potassium) - Urine",
   synonyms: ["Urine Sodium", "Urine Potassium", "Urinary Sodium and Potassium"],
   department: "biochemistry",
   limsCode: "U_K+, U_NA",
@@ -9255,7 +9592,7 @@ window.TESTS = [
 
 {
   id: "urine-protein",
-  name: "Urine Protein",
+  name: "Protein - Urine",
   synonyms: ["Urinary Total Protein", "Quantitative Urine Protein"],
   department: "biochemistry",
   limsCode: "UPRO",
@@ -9351,7 +9688,7 @@ window.TESTS = [
 
 {
   id: "vancomycin",
-  name: "Vancomycin TDM",
+  name: "Vancomycin",
   synonyms: [
     "Vancomycin Concentration",
     "Vancomycin Level",
@@ -9515,40 +9852,6 @@ window.TESTS = [
 },
 
 {
-  id: "m-c-s-pus-swab",
-  name: "M, C & S - Pus Swab",
-  synonyms: ["Wound swab", "Abscess swab"],
-  department: "microbiology",
-  limsCode: "PUS",
-  flags: ["critical"],
-
-  summary: "Culture of pus specimen for clinical relevant bacteria.",
-  description: "See \"M C & S - Abscess Swab\"",
-
-  indications: [],
-  referenceRange: "",
-  analyticalLimitations: [],
-
-  sampleType: "",
-  containerColour: "",
-  sampleRequirements: "",
-  storageTransport: "",
-  rejection: "",
-  methodology: "",
-
-  turnaround: { routine: "", urgent: "" },
-  criticalAlert: "",
-  diseaseAssociations: [],
-  conversionFactors: "",
-  organismsReported: null,
-
-  appendixRefs: [],
-  lastReviewed: "",
-  added: "2026-10-25",
-  updated: ""
-},
-
-{
   id: "m-c-s-wound-swab",
   name: "M C & S - Wound Swab",
   synonyms: ["Wound Culture", "Pus Swab Culture"],
@@ -9557,7 +9860,7 @@ window.TESTS = [
   flags: ["stat"],
   summary: "Culture of wound or pus specimen for clinical relevant bacteria.",
   description: [
-    "Culture of wound material to recover clinically relevant bacteria and perform antimicrobial susceptibility testing (AST), where indicated.",
+    "Culture of wound or pus material to recover clinically relevant bacteria and perform antimicrobial susceptibility testing (AST), where indicated.",
     "Interpret with specimen quality, wound site and clinical findings. Culture alone cannot distinguish infection from colonisation."
   ],
   indications: [
@@ -9650,19 +9953,21 @@ window.TESTS = [
 
 {
   id: "m-c-s-abscess",
-  name: "M, C & S - Abscess",
-  synonyms: ["Pus culture; abscess aspirate culture; pus microscopy, culture and susceptibility."],
+  name: "M C & S - Abscess",
+  synonyms: [
+    "Pus culture",
+    "abscess aspirate culture",
+    "pus microscopy, culture and susceptibility"
+  ],
   department: "microbiology",
-  limsCode: "ABCESS",
+  limsCode: "PUS",
   flags: ["critical"],
-
   summary: "Microscopy and culture of pus or abscess material.",
   description: "Microscopy and culture of pus or abscess material to identify clinically significant organisms and guide antimicrobial selection. Results depend on the anatomical site, collection method and investigations performed.",
-
   indications: [
-    "•	Identification of organisms causing an abscess or deep purulent infection.",
-    "•	Investigation of recurrent, severe, postoperative or treatment-unresponsive infection.",
-    "•	Investigation of unusual infection, particularly with immunocompromise or relevant exposures.",
+    "Identification of organisms causing an abscess or deep purulent infection.",
+    "Investigation of recurrent, severe, postoperative or treatment-unresponsive infection.",
+    "Investigation of unusual infection, particularly with immunocompromise or relevant exposures.",
     "Culture supports clinical management but does not replace assessment or drainage when indicated."
   ],
   referenceRange: [
@@ -9670,43 +9975,70 @@ window.TESTS = [
     "Interpret any growth according to specimen source, collection quality and clinical findings. Superficial drainage specimens may contain colonising flora."
   ],
   analyticalLimitations: [
-    "•	Previous antibiotics, inadequate sampling, small specimen volume and transport delays may reduce recovery. Negative microscopy or culture does not exclude infection.",
-    "•	Oxygen exposure, drying and unsuitable transport may reduce recovery of anaerobes; brief exposure does not necessarily invalidate the specimen.",
-    "•	Superficial swabs and samples from established drains or sinus openings may reflect colonisation rather than the organisms within the abscess.",
-    "•	Routine bacterial culture does not exclude mycobacterial, fungal, parasitic or other fastidious infections.",
-    "•	Suspected Nocardia or Actinomyces infection requires laboratory notification because additional processing or prolonged incubation may be needed."
+    "Previous antibiotics, inadequate sampling, small specimen volume and transport delays may reduce recovery. Negative microscopy or culture does not exclude infection.",
+    "Oxygen exposure, drying and unsuitable transport may reduce recovery of anaerobes; brief exposure does not necessarily invalidate the specimen.",
+    "Superficial swabs and samples from established drains or sinus openings may reflect colonisation rather than the organisms within the abscess.",
+    "Routine bacterial culture does not exclude mycobacterial, fungal, parasitic or other fastidious infections.",
+    "Suspected Nocardia or Actinomyces infection requires laboratory notification because additional processing or prolonged incubation may be needed."
   ],
-
   sampleType: "Swab",
   containerColour: "Swab",
   sampleRequirements: [
-    "•	Prefer aseptically collected pus aspirated from the collection or obtained directly during incision, drainage or surgery.",
-    "•	Submit in an approved sterile, leakproof container or anaerobic transport system appropriate to the site and expected delay.",
-    "•	Do not delay necessary drainage solely to obtain a pre-drainage aspirate.",
-    "•	If pus cannot be submitted, an approved swab well soaked in material from the depth of the lesion is an alternative; avoid surrounding skin and superficial discharge.",
-    "•	Abscess-wall or adjacent tissue may improve investigation of chronic or atypical infection. Submit fresh tissue for culture without formalin; arrange a separate specimen for histopathology.",
-    "•	Collect before antibiotics where practicable, without delaying urgent care.",
-    "•	State the exact anatomical site, collection method, recent antibiotics, relevant exposures and suspected unusual organisms.",
-    "•	Send a syringe only if locally accepted, securely capped without an attached needle."
+    "Prefer aseptically collected pus aspirated from the collection or obtained directly during incision, drainage or surgery.",
+    "Submit in an approved sterile, leakproof container or anaerobic transport system appropriate to the site and expected delay.",
+    "Do not delay necessary drainage solely to obtain a pre-drainage aspirate.",
+    "If pus cannot be submitted, an approved swab well soaked in material from the depth of the lesion is an alternative; avoid surrounding skin and superficial discharge.",
+    "Abscess-wall or adjacent tissue may improve investigation of chronic or atypical infection. Submit fresh tissue for culture without formalin; arrange a separate specimen for histopathology.",
+    "Collect before antibiotics where practicable, without delaying urgent care.",
+    "State the exact anatomical site, collection method, recent antibiotics, relevant exposures and suspected unusual organisms.",
+    "Send a syringe only if locally accepted, securely capped without an attached needle."
   ],
-  storageTransport: "Transport promptly, preferably immediately after collection. Minimise air exposure when anaerobic culture is required.\nFollow locally validated requirements in Appendix 9a and Appendix 9b; contact the laboratory if delay is expected.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nAssess delays, temperature deviations, drying and unsuitable containers against validated acceptance criteria. Discuss difficult-to-repeat aspirates or operative specimens before rejection and document limitations.\nFormalin-fixed specimens are unsuitable for culture. Specimens with attached needles must not be transported.",
-  methodology: "Direct Gram stain; aerobic and anaerobic bacterial culture, identification and antimicrobial susceptibility testing of significant isolates where appropriate.\nFungal microscopy and culture, mycobacterial investigations and molecular testing require specific arrangements. Notify the laboratory when Nocardia, Actinomyces or another unusual organism is suspected.",
-
-  turnaround: { routine: "2–7 days.", urgent: "" },
-  criticalAlert: "Communicate clinically urgent microscopy or culture findings according to anatomical site, clinical context and approved local policy; see Appendices 4 and 5.\nSuspected sepsis, necrotising infection or infection involving a critical anatomical site requires urgent clinical assessment without waiting for final culture.",
+  storageTransport: [
+    "Transport promptly, preferably immediately after collection. Minimise air exposure when anaerobic culture is required.",
+    "Follow locally validated requirements in Appendix 9a and Appendix 9b; contact the laboratory if delay is expected."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Assess delays, temperature deviations, drying and unsuitable containers against validated acceptance criteria. Discuss difficult-to-repeat aspirates or operative specimens before rejection and document limitations.",
+    "Formalin-fixed specimens are unsuitable for culture. Specimens with attached needles must not be transported."
+  ],
+  methodology: [
+    "Direct Gram stain; aerobic and anaerobic bacterial culture, identification and antimicrobial susceptibility testing of significant isolates where appropriate.",
+    "Fungal microscopy and culture, mycobacterial investigations and molecular testing require specific arrangements. Notify the laboratory when Nocardia, Actinomyces or another unusual organism is suspected."
+  ],
+  turnaround: {
+    routine: "Routine bacterial culture: 2–7 days, subject to local confirmation. Microscopy and preliminary positive findings may be available earlier. Prolonged incubation, additional identification, susceptibility testing and fungal or mycobacterial investigations may take longer.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Communicate clinically urgent microscopy or culture findings according to anatomical site, clinical context and approved local policy; see Appendices 4 and 5.",
+    "Suspected sepsis, necrotising infection or infection involving a critical anatomical site requires urgent clinical assessment without waiting for final culture."
+  ],
   diseaseAssociations: ["Cutaneous, postoperative and deep-organ abscesses."],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "Clinically significant isolates according to abscess site and investigations performed. Examples include", items: [
-      "•	Skin and soft tissue: Staphylococcus aureus, including methicillin-susceptible and methicillin-resistant strains; Streptococcus spp.",
-      "•	Gastrointestinal or perianal sources: Enterobacterales, Enterococcus spp. and anaerobes such as Bacteroides fragilis group, Prevotella spp. and Fusobacterium spp.",
-      "•	Oral or aspiration-associated sources: Streptococcus anginosus group and mixed anaerobic bacteria.",
-      "Other organisms are reported when clinically significant. Fungi, mycobacteria and other unusual agents require appropriate investigations and are not implied targets of every PUS request."
-    ] }
+    {
+      group: "Clinically significant isolates according to abscess site and investigations performed. Examples include",
+      items: [
+        "•\tSkin and soft tissue: Staphylococcus aureus, including methicillin-susceptible and methicillin-resistant strains; Streptococcus spp.",
+        "•\tGastrointestinal or perianal sources: Enterobacterales, Enterococcus spp. and anaerobes such as Bacteroides fragilis group, Prevotella spp. and Fusobacterium spp.",
+        "•\tOral or aspiration-associated sources: Streptococcus anginosus group and mixed anaerobic bacteria.",
+        "Other organisms are reported when clinically significant. Fungi, mycobacteria and other unusual agents require appropriate investigations and are not implied targets of every PUS request."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b"
+  ],
   lastReviewed: "",
   added: "2026-11-02",
   updated: ""
@@ -9715,14 +10047,18 @@ window.TESTS = [
 {
   id: "m-c-s-skin",
   name: "M C & S - Skin",
-  synonyms: ["Skin MCS; skin swab culture. Skin scraping microscopy and fungal culture, where specifically requested."],
+  synonyms: [
+    "Skin MCS",
+    "skin swab culture. Skin scraping microscopy and fungal culture, where specifically requested"
+  ],
   department: "microbiology",
   limsCode: "SKIN",
   flags: ["critical"],
-
   summary: "Investigation of bacterial or superficial fungal skin infections.",
-  description: "Investigation of bacterial or superficial fungal skin infections using specimens appropriate to the suspected cause.\nExamination for scabies or other mites is a separate microscopy investigation and must be specifically requested.",
-
+  description: [
+    "Investigation of bacterial or superficial fungal skin infections using specimens appropriate to the suspected cause.",
+    "Examination for scabies or other mites is a separate microscopy investigation and must be specifically requested."
+  ],
   indications: [
     "Suspected bacterial infection of a skin lesion when culture may guide management.",
     "Suspected superficial fungal infection, particularly when the diagnosis is uncertain, disease is recurrent or treatment has failed.",
@@ -9743,40 +10079,71 @@ window.TESTS = [
     "Negative skin-scraping microscopy does not exclude scabies.",
     "Routine methods may not distinguish closely related dermatophytes, including Trichophyton indotineae; specialist confirmation may be required."
   ],
-
   sampleType: "Tissue",
   containerColour: "Sterile collection jar",
   sampleRequirements: [
     "Specify the anatomical site, lesion type and requested investigation.",
-    "•	Bacterial infection: collect pus or swab the infected area using an approved bacterial collection system, minimising contamination from surrounding skin.",
-    "•	Superficial fungal infection: collect adequate scales from the active, advancing edge using an appropriate sterile blunt scraping instrument. Submit dry in an approved container or mycology collection packet.",
-    "•	Moist lesions suspected of candidiasis may require a separate swab; confirm laboratory requirements.",
-    "•	Scabies or Demodex: arrange specifically targeted sampling and microscopy using the laboratory-approved collection method. Do not assume a routine fungal scraping is suitable.",
-    "•	Collect before antimicrobial treatment where practicable. Include recent treatment, immunocompromise and relevant animal, soil or travel exposure.",
-    "•	Do not send loose blades or other sharp instruments with specimens. Deep lesions require separately arranged biopsy or aspirate collection."
+    "Bacterial infection: collect pus or swab the infected area using an approved bacterial collection system, minimising contamination from surrounding skin.",
+    "Superficial fungal infection: collect adequate scales from the active, advancing edge using an appropriate sterile blunt scraping instrument. Submit dry in an approved container or mycology collection packet.",
+    "Moist lesions suspected of candidiasis may require a separate swab; confirm laboratory requirements.",
+    "Scabies or Demodex: arrange specifically targeted sampling and microscopy using the laboratory-approved collection method. Do not assume a routine fungal scraping is suitable.",
+    "Collect before antimicrobial treatment where practicable. Include recent treatment, immunocompromise and relevant animal, soil or travel exposure.",
+    "Do not send loose blades or other sharp instruments with specimens. Deep lesions require separately arranged biopsy or aspirate collection."
   ],
-  storageTransport: "Keep superficial fungal scrapings dry in the approved container or packet; do not add bacterial transport medium or fixative.\nBacterial swabs require their approved transport medium. Mite specimens require the agreed microscopy preparation.\nSend promptly and follow locally validated conditions; see Appendix 9a and Appendix 9b.",
-  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).\nAssess suitability against the requested investigation. A bacterial transport swab is not equivalent to dry fungal scrapings. Contact the laboratory about inadequate material or an unsuitable collection system.\nFixed material is unsuitable for culture.",
-  methodology: "•	Bacterial investigation: culture, identification and susceptibility testing of significant isolates; Gram stain where appropriate.\n•	Fungal investigation: direct microscopy, commonly using potassium hydroxide (KOH), with fungal culture where indicated.\n•	Mite investigation: direct microscopy of specifically collected material; not routine culture.\nAntifungal susceptibility testing and specialised fungal identification are selective investigations. Confirm local availability and referral arrangements.",
-
-  turnaround: { routine: "2 - 7 days.", urgent: "" },
-  criticalAlert: "Suspected crusted scabies requires prompt clinical and infection prevention assessment. Suspected invasive or rapidly progressive skin infection requires urgent assessment without waiting for culture.",
-  diseaseAssociations: ["Bacterial skin infection; dermatophytosis (tinea); cutaneous candidiasis. Scabies or demodicosis when specifically investigated."],
+  storageTransport: [
+    "Keep superficial fungal scrapings dry in the approved container or packet; do not add bacterial transport medium or fixative.",
+    "Bacterial swabs require their approved transport medium. Mite specimens require the agreed microscopy preparation.",
+    "Send promptly and follow locally validated conditions; see Appendix 9a and Appendix 9b."
+  ],
+  rejection: [
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
+    "Assess suitability against the requested investigation. A bacterial transport swab is not equivalent to dry fungal scrapings. Contact the laboratory about inadequate material or an unsuitable collection system.",
+    "Fixed material is unsuitable for culture."
+  ],
+  methodology: [
+    "Bacterial investigation: culture, identification and susceptibility testing of significant isolates; Gram stain where appropriate.",
+    "Fungal investigation: direct microscopy, commonly using potassium hydroxide (KOH), with fungal culture where indicated.",
+    "Mite investigation: direct microscopy of specifically collected material; not routine culture.",
+    "Antifungal susceptibility testing and specialised fungal identification are selective investigations. Confirm local availability and referral arrangements."
+  ],
+  turnaround: {
+    routine: "Microscopy: according to local availability. Routine bacterial culture: 2–3 days, subject to local confirmation. Dermatophyte culture: several weeks; confirm the local final-reporting interval. Specialist identification or susceptibility testing may take longer.",
+    urgent: ""
+  },
+  criticalAlert: [
+    "Routine superficial fungal or bacterial findings are not automatically critical. Communicate urgent findings according to approved policy; see Appendices 4 and 5.",
+    "Suspected crusted scabies requires prompt clinical and infection prevention assessment. Suspected invasive or rapidly progressive skin infection requires urgent assessment without waiting for culture."
+  ],
+  diseaseAssociations: [
+    "Bacterial skin infection; dermatophytosis (tinea); cutaneous candidiasis. Scabies or demodicosis when specifically investigated."
+  ],
   conversionFactors: "Not applicable.",
   organismsReported: [
-    { group: "According to the requested investigation and validated identification capability", items: [
-      "•	Bacteria: clinically significant isolates such as Staphylococcus aureus and Streptococcus pyogenes.",
-      "•	Dermatophytes: Trichophyton, Microsporum and Epidermophyton species, with species identification where supported.",
-      "•	Yeasts: Candida spp. and other clinically significant isolates.",
-      "•	Requested microscopy: Sarcoptes scabiei mites, eggs or faecal pellets; Demodex where specifically investigated, with clinical interpretation.",
-      "Trichophyton indotineae should be reported only after appropriate confirmation. Routine fungal culture does not detect every superficial fungal cause."
-    ] }
+    {
+      group: "According to the requested investigation and validated identification capability",
+      items: [
+        "•\tBacteria: clinically significant isolates such as Staphylococcus aureus and Streptococcus pyogenes.",
+        "•\tDermatophytes: Trichophyton, Microsporum and Epidermophyton species, with species identification where supported.",
+        "•\tYeasts: Candida spp. and other clinically significant isolates.",
+        "•\tRequested microscopy: Sarcoptes scabiei mites, eggs or faecal pellets; Demodex where specifically investigated, with clinical interpretation.",
+        "Trichophyton indotineae should be reported only after appropriate confirmation. Routine fungal culture does not detect every superficial fungal cause."
+      ]
+    }
   ],
-
-  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b"],
+  appendixRefs: [
+    "appendix-1",
+    "appendix-2",
+    "appendix-3",
+    "appendix-4",
+    "appendix-5",
+    "appendix-6",
+    "appendix-7",
+    "appendix-8",
+    "appendix-9a",
+    "appendix-9b"
+  ],
   lastReviewed: "",
   added: "2026-11-02",
   updated: ""
-},
-
+}
 ];
