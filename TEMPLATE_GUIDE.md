@@ -152,6 +152,25 @@ A language button appears in the header. Any field without a `tet:` value falls
 back to English automatically, so you can translate gradually rather than all
 at once.
 
+### The wording of the page itself
+
+Menus, headings, buttons and field labels ("Test Directory", "Reference
+range", "Turnaround time" …) are not in `/data`. They are in
+`assets/js/strings.js`, one line per label:
+
+```js
+"field.referenceRange":  "Reference range",
+```
+
+To translate them, copy the `en: { ... }` block, rename it to your language
+code, and translate the text on the right. Never change the key on the left,
+and keep anything in `{curly brackets}` — the page puts a number, code or date
+there. Missing lines show in English. `node tools/check-data.js` reports how
+many labels each language has.
+
+Every translation — content and labels — must be checked by a qualified
+laboratory reviewer before `showLanguageToggle` is set to `true`.
+
 ---
 
 ## 6. If the page goes blank
@@ -241,6 +260,7 @@ pathology_handbook_web/
 ├── assets/
 │   ├── css/style.css       colours are in the :root block at the top
 │   ├── js/app.js           application code — do not edit
+│   ├── js/strings.js       page wording (menus, labels) — edit only to translate
 │   ├── img/                logos, tube photos, diagrams
 │   └── downloads/          PDFs
 └── data/                   ◄── EVERYTHING YOU FILL IN IS HERE

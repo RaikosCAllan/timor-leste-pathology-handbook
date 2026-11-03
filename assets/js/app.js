@@ -22,6 +22,29 @@
     return "";
   }
 
+  // Wording of the page itself, from assets/js/strings.js. Falls back to
+  // English, then to the key, so a missing translation never blanks a label.
+  // {name} placeholders are filled from vars.
+  function ui(key, vars) {
+    var S = window.UI_STRINGS || {};
+    var v = (S[LANG] && S[LANG][key]) || (S.en && S.en[key]) || key;
+    return String(v).replace(/\{(\w+)\}/g, function (m, k) {
+      return vars && vars[k] !== undefined ? vars[k] : m;
+    });
+  }
+
+  // Static wording in index.html carries data-ui="key" (text),
+  // data-ui-placeholder and data-ui-aria-label. The English already in the
+  // HTML stays if strings.js is missing.
+  function applyStaticText() {
+    document.documentElement.lang = LANG;
+    var q = function (sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); };
+    q("[data-ui]", function (n) { n.textContent = ui(n.getAttribute("data-ui")); });
+    q("[data-ui-placeholder]", function (n) { n.placeholder = ui(n.getAttribute("data-ui-placeholder")); });
+    q("[data-ui-aria-label]", function (n) { n.setAttribute("aria-label", ui(n.getAttribute("data-ui-aria-label"))); });
+    q("[data-ui-content]", function (n) { n.setAttribute("content", ui(n.getAttribute("data-ui-content"))); });
+  }
+
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
@@ -74,7 +97,7 @@
     if (logoBox) {
       logoBox.innerHTML = "";
       var logoList = (S.logos && S.logos.length) ? S.logos
-                   : (S.logo ? [{ src: S.logo, alt: t(S.organisation) + " logo" }] : []);
+                   : (S.logo ? [{ src: S.logo, alt: ui("header.logoAlt", { org: t(S.organisation) }) }] : []);
       if (!logoList.length) {
         var mark = document.createElement("div");
         mark.className = "brand-logo brand-logo-initials";
@@ -129,6 +152,7 @@
     // Language toggle
     if (S.showLanguageToggle && S.languages && S.languages.length > 1) {
       var box = el("langToggle");
+      box.innerHTML = "";
       box.hidden = false;
       S.languages.forEach(function (l) {
         var b = document.createElement("button");
@@ -145,10 +169,10 @@
     set("footerOrg", esc(t(S.organisation)));
     set("footerParent", esc(t(S.parentBody)) + (S.address ? " &middot; " + fmt(t(S.address)) : ""));
     set("footerMeta",
-      row("Source", t(S.sourceDocument)) +
-      row("Last reviewed", t(S.lastReviewed)) +
-      row("Next review", t(S.nextReview)) +
-      row("Owner", t(S.documentOwner))
+      row(ui("footer.source"), t(S.sourceDocument)) +
+      row(ui("footer.lastReviewed"), t(S.lastReviewed)) +
+      row(ui("footer.nextReview"), t(S.nextReview)) +
+      row(ui("footer.owner"), t(S.documentOwner))
     );
 
     function row(k, v) { return v ? "<dt>" + esc(k) + "</dt><dd>" + fmt(v) + "</dd>" : ""; }
@@ -162,7 +186,7 @@
       var box = el("draftNotice"), chip = el("draftChip");
       if (!D || !D.show) { return; }
 
-      document.title = "[DRAFT] " + document.title;
+      document.title = ui("draft.titlePrefix") + " " + document.title;
       if (chip) chip.hidden = false;
       if (!box) return;
 
@@ -171,11 +195,11 @@
 
       box.innerHTML =
         '<div class="wrap draft-inner"><div>' +
-          '<p class="draft-heading">' + esc(t(D.heading) || "Working draft") + "</p>" +
+          '<p class="draft-heading">' + esc(t(D.heading) || ui("draft.heading")) + "</p>" +
           paras.map(function (x) { return "<p>" + fmt(x) + "</p>"; }).join("") +
         "</div>" +
         (D.dismissible === false ? "" :
-          '<button type="button" class="draft-dismiss" id="draftDismiss">Dismiss</button>') +
+          '<button type="button" class="draft-dismiss" id="draftDismiss">' + esc(ui("draft.dismiss")) + "</button>") +
         "</div>";
       box.hidden = false;
 
@@ -213,7 +237,7 @@
     if (L) {
       var link = (L.url && L.url.indexOf("[FILL IN") !== 0)
         ? '<p><a href="' + esc(L.url) + '">' +
-          esc(t(L.linkLabel) || "Open the results portal") + "</a></p>" : "";
+          esc(t(L.linkLabel) || ui("about.portalLink")) + "</a></p>" : "";
       set("limsPanel", "<h3>" + esc(t(L.heading)) + "</h3>" +
         (t(L.body) || []).map(function (p) { return "<p>" + fmt(p) + "</p>"; }).join("") + link);
     }
@@ -223,10 +247,10 @@
      TEST DIRECTORY
      ===================================================================== */
   var FLAG_LABEL = {
-    critical: ["CRITICAL", "badge-critical"],
-    stat: ["STAT", "badge-stat"],
-    "send-away": ["SEND-AWAY", "badge-away"],
-    pending: ["PENDING", "badge-pending"]
+    critical: ["badge.critical", "badge-critical"],
+    stat: ["badge.stat", "badge-stat"],
+    "send-away": ["badge.sendAway", "badge-away"],
+    pending: ["badge.pending", "badge-pending"]
   };
 
   /* --- Recently added or changed ---------------------------------------
@@ -269,7 +293,7 @@
 
   function appendixTitle(id) {
     var a = (window.APPENDICES || []).filter(function (x) { return x.id === id; })[0];
-    return a ? "Appendix " + a.number : id;
+    return a ? ui("appendix.label", { n: a.number }) : id;
   }
 
   // Everything a test should be searchable by.
@@ -306,7 +330,7 @@
   function testCard(test, query) {
     var flags = (test.flags || []).map(function (f) {
       var d = FLAG_LABEL[f]; if (!d) return "";
-      return '<b class="badge ' + d[1] + '">' + d[0] + "</b>";
+      return '<b class="badge ' + d[1] + '">' + esc(ui(d[0])) + "</b>";
     }).join(" ");
 
     // Administrative, not clinical — styled apart so it cannot be mistaken
@@ -314,9 +338,8 @@
     var r = recency(test);
     var recentMark = r
       ? '<b class="mark mark-' + r + '" title="' +
-        (r === "new" ? "Added to the handbook recently"
-                     : "Changed recently — check what differs") + '">' +
-        (r === "new" ? "NEW" : "UPDATED") + "</b>"
+        esc(ui(r === "new" ? "badge.newTitle" : "badge.updatedTitle")) + '">' +
+        esc(ui(r === "new" ? "badge.new" : "badge.updated")) + "</b>"
       : "";
 
     // The card header shows a short turnaround (first sentence, trimmed) so a
@@ -324,17 +347,17 @@
     // "Turnaround time" field when the card is opened.
     var tat = test.turnaround || {};
     var tatHtml = "";
-    if (has(tat.routine)) tatHtml += "<b>" + fmt(shortTat(t(tat.routine))) + "</b>Routine";
-    if (has(tat.urgent)) tatHtml += "<b>" + fmt(shortTat(t(tat.urgent))) + "</b>Urgent";
+    if (has(tat.routine)) tatHtml += "<b>" + fmt(shortTat(t(tat.routine))) + "</b>" + esc(ui("card.routine"));
+    if (has(tat.urgent)) tatHtml += "<b>" + fmt(shortTat(t(tat.urgent))) + "</b>" + esc(ui("card.urgent"));
     var tatFull = [];
-    if (has(tat.routine)) tatFull.push("<p><b>Routine:</b> " + fmt(t(tat.routine)) + "</p>");
-    if (has(tat.urgent)) tatFull.push("<p><b>Urgent:</b> " + fmt(t(tat.urgent)) + "</p>");
+    if (has(tat.routine)) tatFull.push("<p><b>" + esc(ui("card.routine")) + ":</b> " + fmt(t(tat.routine)) + "</p>");
+    if (has(tat.urgent)) tatFull.push("<p><b>" + esc(ui("card.urgent")) + ":</b> " + fmt(t(tat.urgent)) + "</p>");
 
     var meta = [];
     if (has(test.department)) meta.push("<b>" + esc(deptName(test.department)) + "</b>");
-    if (has(code(test))) meta.push(esc(t((window.SITE || {}).limsLabel) || "LIMS") + " Code " + esc(t(code(test))));
+    if (has(code(test))) meta.push(esc(ui("card.limsCode", { lims: t((window.SITE || {}).limsLabel) || "LIMS", code: t(code(test)) })));
     if (has(test.sampleType)) meta.push(esc(t(test.sampleType)));
-    if (has(test.synonyms)) meta.push("Also: " + esc((t(test.synonyms) || []).join(", ")));
+    if (has(test.synonyms)) meta.push(esc(ui("card.also", { list: (t(test.synonyms) || []).join(", ") })));
 
     var links = (test.appendixRefs || []).map(function (a) {
       return '<a href="#' + esc(a) + '">' + esc(appendixTitle(a)) + "</a>";
@@ -342,7 +365,7 @@
 
     var organisms = "";
     if (test.organismsReported && test.organismsReported.length) {
-      organisms = '<div class="field field-full"><h4>Organisms reported</h4>' +
+      organisms = '<div class="field field-full"><h4>' + esc(ui("field.organisms")) + "</h4>" +
         test.organismsReported.map(function (g) {
           return '<div class="organism-group"><b>' + esc(t(g.group)) + "</b><ul>" +
             (t(g.items) || []).map(function (i) { return "<li>" + fmt(i) + "</li>"; }).join("") + "</ul>" +
@@ -359,27 +382,27 @@
           (has(test.summary) ? '<div class="test-head-summary">' + fmt(t(test.summary)) + "</div>" : "") +
         "</summary>" +
         '<div class="test-body"><div class="test-fields">' +
-          field("Test description", test.description, true) +
-          field("Clinical use / indications", test.indications) +
-          field("Reference range", test.referenceRange) +
-          field("Sample requirements", test.sampleRequirements) +
-          field("Container", test.containerColour) +
-          field("Storage / transport", test.storageTransport) +
-          (tatFull.length ? '<div class="field"><h4>Turnaround time</h4>' + tatFull.join("") + "</div>" : "") +
-          field("Rejection", test.rejection) +
-          field("Methodology", test.methodology) +
-          field("Analytical limitations", test.analyticalLimitations) +
-          field("Critical / alert", test.criticalAlert) +
-          field("Disease associations", test.diseaseAssociations) +
-          field("Conversion factors", test.conversionFactors) +
+          field(ui("field.description"), test.description, true) +
+          field(ui("field.indications"), test.indications) +
+          field(ui("field.referenceRange"), test.referenceRange) +
+          field(ui("field.sampleRequirements"), test.sampleRequirements) +
+          field(ui("field.container"), test.containerColour) +
+          field(ui("field.storageTransport"), test.storageTransport) +
+          (tatFull.length ? '<div class="field"><h4>' + esc(ui("field.turnaround")) + "</h4>" + tatFull.join("") + "</div>" : "") +
+          field(ui("field.rejection"), test.rejection) +
+          field(ui("field.methodology"), test.methodology) +
+          field(ui("field.analyticalLimitations"), test.analyticalLimitations) +
+          field(ui("field.criticalAlert"), test.criticalAlert) +
+          field(ui("field.diseaseAssociations"), test.diseaseAssociations) +
+          field(ui("field.conversionFactors"), test.conversionFactors) +
           organisms +
-          (links ? '<div class="field field-full"><h4>See also</h4><div class="appendix-links">' + links + "</div></div>" : "") +
-          (has(test.lastReviewed) ? '<div class="field field-full"><h4>Last reviewed</h4>' + body(test.lastReviewed) + "</div>" : "") +
+          (links ? '<div class="field field-full"><h4>' + esc(ui("field.seeAlso")) + '</h4><div class="appendix-links">' + links + "</div></div>" : "") +
+          (has(test.lastReviewed) ? '<div class="field field-full"><h4>' + esc(ui("field.lastReviewed")) + "</h4>" + body(test.lastReviewed) + "</div>" : "") +
           (has(test.added) || has(test.updated)
-            ? '<div class="field field-full"><h4>Handbook history</h4><p>' +
-              (has(test.added) ? "Added " + fmt(t(test.added)) : "") +
+            ? '<div class="field field-full"><h4>' + esc(ui("field.history")) + "</h4><p>" +
+              (has(test.added) ? esc(ui("history.added", { date: t(test.added) })) : "") +
               (has(test.added) && has(test.updated) ? " &middot; " : "") +
-              (has(test.updated) ? "Last changed " + fmt(t(test.updated)) : "") +
+              (has(test.updated) ? esc(ui("history.updated", { date: t(test.updated) })) : "") +
               "</p></div>"
             : "") +
         "</div></div>" +
@@ -395,13 +418,24 @@
   }
 
   function renderDirectory() {
+    // The lead names whatever the laboratory calls its LIMS, so a site running
+    // OpenELIS, Bika or SENAITE reads naturally instead of saying "LIMS code".
+    var S = window.SITE || {};
+    var label = t(S.limsLabel) || "LIMS";
+    set("directoryLead", has(S.directoryLead)
+      ? fmt(t(S.directoryLead))
+      : esc(ui("directory.lead", { lims: label })));
+
     var sel = el("deptFilter");
-    if (sel && sel.options.length <= 1) {
+    if (sel) {
+      var keep = sel.value;
+      while (sel.options.length > 1) sel.remove(1);
       (window.DEPARTMENTS || []).forEach(function (d) {
         var o = document.createElement("option");
         o.value = d.id; o.textContent = t(d.name);
         sel.appendChild(o);
       });
+      sel.value = keep;
     }
     filter();
   }
@@ -421,9 +455,10 @@
 
     el("testResults").innerHTML = out.map(function (x) { return testCard(x, q); }).join("");
     el("emptyState").hidden = out.length > 0;
-    el("resultCount").textContent =
-      out.length + (out.length === 1 ? " test" : " tests") +
-      (out.length === TESTS.length ? " in the directory" : " of " + TESTS.length);
+    var all = out.length === TESTS.length, one = out.length === 1;
+    el("resultCount").textContent = ui(
+      all ? (one ? "count.allOne" : "count.all") : (one ? "count.someOne" : "count.some"),
+      { n: out.length, total: TESTS.length });
   }
 
   /* =====================================================================
@@ -550,9 +585,9 @@
     }).join(""));
 
     set("appendixBody", A.map(function (a) {
-      var link = a.crossLink ? ' <a href="' + esc(a.crossLink) + '" style="font-size:13px">Go to section &rarr;</a>' : "";
+      var link = a.crossLink ? ' <a href="' + esc(a.crossLink) + '" style="font-size:13px">' + esc(ui("appendix.goTo")) + "</a>" : "";
       return '<section class="appendix" id="' + esc(a.id) + '">' +
-        "<h3><span>Appendix " + esc(a.number) + "</span>" + esc(t(a.title)) + link + "</h3>" +
+        "<h3><span>" + esc(ui("appendix.label", { n: a.number })) + "</span>" + esc(t(a.title)) + link + "</h3>" +
         (a.blocks || []).map(renderBlock).join("") + "</section>";
     }).join(""));
 
@@ -566,6 +601,7 @@
      WIRING
      ===================================================================== */
   function renderAll() {
+    applyStaticText();
     renderChrome();
     renderAbout();
     renderDirectory();

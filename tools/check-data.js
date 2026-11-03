@@ -330,6 +330,46 @@ if (!draftOn && unreviewed.length)
   E(`site.js: draftNotice.show is false, but ${unreviewed.length} test(s) have no ` +
     `lastReviewed date — they have not been recorded as clinically verified`);
 
+/* --- 8b. Page wording (assets/js/strings.js) ----------------------------- */
+// Every key the page asks for must exist in English, or the label shows as
+// its key. Other languages may be partial — missing keys fall back to
+// English — so they are reported as progress, not as faults.
+const STR_FILE = path.join("assets", "js", "strings.js");
+let UI = null;
+if (!fs.existsSync(STR_FILE)) {
+  E(`${STR_FILE} is missing — menus, headings and field labels will show as keys`);
+} else {
+  try { const w = {}; new Function("window", fs.readFileSync(STR_FILE, "utf8"))(w); UI = w.UI_STRINGS || {}; }
+  catch (err) { E(`${STR_FILE} has a syntax error and will break the page:\n      ${err.message}`); }
+}
+if (UI) {
+  const en = UI.en || {};
+  const used = new Set();
+  const html = fs.existsSync("index.html") ? fs.readFileSync("index.html", "utf8") : "";
+  for (const m of html.matchAll(/data-ui(?:-placeholder|-aria-label|-content)?="([^"]+)"/g)) used.add(m[1]);
+  const app = path.join("assets", "js", "app.js");
+  const js = fs.existsSync(app) ? fs.readFileSync(app, "utf8") : "";
+  for (const m of js.matchAll(/ui\("([a-zA-Z]+\.[a-zA-Z]+)"/g)) used.add(m[1]);
+  for (const m of js.matchAll(/"(badge\.[a-zA-Z]+|count\.[a-zA-Z]+)"/g)) used.add(m[1]);
+  const missing = [...used].filter(k => !en[k]);
+  if (missing.length)
+    E(`strings.js: ${missing.length} key(s) used by the page have no English text: ${missing.join(", ")}`);
+  const langs = (SITE.languages || []).map(l => l.code).filter(c => c && c !== "en");
+  langs.forEach(c => {
+    const tr = UI[c] || {};
+    const done = Object.keys(en).filter(k => tr[k] && String(tr[k]).trim()).length;
+    N(`page wording, ${c}: ${done}/${Object.keys(en).length} translated` +
+      (done < Object.keys(en).length ? " (the rest shows in English)" : ""));
+    Object.keys(en).forEach(k => {
+      if (!tr[k]) return;
+      const need = (en[k].match(/\{\w+\}/g) || []).sort().join(" ");
+      const have = (String(tr[k]).match(/\{\w+\}/g) || []).sort().join(" ");
+      if (need !== have)
+        W(`strings.js: "${c}" text for ${k} must keep ${need || "no {placeholders}"} — it has ${have || "none"}`);
+    });
+  });
+}
+
 /* --- 9. Progress ---------------------------------------------------------- */
 N(`${TESTS.length} tests, ${DEPTS.length} departments, ${APPS.length} appendices`);
 N(`draft notice: ${draftOn ? "ON (site shows the not-for-clinical-use banner)" : "OFF"}`);
