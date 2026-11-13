@@ -303,6 +303,9 @@
                  t(test.description)];
     parts = parts.concat(t(test.synonyms) || [], t(test.indications) || [],
                          t(test.diseaseAssociations) || []);
+    (test.components || []).forEach(function (c) {
+      parts.push(t(c.name), t(c.code));
+    });
     return parts.join(" • ").toLowerCase();
   }
 
@@ -373,6 +376,21 @@
         }).join("") + "</div>";
     }
 
+    // Panels: one row per component, shown straight after the description.
+    // The table scrolls inside its own frame on a phone.
+    var components = "";
+    if (test.components && test.components.length) {
+      components = '<div class="field field-full"><h4>' + esc(ui("field.components")) + "</h4>" +
+        "<div class='table-scroll'><table class='data-table component-table'><thead><tr>" +
+        ["components.name", "components.code", "components.unit", "components.about"]
+          .map(function (k) { return "<th>" + esc(ui(k)) + "</th>"; }).join("") +
+        "</tr></thead><tbody>" +
+        test.components.map(function (c) {
+          return "<tr><td>" + hl(fmt(t(c.name)), query) + "</td><td><code>" + esc(t(c.code)) + "</code></td>" +
+            "<td data-label='" + esc(ui("components.unit")) + "'>" + fmt(t(c.unit)) + "</td><td>" + fmt(t(c.about)) + "</td></tr>";
+        }).join("") + "</tbody></table></div></div>";
+    }
+
     var html =
       '<details class="test-card" id="test-' + esc(test.id) + '">' +
         "<summary>" +
@@ -383,6 +401,7 @@
         "</summary>" +
         '<div class="test-body"><div class="test-fields">' +
           field(ui("field.description"), test.description, true) +
+          components +
           field(ui("field.indications"), test.indications) +
           field(ui("field.referenceRange"), test.referenceRange) +
           field(ui("field.sampleRequirements"), test.sampleRequirements) +

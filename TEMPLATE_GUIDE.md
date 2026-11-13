@@ -67,6 +67,7 @@ the fields in Handbook v9.3.
 | `flags` | — | Badges. `"critical"`, `"stat"`, `"send-away"`, `"pending"` |
 | `summary` | — | New field. One line shown in search results before the card is opened |
 | `description` | **Test Description** | Full paragraph |
+| `components` | Component paragraphs inside **Test Description** | Panels only. Table of `{ name, code, unit, about }`. See STYLE_GUIDE.md §8 |
 | `indications` | **Clinical Use / Indications** | Array |
 | `referenceRange` | **Reference Range** | String, or array if there are several |
 | `analyticalLimitations` | **Analytical Limitations** | Array |
@@ -83,6 +84,9 @@ the fields in Handbook v9.3.
 | `conversionFactors` | **Conversion Factors** | |
 | `appendixRefs` | — | Array of appendix ids, e.g. `["appendix-7"]`. Renders as "See also" links |
 | `lastReviewed` | — | Governance field. Recommended for accreditation |
+
+**Wording:** descriptions and summaries follow `STYLE_GUIDE.md`. Run
+`node tools/check-data.js --style` to see which entries do not yet.
 
 ### Adding a test — two ways
 

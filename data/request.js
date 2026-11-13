@@ -32,7 +32,7 @@ window.REQUEST = {
     },
     {
       title: "Send the specimen promptly, in the right conditions",
-      body: "Check the storage and transport requirement for the test in the Test Directory before sending. See Appendix 9a: Storage / Transport – Quick Reference Table (All Disciplines) and 9b: Microbiology Specimen Handling",
+      body: "Check the storage and transport requirement for the test in the Test Directory before sending. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling.",
     },
     {
       title: "Adding a test after the specimen has arrived",

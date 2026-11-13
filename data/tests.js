@@ -28,7 +28,7 @@ window.TESTS = [
   ],
   referenceRange: [
     "24–36 seconds (general guide only).",
-    "Refer to the analyser- and reagent-specific reference interval reported by the LIMS. Therapeutic APTT ranges for heparin monitoring must be locally validated."
+    "Refer to the analyser- and reagent-specific reference interval reported by the LIMS."
   ],
   analyticalLimitations: [
     "Prolonged by heparin, some other anticoagulants, lupus anticoagulant and coagulation factor inhibitors.",
@@ -40,13 +40,12 @@ window.TESTS = [
   sampleType: "Citrate plasma",
   containerColour: "Light blue Sodium Citrate",
   sampleRequirements: [
-    "Whole blood collected into a correctly filled 3.2% sodium citrate tube (typically 2.7 mL blood, depending on tube specification).",
+    "Whole blood collected into a correctly filled 3.2% sodium citrate tube.",
     "Maintain a 9:1 blood-to-citrate ratio."
   ],
   storageTransport: [
     "Transport promptly at room temperature (18–25 °C).",
-    "Routine APTT: test within 4 hours of collection.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Underfilled or clotted citrate specimens.",
@@ -55,7 +54,7 @@ window.TESTS = [
     "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Clot-based assay using optical or mechanical clot detection, depending on the analyser.",
-  turnaround: { routine: "Same day.", urgent: "Urgent testing according to laboratory availability." },
+  turnaround: { routine: "Same day.", urgent: "<2 hours" },
   criticalAlert: [
     "Markedly prolonged or unexpected APTT results, particularly in patients with active bleeding or receiving anticoagulant therapy, require prompt review and notification according to laboratory critical-result thresholds.",
     "See Appendix 5: Critical / High-Risk Results Policy Summary."
@@ -82,9 +81,9 @@ window.TESTS = [
     "appendix-10",
     "appendix-12"
   ],
-  lastReviewed: "",
+  lastReviewed: "2026-11-03",
   added: "2026-10-14",
-  updated: ""
+  updated: "2026-11-03"
 },
 
 {
@@ -118,17 +117,29 @@ window.TESTS = [
   description: [
     "Measures haemoglobin, red blood cell count, haematocrit, red cell indices, white blood cell count and platelet count. A white cell differential is reported according to the validated local service.",
     "The analyser measures these parameters together as one panel; they are not requested separately.",
-    "Blood film examination is performed when indicated.",
-    "Haemoglobin (Hb) — code HGB, unit g/L: Concentration of haemoglobin, the oxygen-carrying protein in red blood cells. Identifies anaemia or raised haemoglobin.",
-    "Red Blood Cell (RBC) Count — code RBC, unit ×10¹²/L: Number of circulating red cells. Interpret with Hb, HCT and red cell indices.",
-    "Haematocrit (HCT) — code HCT, unit L/L: Proportion of whole blood volume occupied by red cells.",
-    "Mean Corpuscular Volume (MCV) — code MCV, unit fL: Average red cell volume. Classifies anaemia as microcytic, normocytic or macrocytic.",
-    "Mean Corpuscular Haemoglobin (MCH) — code MCH, unit pg: Average haemoglobin mass per red cell. Calculated: Hb ÷ RBC.",
-    "Mean Corpuscular Haemoglobin Concentration (MCHC) — code MCHC, unit g/L: Average haemoglobin concentration within red cells. Calculated: Hb ÷ HCT.",
-    "Red Cell Distribution Width (RDW) — code RDW, unit % (RDW-CV) or fL (RDW-SD): Variation in red cell size (anisocytosis). RDW-CV and RDW-SD are not interchangeable.",
-    "Platelet Count — code PLAT, unit ×10⁹/L: Number of circulating platelets. Does not measure platelet function.",
-    "White Blood Cell Count (WBC) — code WBC, unit ×10⁹/L: Total leucocyte count. Interpret with the differential.",
-    "White Cell Differential — code WBCC, unit ×10⁹/L and %: Absolute counts and proportions of neutrophils, lymphocytes, monocytes, eosinophils and basophils."
+    "Blood film examination is performed when indicated."
+  ],
+  components: [
+    { name: "Haemoglobin (Hb)", code: "HGB", unit: "g/L",
+      about: "Concentration of haemoglobin, the oxygen-carrying protein in red blood cells. Identifies anaemia or raised haemoglobin." },
+    { name: "Red Blood Cell (RBC) Count", code: "RBC", unit: "×10¹²/L",
+      about: "Number of circulating red cells. Interpret with Hb, HCT and red cell indices." },
+    { name: "Haematocrit (HCT)", code: "HCT", unit: "L/L",
+      about: "Proportion of whole blood volume occupied by red cells." },
+    { name: "Mean Corpuscular Volume (MCV)", code: "MCV", unit: "fL",
+      about: "Average red cell volume. Classifies anaemia as microcytic, normocytic or macrocytic." },
+    { name: "Mean Corpuscular Haemoglobin (MCH)", code: "MCH", unit: "pg",
+      about: "Average haemoglobin mass per red cell. Calculated: Hb ÷ RBC." },
+    { name: "Mean Corpuscular Haemoglobin Concentration (MCHC)", code: "MCHC", unit: "g/L",
+      about: "Average haemoglobin concentration within red cells. Calculated: Hb ÷ HCT." },
+    { name: "Red Cell Distribution Width (RDW)", code: "RDW", unit: "% (RDW-CV) or fL (RDW-SD)",
+      about: "Variation in red cell size (anisocytosis). RDW-CV and RDW-SD are not interchangeable." },
+    { name: "Platelet Count", code: "PLAT", unit: "×10⁹/L",
+      about: "Number of circulating platelets. Does not measure platelet function." },
+    { name: "White Blood Cell Count (WBC)", code: "WBC", unit: "×10⁹/L",
+      about: "Total leucocyte count. Interpret with the differential." },
+    { name: "White Cell Differential", code: "WBCC", unit: "×10⁹/L and %",
+      about: "Absolute counts and proportions of neutrophils, lymphocytes, monocytes, eosinophils and basophils." }
   ],
   indications: [
     "Investigation of suspected anaemia, infection, bleeding or haematological disease.",
@@ -172,7 +183,7 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly and analyse within locally validated limits.",
     "Protect from excessive heat and freezing. If testing is delayed, follow approved storage instructions; requirements may differ for counts, differential and morphology. Prepare a blood film promptly if morphology assessment is required.",
-    "See Appendix 9a: Storage / Transport \\– Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen.",
@@ -191,7 +202,7 @@ window.TESTS = [
     urgent: "Urgent testing and additional blood film review depend on local service arrangements."
   },
   criticalAlert: [
-    "Notify results meeting approved criteria in Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary. Appendix 4 lists critical values for haemoglobin, haematocrit, platelets, white cell count and neutrophils.",
+    "Notify results meeting approved criteria in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification lists critical values for haemoglobin, haematocrit, platelets, white cell count and neutrophils.",
     "Newly identified blasts or findings suspicious for acute leukaemia require urgent verification and clinical communication, irrespective of total WBC. Fever or suspected sepsis in a neutropenic patient requires immediate clinical assessment.",
     "MCV, MCH, MCHC and RDW have no generally established independent critical threshold.",
     "Suspected artefacts require verification without unnecessary delay in clinical communication. Critical notification thresholds and transfusion thresholds are distinct."
@@ -212,7 +223,7 @@ window.TESTS = [
     "WBC, platelets and absolute differential counts: 1 × 10⁹/L = 1,000 cells/µL.",
     "MCHC: g/dL × 10 = g/L.",
     "MCV: 1 fL = 10⁻¹⁵ L.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -245,7 +256,7 @@ window.TESTS = [
     "Detection and monitoring of hepatocellular injury.",
     "Investigation of suspected acute or chronic liver disease.",
     "Monitoring potential drug-induced liver injury.",
-    "Component of liver function test (LFT) panels."
+    "Component of liver function test (LFT) panel."
   ],
   referenceRange: [
     "See Appendix 12: General Guide to Reference Ranges.",
@@ -262,7 +273,7 @@ window.TESTS = [
   sampleRequirements: "Serum, typically 2–5 mL whole blood collected in a serum tube. Lithium-heparin plasma may be acceptable where validated.",
   storageTransport: [
     "Separate serum or plasma from cells promptly according to laboratory procedures.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Incorrect specimen type or collection tube.",
@@ -274,7 +285,7 @@ window.TESTS = [
   turnaround: { routine: "Same day.", urgent: "" },
   criticalAlert: [
     "Markedly elevated ALT may indicate acute hepatocellular injury and should be assessed alongside clinical findings and other liver tests.",
-    "See Appendices 4 and 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Viral hepatitis",
@@ -336,7 +347,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Separate serum or plasma from cells promptly. Follow validated laboratory storage and stability requirements.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -346,7 +357,7 @@ window.TESTS = [
   turnaround: { routine: "Same day, subject to local laboratory service arrangements.", urgent: "" },
   criticalAlert: [
     "Marked hypoalbuminaemia warrants clinical assessment. Immediate notification is required only where the result meets approved local critical or high-risk reporting criteria.",
-    "See Appendix 4: Alert List (Critical / Life-Threatening Results Requiring Immediate Notification), and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification, and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Hypoalbuminaemia: advanced chronic liver disease, nephrotic syndrome, protein-losing enteropathy, inflammation, sepsis and extensive burns. It may coexist with malnutrition but does not establish the diagnosis.",
@@ -356,7 +367,7 @@ window.TESTS = [
     "Reported in g/L.",
     "g/L ÷ 10 = g/dL.",
     "g/dL × 10 = g/L.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -407,7 +418,7 @@ window.TESTS = [
   sampleRequirements: "Serum or lithium-heparin plasma, as validated by the laboratory. Typically 2–5 mL blood, depending on collection tube and analyser requirements.",
   storageTransport: [
     "Separate serum or plasma from cells promptly. Refrigerate at 2–8 °C if testing is delayed, according to validated laboratory stability requirements.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Incorrect specimen type or anticoagulant.",
@@ -419,7 +430,7 @@ window.TESTS = [
   turnaround: { routine: "Same day.", urgent: "" },
   criticalAlert: [
     "No universal critical ALP threshold. Markedly abnormal results should be assessed with clinical findings and other laboratory investigations.",
-    "See Appendices 4 and 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Elevated: Cholestasis, biliary obstruction, Paget disease, rickets, osteomalacia and bone metastases.",
@@ -476,14 +487,14 @@ window.TESTS = [
   sampleRequirements: "Serum or lithium-heparin plasma, as validated by the laboratory. Typically 2–5 mL blood, depending on collection tube and analyser requirements.",
   storageTransport: [
     "Separate serum or plasma from cells promptly. Refrigerate at 2–8 °C if testing is delayed, according to validated laboratory stability requirements.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).",
   methodology: "Enzymatic colorimetric assay with spectrophotometric measurement.",
   turnaround: { routine: "Same day.", urgent: "" },
   criticalAlert: [
     "Amylase greater than three times the assay-specific upper reference limit supports acute pancreatitis when accompanied by compatible clinical findings. This is a diagnostic criterion, not an automatic critical-result threshold.",
-    "See Appendices 4 and 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Acute pancreatitis and pancreatic complications",
@@ -534,7 +545,7 @@ window.TESTS = [
     "Non-reactive: Anti-HBc not detected.",
     "Reactive: Anti-HBc detected.",
     "Equivocal: Repeat or investigate according to assay instructions, where applicable.",
-    "See Appendix 14: Hepatitis B & C Serology Interpretation."
+    "See Appendix 14: Hepatitis B and C Serology Interpretation."
   ],
   analyticalLimitations: [
     "Total anti-HBc alone cannot distinguish acute, chronic or resolved HBV infection.",
@@ -548,7 +559,7 @@ window.TESTS = [
   sampleRequirements: "Serum, collected in an appropriate serum tube. Typically 2–5 mL blood, depending on assay requirements.",
   storageTransport: [
     "Separate serum promptly. Refrigerate at 2–8 °C if testing is delayed, according to manufacturer-validated stability requirements.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).",
   methodology: "Enzyme-linked immunosorbent assay (ELISA) or chemiluminescent immunoassay (CLIA), depending on the laboratory platform.",
@@ -615,14 +626,14 @@ window.TESTS = [
   sampleRequirements: "Serum or lithium-heparin plasma, as validated by the laboratory. Typically 5 mL blood, depending on collection tube and analyser requirements.",
   storageTransport: [
     "Separate serum or plasma promptly. Store and transport according to validated laboratory requirements.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: "See Appendix 7: Sample Rejection Criteria (All Departments).",
   methodology: "Enzymatic multipoint rate assay.",
   turnaround: { routine: "Same day.", urgent: "" },
   criticalAlert: [
     "No universal AST critical threshold. Markedly elevated results should be interpreted with clinical findings and other investigations.",
-    "See Appendices 4 and 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Acute and chronic hepatitis",
@@ -675,7 +686,7 @@ window.TESTS = [
     "Monitor patients with renal disease, gastrointestinal fluid losses or disturbances related to fluid therapy."
   ],
   referenceRange: [
-    "Use the age-appropriate reference interval on the validated LIMS report. See Appendix 12.",
+    "Use the age-appropriate reference interval on the validated LIMS report. See Appendix 12: General Guide to Reference Ranges.",
     "Manufacturer adult reference interval: 22–30 mmol/L (VITROS ECO2). Each laboratory should confirm this interval for its own population.",
     "Measuring range: 5.0–40.0 mmol/L."
   ],
@@ -690,27 +701,27 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum, or lithium or sodium heparin plasma. Citrate plasma is not suitable.",
-    "Fill vacuum tubes completely. Do not collect from an arm receiving an intravenous infusion. Use the laboratory-approved tube and minimum volume; see Appendix 6."
+    "Fill vacuum tubes completely. Do not collect from an arm receiving an intravenous infusion. Use the laboratory-approved tube and minimum volume; see Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Keep the tube capped. Centrifuge and separate serum or plasma from cells within 4 hours of collection.",
-    "Stability of separated, tightly capped specimens: room temperature (18–28 °C) up to 24 hours; refrigerated (2–8 °C) up to 3 days; frozen (≤ −18 °C) up to 1 month. See Appendix 9a."
+    "Stability of separated, tightly capped specimens: room temperature (18–28 °C) up to 24 hours; refrigerated (2–8 °C) up to 3 days; frozen (≤ −18 °C) up to 1 month. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Reject identification errors, citrate plasma, insufficient volume or confirmed contamination according to laboratory policy.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Reject identification errors, citrate plasma, insufficient volume or confirmed contamination according to laboratory policy.",
     "Under-filled tubes, specimens left uncapped and specimens not separated within 4 hours require assessment, because they may give falsely low results."
   ],
   methodology: "Enzymatic endpoint assay (phosphoenolpyruvate carboxylase and malate dehydrogenase) measured by reflectance spectrophotometry at 340 nm on VITROS ECO2 dry slides (VITROS chemistry system).",
   turnaround: { routine: "Same day.", urgent: "<2 hours." },
   criticalAlert: [
-    "See Appendices 4 and 5.",
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Marked abnormalities require clinical assessment alongside blood gas results, other electrolytes and the patient's condition."
   ],
   diseaseAssociations: [
     "High: metabolic alkalosis, compensation for respiratory acidosis and excessive alkali intake.",
     "Low: metabolic acidosis, compensation for respiratory alkalosis and renal disorders in which hydrogen ions cannot be excreted."
   ],
-  conversionFactors: "For bicarbonate: 1 mmol/L = 1 mEq/L. See Appendix 10.",
+  conversionFactors: "For bicarbonate: 1 mmol/L = 1 mEq/L. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional).",
   appendixRefs: [
     "appendix-4",
     "appendix-5",
@@ -763,7 +774,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Protect from light and transport promptly. Separate serum or plasma from cells promptly. Follow locally validated temperature, stability and freezing requirements for each fraction.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Assess unsuitable containers, insufficient volume, excessive light exposure and storage outside validated limits. Haemolysed or lipaemic specimens require assessment against validated interference limits.",
@@ -775,7 +786,7 @@ window.TESTS = [
     urgent: "Urgent neonatal requests require prioritised processing under the local pathway."
   },
   criticalAlert: [
-    "Notify results meeting approved laboratory alert criteria. See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary.",
+    "Notify results meeting approved laboratory alert criteria. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "No single bilirubin concentration defines neonatal risk across all ages and gestations. Interpret total serum bilirubin using the approved neonatal guideline; do not subtract the direct/conjugated fraction.",
     "Jaundice within the first 24 hours requires urgent clinical assessment and serum bilirubin measurement.",
     "Raised direct/conjugated bilirubin in an infant requires prompt clinical assessment for cholestasis."
@@ -787,7 +798,7 @@ window.TESTS = [
   conversionFactors: [
     "μmol/L × 0.0585 = mg/dL.",
     "mg/dL × 17.1 ≈ μmol/L.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -842,7 +853,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly at room temperature. Do not refrigerate or freeze inoculated blood culture bottles. Load into the automated culture system as soon as possible.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Leaking, damaged, incorrectly identified or unsuitable containers must be assessed according to laboratory policy.",
@@ -852,11 +863,11 @@ window.TESTS = [
   methodology: "Automated continuous-monitoring blood culture system, followed by Gram stain, organism identification and antimicrobial susceptibility testing when growth is detected.",
   turnaround: {
     routine: "Preliminary result (Gram stain): 24–48 hours. Positive culture, with identification and sensitivities: 48–72 hours. Negative culture: reported after 5 days of incubation.",
-    urgent: "Positive Gram stain results are telephoned as soon as available; see Appendix 4."
+    urgent: "Positive Gram stain results are telephoned as soon as available; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification."
   },
   criticalAlert: [
     "Positive blood culture Gram stain findings require urgent notification to the treating clinician according to laboratory policy.",
-    "See Appendix 4: Alert List (Critical / Life-Threatening Results Requiring Immediate Notification) and Appendix 5: Critical / High-Risk Results Policy Summary"
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary"
   ],
   diseaseAssociations: [
     "Sepsis and bacteraemia",
@@ -949,7 +960,7 @@ window.TESTS = [
   storageTransport: [
     "Prepare the blood film promptly after collection, preferably within 2 hours.",
     "If examination is delayed, store EDTA blood according to validated laboratory procedures. Refrigeration does not prevent all morphological changes.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Clotted or incorrectly identified specimens.",
@@ -965,7 +976,7 @@ window.TESTS = [
     "Schistocytes suggestive of thrombotic microangiopathy.",
     "Suspected malaria parasites, according to the malaria notification protocol.",
     "Severe thrombocytopenia requires urgent notification according to the platelet count and laboratory critical-result policy.",
-    "See Appendix 13: Critical Results Notification."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification."
   ],
   diseaseAssociations: [
     "Iron deficiency, megaloblastic and haemolytic anaemias.",
@@ -1010,7 +1021,7 @@ window.TESTS = [
     "Venous blood gases may suffice for acid–base assessment in DKA when arterial oxygenation assessment is not required."
   ],
   referenceRange: [
-    "Use the locally validated arterial reference intervals on the analyser/LIMS report; see Appendix 12.",
+    "Use the locally validated arterial reference intervals on the analyser/LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Interpret pO₂ with age, inspired oxygen concentration and altitude. Reference intervals are distinct from oxygen-treatment targets and critical-result thresholds."
   ],
   analyticalLimitations: [
@@ -1030,10 +1041,10 @@ window.TESTS = [
   ],
   storageTransport: [
     "Analyse immediately at the point of care. If transport is necessary, send promptly in the sealed syringe.",
-    "Follow locally validated syringe/analyser instructions for maximum delay and temperature. Do not routinely place plastic blood gas syringes on ice. See Appendix 9a."
+    "Follow locally validated syringe/analyser instructions for maximum delay and temperature. Do not routinely place plastic blood gas syringes on ice. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Examples include identification errors, clotted specimens, unsuitable containers, insufficient filling for the collection device, persistent air contamination or delay beyond validated limits.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Examples include identification errors, clotted specimens, unsuitable containers, insufficient filling for the collection device, persistent air contamination or delay beyond validated limits.",
     "A venous specimen must not be reported as arterial."
   ],
   methodology: "Analyser-specific electrochemical measurement of pH, pCO₂ and pO₂, with calculated acid–base parameters. Co-oximetry, where available, measures haemoglobin fractions and permits measured oxygen saturation reporting.",
@@ -1042,7 +1053,7 @@ window.TESTS = [
     urgent: "Urgent point-of-care testing; results usually available within minutes after analysis."
   },
   criticalAlert: [
-    "Immediately communicate results meeting locally approved blood gas critical thresholds, with documented notification according to Appendices 4 and 5.",
+    "Immediately communicate results meeting locally approved blood gas critical thresholds, with documented notification according to Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Interpret marked acid–base or oxygenation abnormalities promptly in the clinical context."
   ],
   diseaseAssociations: [
@@ -1088,7 +1099,7 @@ window.TESTS = [
     "Supportive investigation of gastrointestinal bleeding or increased protein catabolism; not diagnostic alone."
   ],
   referenceRange: [
-    "Use the validated age-appropriate reference interval and units on the LIMS report; see Appendix 12."
+    "Use the validated age-appropriate reference interval and units on the LIMS report; see Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Limited specificity for reduced glomerular filtration: protein intake, catabolism, gastrointestinal bleeding, hydration and liver function affect results.",
@@ -1099,21 +1110,21 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in an approved serum tube. Lithium-heparin plasma may be used if validated for the local assay.",
-    "Use the locally specified collection and minimum sample volumes. See Appendix 6 for tube guidance."
+    "Use the locally specified collection and minimum sample volumes. See Appendix 6: Order of Draw Quick Guide and Tube Reference for tube guidance."
   ],
   storageTransport: [
     "Separate serum or plasma from cells promptly and transport according to locally validated requirements.",
-    "For delayed analysis, follow the reagent instructions and local policy for refrigeration, freezing and permitted storage duration. See Appendix 9a."
+    "For delayed analysis, follow the reagent instructions and local policy for refrigeration, freezing and permitted storage duration. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Apply local criteria for identification, container, sample volume and specimen integrity.",
     "Do not automatically reject haemolysed, lipaemic or icteric specimens unless interference exceeds validated assay limits.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Enzymatic urea assay with photometric detection; confirm the local analyser/reagent method and whether results are reported as urea or BUN.",
   turnaround: { routine: "Same day.", urgent: "<2 hours." },
   criticalAlert: [
-    "Notify results meeting locally approved critical or high-risk criteria according to Appendices 4 and 5.",
+    "Notify results meeting locally approved critical or high-risk criteria according to Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Interpret markedly elevated results with creatinine, electrolytes, urine output and clinical condition."
   ],
   diseaseAssociations: [
@@ -1123,7 +1134,7 @@ window.TESTS = [
   conversionFactors: [
     "BUN (mg/dL) → urea (mmol/L): multiply by 0.357.",
     "Urea (mmol/L) → BUN (mg/dL): divide by 0.357.",
-    "These factors do not apply to urea expressed in mg/dL. See Appendix 10."
+    "These factors do not apply to urea expressed in mg/dL. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -1163,7 +1174,7 @@ window.TESTS = [
     "CRP alone should not determine antibiotic initiation, continuation or cessation."
   ],
   referenceRange: [
-    "Use the validated reference interval on the LIMS report; see Appendix 12."
+    "Use the validated reference interval on the LIMS report; see Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Nonspecific: elevation does not identify the cause or site of inflammation or reliably distinguish bacterial from viral infection.",
@@ -1175,20 +1186,20 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in an approved serum tube; plasma may be accepted if validated.",
-    "Allow serum to clot and separate from cells promptly. See Appendix 6."
+    "Allow serum to clot and separate from cells promptly. See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Transport promptly and follow locally validated requirements for separated serum or plasma.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Apply local criteria for identification, container, sample volume and specimen integrity.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Apply local criteria for identification, container, sample volume and specimen integrity.",
     "Do not automatically reject haemolysed, lipaemic or icteric specimens unless interference exceeds validated limits. Residual fibrin in serum or clotted plasma requires assessment before analysis."
   ],
   methodology: "The immuno-rate format for CRP is based on an enzymatic heterogeneous, sandwich immunoassay format.",
   turnaround: { routine: "Same day for routine requests.", urgent: "<2 hours if urgent." },
   criticalAlert: [
-    "No universal CRP critical threshold is specified. Follow any locally approved notification criteria in Appendices 4 and 5.",
+    "No universal CRP critical threshold is specified. Follow any locally approved notification criteria in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Marked elevation requires interpretation with the clinical findings. Suspected sepsis requires urgent clinical assessment regardless of the CRP result."
   ],
   diseaseAssociations: [
@@ -1198,7 +1209,7 @@ window.TESTS = [
   conversionFactors: [
     "mg/dL → mg/L: multiply by 10.",
     "mg/L → mg/dL: divide by 10.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -1236,7 +1247,7 @@ window.TESTS = [
     "Interpret with parathyroid hormone, phosphate, magnesium, renal function and vitamin D where indicated."
   ],
   referenceRange: [
-    "Use the validated age-appropriate total calcium reference interval on the LIMS report; see Appendix 12.",
+    "Use the validated age-appropriate total calcium reference interval on the LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Total and ionised calcium have different reference intervals. Reference intervals are distinct from critical notification thresholds."
   ],
   analyticalLimitations: [
@@ -1251,19 +1262,19 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in an approved serum tube. Lithium-heparin plasma may be accepted if validated for the local assay.",
-    "Minimise venous stasis and avoid anticoagulant or infusion contamination. Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6.",
+    "Minimise venous stasis and avoid anticoagulant or infusion contamination. Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "Ionised calcium is a separate test with specific collection and handling requirements. Currently, ionised Calcium is not available."
   ],
-  storageTransport: "Transport promptly. Follow locally validated requirements for separated serum or plasma, including refrigeration, maximum storage duration and freezing conditions.\nSee Appendix 9a. These instructions do not apply to ionised calcium specimens.",
-  rejection: "See Appendix 7. Examples include identification errors, unsuitable containers, insufficient sample volume and suspected EDTA, citrate or oxalate contamination.\nAssess residual fibrin in serum or clotted plasma before analysis. Do not automatically reject haemolysed, lipaemic or icteric specimens unless interference exceeds validated limits.",
+  storageTransport: "Transport promptly. Follow locally validated requirements for separated serum or plasma, including refrigeration, maximum storage duration and freezing conditions.\nSee Appendix 9a: Storage and Transport — Quick Reference (All Disciplines). These instructions do not apply to ionised calcium specimens.",
+  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments). Examples include identification errors, unsuitable containers, insufficient sample volume and suspected EDTA, citrate or oxalate contamination.\nAssess residual fibrin in serum or clotted plasma before analysis. Do not automatically reject haemolysed, lipaemic or icteric specimens unless interference exceeds validated limits.",
   methodology: "Colorimetric assay",
   turnaround: { routine: "Same day", urgent: "<2 hours" },
-  criticalAlert: "Immediately notify results meeting locally approved calcium critical thresholds according to Appendices 4 and 5.\nSymptomatic hypocalcaemia or hypercalcaemia requires urgent clinical assessment regardless of notification thresholds.",
+  criticalAlert: "Immediately notify results meeting locally approved calcium critical thresholds according to Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.\nSymptomatic hypocalcaemia or hypercalcaemia requires urgent clinical assessment regardless of notification thresholds.",
   diseaseAssociations: [
     "Low: hypoparathyroidism, vitamin D deficiency, chronic kidney disease, hypomagnesaemia, acute pancreatitis and critical illness. Hypoalbuminaemia may lower total calcium while ionised calcium remains normal.",
     "High: primary or tertiary hyperparathyroidism, malignancy, sarcoidosis, vitamin D excess and thiazide therapy."
   ],
-  conversionFactors: "mmol/L → mg/dL: multiply by 4.008. mg/dL → mmol/L: multiply by 0.2495. See Appendix 10.",
+  conversionFactors: "mmol/L → mg/dL: multiply by 4.008. mg/dL → mmol/L: multiply by 0.2495. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional).",
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -1301,7 +1312,7 @@ window.TESTS = [
     "Not recommended for population screening or diagnosis in isolation. Do not initiate or change treatment solely because of a rising result."
   ],
   referenceRange: [
-    "Use the validated assay-specific reference limit on the LIMS report; see Appendix 12.",
+    "Use the validated assay-specific reference limit on the LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "35 kU/L is a commonly used limit but requires local confirmation. Diagnostic decision limits in ovarian cancer assessment pathways are distinct from laboratory reference limits and critical thresholds."
   ],
   analyticalLimitations: [
@@ -1315,14 +1326,14 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in an approved serum tube; plasma only if accepted by the performing laboratory.",
-    "Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6."
+    "Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Transport promptly. Follow the performing laboratory's validated requirements for separated specimens, refrigeration, maximum storage duration and freezing.",
-    "See Appendix 9a. Confirm referral transport requirements if testing is not performed locally."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines). Confirm referral transport requirements if testing is not performed locally."
   ],
   rejection: [
-    "See Appendix 7. Apply local criteria for identification, container, sample volume and specimen integrity.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Apply local criteria for identification, container, sample volume and specimen integrity.",
     "Assess residual fibrin in serum or clotted plasma before analysis. Do not automatically reject haemolysed, lipaemic or icteric specimens unless interference exceeds validated assay limits."
   ],
   methodology: "Immunometric immunoassay technique.",
@@ -1333,7 +1344,7 @@ window.TESTS = [
   criticalAlert: [
     "No universal numerical critical threshold.",
     "An unexpected or persistently rising result warrants review by the treating team alongside clinical findings and imaging. Investigate possible assay interference when results are inconsistent with the clinical picture.",
-    "Notification urgency follows local policy; see Appendices 4 and 5 where applicable."
+    "Notification urgency follows local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where applicable."
   ],
   diseaseAssociations: [
     "Malignant: epithelial ovarian, fallopian tube and primary peritoneal carcinoma, particularly serous carcinoma; some other malignancies.",
@@ -1341,7 +1352,7 @@ window.TESTS = [
   ],
   conversionFactors: [
     "1 U/mL = 1 kU/L; numerical values are unchanged.",
-    "Equivalent units do not make results from different assays interchangeable. See Appendix 10."
+    "Equivalent units do not make results from different assays interchangeable. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -1381,7 +1392,7 @@ window.TESTS = [
     "Not recommended for breast cancer screening, diagnosis or routine recurrence surveillance in asymptomatic patients after primary treatment. Do not change treatment solely on the result."
   ],
   referenceRange: [
-    "Use the validated assay-specific reference limit on the LIMS report; see Appendix 12.",
+    "Use the validated assay-specific reference limit on the LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "An upper reference limit of 30 kU/L is used by some assays but requires local confirmation. A result above the reference limit does not establish malignancy."
   ],
   analyticalLimitations: [
@@ -1395,15 +1406,15 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in an approved serum tube; plasma only if accepted by the performing laboratory.",
-    "Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6.",
+    "Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "Follow assay-specific preparation advice concerning biotin supplements where applicable."
   ],
   storageTransport: [
     "Transport promptly. Follow the performing laboratory's validated requirements for separation, refrigeration, maximum storage duration and freezing.",
-    "See Appendix 9a. Confirm referral transport requirements if testing is not performed locally."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines). Confirm referral transport requirements if testing is not performed locally."
   ],
   rejection: [
-    "See Appendix 7. Examples include identification errors, unsuitable containers and insufficient sample volume.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Examples include identification errors, unsuitable containers and insufficient sample volume.",
     "Assess residual fibrin in serum or clotted plasma before analysis. Apply validated assay-specific interference limits for haemolysis, lipaemia and icterus."
   ],
   methodology: "Immunometric test.",
@@ -1413,7 +1424,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "No universal numerical critical threshold.",
-    "A confirmed rising trend warrants review by the treating oncology team alongside clinical findings and imaging. Notification urgency follows local policy; see Appendices 4 and 5 where applicable."
+    "A confirmed rising trend warrants review by the treating oncology team alongside clinical findings and imaging. Notification urgency follows local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where applicable."
   ],
   diseaseAssociations: [
     "Elevated: breast cancer, particularly metastatic disease; some other malignancies, including ovarian, lung and pancreatic cancers.",
@@ -1421,7 +1432,7 @@ window.TESTS = [
   ],
   conversionFactors: [
     "1 U/mL = 1 kU/L; numerical values are unchanged.",
-    "Equivalent units do not make results from different assays interchangeable. See Appendix 10."
+    "Equivalent units do not make results from different assays interchangeable. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -1461,7 +1472,7 @@ window.TESTS = [
     "Not recommended for population screening or diagnosis in isolation. Do not change treatment solely on the result."
   ],
   referenceRange: [
-    "Use the validated assay-specific reference limit on the LIMS report; see Appendix 12.",
+    "Use the validated assay-specific reference limit on the LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "An elevated result does not establish malignancy, and a normal result does not exclude it."
   ],
   analyticalLimitations: [
@@ -1475,14 +1486,14 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in an approved serum tube; plasma only if accepted.",
-    "Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6."
+    "Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Transport promptly. Follow the performing laboratory's validated requirements for specimen separation, refrigeration, maximum storage duration and freezing.",
-    "See Appendix 9a. Confirm referral transport requirements if testing is not performed locally."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines). Confirm referral transport requirements if testing is not performed locally."
   ],
   rejection: [
-    "See Appendix 7. Examples include identification errors, unsuitable containers and insufficient sample volume.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Examples include identification errors, unsuitable containers and insufficient sample volume.",
     "Assess residual fibrin in serum or clotted plasma before analysis. Apply validated assay-specific interference limits for haemolysis, lipaemia and icterus."
   ],
   methodology: "Immunometric assay.",
@@ -1493,7 +1504,7 @@ window.TESTS = [
   criticalAlert: [
     "No universal numerical critical threshold.",
     "An unexpected or persistently rising result warrants review by the treating team, considering biliary obstruction, inflammation, clinical findings and imaging. Investigate possible assay interference if results are inconsistent with the clinical picture.",
-    "Notification urgency follows local policy; see Appendices 4 and 5 where applicable."
+    "Notification urgency follows local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where applicable."
   ],
   diseaseAssociations: [
     "Malignant: pancreatic ductal adenocarcinoma, cholangiocarcinoma and some other gastrointestinal cancers.",
@@ -1501,7 +1512,7 @@ window.TESTS = [
   ],
   conversionFactors: [
     "1 U/mL = 1 kU/L; numerical values are unchanged.",
-    "Equivalent units do not make results from different assays interchangeable. See Appendix 10."
+    "Equivalent units do not make results from different assays interchangeable. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -1538,7 +1549,7 @@ window.TESTS = [
     "Not suitable for population screening or diagnosis in isolation. Do not change treatment solely on the result."
   ],
   referenceRange: [
-    "Use the validated assay-specific reference limit on the LIMS report; see Appendix 12.",
+    "Use the validated assay-specific reference limit on the LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Smoking may increase CEA and influence interpretation.",
     "Reference limits are distinct from investigation or notification thresholds."
   ],
@@ -1552,15 +1563,15 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in an approved serum tube; plasma only if accepted by the performing laboratory.",
-    "Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6.",
+    "Allow serum to clot and separate from cells promptly. Use locally specified collection and minimum sample volumes; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "Record smoking status. Follow assay-specific preparation advice concerning biotin supplements where applicable."
   ],
   storageTransport: [
     "Transport promptly. Follow the performing laboratory's validated requirements for specimen separation, refrigeration, maximum storage duration and freezing.",
-    "See Appendix 9a. Confirm referral transport requirements if testing is not performed locally."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines). Confirm referral transport requirements if testing is not performed locally."
   ],
   rejection: [
-    "See Appendix 7. Examples include identification errors, unsuitable containers and insufficient sample volume.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Examples include identification errors, unsuitable containers and insufficient sample volume.",
     "Assess residual fibrin in serum or clotted plasma before analysis. Apply validated assay-specific interference limits for haemolysis, lipaemia and icterus."
   ],
   methodology: "Immunometric immunoassay test.",
@@ -1571,7 +1582,7 @@ window.TESTS = [
   criticalAlert: [
     "No universal numerical critical threshold.",
     "A confirmed new elevation or rising trend in a patient with treated cancer warrants timely review and further assessment by the treating team. It does not independently establish recurrence.",
-    "Follow locally agreed notification arrangements; see Appendices 4 and 5 where applicable."
+    "Follow locally agreed notification arrangements; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where applicable."
   ],
   diseaseAssociations: [
     "Malignant: colorectal cancer; selected other cancers, including gastric, pancreatic, lung, breast and medullary thyroid carcinoma.",
@@ -1579,7 +1590,7 @@ window.TESTS = [
   ],
   conversionFactors: [
     "1 ng/mL = 1 µg/L; numerical values are unchanged.",
-    "Equivalent units do not make results from different assays interchangeable. See Appendix 10."
+    "Equivalent units do not make results from different assays interchangeable. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -1620,7 +1631,7 @@ window.TESTS = [
     "ART eligibility is independent of CD4 count. Viral load is preferred for monitoring ART efficacy; routine CD4 monitoring is generally unnecessary in clinically stable patients when viral load monitoring is available."
   ],
   referenceRange: [
-    "Use validated age-appropriate intervals for absolute CD4 count and CD4 percentage on the LIMS report; see Appendix 12.",
+    "Use validated age-appropriate intervals for absolute CD4 count and CD4 percentage on the LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Children, particularly infants, normally have higher absolute counts than adults. HIV clinical decision thresholds are separate from reference intervals."
   ],
   analyticalLimitations: [
@@ -1634,17 +1645,17 @@ window.TESTS = [
   containerColour: "Lavender EDTA",
   sampleRequirements: [
     "EDTA whole blood in an approved tube, usually purple/lavender-top.",
-    "Fill and mix according to tube instructions. Use locally specified collection and minimum volumes, including paediatric requirements; see Appendix 6.",
+    "Fill and mix according to tube instructions. Use locally specified collection and minimum volumes, including paediatric requirements; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "Record collection date and time. Do not separate plasma or serum."
   ],
   storageTransport: [
     "Send promptly and arrange collection around the testing or referral schedule.",
     "Maintain the validated transport temperature specified by the performing laboratory; uncontrolled tropical ambient temperature may exceed acceptable limits.",
     "Do not freeze. Refrigeration and maximum collection-to-processing time must follow the specific assay's validated instructions; many conventional flow-cytometry methods require unrefrigerated specimens.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Reject clotted or frozen specimens, identification errors, unsuitable containers and samples insufficient for validated testing.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Reject clotted or frozen specimens, identification errors, unsuitable containers and samples insufficient for validated testing.",
     "Assess haemolysis, temperature exposure and delayed receipt against method-specific acceptance criteria. Do not apply an unverified universal 24–36-hour rejection limit."
   ],
   methodology: "Flow cytometric enumeration using fluorescent-labelled antibodies.",
@@ -1653,7 +1664,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "Telephone immediately: CD4 ≤200 cells/µL in people living with HIV aged five years or older (advanced HIV disease). See Appendices 4 and 5.",
+    "Telephone immediately: CD4 ≤200 cells/µL in people living with HIV aged five years or older (advanced HIV disease). See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Prompt clinical assessment and linkage to the advanced HIV care pathway are required. Children younger than five years require age-specific assessment under current HIV guidance."
   ],
   diseaseAssociations: [
@@ -1664,7 +1675,7 @@ window.TESTS = [
     "1 cell/µL = 1 cell/mm³.",
     "Cells/µL → ×10⁹/L: divide by 1,000.",
     "×10⁹/L → cells/µL: multiply by 1,000.",
-    "CD4 percentage is a separate measurement, not a unit conversion. See Appendix 10."
+    "CD4 percentage is a separate measurement, not a unit conversion. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -1703,7 +1714,7 @@ window.TESTS = [
     "Monitor patients with renal disease, gastrointestinal fluid losses or disturbances related to fluid therapy."
   ],
   referenceRange: [
-    "Use the age-appropriate reference interval on the validated LIMS report. See Appendix 12."
+    "Use the age-appropriate reference interval on the validated LIMS report. See Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Interpret with sodium, potassium, bicarbonate, renal function and clinical findings; chloride alone does not establish an acid–base diagnosis.",
@@ -1715,27 +1726,27 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum. Lithium heparin plasma may be used if validated for the local method.",
-    "Use the laboratory-approved tube and minimum volume; see Appendix 6. Avoid contamination from intravenous infusions."
+    "Use the laboratory-approved tube and minimum volume; see Appendix 6: Order of Draw Quick Guide and Tube Reference. Avoid contamination from intravenous infusions."
   ],
   storageTransport: [
     "Separate serum or plasma from cells promptly. Follow locally validated temperature and stability requirements; refrigerate separated specimens if required for delayed testing.",
-    "Freeze only where permitted by the validated method. See Appendix 9a."
+    "Freeze only where permitted by the validated method. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Reject identification errors, unsuitable specimens, insufficient volume or confirmed contamination according to laboratory policy.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Reject identification errors, unsuitable specimens, insufficient volume or confirmed contamination according to laboratory policy.",
     "Haemolysed, lipaemic or icteric specimens require assessment against validated interference limits."
   ],
   methodology: "Potentiometric assay.",
   turnaround: { routine: "Same day.", urgent: "<2 hours." },
   criticalAlert: [
-    "See Appendices 4 and 5.",
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Marked abnormalities require clinical assessment alongside other electrolytes, acid–base findings and the patient's condition."
   ],
   diseaseAssociations: [
     "Low: prolonged vomiting, metabolic alkalosis, diuretic therapy and renal compensation for chronic respiratory acidosis.",
     "High: gastrointestinal bicarbonate loss, renal tubular acidosis, excessive chloride-rich fluid administration and dehydration, particularly with hypernatraemia."
   ],
-  conversionFactors: "For chloride: 1 mmol/L = 1 mEq/L. See Appendix 10.",
+  conversionFactors: "For chloride: 1 mmol/L = 1 mEq/L. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional).",
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -1770,7 +1781,7 @@ window.TESTS = [
     "Monitor lipid-lowering therapy alongside other lipid results, particularly low-density lipoprotein (LDL) cholesterol."
   ],
   referenceRange: [
-    "Interpret using locally adopted, age-appropriate clinical decision limits and the validated LIMS report. See Appendix 12.",
+    "Interpret using locally adopted, age-appropriate clinical decision limits and the validated LIMS report. See Appendix 12: General Guide to Reference Ranges.",
     "Adult total cholesterol <5.2 mmol/L is a commonly used desirable decision limit; it is not a universal reference interval or individual treatment target."
   ],
   analyticalLimitations: [
@@ -1781,22 +1792,22 @@ window.TESTS = [
   sampleType: "Serum",
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
-    "Serum in a laboratory-approved tube. Use the locally validated minimum volume; see Appendix 6.",
+    "Serum in a laboratory-approved tube. Use the locally validated minimum volume; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "Fasting is not routinely required for total cholesterol. Follow collection instructions for accompanying tests and any specifically requested fasting lipid profile."
   ],
   storageTransport: [
     "Separate serum from cells promptly. Follow locally validated transport temperatures and storage limits; refrigerate separated serum if required when testing is delayed.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Reject identification errors, unsuitable specimens or insufficient volume according to laboratory policy.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Reject identification errors, unsuitable specimens or insufficient volume according to laboratory policy.",
     "Assess haemolysed, lipaemic or icteric specimens against validated interference limits."
   ],
   methodology: "Colorimetric assay.",
   turnaround: { routine: "Same day.", urgent: "" },
   criticalAlert: [
     "No universal numeric critical threshold.",
-    "Markedly elevated results require clinical assessment for inherited or secondary lipid disorders. Apply any locally approved notification requirements; see Appendices 4 and 5."
+    "Markedly elevated results require clinical assessment for inherited or secondary lipid disorders. Apply any locally approved notification requirements; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Elevated: familial hypercholesterolaemia, hypothyroidism, nephrotic syndrome and cholestatic liver disease. Pregnancy may cause a physiological increase.",
@@ -1805,7 +1816,7 @@ window.TESTS = [
   conversionFactors: [
     "mg/dL × 0.0259 = mmol/L.",
     "mmol/L × 38.67 = mg/dL.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -1842,7 +1853,7 @@ window.TESTS = [
     "Cardiac troponin is preferred for suspected myocardial infarction."
   ],
   referenceRange: [
-    "Use the validated age- and sex-appropriate reference interval on the LIMS report. See Appendix 12."
+    "Use the validated age- and sex-appropriate reference interval on the LIMS report. See Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Exercise, trauma, intramuscular injections, seizures and muscle-toxic drugs may genuinely increase CK.",
@@ -1854,27 +1865,27 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in a laboratory-approved tube. Lithium heparin plasma may be accepted if validated for the local method.",
-    "Use the locally approved collection volume; see Appendix 6. Record relevant recent exercise, injury and medicines."
+    "Use the locally approved collection volume; see Appendix 6: Order of Draw Quick Guide and Tube Reference. Record relevant recent exercise, injury and medicines."
   ],
   storageTransport: [
     "Separate serum or plasma from cells promptly. Follow locally validated transport temperatures and stability limits; refrigerate separated specimens if required when testing is delayed.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Reject identification errors, unsuitable specimens or insufficient volume according to laboratory policy.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Reject identification errors, unsuitable specimens or insufficient volume according to laboratory policy.",
     "Assess haemolysed, lipaemic or icteric specimens against validated interference limits."
   ],
   methodology: "Multipoint rate assay.",
   turnaround: { routine: "Same day.", urgent: "Confirm urgent testing availability locally." },
   criticalAlert: [
-    "Telephone immediately: CK >1,000 U/L, or more than 5 times the upper reference limit. See Appendices 4 and 5.",
+    "Telephone immediately: CK >1,000 U/L, or more than 5 times the upper reference limit. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Suspected rhabdomyolysis requires prompt assessment of renal function, potassium and other relevant electrolytes."
   ],
   diseaseAssociations: [
     "Elevated CK: rhabdomyolysis, inflammatory or inherited myopathies, muscle trauma, prolonged seizures, hypothyroidism and drug- or toxin-related muscle injury.",
     "Malignant hyperthermia and neuroleptic malignant syndrome may cause severe muscle injury."
   ],
-  conversionFactors: ["U/L × 0.0167 = µkat/L.", "µkat/L × 60 = U/L.", "See Appendix 10."],
+  conversionFactors: ["U/L × 0.0167 = µkat/L.", "µkat/L × 60 = U/L.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -1910,8 +1921,8 @@ window.TESTS = [
     "Interpret with previous results, urine output, urine findings and clinical context."
   ],
   referenceRange: [
-    "Use the age- and sex-appropriate reference interval on the validated LIMS report. See Appendix 12.",
-    "For eGFR interpretation and CKD G-stages, see Appendix 11."
+    "Use the age- and sex-appropriate reference interval on the validated LIMS report. See Appendix 12: General Guide to Reference Ranges.",
+    "For eGFR interpretation and CKD G-stages, see Appendix 11: eGFR and CKD G-Stage References."
   ],
   analyticalLimitations: [
     "Low muscle mass may conceal impaired kidney function; diet, muscle injury and creatine supplements may also affect results.",
@@ -1924,20 +1935,20 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in a laboratory-approved tube. Lithium heparin plasma may be accepted if validated for the local method.",
-    "Use the locally approved collection volume; see Appendix 6."
+    "Use the locally approved collection volume; see Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Separate serum or plasma from cells promptly. Follow locally validated separation times, transport temperatures and stability limits.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Reject identification errors, unsuitable tubes, insufficient volume or confirmed contamination according to laboratory policy.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Reject identification errors, unsuitable tubes, insufficient volume or confirmed contamination according to laboratory policy.",
     "Assess haemolysis, lipaemia and icterus against validated interference limits. Clotting during serum preparation is expected; clotted anticoagulated specimens are unsuitable."
   ],
   methodology: "Two-point rate assay.",
   turnaround: { routine: "2–6 hours.", urgent: "<2 hours." },
   criticalAlert: [
-    "Apply locally approved absolute-value and significant-change notification criteria. See Appendices 4 and 5.",
+    "Apply locally approved absolute-value and significant-change notification criteria. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "A new or rapidly rising creatinine may require urgent assessment even below an absolute alert threshold. Interpret with urine output, potassium and clinical findings."
   ],
   diseaseAssociations: [
@@ -1947,7 +1958,7 @@ window.TESTS = [
   conversionFactors: [
     "mg/dL × 88.4 = µmol/L.",
     "µmol/L × 0.0113 = mg/dL.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -2014,7 +2025,7 @@ window.TESTS = [
     "If delayed, refrigerate at 2–8 °C for routine bacterial culture according to locally validated requirements.",
     "Do not freeze the routine culture specimen.",
     "Confirm separate storage requirements for additional or referral tests.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2034,7 +2045,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "Notify clinically urgent findings according to Appendix 4: Alert List (Critical / Life-Threatening Results Requiring Immediate Notification) and Appendix 5: Critical / High-Risk Results Policy Summary.",
+    "Notify clinically urgent findings according to Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Examples requiring prompt assessment include suspected or confirmed Mycobacterium tuberculosis complex, locally designated resistant organisms and findings suggesting serious opportunistic infection in a high-risk patient. Apply relevant infection prevention and public health notification requirements.",
     "Positive BAL culture alone is not automatically a critical result."
   ],
@@ -2081,7 +2092,7 @@ window.TESTS = [
   summary: "Culture of cerebrospinal fluid (CSF) to detect bacterial causes of disease.",
   description: [
     "Culture of cerebrospinal fluid (CSF) to detect bacterial causes of meningitis and ventriculitis, with organism identification and antimicrobial susceptibility testing where appropriate.",
-    "Fungal, mycobacterial and molecular investigations require specific requests.",
+    "Fungal and molecular investigations require specific requests.",
     "CSF Culture test includes CSF sample description, Gram stain, AFB stain, WBC count, RBC count, Lymphocyte and Neutrophil differential count."
   ],
   indications: [
@@ -2110,10 +2121,10 @@ window.TESTS = [
   storageTransport: [
     "Notify the laboratory and transport immediately at room temperature for routine bacterial culture.",
     "Do not refrigerate or freeze the specimen intended for routine bacterial culture. If transport is delayed, contact microbiology for instructions. Separate aliquots for other tests may require different handling.",
-    "See Appendix 9a and 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Identification errors, leakage, inappropriate containers or suspected contamination require urgent laboratory assessment.",
     "Do not automatically discard low-volume or otherwise compromised CSF. Discuss with the microbiologist, document limitations and prioritise testing under the approved policy. Identity must be resolved before patient-specific reporting."
   ],
@@ -2206,7 +2217,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly using the approved specimen container or transport medium. Follow locally validated temperature and maximum transport-time requirements.",
-    "See Appendix 9a and Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2221,7 +2232,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "Notify significant findings requiring urgent action according to the approved local policy; see Appendices 4 and 5. A positive ear culture alone is not automatically critical.",
+    "Notify significant findings requiring urgent action according to the approved local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. A positive ear culture alone is not automatically critical.",
     "Suspected necrotising otitis externa or mastoiditis requires urgent clinical assessment; do not await culture results."
   ],
   diseaseAssociations: [
@@ -2308,7 +2319,7 @@ window.TESTS = [
     "Transport culture specimens promptly in approved transport medium. Gonococcal culture requires particular attention to transport conditions.",
     "Wet-film specimens require prompt examination; contact the laboratory before collection if delay is expected.",
     "Submit direct smears only when requested, in a protective slide holder; slides do not replace culture specimens. Follow assay-specific requirements for NAAT.",
-    "See Appendix 9a and Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2324,7 +2335,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "Communicate significant findings requiring urgent action according to the approved local policy; see Appendices 4 and 5.",
+    "Communicate significant findings requiring urgent action according to the approved local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "GBS carriage or Candida isolation alone is not automatically a critical result. Suspected postpartum sepsis or severe pelvic infection requires urgent clinical assessment without waiting for culture."
   ],
   diseaseAssociations: [
@@ -2409,7 +2420,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Send promptly. Transport corneal scrapings, inoculated media and slides immediately using the laboratory-agreed system.",
-    "Follow locally validated storage and transport requirements for each specimen and requested investigation; see Appendix 9a and Appendix 9b."
+    "Follow locally validated storage and transport requirements for each specimen and requested investigation; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2427,7 +2438,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Suspected microbial keratitis or gonococcal conjunctivitis requires urgent ophthalmic assessment; do not await culture results.",
-    "Communicate clinically urgent microscopy or culture findings promptly according to the approved local policy; see Appendices 4 and 5. Not every positive conjunctival culture is a critical result."
+    "Communicate clinically urgent microscopy or culture findings promptly according to the approved local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Not every positive conjunctival culture is a critical result."
   ],
   diseaseAssociations: ["Infectious keratitis, corneal ulceration and conjunctivitis."],
   conversionFactors: "Not applicable.",
@@ -2496,7 +2507,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Send promptly in the approved transport system. Follow locally validated temperature and maximum transport-time requirements.",
-    "See Appendix 9a and Appendix 9b. Deep specimens requiring anaerobic culture have separate transport requirements."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling. Deep specimens requiring anaerobic culture have separate transport requirements."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2512,7 +2523,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "Communicate findings requiring urgent action according to the approved local policy; see Appendices 4 and 5. Candida isolation or mixed oral flora alone is not automatically critical.",
+    "Communicate findings requiring urgent action according to the approved local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Candida isolation or mixed oral flora alone is not automatically critical.",
     "Suspected diphtheria requires immediate laboratory and public health discussion. Severe spreading oral infection or airway compromise requires urgent clinical assessment without waiting for culture."
   ],
   diseaseAssociations: [
@@ -2589,7 +2600,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Send promptly in approved bacterial transport medium. Follow locally validated temperature and maximum transport-time requirements.",
-    "See Appendix 9a and Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2606,7 +2617,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Nasal Staphylococcus aureus carriage alone is not automatically a critical result.",
-    "Communicate MRSA or outbreak-related findings according to the approved infection prevention and laboratory notification policies. See Appendices 4 and 5 for critical or high-risk reporting requirements."
+    "Communicate MRSA or outbreak-related findings according to the approved infection prevention and laboratory notification policies. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary for critical or high-risk reporting requirements."
   ],
   diseaseAssociations: [
     "Local staphylococcal infection, including nasal vestibulitis or furunculosis.",
@@ -2690,7 +2701,7 @@ window.TESTS = [
     "Gonococcal culture requires particular attention to transport conditions and timely processing.",
     "Storage temperature and maximum delay depend on the organism, device and test; follow locally validated instructions.",
     "Do not apply a universal refrigeration rule or assumed 72-hour/seven-day stability.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2712,7 +2723,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "See Appendix 4: Alert List (Critical / Life-Threatening Results Requiring Immediate Notification) and Appendix 5: Critical / High-Risk Results Policy Summary.",
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Promptly communicate suspected gonococcal treatment failure or clinically important resistance, and designated resistant-organism screening results, to the appropriate clinical or infection prevention team."
   ],
   diseaseAssociations: [
@@ -2793,7 +2804,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly, preferably immediately after collection. Use the approved container and transport system; minimise air exposure where anaerobic recovery is required.",
-    "Storage temperature and maximum transport time depend on the specimen and requested investigations. See Appendix 9a and Appendix 9b. Contact the laboratory before collection if delay or specialist testing is anticipated."
+    "Storage temperature and maximum transport time depend on the specimen and requested investigations. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling. Contact the laboratory before collection if delay or specialist testing is anticipated."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2809,7 +2820,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "See Appendices 4 and 5. Interpret positive results according to the tissue site and clinical context.",
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Interpret positive results according to the tissue site and clinical context.",
     "Suspected necrotising infection or sepsis requires urgent clinical assessment and management without waiting for culture results."
   ],
   diseaseAssociations: [
@@ -2881,7 +2892,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Send promptly in the approved transport system. Follow locally validated temperature and maximum transport-time requirements.",
-    "See Appendix 9a and Appendix 9b. Specialised investigations may have different requirements."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling. Specialised investigations may have different requirements."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2897,7 +2908,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "Communicate urgent findings according to the approved local policy; see Appendices 4 and 5. A positive Group A streptococcal throat culture is not automatically a critical result.",
+    "Communicate urgent findings according to the approved local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. A positive Group A streptococcal throat culture is not automatically a critical result.",
     "Suspected diphtheria requires immediate clinical, laboratory and public health discussion; do not await culture confirmation.",
     "If epiglottitis or threatened airway obstruction is suspected, defer throat swabbing until the airway is secured and specialist assessment permits collection."
   ],
@@ -2980,7 +2991,7 @@ window.TESTS = [
   storageTransport: [
     "Transport immediately and alert the laboratory when septic arthritis is suspected, including outside routine hours.",
     "Follow locally validated conditions for unprocessed fluid, blood culture bottles and specimens for cell count or crystals. Do not refrigerate inoculated blood culture bottles.",
-    "See Appendix 9a and Appendix 9b. Contact the laboratory if transport will be delayed."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling. Contact the laboratory if transport will be delayed."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -2997,7 +3008,7 @@ window.TESTS = [
     urgent: "Gram stain: urgent processing when septic arthritis is suspected; confirm local availability."
   },
   criticalAlert: [
-    "Organisms seen on Gram stain or clinically significant growth from synovial fluid require prompt communication to the treating team under the approved local policy; see Appendices 4 and 5.",
+    "Organisms seen on Gram stain or clinically significant growth from synovial fluid require prompt communication to the treating team under the approved local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Do not await final culture results before assessing and managing suspected septic arthritis."
   ],
   diseaseAssociations: ["Septic arthritis; prosthetic-joint infection."],
@@ -3077,14 +3088,14 @@ window.TESTS = [
     "Transport promptly to the designated laboratory using approved infectious-specimen packaging.",
     "Refrigerate sputum at 2–8 °C if transport or processing is delayed.",
     "For other specimens, follow the receiving laboratory's validated storage requirements. Do not freeze unless specifically instructed.",
-    "See Appendices 9a and 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
     "Unlabelled or mislabelled specimens, leaking containers, or unsuitable containers.",
     "Formalin-fixed tissue is unsuitable for culture.",
     "Insufficient quantity, unsuitable specimen type or transport outside validated limits: discuss with the laboratory.",
     "Discuss irreplaceable specimens before rejection; do not apply an assumed universal 24-hour cutoff.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: [
     "Mycobacterial culture using validated liquid and/or solid media.",
@@ -3144,7 +3155,7 @@ window.TESTS = [
   ],
   referenceRange: [
     "CSF glucose is usually approximately 60–70% of paired plasma/serum glucose. This is an interpretative guide, not a universal reference interval.",
-    "Use the validated LIMS report and Appendix 12 for locally applicable reference intervals."
+    "Use the validated LIMS report and Appendix 12: General Guide to Reference Ranges for locally applicable reference intervals."
   ],
   analyticalLimitations: [
     "Interpret with paired blood glucose, CSF cell count, protein and microbiological findings. Glucose alone cannot determine the cause of meningitis.",
@@ -3163,12 +3174,12 @@ window.TESTS = [
     "Transport immediately to the laboratory for urgent processing.",
     "If testing is delayed, contact the laboratory for validated processing, temperature and stability requirements.",
     "Refrigeration may be appropriate for the separated chemistry aliquot; follow separate requirements for CSF requested for microbiological testing.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Identification discrepancies, unsuitable or leaking containers, or inadequate volume require immediate laboratory assessment.",
     "Discuss suitability and test prioritisation before rejecting a difficult-to-recollect CSF specimen.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Colorimetric.",
   turnaround: {
@@ -3177,7 +3188,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Low CSF glucose or a CSF-to-blood glucose ratio ≤0.4 warrants prompt clinical assessment in suspected meningitis. This is a diagnostic finding, not a universal critical-result threshold.",
-    "Notify results according to the approved local alert criteria and communication policy; see Appendices 4 and 5."
+    "Notify results according to the approved local alert criteria and communication policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Reduced CSF glucose relative to blood glucose may occur in:",
@@ -3191,7 +3202,7 @@ window.TESTS = [
     "mg/dL × 0.0555 = mmol/L.",
     "mmol/L × 18.0 = mg/dL.",
     "CSF-to-blood glucose ratio = CSF glucose ÷ paired blood glucose, using the same units.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -3227,7 +3238,7 @@ window.TESTS = [
     "Contribute to investigation of suspected CNS malignancy or demyelinating disease alongside appropriate specialist tests."
   ],
   referenceRange: [
-    "Use the age- and method-appropriate interval on the validated LIMS report; see Appendix 12.",
+    "Use the age- and method-appropriate interval on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "A commonly cited adult lumbar CSF interval is 0.15–0.45 g/L, but it should be used only if locally validated. Neonatal concentrations are higher and require age-appropriate intervals."
   ],
   analyticalLimitations: [
@@ -3247,13 +3258,13 @@ window.TESTS = [
     "Transport immediately to the laboratory, particularly when meningitis is suspected.",
     "If analysis is delayed, follow locally validated processing, refrigeration and stability requirements for the chemistry aliquot.",
     "Follow separate handling requirements for CSF requested for microbiological testing.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Identification discrepancies, unsuitable or leaking containers, contamination or inadequate volume require immediate laboratory assessment.",
     "Discuss suitability and test prioritisation before rejecting a difficult-to-recollect CSF specimen.",
     "Assess blood contamination and analytical interference against validated limits.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Colorimetric assay.",
   turnaround: {
@@ -3262,7 +3273,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "No universal critical threshold is specified for CSF total protein.",
-    "Communicate results requiring urgent clinical action according to the approved local alert criteria and notification policy; see Appendices 4 and 5. Suspected meningitis or subarachnoid haemorrhage requires urgent clinical assessment regardless of the protein result."
+    "Communicate results requiring urgent clinical action according to the approved local alert criteria and notification policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Suspected meningitis or subarachnoid haemorrhage requires urgent clinical assessment regardless of the protein result."
   ],
   diseaseAssociations: [
     "Increased CSF protein may occur in:",
@@ -3272,7 +3283,7 @@ window.TESTS = [
     "CNS haemorrhage.",
     "Inflammatory or demyelinating disorders; total protein may remain normal in multiple sclerosis."
   ],
-  conversionFactors: ["mg/dL × 0.01 = g/L.", "g/L × 100 = mg/dL.", "See Appendix 10."],
+  conversionFactors: ["mg/dL × 0.01 = g/L.", "g/L × 100 = mg/dL.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -3333,14 +3344,14 @@ window.TESTS = [
     "Transport promptly.",
     "Follow the kit instructions and locally validated specimen storage temperatures and time limits.",
     "Do not freeze whole blood.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mismatched specimens, incorrect specimen type/tube, leakage or inadequate volume.",
     "Clotted specimens are unsuitable when anticoagulated whole blood or plasma is required; clot formation is expected during serum preparation.",
     "Assess haemolysis, lipaemia and other interference against validated kit limits.",
     "Repeat requests require assessment of clinical need and sampling interval, rather than automatic rejection as duplicates.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Immunochromatographic rapid assay for NS1 antigen and/or IgM/IgG antibodies, using the locally approved kit.",
   turnaround: {
@@ -3349,7 +3360,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "Suspected dengue with warning signs or evidence of severe disease requires urgent clinical assessment regardless of rapid-test results.",
-    "Promptly communicate relevant results in clinically high-risk cases according to the approved local notification policy; see Appendices 4 and 5. Follow national dengue reporting requirements."
+    "Promptly communicate relevant results in clinically high-risk cases according to the approved local notification policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Follow national dengue reporting requirements."
   ],
   diseaseAssociations: [
     "Dengue with or without warning signs.",
@@ -3418,14 +3429,14 @@ window.TESTS = [
     "Transport promptly using the performing laboratory's validated cold-chain requirements.",
     "Confirm refrigerated stability, permitted delay before processing and freezing requirements with the laboratory.",
     "Avoid repeated freeze–thaw cycles.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mismatched specimens, leakage, incorrect specimen type/tube or inadequate volume.",
     "Assess storage deviations and potential interference against validated acceptance criteria.",
     "Clotted anticoagulated specimens may be unsuitable; clot formation is expected during serum preparation.",
     "Do not automatically reject haemolysed specimens or specimens collected after day 5. Discuss suitability and alternative testing with the laboratory.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Real-time RT-PCR using serotype-specific primers and probes, with appropriate assay controls. Confirm the locally validated assay and whether testing is performed locally or by referral.",
   turnaround: {
@@ -3433,7 +3444,7 @@ window.TESTS = [
     urgent: "Urgent testing depends on service availability."
   },
   criticalAlert: [
-    "Promptly communicate positive results according to the approved local clinical and public-health notification requirements; see Appendices 4 and 5.",
+    "Promptly communicate positive results according to the approved local clinical and public-health notification requirements; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Suspected dengue with warning signs or severe disease requires urgent clinical assessment regardless of PCR availability or results. Do not await serotyping before clinical action."
   ],
   diseaseAssociations: [
@@ -3485,7 +3496,7 @@ window.TESTS = [
     "Commonly cited adult desirable values:",
     "Males: >1.0 mmol/L.",
     "Females: >1.2 mmol/L.",
-    "These are risk-based interpretative values, not universal reference intervals or treatment targets. Use the validated LIMS report and Appendix 12 for locally adopted interpretation.",
+    "These are risk-based interpretative values, not universal reference intervals or treatment targets. Use the validated LIMS report and Appendix 12: General Guide to Reference Ranges for locally adopted interpretation.",
     "High HDL-C does not exclude cardiovascular risk."
   ],
   analyticalLimitations: [
@@ -3507,21 +3518,21 @@ window.TESTS = [
     "Transport promptly and separate serum/plasma according to local requirements.",
     "Follow locally validated temperature, stability and freezing requirements.",
     "Avoid repeated freeze–thaw cycles where freezing is permitted.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mismatched specimens, incorrect tube, leakage or inadequate volume.",
     "Clotted anticoagulated specimens or residual fibrin that compromises analysis; clot formation is expected during serum preparation.",
     "Reject or qualify specimens only when interference or storage deviations exceed validated limits.",
     "Assess repeat requests according to clinical need rather than automatically rejecting duplicates.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Homogeneous enzymatic colourimetric assay for direct HDL cholesterol.",
   turnaround: {
     routine: "Same-day reporting is the stated service target; confirm local testing availability.",
     urgent: ""
   },
-  criticalAlert: "No universal critical-result threshold is specified for HDL-C. Follow any approved local notification criteria; see Appendices 4 and 5.",
+  criticalAlert: "No universal critical-result threshold is specified for HDL-C. Follow any approved local notification criteria; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
   diseaseAssociations: [
     "Low HDL-C may accompany insulin resistance, metabolic syndrome, type 2 diabetes, obesity and smoking, and is associated with increased cardiovascular risk.",
     "High HDL-C may reflect genetic factors, alcohol exposure or other biological influences; it should not automatically be interpreted as protective."
@@ -3529,7 +3540,7 @@ window.TESTS = [
   conversionFactors: [
     "mg/dL × 0.0259 = mmol/L.",
     "mmol/L × 38.67 = mg/dL.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -3565,7 +3576,7 @@ window.TESTS = [
     "Contribute to targeted investigation of suspected infection or other inflammatory disease alongside clinical findings and other tests."
   ],
   referenceRange: [
-    "Use the locally validated, method-, age- and sex-appropriate reference interval displayed on the LIMS report. See Appendix 12."
+    "Use the locally validated, method-, age- and sex-appropriate reference interval displayed on the LIMS report. See Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Non-specific: an elevated result does not identify the cause, and a normal result does not exclude inflammatory disease.",
@@ -3577,17 +3588,17 @@ window.TESTS = [
   containerColour: "Lavender EDTA",
   sampleRequirements: [
     "Anticoagulated venous whole blood in the locally approved ESR collection tube. Use EDTA whole blood if validated for the method in use.",
-    "Fill to the required mark and mix gently after collection. Confirm the minimum volume locally. See Appendix 6."
+    "Fill to the required mark and mix gently after collection. Confirm the minimum volume locally. See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Transport promptly. Follow the locally validated time and temperature limits for the collection tube and ESR method; avoid excessive heat and do not freeze.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
-  rejection: "Clotted specimens, incorrect collection tubes, incorrect fill or anticoagulant ratio, and specimens outside validated stability limits. Apply identification and other rejection requirements in Appendix 7.",
+  rejection: "Clotted specimens, incorrect collection tubes, incorrect fill or anticoagulant ratio, and specimens outside validated stability limits. Apply identification and other rejection requirements in Appendix 7: Sample Rejection Criteria (All Departments).",
   methodology: ["Automated analyser method.", "Manual Westergren method."],
   turnaround: { routine: "Same day, subject to the local testing schedule.", urgent: "" },
   criticalAlert: [
-    "Telephone immediately: ESR >100 mm/h. See Appendices 4 and 5.",
+    "Telephone immediately: ESR >100 mm/h. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "A markedly elevated ESR warrants urgent clinical assessment for an underlying cause."
   ],
   diseaseAssociations: [
@@ -3629,7 +3640,7 @@ window.TESTS = [
     "Assess iron status in chronic disease alongside the full blood count, transferrin saturation and inflammatory markers when indicated."
   ],
   referenceRange: [
-    "Use the validated, method-, age- and sex-appropriate reference interval on the LIMS report. See Appendix 12.",
+    "Use the validated, method-, age- and sex-appropriate reference interval on the LIMS report. See Appendix 12: General Guide to Reference Ranges.",
     "Diagnostic interpretation: ferritin <30 µg/L in adults supports iron deficiency. This is a clinical decision limit, not a reference interval. Higher concentrations do not exclude deficiency when inflammation is present; paediatric, pregnancy and disease-specific interpretation may differ."
   ],
   analyticalLimitations: [
@@ -3642,27 +3653,27 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in the locally approved collection tube. Plasma may be acceptable if validated for the assay.",
-    "Confirm the required collection volume locally. See Appendix 6."
+    "Confirm the required collection volume locally. See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Separate serum from cells promptly after clotting and centrifugation. Follow locally validated separation, storage and transport requirements for the assay.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
-  rejection: "See Appendix 7. Apply assay-specific interference limits; haemolysis, lipaemia or icterus alone does not automatically require rejection.",
+  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments). Apply assay-specific interference limits; haemolysis, lipaemia or icterus alone does not automatically require rejection.",
   methodology: "2 step immunometric assay.",
   turnaround: {
     routine: "1–3 working days, subject to the local testing schedule and any referral arrangements.",
     urgent: ""
   },
   criticalAlert: [
-    "No universal numerical critical threshold. Notify results according to approved local policy in Appendices 4 and 5.",
+    "No universal numerical critical threshold. Notify results according to approved local policy in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Marked or persistent elevation warrants clinical assessment; urgency depends on the clinical presentation."
   ],
   diseaseAssociations: [
     "Decreased: iron deficiency associated with blood loss, malabsorption, inadequate intake or increased requirements.",
     "Increased: iron overload, including haemochromatosis and repeated transfusions; liver disease, inflammation, infection and malignancy."
   ],
-  conversionFactors: ["1 ng/mL = 1 µg/L.", "See Appendix 10."],
+  conversionFactors: ["1 ng/mL = 1 µg/L.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -3698,7 +3709,7 @@ window.TESTS = [
     "Assess coagulopathy associated with severe liver disease."
   ],
   referenceRange: [
-    "Use the validated, method- and age-appropriate reference interval on the LIMS report. See Appendix 12.",
+    "Use the validated, method- and age-appropriate reference interval on the LIMS report. See Appendix 12: General Guide to Reference Ranges.",
     "Pregnancy increases fibrinogen concentrations; interpret results in the clinical context."
   ],
   analyticalLimitations: [
@@ -3711,14 +3722,14 @@ window.TESTS = [
   containerColour: "Light blue Sodium Citrate",
   sampleRequirements: [
     "Venous blood collected into a 3.2% sodium citrate tube, maintaining a 9:1 blood-to-citrate ratio. Fill to the marked volume and mix gently immediately after collection.",
-    "See Appendix 6."
+    "See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Transport promptly at room temperature, avoiding excessive heat. Process and test within locally validated limits.",
     "Do not refrigerate or freeze whole blood. If testing is delayed, separated plasma may require freezing under the laboratory's validated procedure.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
-  rejection: "Clotted specimens, incorrect anticoagulant, unacceptable tube filling or specimens outside validated stability limits. See Appendix 7.",
+  rejection: "Clotted specimens, incorrect anticoagulant, unacceptable tube filling or specimens outside validated stability limits. See Appendix 7: Sample Rejection Criteria (All Departments).",
   methodology: "Clauss functional fibrinogen assay.",
   turnaround: {
     routine: "Same day for routine requests.",
@@ -3726,13 +3737,13 @@ window.TESTS = [
   },
   criticalAlert: [
     "Fibrinogen <1.0 g/L represents severe hypofibrinogenaemia and warrants urgent clinical assessment, particularly with bleeding.",
-    "Confirm the approved local critical notification threshold in Appendices 4 and 5. Major haemorrhage protocols may require action at higher concentrations; these are clinical decision limits."
+    "Confirm the approved local critical notification threshold in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Major haemorrhage protocols may require action at higher concentrations; these are clinical decision limits."
   ],
   diseaseAssociations: [
     "Decreased: DIC, major haemorrhage with consumption or dilution, severe liver disease, excessive fibrinolysis and congenital fibrinogen deficiency or dysfunction.",
     "Increased: inflammation, infection, trauma, surgery, pregnancy and nephrotic syndrome."
   ],
-  conversionFactors: ["1 g/L = 100 mg/dL.", "See Appendix 10."],
+  conversionFactors: ["1 g/L = 100 mg/dL.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -3779,7 +3790,7 @@ window.TESTS = [
   referenceRange: [
     "No universal reference interval applies to all body fluids.",
     "In pleural fluid, activity above the serum upper reference limit or a fluid amylase ratio >1 indicates an amylase-rich effusion but does not identify its cause.",
-    "Interpret peritoneal and drain fluid according to the clinical indication. Use identical units when calculating ratios. See Appendix 12 for general reference-interval guidance."
+    "Interpret peritoneal and drain fluid according to the clinical indication. Use identical units when calculating ratios. See Appendix 12: General Guide to Reference Ranges for general reference-interval guidance."
   ],
   analyticalLimitations: [
     "Total amylase does not distinguish pancreatic from salivary sources. Isoenzyme analysis may assist selected cases but may require specialist referral.",
@@ -3796,10 +3807,10 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly. Follow locally validated temperature and stability requirements; refrigerate delayed specimens at 2–8 °C if instructed by the laboratory.",
-    "Avoid contamination or dilution with irrigation fluid. See Appendix 9a."
+    "Avoid contamination or dilution with irrigation fluid. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Apply local criteria for identification, leaking containers, unsuitable additives, insufficient volume and storage outside validated limits.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Apply local criteria for identification, leaking containers, unsuitable additives, insufficient volume and storage outside validated limits.",
     "Assess haemolysis, lipaemia and icterus against validated interference limits rather than automatically rejecting specimens."
   ],
   methodology: "Enzymatic amylase activity assay with spectrophotometric detection. Confirm the local method and its suitability for body fluids.",
@@ -3809,12 +3820,12 @@ window.TESTS = [
   },
   criticalAlert: [
     "No universal numerical critical threshold.",
-    "Results supporting suspected perforation or pancreatic leakage require prompt communication according to approved local policy in Appendices 4 and 5. Suspected perforation requires urgent clinical assessment regardless of the amylase result."
+    "Results supporting suspected perforation or pancreatic leakage require prompt communication according to approved local policy in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Suspected perforation requires urgent clinical assessment regardless of the amylase result."
   ],
   diseaseAssociations: [
     "Pancreatic duct disruption, pancreatic ascites, pancreaticopleural fistula, pseudocyst leakage or rupture, postoperative pancreatic fistula, oesophageal rupture and some malignant effusions."
   ],
-  conversionFactors: ["Not applicable. Report in U/L.", "See Appendix 10."],
+  conversionFactors: ["Not applicable. Report in U/L.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -3857,7 +3868,7 @@ window.TESTS = [
     "No established universal reference interval for body fluid creatinine. Interpret according to the fluid source and clinical indication.",
     "Fluid creatinine ratio = fluid creatinine ÷ serum creatinine, using the same units.",
     "A ratio >1.0 may support the presence of urine but is not independently diagnostic. A small elevation requires cautious interpretation; a ratio near or below 1.0 does not reliably exclude leakage.",
-    "For peritoneal dialysate, use the prescribed timed-test interpretation. See Appendix 12 for general reference-interval guidance."
+    "For peritoneal dialysate, use the prescribed timed-test interpretation. See Appendix 12: General Guide to Reference Ranges for general reference-interval guidance."
   ],
   analyticalLimitations: [
     "Dilution by other fluid, sampling away from the leak and timing of collection may reduce diagnostic sensitivity.",
@@ -3875,10 +3886,10 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly. Follow locally validated storage and transport requirements for the fluid type and assay; refrigerate delayed specimens only as instructed by the laboratory.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7. Incorrect identification, unsuitable containers or additives, and storage outside validated limits require laboratory assessment.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Incorrect identification, unsuitable containers or additives, and storage outside validated limits require laboratory assessment.",
     "Apply validated interference limits rather than automatically rejecting haemolysed, lipaemic or icteric fluids. Discuss suspected contamination or irreplaceable specimens with the laboratory."
   ],
   methodology: "Enzymatic or Jaffé creatinine assay; confirm the local method and its validation for body fluid testing.",
@@ -3888,7 +3899,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "No universal numerical critical threshold for fluid creatinine or the fluid ratio.",
-    "Results supporting suspected urinary leakage require prompt clinical review and communication according to approved local policy in Appendices 4 and 5. Urgency depends on the clinical presentation."
+    "Results supporting suspected urinary leakage require prompt clinical review and communication according to approved local policy in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Urgency depends on the clinical presentation."
   ],
   diseaseAssociations: [
     "Bladder rupture, ureteric injury, postoperative urinary leakage, urinary fistula and urinoma."
@@ -3897,7 +3908,7 @@ window.TESTS = [
     "1 mg/dL = 88.4 µmol/L.",
     "1 µmol/L = 0.0113 mg/dL.",
     "The fluid creatinine ratio is dimensionless.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -3970,7 +3981,7 @@ window.TESTS = [
     "If delay is unavoidable, follow validated instructions for the fluid and container; contact the laboratory for advice.",
     "Do not refrigerate inoculated blood culture bottles.",
     "Use approved transport conditions for anaerobic investigations.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimens, leaking containers, unsuitable containers and compromised transport require assessment under Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -3987,7 +3998,7 @@ window.TESTS = [
   criticalAlert: [
     "Organisms detected on Gram stain or clinically significant growth from a normally sterile site require prompt clinical communication according to the approved local policy.",
     "Notify designated resistant organisms according to local alert requirements.",
-    "See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Spontaneous or secondary bacterial peritonitis.",
@@ -4069,7 +4080,7 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly. Separate fluid from cells promptly in the laboratory according to the validated procedure.",
     "For unavoidable delays, follow locally validated temperature and stability requirements; refrigeration alone does not prevent all glucose consumption.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen.",
@@ -4087,7 +4098,7 @@ window.TESTS = [
   criticalAlert: [
     "No universal critical glucose threshold applies to all body fluids.",
     "Low pleural glucose in suspected infection warrants timely clinical review. Critical-result notification follows approved local criteria.",
-    "See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Low pleural glucose: pleural infection, rheumatoid pleuritis, malignancy or tuberculosis.",
@@ -4097,7 +4108,7 @@ window.TESTS = [
   conversionFactors: [
     "mg/dL × 0.0555 = mmol/L.",
     "mmol/L × 18.0 = mg/dL.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -4168,7 +4179,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly. Follow locally validated requirements for processing, refrigeration and maximum storage time.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen, leaking container or unsuitable additive.",
@@ -4181,7 +4192,7 @@ window.TESTS = [
   turnaround: { routine: "Usually same day, subject to local service availability.", urgent: "" },
   criticalAlert: [
     "No universal numeric critical threshold applies to fluid total protein.",
-    "An exudative classification alone does not require critical-result notification. Follow approved local criteria in Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "An exudative classification alone does not require critical-result notification. Follow approved local criteria in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Pleural transudative effusions: heart failure, cirrhosis or nephrotic syndrome.",
@@ -4192,7 +4203,7 @@ window.TESTS = [
     "g/dL × 10 = g/L.",
     "g/L ÷ 10 = g/dL.",
     "Fluid / serum protein ratios are dimensionless; both concentrations must use the same units.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -4257,7 +4268,7 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly. Store separated serum and protect from light according to the assay's validated requirements.",
     "Confirm permitted refrigeration, freezing and maximum storage times locally.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen.",
@@ -4274,7 +4285,7 @@ window.TESTS = [
   criticalAlert: [
     "No universal numeric critical threshold applies to serum folate.",
     "Deficiency in pregnancy warrants timely clinical review but is not automatically a critical laboratory result. Notification follows approved local criteria.",
-    "See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Deficiency: inadequate intake, alcohol use, malabsorption such as coeliac disease, increased requirements or relevant medicines.",
@@ -4285,7 +4296,7 @@ window.TESTS = [
     "ng/mL × 2.266 = nmol/L.",
     "nmol/L × 0.441 = ng/mL.",
     "1 ng/mL = 1 µg/L.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)"
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)"
   ],
   organismsReported: null,
   appendixRefs: [
@@ -4349,7 +4360,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly. Follow locally validated refrigeration, freezing and maximum storage requirements for separated serum.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen, unsuitable tube, insufficient volume, compromised handling or interference exceeding validated assay limits.",
@@ -4363,7 +4374,7 @@ window.TESTS = [
   criticalAlert: [
     "No universal numeric critical threshold applies.",
     "Abnormal FSH requires clinical interpretation and appropriate follow-up. Critical-result notification follows approved local criteria.",
-    "See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Raised FSH: primary ovarian or testicular dysfunction; menopause; premature ovarian insufficiency; gonadal dysgenesis or damage.",
@@ -4373,7 +4384,7 @@ window.TESTS = [
   conversionFactors: [
     "1 IU/L = 1 mIU/mL.",
     "Use the reporting units specified by the validated assay.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [],
@@ -4429,7 +4440,7 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly and follow validated free-PSA requirements for refrigeration, freezing and maximum storage time.",
     "For batched or referral testing, confirm that transport and storage preserve both free and total PSA.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen, unsuitable tube, insufficient volume, compromised handling or interference exceeding validated assay limits.",
@@ -4442,7 +4453,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "No universal numeric critical threshold applies to free PSA or %fPSA.",
-    "Concerning results require appropriate clinical follow-up rather than automatic emergency notification. Follow approved local criteria in Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "Concerning results require appropriate clinical follow-up rather than automatic emergency notification. Follow approved local criteria in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Lower %fPSA: increased likelihood of prostate cancer in the appropriate clinical setting.",
@@ -4452,7 +4463,7 @@ window.TESTS = [
   conversionFactors: [
     "1 ng/mL = 1 µg/L.",
     "Calculate the ratio using identical concentration units. A free/total ratio of 0.25 equals 25%.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -4513,7 +4524,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly. Follow locally validated temperature and stability requirements for separated serum, including refrigeration or freezing when indicated.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen, unsuitable tube, insufficient volume, compromised handling or interference exceeding validated assay limits.",
@@ -4527,7 +4538,7 @@ window.TESTS = [
   criticalAlert: [
     "No universal numeric critical threshold applies to FT3.",
     "Markedly abnormal results require clinical assessment and notification where specified by approved local policy.",
-    "See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Raised FT3: Graves' disease, toxic nodular disease, T3 thyrotoxicosis or excess thyroid hormone exposure; may occur during the thyrotoxic phase of thyroiditis.",
@@ -4536,7 +4547,7 @@ window.TESTS = [
   conversionFactors: [
     "pg/mL × 1.54 = pmol/L.",
     "pmol/L × 0.651 = pg/mL.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -4598,7 +4609,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly. Follow locally validated temperature and stability requirements for separated serum, including refrigeration or freezing when indicated.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen, unsuitable tube, insufficient volume, compromised handling or interference exceeding validated assay limits.",
@@ -4612,7 +4623,7 @@ window.TESTS = [
   criticalAlert: [
     "No universal numeric critical threshold applies to FT4.",
     "Urgent notification follows approved local criteria and clinical context.",
-    "See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Raised FT4: Graves' disease, toxic nodular disease, thyrotoxic-phase thyroiditis or excess thyroxine exposure.",
@@ -4623,7 +4634,7 @@ window.TESTS = [
   conversionFactors: [
     "ng/dL × 12.87 = pmol/L.",
     "pmol/L × 0.0777 = ng/dL.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -4666,7 +4677,7 @@ window.TESTS = [
     "GFR categories are classification thresholds, not a universal reference interval.",
     "CKD requires abnormalities of kidney structure or function persisting for at least three months. Persistent eGFR <60 mL/min/1.73 m² supports CKD; values ≥60 do not exclude CKD when other markers of kidney damage are present.",
     "G1 and G2 alone do not establish CKD.",
-    "See Appendix 11: eGFR & CKD G-Stages References and Appendix 12: General Guide to Reference Ranges."
+    "See Appendix 11: eGFR and CKD G-Stage References and Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Intended for adults aged ≥18 years; use an appropriate validated equation for younger patients.",
@@ -4686,7 +4697,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Follow the validated requirements for the creatinine assay.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Follow the Creatinine entry and Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -4698,7 +4709,7 @@ window.TESTS = [
   ],
   turnaround: { routine: "Reported with creatinine, usually same day.", urgent: "" },
   criticalAlert: [
-    "Telephone immediately: a new or unexpected eGFR <15 mL/min/1.73 m², or suspected acute deterioration. See Appendices 4 and 5.",
+    "Telephone immediately: a new or unexpected eGFR <15 mL/min/1.73 m², or suspected acute deterioration. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Routine eGFR is unreliable during acute kidney injury."
   ],
   diseaseAssociations: [
@@ -4708,7 +4719,7 @@ window.TESTS = [
   conversionFactors: [
     "Creatinine µmol/L ÷ 88.4 = mg/dL, where required by the calculation.",
     "Indexed eGFR is reported in mL/min/1.73 m². Conversion to an unindexed estimate in mL/min requires the patient's body surface area and clinical justification.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -4772,7 +4783,7 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly. Follow locally validated temperature and stability requirements for separated serum.",
     "Confirm refrigeration and freezing requirements where testing is delayed.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen, unsuitable tube, insufficient volume, compromised handling or interference exceeding validated assay limits.",
@@ -4783,7 +4794,7 @@ window.TESTS = [
   criticalAlert: [
     "No universal numeric critical threshold applies to GGT.",
     "Interpret concerning results with the clinical presentation and accompanying tests. Notification follows approved local criteria.",
-    "See Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Cholestatic or obstructive hepatobiliary disease.",
@@ -4795,7 +4806,7 @@ window.TESTS = [
   conversionFactors: [
     "Reported in U/L; no routine conversion is required.",
     "If needed: U/L × 0.0167 = µkat/L.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -4863,7 +4874,7 @@ window.TESTS = [
   storageTransport: [
     "Transport immediately and follow validated glycolysis-prevention and cell-separation requirements.",
     "Fluoride alone does not immediately stabilise glucose. Subsequent storage depends on specimen type and method.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen, unsuitable tube, compromised handling or interference exceeding validated limits.",
@@ -4876,7 +4887,7 @@ window.TESTS = [
     urgent: "Urgent testing for suspected acute metabolic disturbance."
   },
   criticalAlert: [
-    "Notify results meeting approved local limits in Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary.",
+    "Notify results meeting approved local limits in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Proposed <2.5 or >25 mmol/L limits require confirmation. Symptomatic hypoglycaemia or suspected metabolic crisis requires urgent clinical assessment even outside notification thresholds."
   ],
   diseaseAssociations: [
@@ -4886,7 +4897,7 @@ window.TESTS = [
   conversionFactors: [
     "mg/dL × 0.0555 = mmol/L.",
     "mmol/L × 18.0 = mg/dL.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -4954,7 +4965,7 @@ window.TESTS = [
   storageTransport: [
     "Transport immediately and use validated measures to prevent glycolysis.",
     "Fluoride-oxalate collection does not replace prompt processing. Confirm the permitted time to cell separation and subsequent storage locally.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen, unsuitable tube, compromised handling or interference exceeding validated limits.",
@@ -4967,7 +4978,7 @@ window.TESTS = [
     urgent: "Urgent testing according to clinical need and local availability."
   },
   criticalAlert: [
-    "Notify results meeting approved local limits in Appendix 4: Alert List and Appendix 5: Critical / High-Risk Results Policy Summary.",
+    "Notify results meeting approved local limits in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Proposed limits of <2.5 or >25 mmol/L require local confirmation. Diagnostic limits and treatment targets are not critical-notification thresholds."
   ],
   diseaseAssociations: [
@@ -4977,7 +4988,7 @@ window.TESTS = [
   conversionFactors: [
     "mg/dL × 0.0555 = mmol/L.",
     "mmol/L × 18.0 = mg/dL.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -5018,7 +5029,7 @@ window.TESTS = [
     "Increased risk: 6.0–6.4% (42–47 mmol/mol) under Australian guidance; some guidelines use 5.7–6.4% (39–47 mmol/mol). Apply the locally adopted criteria.",
     "HbA1c below 6.5% does not exclude diabetes diagnosed by plasma glucose criteria.",
     "In the absence of unequivocal hyperglycaemia, confirm a diagnostic result with repeat HbA1c or another accepted diagnostic test.",
-    "Treatment targets are individualised and differ from diagnostic limits. See Appendix 12 and the validated LIMS report for laboratory reporting guidance."
+    "Treatment targets are individualised and differ from diagnostic limits. See Appendix 12: General Guide to Reference Ranges and the validated LIMS report for laboratory reporting guidance."
   ],
   analyticalLimitations: [
     "Shortened red cell survival, haemolytic anaemia, recent blood loss or erythropoietin treatment may produce misleadingly low results.",
@@ -5039,7 +5050,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly. Follow locally validated whole-blood storage temperatures and stability limits for the HbA1c method. Mix gently before analysis.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -5051,7 +5062,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "No universal numeric critical threshold. Apply approved local notification criteria in Appendices 4 and 5.",
+    "No universal numeric critical threshold. Apply approved local notification criteria in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Markedly elevated HbA1c requires clinical follow-up. Suspected acute metabolic emergencies require immediate assessment using current glucose and other appropriate tests."
   ],
   diseaseAssociations: [
@@ -5068,7 +5079,7 @@ window.TESTS = [
     "8.0% = 64 mmol/mol",
     "9.0% = 75 mmol/mol",
     "10.0% = 86 mmol/mol",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -5103,7 +5114,7 @@ window.TESTS = [
     "Monitor transition from replicative → non-replicative infection",
     "Aid prognosis and treatment monitoring in chronic HBV",
     "Combine with HBsAg, anti-HBc, HBV DNA",
-    "See Appendix 13 and 14."
+    "See Appendix 13: Serology Reference Information and Appendix 14: Hepatitis B and C Serology Interpretation."
   ],
   referenceRange: [
     "HBeAg: Negative (non-reactive)",
@@ -5119,7 +5130,7 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: "2 – 5 mL serum",
   storageTransport: "2–8 °C ≤72 h, freeze at –20 °C if longer, transport refrigerated",
-  rejection: "See Appendix 7",
+  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments)",
   methodology: "EIA or CLIA",
   turnaround: { routine: "1–3 working days", urgent: "" },
   criticalAlert: "HBeAg positive = high infectivity → report immediately.",
@@ -5183,7 +5194,7 @@ window.TESTS = [
   sampleRequirements: "Serum in the laboratory-approved collection tube; confirm minimum volume locally. Record recent exposure and hepatitis B vaccination where relevant.",
   storageTransport: [
     "Transport promptly. Follow the kit instructions and locally validated specimen storage temperatures, stability limits and freeze–thaw restrictions.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -5196,7 +5207,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "No numeric critical threshold.",
-    "Communicate reactive results promptly according to approved policy, particularly in antenatal, peripartum and exposure-related testing. Apply Appendices 4 and 5 where listed.",
+    "Communicate reactive results promptly according to approved policy, particularly in antenatal, peripartum and exposure-related testing. Apply Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where listed.",
     "Follow local public-health notification requirements. For donor specimens, notify the blood service immediately and follow its donation quarantine and release policy."
   ],
   diseaseAssociations: [
@@ -5257,7 +5268,7 @@ window.TESTS = [
   sampleRequirements: "Serum in the laboratory-approved collection tube.",
   storageTransport: [
     "Transport promptly. Follow manufacturer-supported, locally validated specimen temperatures and stability limits.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -5270,7 +5281,7 @@ window.TESTS = [
   turnaround: { routine: "Same day.", urgent: "" },
   criticalAlert: [
     "No numeric critical threshold. Communicate reactive results and arrange follow-up according to approved policy.",
-    "Apply Appendices 4 and 5 where listed. Follow verified local public-health notification requirements."
+    "Apply Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where listed. Follow verified local public-health notification requirements."
   ],
   diseaseAssociations: [
     "Current or resolved HCV infection.",
@@ -5320,7 +5331,7 @@ window.TESTS = [
     "Non-reactive: HBsAg not detected; HBV infection is not excluded.",
     "Reactive: requires interpretation and any supplementary testing specified by the approved assay and diagnostic algorithm.",
     "Interpret with hepatitis B core antibody (anti-HBc), hepatitis B surface antibody (anti-HBs) and clinical history where indicated. Request IgM anti-HBc when acute infection is suspected.",
-    "See Appendix 12 and the validated LIMS report for assay-specific reporting guidance."
+    "See Appendix 12: General Guide to Reference Ranges and the validated LIMS report for assay-specific reporting guidance."
   ],
   analyticalLimitations: [
     "Early infection, the resolving-infection window period, low antigen concentrations or occult infection may produce non-reactive results.",
@@ -5340,7 +5351,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Separate serum and transport promptly. Follow manufacturer-supported, locally validated storage temperatures, stability limits and freeze–thaw restrictions.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -5350,7 +5361,7 @@ window.TESTS = [
   turnaround: { routine: "Same day, subject to the local testing schedule.", urgent: "" },
   criticalAlert: [
     "No numeric critical threshold.",
-    "Communicate newly reactive results promptly according to approved policy, particularly in antenatal, peripartum and exposure-related testing. Apply Appendices 4 and 5 where listed.",
+    "Communicate newly reactive results promptly according to approved policy, particularly in antenatal, peripartum and exposure-related testing. Apply Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where listed.",
     "Follow local public-health notification requirements. Donor results require immediate blood-service notification and action under its donation quarantine and release policy."
   ],
   diseaseAssociations: [
@@ -5398,7 +5409,7 @@ window.TESTS = [
     "<10 mIU/mL: adequate response is not demonstrated at the time of testing; interpret with vaccination history and previous results.",
     "A low or undetectable result does not necessarily indicate loss of protection in an immunocompetent person with a documented previous adequate response.",
     "For qualitative assays, use the validated assay interpretation; confirm that the method can assess the protective threshold.",
-    "See Appendix 12 and the validated LIMS report."
+    "See Appendix 12: General Guide to Reference Ranges and the validated LIMS report."
   ],
   analyticalLimitations: [
     "Anti-HBs alone cannot distinguish vaccine-induced immunity from resolved infection or exclude current infection.",
@@ -5415,7 +5426,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Separate serum and transport promptly. Follow locally validated assay requirements for refrigeration, freezing and maximum transport delay.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -5427,7 +5438,7 @@ window.TESTS = [
   ],
   turnaround: { routine: "1 - 3 working days, subject to the testing schedule.", urgent: "" },
   criticalAlert: [
-    "No universal numeric critical threshold. Apply approved local notification criteria in Appendices 4 and 5.",
+    "No universal numeric critical threshold. Apply approved local notification criteria in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "A low result may require follow-up in occupational exposure or vaccination assessment. Anti-HBs does not replace HBsAg testing for antenatal infection screening."
   ],
   diseaseAssociations: [
@@ -5437,7 +5448,7 @@ window.TESTS = [
   ],
   conversionFactors: [
     "1 mIU/mL = 1 IU/L.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -5504,7 +5515,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Separate plasma or serum within the performing laboratory's validated time limit. Follow its requirements for refrigerated transport, freezing and freeze–thaw restrictions.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments). Confirm additional referral requirements where applicable."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines). Confirm additional referral requirements where applicable."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -5516,7 +5527,7 @@ window.TESTS = [
   ],
   turnaround: { routine: "1 -3 working days, subject to the local schedule.", urgent: "" },
   criticalAlert: [
-    "No universal numeric critical threshold. Apply approved notification criteria in Appendices 4 and 5.",
+    "No universal numeric critical threshold. Apply approved notification criteria in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Results relevant to pregnancy, suspected reactivation or treatment breakthrough require timely clinical review. Arrange expedited testing or communication where clinically necessary."
   ],
   diseaseAssociations: [
@@ -5528,7 +5539,7 @@ window.TESTS = [
     "log10 IU/mL = log10 of the concentration in IU/mL.",
     "A change of 1 log10 represents a tenfold change.",
     "Conversion between copies/mL and IU/mL is assay-specific; use only the performing laboratory's validated factor.",
-    "See Appendix 10: Unit Conversion Factors (SI Conventional Units)."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [],
@@ -5579,7 +5590,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Separate serum and transport promptly. Follow manufacturer-supported, locally validated refrigeration, freezing and freeze–thaw requirements.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -5596,7 +5607,7 @@ window.TESTS = [
   criticalAlert: [
     "No numeric critical threshold.",
     "Communicate newly reactive or confirmed positive results promptly and confidentially according to approved policy, particularly in antenatal, peripartum or suspected acute infection settings.",
-    "Apply Appendices 4 and 5 where listed. Follow verified national notification requirements. Donor specimens require immediate blood-service notification and action under its donation quarantine and release policy."
+    "Apply Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where listed. Follow verified national notification requirements. Donor specimens require immediate blood-service notification and action under its donation quarantine and release policy."
   ],
   diseaseAssociations: [
     "Confirmed HIV-1 or HIV-2 infection. Antibody detection alone does not distinguish recent from longstanding infection or establish acquired immunodeficiency syndrome (AIDS)."
@@ -5666,7 +5677,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Separate serum and transport promptly. Follow manufacturer-supported, locally validated refrigeration, freezing and stability requirements.",
-    "See Appendix 9a: Storage / Transport – Quick Reference Table (All Departments)."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -5680,7 +5691,7 @@ window.TESTS = [
   criticalAlert: [
     "No numeric critical threshold.",
     "Communicate newly reactive screening results and confirmed diagnoses promptly and confidentially according to approved policy. Clearly identify results awaiting diagnostic completion.",
-    "Expedite assessment where pregnancy, labour or suspected acute infection makes the result time-sensitive. Apply Appendices 4 and 5 where listed.",
+    "Expedite assessment where pregnancy, labour or suspected acute infection makes the result time-sensitive. Apply Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where listed.",
     "Donor results require immediate blood-service notification and action under its donation quarantine and release policy."
   ],
   diseaseAssociations: [
@@ -5729,7 +5740,7 @@ window.TESTS = [
     "ART eligibility does not depend on viral load."
   ],
   referenceRange: [
-    "No conventional reference interval applies. Interpret using the assay's reporting limits and the validated laboratory information management system (LIMS) report; see Appendix 12.",
+    "No conventional reference interval applies. Interpret using the assay's reporting limits and the validated laboratory information management system (LIMS) report; see Appendix 12: General Guide to Reference Ranges.",
     "Not detected: HIV RNA was not detected; does not exclude HIV infection or indicate cure.",
     "Detected below the lower limit of quantification: RNA is detected but cannot be reliably quantified.",
     "Quantifiable: report the measured viral load in copies/mL, with log₁₀ copies/mL where provided.",
@@ -5748,16 +5759,16 @@ window.TESTS = [
     "EDTA plasma using a collection tube accepted by the testing laboratory.",
     "Confirm the required whole-blood collection volume and minimum plasma volume before collection.",
     "Alternative specimens, including dried blood spots, require a specifically validated assay and approved testing pathway.",
-    "See Appendix 6 for tube guidance."
+    "See Appendix 6: Order of Draw Quick Guide and Tube Reference for tube guidance."
   ],
   storageTransport: [
     "Separate plasma and transport within the testing laboratory's validated time and temperature limits.",
     "Refrigerate or freeze according to the applicable assay and referral requirements.",
     "Maintain the required cold chain and minimise repeated freeze–thaw cycles.",
-    "See Appendix 9a for locally approved requirements."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) for locally approved requirements."
   ],
   rejection: [
-    "See Appendix 7. Unsuitable specimens include incorrect identification, unacceptable specimen type or tube, insufficient volume, leakage, or handling outside validated stability limits.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Unsuitable specimens include incorrect identification, unacceptable specimen type or tube, insufficient volume, leakage, or handling outside validated stability limits.",
     "Assess haemolysis, lipaemia and icterus against assay-specific interference limits rather than rejecting automatically."
   ],
   methodology: "Quantitative nucleic acid amplification testing, commonly real-time reverse transcription polymerase chain reaction (RT-PCR). Report in copies/mL and, where applicable, log₁₀ copies/mL.",
@@ -5766,7 +5777,7 @@ window.TESTS = [
     urgent: "Discuss urgent pregnancy-related or diagnostic requests with the laboratory."
   },
   criticalAlert: [
-    "Telephone immediately: viral load >100,000 copies/mL. See Appendices 4 and 5.",
+    "Telephone immediately: viral load >100,000 copies/mL. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Unexpected results suggesting new infection, significant virological rebound or unsuppressed viraemia during pregnancy also require prompt clinical review and communication."
   ],
   diseaseAssociations: [
@@ -5801,7 +5812,7 @@ window.TESTS = [
     "Pre-operative assessment when clinically indicated by bleeding history, liver disease, anticoagulant use or procedure requirements."
   ],
   referenceRange: [
-    "For patients not receiving anticoagulants, use the locally validated reference interval on the laboratory information management system (LIMS) report; see Appendix 12.",
+    "For patients not receiving anticoagulants, use the locally validated reference interval on the laboratory information management system (LIMS) report; see Appendix 12: General Guide to Reference Ranges.",
     "Warfarin therapeutic ranges — not reference intervals:",
     "Atrial fibrillation and treatment or secondary prevention of deep vein thrombosis/pulmonary embolism: commonly INR 2.0–3.0.",
     "Mechanical heart valves: target depends on valve type, position and thromboembolic risk. Many current-generation mechanical aortic valves use 2.0–3.0; mechanical mitral valves commonly use 2.5–3.5.",
@@ -5830,7 +5841,7 @@ window.TESTS = [
     "Store test strips in the original container with the cap tightly closed, at 2–30 °C. Use a strip within 10 minutes of removing it from the container. Do not use strips after the expiry date."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Repeat the test if the meter shows an error, if the drop was applied more than 15 seconds after lancing, if the finger was squeezed, or if blood was added after the test started.",
     "A result that does not match the clinical picture, or an error that recurs on repeat testing, requires checking by another method where available and prompt clinical review."
   ],
@@ -5840,7 +5851,7 @@ window.TESTS = [
   ],
   turnaround: { routine: "Point-of-care test: under 30 minutes.", urgent: "Under 30 minutes." },
   criticalAlert: [
-    "Apply the approved alert threshold and notification procedure in Appendices 4 and 5.",
+    "Apply the approved alert threshold and notification procedure in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "The proposed INR >5.0 threshold requires local confirmation. Significant bleeding requires urgent clinical assessment regardless of INR."
   ],
   diseaseAssociations: [
@@ -5886,7 +5897,7 @@ window.TESTS = [
     "Positive: supports recent infection when consistent with clinical findings and exposure history. CSF positivity provides stronger evidence that JEV caused the neurological illness; serum positivity alone is less specific.",
     "Negative: does not exclude infection, particularly early in illness.",
     "Equivocal: inconclusive; arrange repeat or reference-laboratory testing.",
-    "Use assay-specific reporting criteria on the validated laboratory information management system (LIMS) report; see Appendix 12."
+    "Use assay-specific reporting criteria on the validated laboratory information management system (LIMS) report; see Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Cross-reactivity with other flaviviruses, particularly dengue, may produce false-positive results.",
@@ -5902,17 +5913,17 @@ window.TESTS = [
     "CSF collected into a sterile, leak-proof container when lumbar puncture is clinically indicated and safe; submit accompanying serum where practicable.",
     "Confirm minimum volumes with the testing/referral laboratory, particularly for children.",
     "Record illness onset, collection date, exposure/travel history and relevant flavivirus infection or vaccination history on the request.",
-    "See Appendices 1 and 8."
+    "See Appendix 1: Pathology Request Form and Appendix 8: Requesting and Reporting Basics."
   ],
   storageTransport: [
     "Refrigerate separated serum and the CSF aliquot designated for JEV serology at 2–8 °C pending prompt transport.",
     "Confirm allowable refrigerated storage time and freezing requirements with the testing/referral laboratory.",
     "Maintain the required cold chain and avoid repeated freeze–thaw cycles.",
     "Keep CSF for bacterial culture separate and follow its immediate transport requirements.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Incorrect identification, leakage, unacceptable specimen type, insufficient volume or handling outside validated stability limits may make testing unsuitable.",
     "Assess haemolysis, lipaemia and icterus against assay-specific interference limits. Discuss irreplaceable or limited-volume CSF specimens with the laboratory before rejection."
   ],
@@ -5924,7 +5935,7 @@ window.TESTS = [
   criticalAlert: [
     "Promptly communicate positive CSF IgM and other results suggesting recent JEV infection in a clinically compatible case.",
     "Follow the approved clinical notification pathway and applicable national public health reporting requirements. Clearly identify presumptive results while confirmation is pending.",
-    "See Appendices 4 and 5 for locally approved alert criteria."
+    "See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary for locally approved alert criteria."
   ],
   diseaseAssociations: [
     "Japanese encephalitis, including encephalitis or meningoencephalitis.",
@@ -5955,7 +5966,7 @@ window.TESTS = [
     "Testing other body fluids requires a specific indication and confirmation with the laboratory."
   ],
   referenceRange: [
-    "Use the locally validated, age-appropriate reference interval on the laboratory information management system (LIMS) report; see Appendix 12.",
+    "Use the locally validated, age-appropriate reference interval on the laboratory information management system (LIMS) report; see Appendix 12: General Guide to Reference Ranges.",
     "Results depend on the assay method and measurement temperature. Do not apply the serum reference interval to body fluids."
   ],
   analyticalLimitations: [
@@ -5972,16 +5983,16 @@ window.TESTS = [
     "Use a laboratory-approved tube and collection volume; confirm the minimum sample volume.",
     "Avoid traumatic collection and separate serum/plasma from cells promptly.",
     "Body-fluid testing requires an approved container, clearly identified fluid type and validated assay application.",
-    "See Appendix 6 for blood collection tube guidance."
+    "See Appendix 6: Order of Draw Quick Guide and Tube Reference for blood collection tube guidance."
   ],
   storageTransport: [
     "Transport promptly and separate serum/plasma from cells within the locally validated interval.",
     "Avoid refrigeration of unseparated blood.",
     "Store separated specimens at the temperature and for the duration validated for the local assay; do not assume refrigeration or freezing preserves LDH activity.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Incorrect identification, leakage, unacceptable specimen type, insufficient volume or handling outside validated stability limits may make testing unsuitable.",
     "Assess haemolysis, lipaemia and icterus against assay-specific limits. Where specimen haemolysis compromises interpretation, request recollection where clinically feasible."
   ],
@@ -5991,7 +6002,7 @@ window.TESTS = [
     urgent: "Confirm availability and turnaround time for urgent requests."
   },
   criticalAlert: [
-    "Telephone immediately: LDH >1,000 U/L. See Appendices 4 and 5.",
+    "Telephone immediately: LDH >1,000 U/L. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Suspected tumour lysis syndrome requires urgent assessment of potassium, phosphate, calcium, urate and renal function; LDH alone is not diagnostic."
   ],
   diseaseAssociations: [
@@ -6001,7 +6012,7 @@ window.TESTS = [
   conversionFactors: [
     "U/L × 0.01667 = µkat/L.",
     "µkat/L × 60 = U/L.",
-    "See Appendix 10. Unit conversion does not make results from different assay methods interchangeable."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional). Unit conversion does not make results from different assay methods interchangeable."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -6040,7 +6051,7 @@ window.TESTS = [
     "Support electrolyte assessment in suspected digoxin toxicity; magnesium does not measure digoxin concentration."
   ],
   referenceRange: [
-    "Use the locally validated, age-appropriate reference interval on the laboratory information management system (LIMS) report; see Appendix 12.",
+    "Use the locally validated, age-appropriate reference interval on the laboratory information management system (LIMS) report; see Appendix 12: General Guide to Reference Ranges.",
     "Therapeutic concentrations during magnesium sulphate treatment differ from the usual reference interval. Interpret according to the prescribed treatment protocol."
   ],
   analyticalLimitations: [
@@ -6058,15 +6069,15 @@ window.TESTS = [
     "Avoid EDTA, citrate and oxalate tubes.",
     "Avoid sampling from a line or limb receiving magnesium-containing infusions.",
     "Separate serum/plasma from cells within the locally validated interval.",
-    "See Appendix 6 for tube and order-of-draw guidance."
+    "See Appendix 6: Order of Draw Quick Guide and Tube Reference for tube and order-of-draw guidance."
   ],
   storageTransport: [
     "Transport promptly. Store separated serum/plasma according to locally validated time and temperature limits.",
     "The proposed seven-day stability at 2–8 °C requires confirmation for the local assay and collection system.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Incorrect identification, leakage, unacceptable specimen type, insufficient volume or handling outside validated stability limits may make testing unsuitable.",
     "Assess haemolysis, lipaemia and icterus against assay-specific limits rather than rejecting automatically. Suspected anticoagulant or infusion contamination requires assessment and recollection where appropriate."
   ],
@@ -6076,7 +6087,7 @@ window.TESTS = [
     urgent: "Confirm availability and turnaround time for urgent requests."
   },
   criticalAlert: [
-    "Telephone immediately: magnesium <0.4 mmol/L or >2.0 mmol/L. See Appendices 4 and 5.",
+    "Telephone immediately: magnesium <0.4 mmol/L or >2.0 mmol/L. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Severe neurological, respiratory or cardiac symptoms require urgent clinical assessment regardless of the numerical result."
   ],
   diseaseAssociations: [
@@ -6086,7 +6097,7 @@ window.TESTS = [
   conversionFactors: [
     "mg/dL × 0.4114 = mmol/L.",
     "mmol/L × 2.4305 = mg/dL.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -6154,7 +6165,7 @@ window.TESTS = [
     "Fresh capillary blood may be used for immediate film preparation through an approved collection pathway.",
     "Collect before antimalarial treatment where feasible, without delaying emergency care.",
     "Record collection time, travel/exposure history and recent antimalarial treatment.",
-    "See Appendices 1, 6 and 8."
+    "See Appendix 1: Pathology Request Form, Appendix 6: Order of Draw Quick Guide and Tube Reference and Appendix 8: Requesting and Reporting Basics."
   ],
   storageTransport: [
     "Send immediately to the laboratory service responsible for malaria microscopy.",
@@ -6163,10 +6174,10 @@ window.TESTS = [
     "Do not refrigerate blood before initial film preparation.",
     "If transport will be delayed, contact the laboratory about preparing films at the collection site and preserving blood for additional testing.",
     "Protect prepared, air-dried slides from moisture, dust and breakage.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Incorrect identification, leakage, clotting or films unsuitable for interpretation require laboratory assessment and urgent recollection where necessary.",
     "Delayed specimens or poor-quality films should be discussed promptly with the requesting clinician; do not allow recollection or referral arrangements to delay urgent assessment."
   ],
@@ -6183,7 +6194,7 @@ window.TESTS = [
   criticalAlert: [
     "Urgently notify the treating clinician when malaria parasites are first detected, including a preliminary positive result while species identification is pending.",
     "Communicate species and parasite density promptly, with particular attention to P. falciparum, suspected P. knowlesi, mixed infection or rising/high parasite density.",
-    "Apply the approved repeat-positive and parasite-density notification criteria in Appendices 4 and 5. Parasitaemia >2% is not a universal definition of severe malaria.",
+    "Apply the approved repeat-positive and parasite-density notification criteria in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary. Parasitaemia >2% is not a universal definition of severe malaria.",
     "Follow the applicable national malaria surveillance/reporting pathway."
   ],
   diseaseAssociations: [
@@ -6265,17 +6276,17 @@ window.TESTS = [
     "Use the manufacturer-specified blood volume and approved transfer device.",
     "Other anticoagulants are acceptable only where specified by the manufacturer.",
     "Record recent antimalarial treatment and relevant exposure/travel history.",
-    "See Appendices 1, 6 and 8."
+    "See Appendix 1: Pathology Request Form, Appendix 6: Order of Draw Quick Guide and Tube Reference and Appendix 8: Requesting and Reporting Basics."
   ],
   storageTransport: [
     "Test promptly; use fresh capillary blood immediately.",
     "If venous blood testing is delayed, follow the kit's validated specimen temperature and stability limits. Refrigeration may be permitted.",
     "If microscopy is also required, prepare blood films promptly before storage.",
     "Store unopened kits within the manufacturer's temperature limits and protect from heat and humidity.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Incorrect identification, leakage, unacceptable specimen type, insufficient volume or storage outside validated limits may make specimens unsuitable.",
     "Do not use expired, damaged or improperly stored devices. An invalid test must be repeated and must not be reported as negative.",
     "Assess haemolysis, lipaemia and icterus according to the kit instructions rather than rejecting automatically."
@@ -6358,7 +6369,7 @@ window.TESTS = [
     "Obtain serum for accompanying measles serology where recommended.",
     "Record rash onset, collection date, exposure/travel history and dates of recent measles-containing vaccination.",
     "Alert the receiving service to suspected measles before collection or referral.",
-    "See Appendices 1 and 8."
+    "See Appendix 1: Pathology Request Form and Appendix 8: Requesting and Reporting Basics."
   ],
   storageTransport: [
     "Transport promptly using the testing laboratory's validated specimen-specific requirements.",
@@ -6366,10 +6377,10 @@ window.TESTS = [
     "If delay requires freezing, confirm specimen preparation, temperature and frozen transport requirements before proceeding.",
     "Do not freeze whole blood or unprocessed urine unless specifically directed by the testing laboratory.",
     "Avoid repeated freeze–thaw cycles.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Incorrect identification, leakage, unsuitable specimen/swab/transport medium, insufficient volume or handling outside validated stability limits may make testing unsuitable.",
     "Do not reject a dry swab solely because it is dry if the receiving laboratory accepts that collection system. Discuss compromised specimens promptly and arrange recollection where necessary."
   ],
@@ -6384,7 +6395,7 @@ window.TESTS = [
   criticalAlert: [
     "Promptly communicate detected measles RNA to the treating clinician and designated public health service through the approved pathway.",
     "Suspected measles requires immediate infection-control assessment and prompt public health communication; do not await laboratory confirmation.",
-    "Follow the applicable Timor-Leste surveillance requirements and approved notification procedures in Appendices 4 and 5."
+    "Follow the applicable Timor-Leste surveillance requirements and approved notification procedures in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Measles virus infection.",
@@ -6433,7 +6444,7 @@ window.TESTS = [
     "Request IgG alone for immunity assessment."
   ],
   referenceRange: [
-    "Use assay-specific negative, equivocal and positive reporting criteria on the validated laboratory information management system (LIMS) report; see Appendix 12.",
+    "Use assay-specific negative, equivocal and positive reporting criteria on the validated laboratory information management system (LIMS) report; see Appendix 12: General Guide to Reference Ranges.",
     "IgM positive: supports recent infection but requires clinical/epidemiological interpretation and consideration of recent vaccination or false positivity.",
     "IgM negative: does not exclude measles, particularly with early collection or pre-existing immunity.",
     "IgG positive: evidence of previous infection or vaccination in an immunity assessment; a single positive result does not establish acute infection.",
@@ -6456,15 +6467,15 @@ window.TESTS = [
     "Confirm collection and minimum serum volumes locally, particularly for children.",
     "Record rash onset, collection date, exposure/travel history and recent vaccination dates.",
     "For suspected acute measles, collect an appropriate respiratory specimen for PCR at first presentation; see the Measles RNA entry.",
-    "See Appendices 1 and 8."
+    "See Appendix 1: Pathology Request Form and Appendix 8: Requesting and Reporting Basics."
   ],
   storageTransport: [
     "Separate serum and transport promptly according to the testing/referral laboratory's validated requirements.",
     "Confirm refrigerated stability and freezing requirements locally. The proposed seven days at 2–8 °C and longer storage at −20 °C must match the actual assay.",
-    "Avoid repeated freeze–thaw cycles. See Appendix 9a."
+    "Avoid repeated freeze–thaw cycles. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Incorrect identification, leakage, insufficient volume, unsuitable specimen or handling outside validated stability limits may make testing unsuitable.",
     "Assess haemolysis, lipaemia and icterus against assay-specific limits; do not reject automatically."
   ],
@@ -6548,7 +6559,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Send promptly in the approved sterile container.",
-    "Follow locally validated transport times and temperature requirements; refrigerate delayed specimens only according to the laboratory's protocol. See Appendix 9a and Appendix 9b.",
+    "Follow locally validated transport times and temperature requirements; refrigerate delayed specimens only according to the laboratory's protocol. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling.",
     "Routine endotracheal aspirates are generally unsuitable for anaerobic investigation; discuss alternative specimens if anaerobic infection is suspected."
   ],
   rejection: [
@@ -6565,7 +6576,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "Communicate clinically urgent findings and specified resistant organisms promptly under approved laboratory and infection prevention policies; see Appendices 4 and 5.",
+    "Communicate clinically urgent findings and specified resistant organisms promptly under approved laboratory and infection prevention policies; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "MRSA, carbapenem-resistant organisms or Aspergillus may require notification depending on the clinical context and local policy. A positive aspirate culture alone is not automatically critical."
   ],
   diseaseAssociations: [
@@ -6653,10 +6664,10 @@ window.TESTS = [
     "Do not refrigerate specimens intended for immediate motility examination. If rapid examination is impossible, arrange approved preservation.",
     "Refrigeration may be appropriate for formed stool or other investigations under locally validated requirements.",
     "Follow the laboratory's validated storage conditions for preserved specimens.",
-    "See Appendix 9a and Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Unsuitable containers, contamination, inadequate quantity, inappropriate preservative or excessive delay require laboratory assessment. Acceptance depends on the requested examination and validated specimen requirements."
   ],
   methodology: [
@@ -6724,7 +6735,7 @@ window.TESTS = [
     "Not detected: Target viral RNA not detected; infection is not excluded.",
     "Detected: Target viral RNA detected, supporting current or recent infection in the appropriate clinical context.",
     "Invalid / indeterminate: No definitive interpretation; repeat testing or recollection may be required.",
-    "Refer to the validated LIMS report and Appendix 12. Numerical reference intervals do not apply."
+    "Refer to the validated LIMS report and Appendix 12: General Guide to Reference Ranges. Numerical reference intervals do not apply."
   ],
   analyticalLimitations: [
     "Sensitivity depends on the virus, specimen type, timing of collection and viral RNA concentration.",
@@ -6742,15 +6753,15 @@ window.TESTS = [
     "EDTA blood/plasma, cerebrospinal fluid or urine may be appropriate for selected viruses only where validated.",
     "Collect promptly and document symptom-onset date, clinical syndrome, residence/travel history and pregnancy status where relevant.",
     "Discuss suspected encephalitis or pregnancy-associated Zika investigation with the laboratory before collection.",
-    "See Appendix 1 and Appendix 6."
+    "See Appendix 1: Pathology Request Form and Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Transport promptly under the testing laboratory's validated conditions.",
     "Confirm specimen separation requirements, refrigeration period and freezing temperature before delayed transport or referral. Avoid repeated freeze–thaw cycles.",
-    "See Appendix 9a and Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Unaccepted specimen types, unsuitable containers, insufficient volume or storage outside validated limits require laboratory assessment. Haemolysis, lipaemia or icterus should be assessed against validated assay limits rather than automatically rejected."
   ],
   methodology: [
@@ -6802,7 +6813,7 @@ window.TESTS = [
     "Not routinely required to diagnose menopause in otherwise typical presentations after age 45."
   ],
   referenceRange: [
-    "Use the analyser-specific reference intervals on the validated LIMS report; see Appendix 12.",
+    "Use the analyser-specific reference intervals on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Intervals depend on age, sex, pubertal stage, menstrual-cycle phase and menopausal status. Pregnancy and exogenous hormone treatment require appropriate clinical interpretation.",
     "Interpret alongside follicle-stimulating hormone (FSH), luteinising hormone (LH) and other relevant findings. A single result does not establish ovarian failure or menopause."
   ],
@@ -6819,15 +6830,15 @@ window.TESTS = [
   sampleRequirements: [
     "Serum in a collection tube accepted by the testing laboratory. Confirm minimum volume, particularly for paediatric specimens or referral testing.",
     "Record menstrual-cycle day or last menstrual period, menopausal status and relevant hormone treatment. For treatment monitoring, document sampling time relative to the dose where applicable.",
-    "See Appendix 6."
+    "See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Separate serum and transport promptly according to the testing laboratory's validated requirements.",
     "Confirm refrigeration duration and freezing conditions for delayed testing or referral. Avoid repeated freeze–thaw cycles.",
-    "See Appendix 9a and Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess haemolysis, lipaemia and icterus against validated assay interference limits rather than automatically rejecting affected specimens."
   ],
   methodology: "Competitive immunoassay.",
@@ -6837,7 +6848,7 @@ window.TESTS = [
     "Increased: May occur with oestrogen-secreting tumours or ovarian stimulation. Physiological increases occur during the menstrual cycle and pregnancy; exogenous oestradiol also increases concentrations.",
     "Decreased: May occur with primary ovarian insufficiency or hypothalamic/pituitary dysfunction. Low concentrations are also expected after menopause and during effective oestrogen-suppressing treatment."
   ],
-  conversionFactors: "1 pg/mL = 3.671 pmol/L; 1 pmol/L ÷ 3.671 = pg/mL; See Appendix 10.",
+  conversionFactors: "1 pg/mL = 3.671 pmol/L; 1 pmol/L ÷ 3.671 = pg/mL; See Appendix 10: Unit Conversion Factors (SI ↔ Conventional).",
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -6878,7 +6889,7 @@ window.TESTS = [
     "Investigate and monitor tumour lysis syndrome."
   ],
   referenceRange: [
-    "Use the age-appropriate reference interval on the validated LIMS report; see Appendix 12.",
+    "Use the age-appropriate reference interval on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Children generally have higher phosphate concentrations than adults. Do not apply an adult interval to infants or children.",
     "Interpret alongside calcium, renal function and, where indicated, magnesium, parathyroid hormone and vitamin D results."
   ],
@@ -6895,15 +6906,15 @@ window.TESTS = [
     "Serum, or heparinised plasma are accepted.",
     "Confirm the collection tube and minimum volume with the laboratory, particularly for paediatric samples.",
     "Avoid collection from an access site receiving phosphate-containing fluids.",
-    "See Appendix 6."
+    "See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Separate serum or plasma from blood cells promptly within the laboratory's validated interval.",
     "Transport promptly. Refrigeration duration and freezing conditions for delayed testing must follow validated local requirements.",
-    "See Appendix 9a and Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess haemolysis, lipaemia and icterus against validated assay limits. Recollection may be required when interference, contamination or delayed separation makes the result unreliable."
   ],
   methodology: "Colorimetric.",
@@ -6912,7 +6923,7 @@ window.TESTS = [
     urgent: "Confirm availability and reporting time for urgent requests."
   },
   criticalAlert: [
-    "Immediately notify results meeting approved phosphate thresholds in Appendix 4 and Appendix 5.",
+    "Immediately notify results meeting approved phosphate thresholds in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Severe hypophosphataemia may be life-threatening. Marked hyperphosphataemia may be associated with clinically significant hypocalcaemia."
   ],
   diseaseAssociations: [
@@ -6924,7 +6935,7 @@ window.TESTS = [
     "1 mg/dL = approximately 0.323 mmol/L.",
     "mg/dL × 0.323 = mmol/L.",
     "mmol/L × 3.10 = mg/dL.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -6966,7 +6977,7 @@ window.TESTS = [
     "Monitor potassium replacement and relevant intravenous fluid therapy."
   ],
   referenceRange: [
-    "Use the age- and specimen-appropriate reference interval on the validated LIMS report; see Appendix 12.",
+    "Use the age- and specimen-appropriate reference interval on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Serum potassium is usually slightly higher than plasma potassium because potassium is released during clotting.",
     "Interpret alongside renal function, acid–base status, glucose, relevant medicines and previous results."
   ],
@@ -6984,16 +6995,16 @@ window.TESTS = [
     "Serum or lithium-heparin plasma, according to the locally validated assay.",
     "Confirm collection tube and minimum volume, particularly for paediatric specimens. Potassium-EDTA specimens are unsuitable.",
     "Avoid repeated fist pumping and prolonged tourniquet application. Avoid collection from an access site receiving potassium-containing fluids.",
-    "See Appendix 6."
+    "See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Transport promptly and separate serum or plasma from blood cells within the laboratory's validated interval.",
     "Avoid inappropriate chilling or excessive heat before separation. Refrigerated transport should be used only where validated for the specimen's processing stage.",
     "After separation, follow locally validated refrigeration and stability requirements.",
-    "See Appendix 9a and Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess haemolysis against validated interference limits. Recollect when haemolysis, contamination or handling makes potassium unreliable.",
     "Potentially dangerous results or urgent recollection must be communicated urgently."
   ],
@@ -7008,7 +7019,7 @@ window.TESTS = [
     "High: Acute kidney injury or advanced chronic kidney disease; mineralocorticoid deficiency; tissue breakdown; selected acid–base disturbances; and medicines such as ACE inhibitors, angiotensin receptor blockers and potassium-sparing diuretics.",
     "In Diabetic Keto-Acidosis, potassium may initially be normal or elevated despite total-body depletion and may fall during treatment."
   ],
-  conversionFactors: ["1 mmol/L = 1 mEq/L for potassium.", "See Appendix 10."],
+  conversionFactors: ["1 mmol/L = 1 mEq/L for potassium.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -7055,7 +7066,7 @@ window.TESTS = [
     "Negative: hCG not detected at or above the test's detection threshold; early pregnancy is not excluded.",
     "Positive: hCG detected; usually consistent with pregnancy in the appropriate clinical context.",
     "Invalid: Required control criteria are not met; repeat with a new device according to laboratory procedure.",
-    "Refer to the validated LIMS report and Appendix 12. Numerical reference intervals do not apply."
+    "Refer to the validated LIMS report and Appendix 12: General Guide to Reference Ranges. Numerical reference intervals do not apply."
   ],
   analyticalLimitations: [
     "Early testing or dilute urine may produce a false-negative result.",
@@ -7078,10 +7089,10 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly.",
     "Follow the actual kit's validated storage limits for urine and, where accepted, separated serum. Confirm refrigeration and allowable delay with the laboratory.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Unaccepted specimen types, unsuitable containers, contamination, insufficient volume or storage outside validated limits require laboratory assessment.",
     "Assess serum haemolysis, lipaemia and icterus against kit-specific limits rather than automatically rejecting affected specimens."
   ],
@@ -7137,7 +7148,7 @@ window.TESTS = [
     "Not a standalone test for pregnancy viability or location, or a routine test for monitoring all high-risk pregnancies."
   ],
   referenceRange: [
-    "Use the analyser-specific reference intervals on the validated LIMS report; see Appendix 12.",
+    "Use the analyser-specific reference intervals on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Interpret according to menstrual-cycle phase, age, menopausal status, pregnancy stage and hormone treatment.",
     "For ovulation assessment, use the laboratory's validated interpretive guidance. An ovulation decision limit is distinct from a reference interval."
   ],
@@ -7156,15 +7167,15 @@ window.TESTS = [
     "Serum in a collection tube accepted by the testing laboratory. Confirm minimum volume rather than assuming a universal requirement of 2–5 mL.",
     "For ovulation assessment, collect approximately seven days before the expected next menstrual period. Day 21 is appropriate only for an approximately 28-day cycle; irregular cycles may require individualised timing.",
     "Record the last menstrual period, usual cycle length, estimated ovulation date where known, pregnancy status and relevant hormone treatment.",
-    "See Appendix 6."
+    "See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Separate serum and transport promptly according to validated laboratory requirements.",
     "Confirm the allowable separation delay, refrigerated stability and freezing conditions for delayed testing or referral.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess haemolysis, lipaemia and icterus against validated assay limits rather than automatically rejecting affected specimens."
   ],
   methodology: "Competative immunoassay.",
@@ -7184,7 +7195,7 @@ window.TESTS = [
     "1 ng/mL = approximately 3.18 nmol/L.",
     "ng/mL × 3.18 = nmol/L.",
     "nmol/L ÷ 3.18 = ng/mL.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -7224,7 +7235,7 @@ window.TESTS = [
     "Not a standalone diagnostic test for benign prostatic hyperplasia (BPH) or prostatitis."
   ],
   referenceRange: [
-    "Refer to the validated LIMS report and Appendix 12.",
+    "Refer to the validated LIMS report and Appendix 12: General Guide to Reference Ranges.",
     "Interpret according to age, clinical findings, medicines, previous results and treatment history. A result within the reported interval does not exclude prostate cancer.",
     "Cancer-investigation decision limits and post-treatment recurrence criteria are distinct from reference intervals. After radical prostatectomy, PSA is expected to become undetectable; interpretation after radiotherapy differs."
   ],
@@ -7243,15 +7254,15 @@ window.TESTS = [
   sampleRequirements: [
     "Serum in a collection tube accepted by the laboratory. Confirm minimum volume.",
     "Record age, testing indication, previous prostate cancer treatment, relevant medicines, infection/retention and recent prostate procedures.",
-    "See Appendix 6."
+    "See Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Separate serum and transport promptly according to validated laboratory requirements.",
     "Confirm separation limits, refrigerated stability and freezing conditions for delayed testing. Free PSA may require different handling if also requested.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess haemolysis, lipaemia and icterus against validated assay limits rather than automatically rejecting affected specimens."
   ],
   methodology: [
@@ -7267,7 +7278,7 @@ window.TESTS = [
     "Increased: Prostate cancer, BPH, prostatitis, urinary tract infection involving the prostate, acute urinary retention and recent prostate procedures.",
     "Reduced following intervention: May reflect effective treatment, radical prostatectomy or medicines suppressing PSA production; interpretation depends on the treatment and assay."
   ],
-  conversionFactors: ["1 ng/mL = 1 µg/L.", "See Appendix 10."],
+  conversionFactors: ["1 ng/mL = 1 µg/L.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [],
   lastReviewed: "",
@@ -7299,7 +7310,7 @@ window.TESTS = [
     "Assess coagulation before procedures when indicated by bleeding history, medicines, disease or procedural requirements."
   ],
   referenceRange: [
-    "Use the reagent- and analyser-specific PT and non-anticoagulated INR reference intervals on the validated LIMS report; see Appendix 12.",
+    "Use the reagent- and analyser-specific PT and non-anticoagulated INR reference intervals on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "For patients receiving warfarin, interpret INR against the prescribed therapeutic target. This target is distinct from the reference interval and depends on the treatment indication."
   ],
   analyticalLimitations: [
@@ -7325,7 +7336,7 @@ window.TESTS = [
     "Store test strips in the original container with the cap tightly closed, at 2–30 °C. Use a strip within 10 minutes of removing it from the container. Do not use strips after the expiry date."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Repeat the test if the meter shows an error, if the drop was applied more than 15 seconds after lancing, if the finger was squeezed, or if blood was added after the test started.",
     "A result that does not match the clinical picture, or an error that recurs on repeat testing, requires checking by another method where available and prompt clinical review."
   ],
@@ -7413,10 +7424,10 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly in a secure, leakproof container.",
     "Follow the exact assay's validated temperature and time limits for the approved transport medium. Confirm refrigerated transport requirements and arrangements for delayed referral.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Unlabelled or mislabelled specimens.",
     "Leaking containers.",
     "Unaccepted specimen sites, swabs or transport media.",
@@ -7483,7 +7494,7 @@ window.TESTS = [
     "Monitor haemolytic anaemia."
   ],
   referenceRange: [
-    "Use the locally validated, age-appropriate reference intervals on the LIMS report; see Appendix 12.",
+    "Use the locally validated, age-appropriate reference intervals on the LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "The absolute count (× 10⁹/L) is preferred for interpretation. In anaemia, a count within the reference interval may still indicate an inadequate marrow response."
   ],
   analyticalLimitations: [
@@ -7496,10 +7507,10 @@ window.TESTS = [
   containerColour: "Lavender EDTA",
   sampleRequirements: [
     "EDTA-anticoagulated whole blood. Fill the collection tube appropriately and mix gently.",
-    "The same specimen used for the full blood count may be suitable if sufficient volume and acceptable stability remain. Confirm minimum volume, including paediatric requirements, with the laboratory; see Appendix 6."
+    "The same specimen used for the full blood count may be suitable if sufficient volume and acceptable stability remain. Confirm minimum volume, including paediatric requirements, with the laboratory; see Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
-    "Transport promptly. Follow locally validated time and temperature limits for the method in use; see Appendix 9a.",
+    "Transport promptly. Follow locally validated time and temperature limits for the method in use; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines).",
     "For manual counting, use fresh blood for supravital staining and examination."
   ],
   rejection: [
@@ -7508,7 +7519,7 @@ window.TESTS = [
     "Insufficient volume or unacceptable tube fill.",
     "Specimen outside validated stability limits.",
     "Haemolysis or other specimen deterioration that prevents reliable counting.",
-    "Apply departmental criteria; see Appendix 7."
+    "Apply departmental criteria; see Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: [
     "Depending on the locally available method:",
@@ -7524,7 +7535,7 @@ window.TESTS = [
     "Increased: haemolysis, blood loss after a marrow response develops, and recovery following treatment or marrow suppression.",
     "Reduced or inappropriately normal in anaemia: marrow failure/suppression and untreated iron, vitamin B12 or folate deficiency."
   ],
-  conversionFactors: ["Absolute count: 1 × 10⁹/L = 1,000 cells/µL.", "See Appendix 10."],
+  conversionFactors: ["Absolute count: 1 × 10⁹/L = 1,000 cells/µL.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -7578,14 +7589,14 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly. If delayed, refrigerate at 2–8 °C.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen.",
     "Leaking container or insufficient specimen.",
     "Unacceptable contamination, preservative or transport medium.",
     "Storage or transport outside validated limits.",
-    "Formed stool is not automatically unsuitable; acceptance depends on the clinical indication, kit instructions and local policy. See Appendix 7."
+    "Formed stool is not automatically unsuitable; acceptance depends on the clinical indication, kit instructions and local policy. See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Rapid lateral-flow immunochromatographic assay for stool rotavirus antigen.",
   turnaround: { routine: "Same day.", urgent: "<2 hour." },
@@ -7640,7 +7651,7 @@ window.TESTS = [
     "Do not request IgM routinely for immunity screening in asymptomatic, unexposed patients."
   ],
   referenceRange: [
-    "see Appendix 12.",
+    "see Appendix 12: General Guide to Reference Ranges.",
     "IgG positive: evidence of previous infection or vaccination; supports immunity assessment.",
     "IgG negative: no detectable serological evidence of immunity; generally considered susceptible unless other accepted evidence of immunity exists.",
     "IgG equivocal: immunity not established by this result; follow the laboratory's repeat-testing advice.",
@@ -7661,13 +7672,13 @@ window.TESTS = [
     "Specify whether immunity assessment or investigation of infection is required. Include rash-onset date, exposure history, recent vaccination and pregnancy status/gestation.",
     "Indicate when infection is suspected."
   ],
-  storageTransport: "Separate serum and follow the testing laboratory's validated storage and transport requirements; see Appendix 9a.",
+  storageTransport: "Separate serum and follow the testing laboratory's validated storage and transport requirements; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines).",
   rejection: [
     "Unlabelled or mislabelled specimen.",
     "Leaking container, insufficient volume or unsuitable specimen/container.",
     "Storage or transport outside validated limits.",
     "Interference exceeding the assay's validated acceptance limits.",
-    "Do not automatically reject haemolysed, lipaemic or icteric specimens. See Appendix 7."
+    "Do not automatically reject haemolysed, lipaemic or icteric specimens. See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "IgM Immunometric Test (Class capture); IgG Immunometric immunoassay.",
   turnaround: { routine: "1 - 3 days. Confirm with the testing laboratory.", urgent: "" },
@@ -7710,7 +7721,7 @@ window.TESTS = [
     "> Routine testing after every vaccination is not required."
   ],
   referenceRange: [
-    "Use the assay-specific diagnostic decision limits and interpretation on the validated LIMS report; see Appendix 12.",
+    "Use the assay-specific diagnostic decision limits and interpretation on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Positive: serological evidence of previous infection or vaccination; generally accepted as evidence of immunity.",
     "Negative: no detectable serological evidence of immunity; assess alongside documented vaccination history and applicable policy.",
     "Equivocal: immunity is not established by this result; follow laboratory advice regarding repeat or additional testing.",
@@ -7730,13 +7741,13 @@ window.TESTS = [
     "Serum collected in a plain or serum-separator tube. Confirm the minimum volume with the testing laboratory.",
     "Include the reason for testing, pregnancy status and relevant vaccination history. For suspected infection, include symptoms, rash-onset date and exposure history."
   ],
-  storageTransport: "Follow the testing laboratory's validated serum storage and transport requirements; see Appendix 9a.",
+  storageTransport: "Follow the testing laboratory's validated serum storage and transport requirements; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines).",
   rejection: [
     "Unlabelled or mislabelled specimen.",
     "Leaking container, insufficient volume or unsuitable specimen/container.",
     "Storage or transport outside validated limits.",
     "Interference exceeding the assay's validated acceptance limits.",
-    "Do not automatically reject haemolysed, lipaemic or icteric specimens. See Appendix 7."
+    "Do not automatically reject haemolysed, lipaemic or icteric specimens. See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Immunometric immunoassay.",
   turnaround: { routine: "Confirm with the testing laboratory.", urgent: "" },
@@ -7749,7 +7760,7 @@ window.TESTS = [
   ],
   conversionFactors: [
     "Not applicable to qualitative results.",
-    "Where reported quantitatively: 1 IU/mL = 1,000 IU/L. Unit conversion does not make results from different assays interchangeable; see Appendix 10."
+    "Where reported quantitatively: 1 IU/mL = 1,000 IU/L. Unit conversion does not make results from different assays interchangeable; see Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -7805,7 +7816,7 @@ window.TESTS = [
     "Include rash-onset and collection dates, exposure and vaccination history, pregnancy status/gestation, or infant age and relevant maternal history."
   ],
   storageTransport: [
-    "Transport promptly under the receiving laboratory's validated conditions; see Appendix 9a.",
+    "Transport promptly under the receiving laboratory's validated conditions; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines).",
     "Respiratory swabs in approved transport medium are generally refrigerated at 2–8 °C for short transport. Confirm the permitted duration and freezing requirements before referral."
   ],
   rejection: [
@@ -7813,7 +7824,7 @@ window.TESTS = [
     "Leaking container, insufficient quantity or unsuitable specimen/container.",
     "Unapproved swab or transport medium.",
     "Storage or transport outside validated acceptance limits.",
-    "Dry swabs are unsuitable unless specifically accepted by the testing laboratory. Discuss compromised, difficult-to-recollect specimens before rejection. See Appendix 7."
+    "Dry swabs are unsuitable unless specifically accepted by the testing laboratory. Discuss compromised, difficult-to-recollect specimens before rejection. See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Real-time RT-PCR for rubella virus RNA.",
   turnaround: { routine: "Confirm with the testing laboratory.", urgent: "" },
@@ -7852,7 +7863,7 @@ window.TESTS = [
     "Routine testing to assess vaccine response, determine further vaccine doses or diagnose long COVID is not recommended."
   ],
   referenceRange: [
-    "Use the assay-specific decision limits and interpretation on the validated LIMS report; see Appendix 12.",
+    "Use the assay-specific decision limits and interpretation on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Negative: IgG to the assay's target antigen not detected above the decision limit.",
     "Positive: IgG to the target antigen detected; interpretation depends on vaccination and infection history.",
     "Equivocal/borderline, where applicable: follow laboratory advice regarding repeat or additional testing.",
@@ -7872,13 +7883,13 @@ window.TESTS = [
     "Serum collected in a plain or SST. Confirm the minimum volume with the testing laboratory.",
     "Include the reason for testing, relevant infection dates, vaccination dates/type and immunocompromising conditions."
   ],
-  storageTransport: "Separate serum and follow the testing laboratory's validated time and temperature limits, including freezing requirements where applicable. See Appendix 9a.",
+  storageTransport: "Separate serum and follow the testing laboratory's validated time and temperature limits, including freezing requirements where applicable. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines).",
   rejection: [
     "Unlabelled or mislabelled specimen.",
     "Leaking container, insufficient volume or unsuitable specimen/container.",
     "Storage or transport outside validated limits.",
     "Interference exceeding the assay's validated acceptance limits.",
-    "Do not automatically reject haemolysed, lipaemic or icteric specimens. See Appendix 7."
+    "Do not automatically reject haemolysed, lipaemic or icteric specimens. See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Immunometric assay",
   turnaround: {
@@ -7887,7 +7898,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "No routine critical threshold applies to SARS-CoV-2 IgG alone.",
-    "Discuss clinically discordant results or specialist requests with the treating clinician and laboratory. Follow approved local notification criteria; see Appendices 4 and 5."
+    "Discuss clinically discordant results or specialist requests with the treating clinician and laboratory. Follow approved local notification criteria; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Previous SARS-CoV-2 infection. Antibody positivity may also reflect vaccination and does not by itself indicate active COVID-19."
@@ -7926,7 +7937,7 @@ window.TESTS = [
     "Progressive motility: 30%.",
     "Total motility: 42%.",
     "Normal morphology: 4%.",
-    "These values do not distinguish fertile from infertile men. Interpret all parameters together with clinical history and the validated laboratory report; see Appendix 12.",
+    "These values do not distinguish fertile from infertile men. Interpret all parameters together with clinical history and the validated laboratory report; see Appendix 12: General Guide to Reference Ranges.",
     "Post-vasectomy results must be interpreted against the approved clearance protocol, not fertility reference values."
   ],
   analyticalLimitations: [
@@ -7947,13 +7958,13 @@ window.TESTS = [
   ],
   storageTransport: [
     "Maintain at 20–37 °C during transport; do not refrigerate, freeze or expose to excessive heat.",
-    "Deliver promptly enough for examination to begin within one hour of collection, preferably earlier. Collection near the testing laboratory is preferred. See Appendix 9a."
+    "Deliver promptly enough for examination to begin within one hour of collection, preferably earlier. Collection near the testing laboratory is preferred. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen.",
     "Leaking or unsuitable container.",
     "Collection with unapproved condoms, lubricants or other substances that compromise testing.",
-    "Incomplete collection or delayed transport requires assessment, documentation and possible recollection rather than automatic rejection. Results may need qualification or restriction to reliable parameters. See Appendix 7."
+    "Incomplete collection or delayed transport requires assessment, documentation and possible recollection rather than automatic rejection. Results may need qualification or restriction to reliable parameters. See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: [
     "Macroscopic assessment and standardised microscopy according to validated WHO-based methods.",
@@ -7966,7 +7977,7 @@ window.TESTS = [
   criticalAlert: [
     "No routine life-threatening critical threshold applies.",
     "Azoospermia or markedly abnormal fertility results require clinician review and appropriate confirmation.",
-    "For post-vasectomy testing, clearly report any residual sperm and motility. Continue contraception until the responsible clinician confirms clearance under the approved protocol. See Appendices 4 and 5 for any locally adopted notification criteria."
+    "For post-vasectomy testing, clearly report any residual sperm and motility. Continue contraception until the responsible clinician confirms clearance under the approved protocol. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary for any locally adopted notification criteria."
   ],
   diseaseAssociations: [
     "Male-factor infertility associated with impaired sperm production, obstruction, endocrine disorders, varicocele or testicular damage. Abnormal parameters are not specific to any one cause."
@@ -8011,7 +8022,7 @@ window.TESTS = [
     "Monitor critically ill patients and those receiving intravenous fluids or diuretics."
   ],
   referenceRange: [
-    "Use the age-appropriate reference interval on the validated LIMS report; see Appendix 12.",
+    "Use the age-appropriate reference interval on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "A commonly used adult interval is 135–145 mmol/L, subject to local validation. Reference intervals are distinct from critical-result thresholds."
   ],
   analyticalLimitations: [
@@ -8025,11 +8036,11 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in an approved plain/serum-separator tube or lithium-heparin plasma. Confirm minimum volume with the laboratory.",
-    "Do not use sodium-heparin or other sodium-containing collection additives. Avoid contamination from intravenous infusions; see Appendix 6."
+    "Do not use sodium-heparin or other sodium-containing collection additives. Avoid contamination from intravenous infusions; see Appendix 6: Order of Draw Quick Guide and Tube Reference."
   ],
   storageTransport: [
     "Transport promptly and separate serum or plasma from cells according to local requirements.",
-    "Keep separated specimens capped. Follow validated storage temperatures and stability limits; see Appendix 9a."
+    "Keep separated specimens capped. Follow validated storage temperatures and stability limits; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen.",
@@ -8037,7 +8048,7 @@ window.TESTS = [
     "Clotted anticoagulated plasma specimen or residual fibrin that prevents reliable analysis.",
     "Suspected infusion/additive contamination.",
     "Storage outside validated limits or interference exceeding validated acceptance limits.",
-    "Clotting during serum preparation is expected. Do not automatically reject haemolysed, lipaemic or icteric specimens; assess suitability for the method used. See Appendix 7."
+    "Clotting during serum preparation is expected. Do not automatically reject haemolysed, lipaemic or icteric specimens; assess suitability for the method used. See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: "Potentiometric assay.",
   turnaround: { routine: "Same day.", urgent: "<2 hours." },
@@ -8049,7 +8060,7 @@ window.TESTS = [
     "Hyponatraemia: inappropriate antidiuresis, diuretic use, adrenal insufficiency, heart failure, cirrhosis, renal disease and sodium losses with water replacement or retention.",
     "Hypernatraemia: inadequate water intake or excess water loss, diabetes insipidus, osmotic diuresis or excess sodium administration."
   ],
-  conversionFactors: ["For sodium: 1 mmol/L = 1 mEq/L.", "See Appendix 10."],
+  conversionFactors: ["For sodium: 1 mmol/L = 1 mEq/L.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -8113,7 +8124,7 @@ window.TESTS = [
     "Include suspected diagnosis, antimicrobial treatment and relevant information such as bronchiectasis, ventilation or immunocompromise."
   ],
   storageTransport: [
-    "Transport promptly, preferably within two hours. If delayed, refrigerate at 2–8 °C within locally validated limits; see Appendices 9a and 9b.",
+    "Transport promptly, preferably within two hours. If delayed, refrigerate at 2–8 °C within locally validated limits; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling.",
     "Confirm maximum storage time and any additional requirements for specialist testing with the testing laboratory."
   ],
   rejection: [
@@ -8122,7 +8133,7 @@ window.TESTS = [
     "Swab submitted instead of a respiratory specimen.",
     "Storage or transport outside validated limits.",
     "Expectorated sputum failing validated microscopic quality criteria.",
-    "Few or no inflammatory cells alone is not a sufficient reason for rejection. Do not automatically apply sputum-quality rejection rules to BAL, tracheal aspirates, immunocompromised/neutropenic patients or specimens for tuberculosis testing. Discuss exceptions with the laboratory; see Appendix 7."
+    "Few or no inflammatory cells alone is not a sufficient reason for rejection. Do not automatically apply sputum-quality rejection rules to BAL, tracheal aspirates, immunocompromised/neutropenic patients or specimens for tuberculosis testing. Discuss exceptions with the laboratory; see Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: [
     "Gram stain, routine bacterial culture, organism identification and antimicrobial susceptibility testing using validated laboratory methods and the adopted susceptibility standard.",
@@ -8210,14 +8221,14 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly.",
     "For anticipated delays, use laboratory-approved enteric transport medium, such as Cary–Blair. Follow validated temperature and maximum transport-time requirements; refrigeration at 2–8 °C may be required.",
-    "See Appendices 9a and 9b. Confirm arrangements for referral specimens."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling. Confirm arrangements for referral specimens."
   ],
   rejection: [
     "Unlabelled or mislabelled specimen.",
     "Leaking container, insufficient material or unsuitable collection system.",
     "Unacceptable contamination, preservative or transport conditions.",
     "Formed stool submitted for routine acute-diarrhoea investigation, unless an approved clinical/public-health exception applies.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: [
     "Selective/differential bacterial culture and organism identification using validated methods.",
@@ -8306,13 +8317,13 @@ window.TESTS = [
     "Serum in an approved plain tube or SST. Confirm minimum volume with the laboratory.",
     "Include pregnancy status, symptoms/exposure, previous syphilis results and treatment history. Identify whether testing is for diagnosis or treatment follow-up."
   ],
-  storageTransport: "Separate serum and follow the kit and laboratory's validated storage, transport and freezing requirements; see Appendix 9a.",
+  storageTransport: "Separate serum and follow the kit and laboratory's validated storage, transport and freezing requirements; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines).",
   rejection: [
     "Unlabelled or mislabelled specimen.",
     "Leaking container, insufficient volume or unsuitable specimen/container.",
     "Storage or transport outside validated limits.",
     "Interference exceeding the method's validated acceptance limits.",
-    "Do not automatically reject haemolysed, lipaemic or icteric specimens. See Appendix 7."
+    "Do not automatically reject haemolysed, lipaemic or icteric specimens. See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: [
     "Manual macroscopic flocculation card test. Reactive specimens are serially diluted to determine the endpoint titre.",
@@ -8375,7 +8386,7 @@ window.TESTS = [
     "Non-reactive: No treponemal antibodies detected; early infection remains possible.",
     "Reactive: May indicate current or previously treated infection; interpret with quantitative RPR/VDRL, clinical findings and documented treatment history.",
     "Equivocal or indeterminate, where applicable: Further testing according to the assay and laboratory algorithm.",
-    "Use the validated LIMS report and Appendix 12 for assay-specific cutoffs. Treponemal antibody levels are not measures of disease activity."
+    "Use the validated LIMS report and Appendix 12: General Guide to Reference Ranges for assay-specific cutoffs. Treponemal antibody levels are not measures of disease activity."
   ],
   analyticalLimitations: [
     "Antibodies usually remain detectable for many years, often lifelong, after treatment.",
@@ -8395,13 +8406,13 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly. Store separated serum at 2–8 °C when testing is delayed, within the assay's validated stability limits.",
     "For longer storage, freeze only according to the applicable assay instructions. Avoid repeated freeze–thaw cycles.",
-    "See Appendices 9a and 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
     "Unlabelled or mislabelled specimens, leaking containers, unsuitable tubes or insufficient quantity.",
     "Specimens outside validated storage limits or with significant contamination.",
     "Haemolysis, lipaemia or icterus warrant rejection only when they exceed validated assay interference limits.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: [
     "Validated treponemal antibody assay; confirm the method used locally. Methods include immunoassays, Treponema pallidum particle agglutination (TPPA) and Treponema pallidum haemagglutination (TPHA).",
@@ -8414,7 +8425,7 @@ window.TESTS = [
   },
   criticalAlert: [
     "A newly reactive result during pregnancy, or one without documented adequate previous treatment, requires prompt communication and urgent clinical follow-up to prevent congenital syphilis.",
-    "Apply the approved alert and notification policy; persistent reactivity after documented treatment is not automatically a critical result. See Appendices 4 and 5."
+    "Apply the approved alert and notification policy; persistent reactivity after documented treatment is not automatically a critical result. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary."
   ],
   diseaseAssociations: [
     "Current or previous syphilis infection, including latent infection."
@@ -8455,7 +8466,7 @@ window.TESTS = [
     "Investigate suspected androgen-secreting tumours or abnormal pubertal development."
   ],
   referenceRange: [
-    "Use the method-, age-, sex- and pubertal-stage-specific reference intervals on the validated LIMS report; see Appendix 12.",
+    "Use the method-, age-, sex- and pubertal-stage-specific reference intervals on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "In men, hypogonadism requires compatible clinical features and consistently low testosterone on separate morning fasting samples"
   ],
   analyticalLimitations: [
@@ -8468,17 +8479,17 @@ window.TESTS = [
   sampleType: "Serum",
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
-    "Serum in a SST. See Appendix 6.",
+    "Serum in a SST. See Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "For suspected male hypogonadism, collect in the morning after an overnight fast and usual sleep. Confirm a low result on a separate morning when the patient is not acutely ill.",
     "For investigation of androgen excess in women, morning fasting collection is preferred; collect in the early follicular phase where feasible.",
     "Record collection time. For treatment monitoring, record the testosterone preparation and timing of the last dose; sampling time depends on the formulation."
   ],
   storageTransport: [
     "Separate serum and transport according to the laboratory's validated assay requirements. Confirm refrigerated stability, freezing requirements and permitted freeze–thaw cycles locally.",
-    "See Appendix 9a"
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)"
   ],
   rejection: [
-    "See Appendix 7. Assess insufficient volume, unsuitable collection tubes and specimens outside validated stability limits.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments). Assess insufficient volume, unsuitable collection tubes and specimens outside validated stability limits.",
     "Haemolysis, lipaemia or icterus require rejection only where interference exceeds the assay's validated acceptance limits."
   ],
   methodology: [
@@ -8499,7 +8510,7 @@ window.TESTS = [
   conversionFactors: [
     "1 ng/dL = 0.0347 nmol/L.",
     "1 nmol/L = 28.8 ng/dL.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -8541,7 +8552,7 @@ window.TESTS = [
     "Suspected pituitary or hypothalamic disease: request TSH and FT4 together."
   ],
   referenceRange: [
-    "Use the method- and age-specific reference interval on the validated LIMS report; see Appendix 12.",
+    "Use the method- and age-specific reference interval on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Pregnancy requires appropriate pregnancy-specific interpretation. Neonatal results require age-specific intervals, including age after birth."
   ],
   analyticalLimitations: [
@@ -8554,15 +8565,15 @@ window.TESTS = [
   sampleType: "Serum",
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
-    "Serum in a laboratory-approved collection tube. Confirm minimum volume locally, particularly for infants; see Appendix 6.",
+    "Serum in a laboratory-approved collection tube. Confirm minimum volume locally, particularly for infants; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "Provide age, pregnancy status and gestation where applicable, relevant treatment and suspected pituitary disease."
   ],
   storageTransport: [
     "Separate serum and transport according to validated local assay requirements. Confirm refrigerated stability and freezing requirements locally.",
-    "See Appendix 9a and applicable guidance in Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and applicable guidance in Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unsuitable tubes, insufficient volume and specimens outside validated stability limits. Reject haemolysed, lipaemic or icteric specimens only where interference exceeds validated assay acceptance limits."
   ],
   methodology: "Immunometric immunoassay.",
@@ -8619,7 +8630,7 @@ window.TESTS = [
     "Direct bilirubin measurement may be required to clarify the pattern of hyperbilirubinaemia, particularly in unexplained or prolonged jaundice."
   ],
   referenceRange: [
-    "Use the age-appropriate reference interval on the validated LIMS report; see Appendix 12.",
+    "Use the age-appropriate reference interval on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Neonatal bilirubin requires interpretation against the approved neonatal assessment charts using postnatal age in hours, gestational age and relevant risk factors. Treatment thresholds are not reference intervals."
   ],
   analyticalLimitations: [
@@ -8633,15 +8644,15 @@ window.TESTS = [
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
     "Serum in a laboratory-approved collection tube. Plasma may be acceptable if validated for the local assay.",
-    "Confirm minimum volume locally, particularly for neonatal specimens; see Appendix 6.",
+    "Confirm minimum volume locally, particularly for neonatal specimens; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "For neonates, provide birth date and time, collection date and time, gestational age and current phototherapy status."
   ],
   storageTransport: [
     "Protect the specimen from light from collection until analysis. Separate serum or plasma from cells promptly and transport immediately.",
-    "See Appendix 9a"
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)"
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unsuitable specimens, insufficient volume, significant light exposure and storage outside validated limits. Reject haemolysed or lipaemic specimens only when interference exceeds validated assay acceptance limits.",
     "An icteric specimen is expected when bilirubin is raised and is not itself a reason for rejection."
   ],
@@ -8665,7 +8676,7 @@ window.TESTS = [
   conversionFactors: [
     "1 mg/dL = 17.1 µmol/L.",
     "1 µmol/L = 0.0585 mg/dL.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -8707,7 +8718,7 @@ window.TESTS = [
     "Calculated globulin = total protein − albumin, using the same units."
   ],
   referenceRange: [
-    "Use the validated age-appropriate reference interval on the LIMS report; see Appendix 12."
+    "Use the validated age-appropriate reference interval on the LIMS report; see Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Hydration, fluid administration, posture and prolonged venous stasis can alter protein concentrations.",
@@ -8719,15 +8730,15 @@ window.TESTS = [
   sampleType: "Serum",
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
-    "Serum in a laboratory-approved collection tube. Confirm minimum volume locally; see Appendix 6.",
+    "Serum in a laboratory-approved collection tube. Confirm minimum volume locally; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "Avoid prolonged tourniquet application. Avoid contamination by intravenous fluids."
   ],
   storageTransport: [
     "Separate serum from cells and transport according to validated local assay requirements.",
-    "Confirm refrigerated stability, freezing requirements and permitted freeze–thaw cycles locally. See Appendix 9a."
+    "Confirm refrigerated stability, freezing requirements and permitted freeze–thaw cycles locally. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unsuitable specimens, insufficient volume, suspected intravenous-fluid contamination and storage outside validated limits.",
     "Reject haemolysed, lipaemic or icteric specimens only where interference exceeds validated assay acceptance limits."
   ],
@@ -8739,7 +8750,7 @@ window.TESTS = [
     "Decreased: renal or gastrointestinal protein loss, advanced liver disease, hypogammaglobulinaemia and haemodilution.",
     "Severe undernutrition may contribute to low concentrations, but total protein alone cannot establish malnutrition."
   ],
-  conversionFactors: ["1 g/dL = 10 g/L.", "1 g/L = 0.1 g/dL.", "See Appendix 10."],
+  conversionFactors: ["1 g/dL = 10 g/L.", "1 g/L = 0.1 g/dL.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -8776,7 +8787,7 @@ window.TESTS = [
   ],
   referenceRange: [
     "Adult desirable fasting concentration: <1.7 mmol/L. This is a clinical decision limit rather than a population reference interval.",
-    "Interpret according to fasting status, the complete lipid profile and overall cardiovascular risk. Refer to the validated LIMS report and Appendix 12 for locally adopted interpretation and age-specific guidance."
+    "Interpret according to fasting status, the complete lipid profile and overall cardiovascular risk. Refer to the validated LIMS report and Appendix 12: General Guide to Reference Ranges for locally adopted interpretation and age-specific guidance."
   ],
   analyticalLimitations: [
     "Meals cause physiological changes in triglycerides; non-fasting results are not inherently erroneous.",
@@ -8788,16 +8799,16 @@ window.TESTS = [
   sampleType: "Serum",
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
-    "Serum in a laboratory-approved collection tube; confirm minimum volume locally. Plasma is acceptable only were validated for the assay. See Appendix 6.",
+    "Serum in a laboratory-approved collection tube; confirm minimum volume locally. Plasma is acceptable only were validated for the assay. See Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "Non-fasting sampling is suitable for routine lipid assessment. Fasting sampling may be requested to confirm marked elevation or assess suspected severe or inherited hypertriglyceridaemia; follow local fasting instructions.",
     "Record fasting status. Do not delay testing for suspected acute pancreatitis to obtain a fasting specimen."
   ],
   storageTransport: [
     "Separate serum or plasma from cells and transport according to validated local assay requirements.",
-    "Confirm refrigerated stability, freezing requirements and permitted freeze–thaw cycles locally. See Appendix 9a."
+    "Confirm refrigerated stability, freezing requirements and permitted freeze–thaw cycles locally. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unsuitable specimens, insufficient volume and storage outside validated limits.",
     "Do not reject a specimen solely because it is non-fasting or visibly lipaemic. Where interference or measuring-range limits are exceeded, use the laboratory's validated investigation and reporting procedure."
   ],
@@ -8807,7 +8818,7 @@ window.TESTS = [
     urgent: "Suspected acute pancreatitis follows the urgent testing pathway."
   },
   criticalAlert: [
-    "Telephone immediately: triglyceride ≥10 mmol/L (risk of acute pancreatitis). See Appendices 4 and 5.",
+    "Telephone immediately: triglyceride ≥10 mmol/L (risk of acute pancreatitis). See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Severe abdominal pain or other features suggesting acute pancreatitis require urgent assessment regardless of fasting status."
   ],
   diseaseAssociations: [
@@ -8817,7 +8828,7 @@ window.TESTS = [
   conversionFactors: [
     "1 mg/dL = 0.0113 mmol/L.",
     "1 mmol/L = 88.6 mg/dL.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -8880,7 +8891,7 @@ window.TESTS = [
   containerColour: "Lavender EDTA",
   sampleRequirements: [
     "EDTA whole blood or EDTA plasma only.",
-    "Collect into an EDTA tube (2–5 mL, local tube to be confirmed – see Appendix 6). Fill the tube correctly and mix gently by inversion.",
+    "Collect into an EDTA tube (2–5 mL, local tube to be confirmed – see Appendix 6: Order of Draw Quick Guide and Tube Reference). Fill the tube correctly and mix gently by inversion.",
     "Lithium heparin, serum and other anticoagulants are not acceptable for this test.",
     "Sample volume applied to the test device: as per manufacturer's Instructions for Use (IFU) and local procedure."
   ],
@@ -8891,7 +8902,7 @@ window.TESTS = [
     "Do not use specimens that have been stored or transported outside validated conditions."
   ],
   rejection: [
-    "See Appendix 7 – Sample Rejection Criteria.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "For this specific analyser and test, specimens collected must be in EDTA tubes."
   ],
   methodology: [
@@ -8980,7 +8991,7 @@ window.TESTS = [
     "Refrigerate sputum at 2–8 °C when testing is delayed, according to the applicable cartridge instructions and local protocol.",
     "Storage limits differ between unprocessed sputum, processed sediment and extrapulmonary specimens. Confirm requirements with the laboratory.",
     "Do not freeze unless permitted by the validated specimen-specific protocol.",
-    "See Appendices 9a and 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
     "Unlabelled or mislabelled specimens, leaking containers, or unsuitable containers.",
@@ -8988,7 +8999,7 @@ window.TESTS = [
     "Specimens outside validated transport or stability limits.",
     "Formalin-fixed tissue or swabs unless specifically accepted for a validated testing pathway.",
     "Discuss poor-quality or irreplaceable specimens with the laboratory before rejection.",
-    "See Appendix 7."
+    "See Appendix 7: Sample Rejection Criteria (All Departments)."
   ],
   methodology: [
     "Automated cartridge-based real-time polymerase chain reaction (PCR), detecting MTBC DNA and rifampicin-resistance-associated changes in the rpoB gene.",
@@ -9050,7 +9061,7 @@ window.TESTS = [
     "Support selected renal stone investigations alongside urine studies and stone analysis."
   ],
   referenceRange: [
-    "Use the validated age- and sex-specific reference intervals on the LIMS report; see Appendix 12.",
+    "Use the validated age- and sex-specific reference intervals on the LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "For patients receiving urate-lowering treatment for gout, the usual target is <360 µmol/L (0.36 mmol/L). A lower target of <300 µmol/L (0.30 mmol/L) may be considered for tophi, chronic gouty arthritis or persistent frequent flares."
   ],
   analyticalLimitations: [
@@ -9061,13 +9072,13 @@ window.TESTS = [
   ],
   sampleType: "Serum",
   containerColour: "Gold/Yellow SST II",
-  sampleRequirements: "Routine testing: serum in a laboratory-approved collection tube; plasma may be acceptable if validated. Confirm minimum volume locally; see Appendix 6.",
+  sampleRequirements: "Routine testing: serum in a laboratory-approved collection tube; plasma may be acceptable if validated. Confirm minimum volume locally; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
   storageTransport: [
     "Routine specimens: separate serum or plasma from cells and follow locally validated temperature and stability requirements.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unsuitable tubes, insufficient volume and storage outside validated limits. Reject haemolysed, lipaemic or icteric specimens only where interference exceeds validated acceptance limits."
   ],
   methodology: "Commonly an enzymatic uricase assay with photometric measurement.",
@@ -9082,7 +9093,7 @@ window.TESTS = [
     "1 mg/dL = 59.5 µmol/L = 0.0595 mmol/L.",
     "1 µmol/L = 0.0168 mg/dL.",
     "1 mmol/L = 1,000 µmol/L.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -9129,7 +9140,7 @@ window.TESTS = [
     "Protein: usually negative; a trace result requires interpretation according to urine concentration and clinical context.",
     "Urobilinogen: small amounts may normally be present.",
     "pH and specific gravity: variable with diet, hydration and physiological state.",
-    "Use the strip-specific reporting scale and validated LIMS interpretation; see Appendix 12."
+    "Use the strip-specific reporting scale and validated LIMS interpretation; see Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Negative nitrite does not exclude UTI; positive nitrite or leucocyte esterase alone does not establish symptomatic infection.",
@@ -9152,10 +9163,10 @@ window.TESTS = [
     "Send promptly and test as soon as possible, preferably within two hours of collection, subject to the local strip instructions.",
     "If delayed, refrigerate at 2–8 °C according to validated local requirements. Do not assume all parameters remain reliable for 24 hours.",
     "Protect from excessive light where bilirubin or urobilinogen is assessed. Refrigerated specimens require preparation according to the manufacturer's instructions before testing.",
-    "See Appendix 9a and applicable guidance in Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and applicable guidance in Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unlabelled or mislabelled specimens, leaking containers, insufficient volume, interfering contamination and specimens outside validated time or temperature limits.",
     "Do not accept prolonged room-temperature storage simply because the specimen is less than 24 hours old."
   ],
@@ -9215,7 +9226,7 @@ window.TESTS = [
     "Investigate clinically relevant crystalluria or recurrent stone disease."
   ],
   referenceRange: [
-    "Use the method-specific cell limits and reporting units on the validated LIMS report; see Appendix 12.",
+    "Use the method-specific cell limits and reporting units on the validated LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "RBC and WBC: normally absent or present in small numbers.",
     "Casts: small numbers of hyaline casts may occur physiologically; cellular casts are abnormal.",
     "Crystals: common crystals may occur without disease; significance depends on type and clinical context.",
@@ -9240,10 +9251,10 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly; aim to examine fresh urine within two hours.",
     "If delay is unavoidable, refrigerate at 2–8 °C according to validated local requirements. Confirm acceptable holding time for cells, casts and crystals; do not assume all remain reliable for 24 hours.",
-    "See Appendix 9a and applicable guidance in Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and applicable guidance in Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unlabelled or mislabelled specimens, leaking containers, insufficient volume, significant contamination and storage outside validated limits.",
     "Prolonged room-temperature storage may make microscopy unreliable well before 24 hours."
   ],
@@ -9323,10 +9334,10 @@ window.TESTS = [
     "Support assessment of completeness of timed urine collections.",
     "Calculate measured creatinine clearance when clinically indicated.",
     "Normalise selected urinary analyte measurements to creatinine.",
-    "Urine creatinine alone is not a measure of kidney function. Routine CKD assessment generally uses serum creatinine-based eGFR and urine ACR; see Appendix 11."
+    "Urine creatinine alone is not a measure of kidney function. Routine CKD assessment generally uses serum creatinine-based eGFR and urine ACR; see Appendix 11: eGFR and CKD G-Stage References."
   ],
   referenceRange: [
-    "Use locally validated, age- and sex-appropriate interpretation; see Appendix 12.",
+    "Use locally validated, age- and sex-appropriate interpretation; see Appendix 12: General Guide to Reference Ranges.",
     "Spot urine concentration varies substantially with urine dilution; there is no single diagnostic \"normal\" concentration.",
     "Timed excretion depends on muscle mass, body size, age, diet and collection completeness.",
     "Urine concentration, daily excretion and creatinine clearance require different units and interpretation."
@@ -9350,10 +9361,10 @@ window.TESTS = [
   ],
   storageTransport: [
     "Follow laboratory-approved collection and storage instructions. Refrigerated storage at 2–8 °C may be required during timed collection and transport.",
-    "Confirm validated stability, freezing requirements and compatibility with other requested tests. See Appendix 9a and applicable guidance in Appendix 9b."
+    "Confirm validated stability, freezing requirements and compatibility with other requested tests. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and applicable guidance in Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unlabelled or mislabelled specimens, insufficient volume, contamination, unsuitable preservatives and storage outside validated limits.",
     "Incomplete or incorrectly timed collections require recollection or qualified reporting. Do not calculate daily excretion or clearance without reliable volume and duration."
   ],
@@ -9379,7 +9390,7 @@ window.TESTS = [
     "Timed excretion:",
     "1 mmol/day = 113.1 mg/day.",
     "1 mg/day = 0.00884 mmol/day.",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [],
@@ -9439,10 +9450,10 @@ window.TESTS = [
   storageTransport: [
     "Transport promptly, preferably within two hours.",
     "If delayed, refrigerate at 2–8 °C or use an approved culture-preservative container according to validated local requirements. Confirm the maximum holding time; underfilled preservative containers may inhibit organisms.",
-    "See Appendix 9a and applicable guidance in Appendix 9b."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and applicable guidance in Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unlabelled or mislabelled specimens, leaking containers, unsuitable collection methods, insufficient volume for the requested work and storage outside validated limits.",
     "Discuss irreplaceable or small-volume invasive specimens with microbiology before rejection. Do not use 24 hours at room temperature as an acceptable transport allowance."
   ],
@@ -9469,7 +9480,7 @@ window.TESTS = [
     "1 CFU/mL = 1,000 CFU/L.",
     "10⁵ CFU/mL = 10⁸ CFU/L.",
     "CFU: Colony-Forming Units",
-    "See Appendix 10."
+    "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: [
     {
@@ -9543,10 +9554,10 @@ window.TESTS = [
   storageTransport: [
     "Follow validated local collection and transport requirements. Refrigerate at 2–8 °C where specified.",
     "Confirm maximum storage time and whether freezing is appropriate, including compatibility with other requested urine tests.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unlabelled or mislabelled specimens, insufficient volume, interfering contamination, unsuitable preservatives and storage outside validated limits.",
     "Incomplete or incorrectly timed collections require recollection or qualified reporting. Do not calculate timed excretion without reliable volume and duration."
   ],
@@ -9610,7 +9621,7 @@ window.TESTS = [
     "Urine albumin-to-creatinine ratio (ACR) is generally preferred for initial adult chronic kidney disease (CKD) assessment, including diabetic kidney disease. Specialist studies may be required for tubular or monoclonal proteinuria."
   ],
   referenceRange: [
-    "Use validated age-appropriate limits on the LIMS report; see Appendix 12.",
+    "Use validated age-appropriate limits on the LIMS report; see Appendix 12: General Guide to Reference Ranges.",
     "Common adult guides:",
     "Timed total protein excretion: <150 mg/24 hours.",
     "Non-pregnant adult PCR: commonly <15 mg/mmol creatinine; confirm locally.",
@@ -9638,10 +9649,10 @@ window.TESTS = [
   ],
   storageTransport: [
     "Follow validated local collection and transport requirements. Refrigerate at 2–8 °C where specified.",
-    "Confirm acceptable holding time, freezing requirements and preservative compatibility. See Appendix 9a and applicable guidance in Appendix 9b."
+    "Confirm acceptable holding time, freezing requirements and preservative compatibility. See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and applicable guidance in Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unlabelled or mislabelled specimens, unsuitable containers or preservatives, insufficient volume, significant contamination and storage outside validated limits.",
     "Incomplete timed collections require recollection or qualified reporting. Do not calculate daily excretion without reliable duration and total volume."
   ],
@@ -9654,7 +9665,7 @@ window.TESTS = [
     urgent: "Suspected pre-eclampsia or acute renal disease may require urgent testing."
   },
   criticalAlert: [
-    "Telephone immediately: proteinuria >3.5 g/24 h (nephrotic range, adults), or new proteinuria in pregnancy with hypertension or other concerning symptoms. See Appendices 4 and 5.",
+    "Telephone immediately: proteinuria >3.5 g/24 h (nephrotic range, adults), or new proteinuria in pregnancy with hypertension or other concerning symptoms. See Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Nephrotic-range proteinuria warrants prompt assessment of serum albumin, renal function and oedema. Pre-eclampsia may present without proteinuria."
   ],
   diseaseAssociations: [
@@ -9665,7 +9676,7 @@ window.TESTS = [
     "1 mg/dL = 0.01 g/L.",
     "1 g/L = 100 mg/dL.",
     "1 g/24 hours = 1,000 mg/24 hours.",
-    "Concentration cannot be converted to daily excretion without collection volume and duration. See Appendix 10."
+    "Concentration cannot be converted to daily excretion without collection volume and duration. See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."
   ],
   organismsReported: null,
   appendixRefs: [
@@ -9711,7 +9722,7 @@ window.TESTS = [
     "For serious MRSA infections, consensus guidance recommends an Area Under the Curve (AUC₂₄ ) target of 400–600 mg·h/L when the minimum inhibitory concentration (MIC) is assumed to be 1 mg/L.",
     "AUC₂₄ is estimated using an approved pharmacokinetic method; it is not the measured concentration from a single sample.",
     "If AUC monitoring is unavailable, use the approved local trough target. Targets and sampling requirements may differ for children, continuous infusion, dialysis and selected infections.",
-    "The proposed trough range of 12–18 mg/L requires local approval before inclusion. Refer to the validated LIMS interpretation and Appendix 12."
+    "The proposed trough range of 12–18 mg/L requires local approval before inclusion. Refer to the validated LIMS interpretation and Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Incorrect or undocumented sampling time can make interpretation unreliable.",
@@ -9739,10 +9750,10 @@ window.TESTS = [
   storageTransport: [
     "Send promptly when required for dosing decisions.",
     "Separate and store the specimen according to validated local assay requirements. Confirm refrigerated stability, freezing requirements and permitted storage in separator tubes.",
-    "See Appendix 9a."
+    "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Assess unsuitable tubes, insufficient volume, suspected infusion-line contamination and storage outside validated limits.",
     "Missing timing information or a mistimed sample requires clarification or qualified reporting; it must not be labelled as a trough without confirmation."
   ],
@@ -9762,7 +9773,7 @@ window.TESTS = [
     "Monitoring supports treatment of serious susceptible Gram-positive infections, including MRSA bacteraemia, endocarditis and bone or joint infection.",
     "Reduced renal clearance can cause accumulation. Excessive exposure increases the risk of acute kidney injury."
   ],
-  conversionFactors: ["1 mg/L = 1 µg/mL.", "See Appendix 10."],
+  conversionFactors: ["1 mg/L = 1 µg/mL.", "See Appendix 10: Unit Conversion Factors (SI ↔ Conventional)."],
   organismsReported: null,
   appendixRefs: [
     "appendix-1",
@@ -9798,7 +9809,7 @@ window.TESTS = [
     "Repeat testing selectively when clinically indicated. Routine serum B12 monitoring during intramuscular replacement is not recommended."
   ],
   referenceRange: [
-    "Use the method- and age-specific reference interval on the validated laboratory information management system (LIMS) report; see Appendix 12."
+    "Use the method- and age-specific reference interval on the validated laboratory information management system (LIMS) report; see Appendix 12: General Guide to Reference Ranges."
   ],
   analyticalLimitations: [
     "Total B12 does not directly measure intracellular availability. Deficiency may occur without anaemia or macrocytosis.",
@@ -9811,15 +9822,15 @@ window.TESTS = [
   sampleType: "Serum",
   containerColour: "Gold/Yellow SST II",
   sampleRequirements: [
-    "Serum in a laboratory-approved collection tube. Confirm minimum volume with the testing laboratory; see Appendix 6.",
+    "Serum in a laboratory-approved collection tube. Confirm minimum volume with the testing laboratory; see Appendix 6: Order of Draw Quick Guide and Tube Reference.",
     "Where practicable, collect before starting replacement. Record recent B12 supplementation, injections and relevant nitrous oxide exposure."
   ],
-  storageTransport: "Separate serum promptly and transport according to locally validated requirements. Confirm refrigerated stability and freezing conditions with the testing laboratory; see Appendices 9a.",
-  rejection: "See Appendix 7. Apply assay-specific interference limits; do not reject haemolysed, lipaemic or icteric specimens solely on appearance.",
+  storageTransport: "Separate serum promptly and transport according to locally validated requirements. Confirm refrigerated stability and freezing conditions with the testing laboratory; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines).",
+  rejection: "See Appendix 7: Sample Rejection Criteria (All Departments). Apply assay-specific interference limits; do not reject haemolysed, lipaemic or icteric specimens solely on appearance.",
   methodology: "Automated binding assay/immunoassay for total vitamin B12.",
   turnaround: { routine: "1 -3 working days.", urgent: "" },
   criticalAlert: [
-    "Apply approved notification criteria in Appendices 4 and 5; no universal critical concentration is specified.",
+    "Apply approved notification criteria in Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary; no universal critical concentration is specified.",
     "Suspected B12 deficiency with significant neurological features or megaloblastic anaemia requires urgent clinical assessment. Do not delay treatment while awaiting confirmation when neurological injury is suspected."
   ],
   diseaseAssociations: [
@@ -9892,10 +9903,10 @@ window.TESTS = [
   ],
   storageTransport: [
     "Send promptly in the approved transport system.",
-    "Temperature and acceptable delay depend on specimen type, transport medium and requested organisms. Confirm requirements, particularly for anaerobic culture; see Appendices 9a and 9b."
+    "Temperature and acceptable delay depend on specimen type, transport medium and requested organisms. Confirm requirements, particularly for anaerobic culture; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
-    "See Appendix 7.",
+    "See Appendix 7: Sample Rejection Criteria (All Departments).",
     "Unsuitable transport systems, dried-out swabs, leaking containers, identification errors or specimens exceeding validated stability limits may require recollection.",
     "Absence of visible material on a swab alone is not a reliable rejection criterion. Discuss compromised, difficult-to-recollect tissue or aspirates with microbiology before disposal."
   ],
@@ -9995,7 +10006,7 @@ window.TESTS = [
   ],
   storageTransport: [
     "Transport promptly, preferably immediately after collection. Minimise air exposure when anaerobic culture is required.",
-    "Follow locally validated requirements in Appendix 9a and Appendix 9b; contact the laboratory if delay is expected."
+    "Follow locally validated requirements in Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling; contact the laboratory if delay is expected."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -10011,7 +10022,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "Communicate clinically urgent microscopy or culture findings according to anatomical site, clinical context and approved local policy; see Appendices 4 and 5.",
+    "Communicate clinically urgent microscopy or culture findings according to anatomical site, clinical context and approved local policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Suspected sepsis, necrotising infection or infection involving a critical anatomical site requires urgent clinical assessment without waiting for final culture."
   ],
   diseaseAssociations: ["Cutaneous, postoperative and deep-organ abscesses."],
@@ -10093,7 +10104,7 @@ window.TESTS = [
   storageTransport: [
     "Keep superficial fungal scrapings dry in the approved container or packet; do not add bacterial transport medium or fixative.",
     "Bacterial swabs require their approved transport medium. Mite specimens require the agreed microscopy preparation.",
-    "Send promptly and follow locally validated conditions; see Appendix 9a and Appendix 9b."
+    "Send promptly and follow locally validated conditions; see Appendix 9a: Storage and Transport — Quick Reference (All Disciplines) and Appendix 9b: Microbiology Specimen Handling."
   ],
   rejection: [
     "See Appendix 7: Sample Rejection Criteria (All Departments).",
@@ -10111,7 +10122,7 @@ window.TESTS = [
     urgent: ""
   },
   criticalAlert: [
-    "Routine superficial fungal or bacterial findings are not automatically critical. Communicate urgent findings according to approved policy; see Appendices 4 and 5.",
+    "Routine superficial fungal or bacterial findings are not automatically critical. Communicate urgent findings according to approved policy; see Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary.",
     "Suspected crusted scabies requires prompt clinical and infection prevention assessment. Suspected invasive or rapidly progressive skin infection requires urgent assessment without waiting for culture."
   ],
   diseaseAssociations: [

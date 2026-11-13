@@ -11,6 +11,7 @@
 
      ERRORS   break the page, or break a link a clinician would follow
      WARNINGS look like mistakes but may be deliberate
+     STYLE    house style for descriptions (STYLE_GUIDE.md) — never fails
      NOTES    progress information
 
    Exit code is 1 if there are errors, otherwise 0 — so it can gate a release.
@@ -26,6 +27,7 @@ const errors = [], warnings = [], notes = [];
 const E = (m) => errors.push(m);
 const W = (m) => warnings.push(m);
 const N = (m) => notes.push(m);
+const style = [];                        // { dept, test, rule, msg } — see 8c
 
 /* --- Load the data files the same way the browser does -------------------- */
 const win = {};
@@ -171,6 +173,26 @@ TESTS.forEach(t => (t.flags || []).forEach(f => {
     E(`tests.js: "${txt(t.name)}" has unknown flag "${f}" — it renders no badge. ` +
       `Valid: ${VALID.join(", ")}`);
 }));
+
+/* --- 6b. Panel components (STYLE_GUIDE.md §8) --------------------------- */
+TESTS.forEach(t => {
+  if (t.components == null) return;
+  const name = txt(t.name);
+  if (!Array.isArray(t.components)) {
+    E(`tests.js: "${name}" — components must be a list [ { name, code, unit, about }, … ]`);
+    return;
+  }
+  t.components.forEach((c, i) => {
+    if (!c || !txt(c.name).trim())
+      E(`tests.js: "${name}" — component ${i + 1} has no name; its table row will be blank`);
+    else if (!txt(c.code).trim() || !txt(c.unit).trim() || !txt(c.about).trim())
+      W(`tests.js: "${name}" — component "${txt(c.name)}" is missing its ` +
+        ["code", "unit", "about"].filter(k => !txt(c[k]).trim()).join(" and ") +
+        ` — that cell of the Components table will be empty`);
+  });
+  dupes(t.components.map(c => txt(c.code).trim()).filter(Boolean)).forEach(c =>
+    W(`tests.js: "${name}" — component code "${c}" appears twice in its Components table`));
+});
 
 /* --- 7. Internal contradictions -------------------------------------------
    Things a careful reader skims past because each half looks right on its
@@ -370,6 +392,151 @@ if (UI) {
   });
 }
 
+/* --- 8c. Writing style (STYLE_GUIDE.md) -----------------------------------
+   These do not break the page, so they never fail a release. They are the
+   house style for test descriptions, collected into a work list.
+
+       node tools/check-data.js                    counts per rule only
+       node tools/check-data.js --style            the full list, by department
+       node tools/check-data.js --style=serology   one department only
+
+   Each rule code (S1–S8) is shown against its section in STYLE_GUIDE.md.  */
+const STYLE_ARG = process.argv.find(a => a.startsWith("--style"));
+const STYLE_DEPT = STYLE_ARG && STYLE_ARG.includes("=") ? STYLE_ARG.split("=")[1] : null;
+const S = (t, rule, msg) => style.push({ dept: t.department, test: txt(t.name), rule, msg });
+const RULES = {
+  "S1": "description is one paragraph",
+  "S2": "description length (12–80 words)",
+  "S3": "description opens with an approved verb",
+  "S4": "description holds content that has its own field",
+  "S5": "summary: 15 words or fewer, ends with a full stop, not a copy",
+  "S6": "UK spelling",
+  "S7": "appendix cited with its full, current title",
+  "S8": "tidy text (spaces, quotes, broken paragraphs)"
+};
+
+// §3 of the guide — the only ways a description may begin.
+const OPENINGS = /^(Measures|Detects|Quantifies|Determines|Identifies|Calculates|Assesses|Screens for|Microscopy, culture and susceptibility testing of|Microscopic examination of|A panel of)\b/;
+
+// §4 — wording that belongs in another field. [pattern, field it belongs in]
+const MISPLACED = [
+  [/\b(performed (using|on)|analy[sz]er|immunoassay|lateral[- ]flow|immunochromatograph|fluorescen|chemiluminesc|spectrophotomet|turbidimetr|colorimetr|flocculation|®|™)/i, "methodology"],
+  [/\b(EDTA|citrate|heparin|SST|serum separator|fluoride|collect(ed|ion)? (in|into)|tube)\b/i, "sampleRequirements"],
+  [/\b(reference (range|interval)|normal range)\b/i, "referenceRange"],
+  [/\b(turnaround|within \d+ ?(h|hours|days))\b/i, "turnaround"]
+];
+// A scope sentence ("Fungal culture requires a separate request") IS allowed
+// in the description — it tells the clinician what the test does not cover.
+
+// §5 — US spellings and their house forms. Word starts only, so "anaemia" is safe.
+const US_UK = [
+  [/\bhem(o|a|ato)/i, "haem$1"], [/\banemi/i, "anaemi"], [/\bleukemi/i, "leukaemi"],
+  [/\bischemi/i, "ischaemi"], [/\bedema/i, "oedema"], [/\besophag/i, "oesophag"],
+  [/\bestrogen/i, "oestrogen"], [/\blipemi/i, "lipaemi"], [/\bglycemi/i, "glycaemi"],
+  [/\bcolor(?=s?\b|ed\b|ing\b|less\b)/i, "colour"], [/\bcenter/i, "centre"], [/\bbehavior/i, "behaviour"],
+  [/\banalyz/i, "analys"], [/\bcatheteriz/i, "catheteris"], [/\bpediatric/i, "paediatric"],
+  [/\bfiber/i, "fibre"], [/\btumor/i, "tumour"], [/\bliter\b/i, "litre"], [/\bgonadotropin/i, "gonadotrophin"]
+];
+
+const words = (s) => s.trim().split(/\s+/).filter(Boolean);
+const norm  = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+const firstSentence = (s) => (s.match(/^.*?[.!?](\s|$)/) || [s])[0].trim();
+
+// Every text value in a test, with the field it came from (English only).
+function texts(t) {
+  const out = [];
+  const walk = (v, field) => {
+    if (v == null) return;
+    if (typeof v === "string") out.push([field, v]);
+    else if (Array.isArray(v)) v.forEach(x => walk(x, field));
+    else if (typeof v === "object") v.en !== undefined ? walk(v.en, field)
+      : Object.keys(v).forEach(k => walk(v[k], field));
+  };
+  Object.keys(t).forEach(k => { if (!["id", "department", "flags", "appendixRefs"].includes(k)) walk(t[k], k); });
+  return out;
+}
+
+// Exact appendix titles, keyed by number ("7", "9a").
+const APP_TITLE = {};
+APPS.forEach(a => { APP_TITLE[String(a.number).toLowerCase()] = txt(a.title).trim(); });
+function checkAppendixRefs(s, report) {
+  if (/\bAppendices\b/.test(s))
+    report(`writes "Appendices …" — cite each one as "Appendix N: <title>"`);
+  for (const m of s.matchAll(/\bAppendix\s+(\d{1,2}[ab]?)\b/g)) {
+    const n = m[1].toLowerCase(), title = APP_TITLE[n];
+    if (title === undefined) { report(`cites Appendix ${m[1]}, which does not exist`); continue; }
+    const want = `Appendix ${m[1]}: ${title}`;
+    if (s.slice(m.index, m.index + want.length) !== want)
+      report(`"${s.slice(m.index, m.index + want.length + 4).trim()}…" — should read "${want}"`);
+  }
+}
+
+TESTS.forEach(t => {
+  const d = t.description == null ? "" : t.description;
+  const dEn = d && typeof d === "object" && !Array.isArray(d) ? d.en : d;
+  const paras = (Array.isArray(dEn) ? dEn : [dEn]).map(txt).filter(x => x.trim());
+  const desc = paras.join(" ");
+  const sum = txt(t.summary).trim();
+
+  if (desc && !desc.includes("[FILL IN")) {
+    // S1 one paragraph
+    if (paras.length > 1)
+      S(t, "S1", `description is split into ${paras.length} paragraphs — merge into one, ` +
+        `and move lists of components or extra notes to the field they belong in`);
+    // S2 length
+    const n = words(desc).length;
+    if (n > 80) S(t, "S2", `description is ${n} words — aim for 60 or fewer (what, why, scope)`);
+    if (n < 12) S(t, "S2", `description is only ${n} words — add what the result reflects`);
+    // S3 opening
+    if (!OPENINGS.test(desc))
+      S(t, "S3", `opens "${words(desc).slice(0, 4).join(" ")}…" — start with an approved verb ` +
+        `(Measures, Detects, Quantifies, Determines, …)`);
+    // S4 misplaced content
+    MISPLACED.forEach(([re, field]) => {
+      const m = desc.match(re);
+      if (m) S(t, "S4", `description mentions "${m[0]}" — this belongs in ${field}`);
+    });
+    // S8 a paragraph that stops mid-sentence (an import artefact)
+    paras.slice(0, -1).forEach(p => {
+      if (!/[.!?:)]$/.test(p.trim()))
+        S(t, "S8", `a description paragraph ends mid-sentence ("…${p.trim().slice(-25)}") — rejoin it`);
+    });
+  }
+
+  // S5 summary
+  if (sum && !sum.includes("[FILL IN")) {
+    if (!/[.]$/.test(sum)) S(t, "S5", `summary does not end with a full stop`);
+    if (words(sum).length > 15) S(t, "S5", `summary is ${words(sum).length} words — 15 or fewer`);
+    const s1 = norm(firstSentence(desc)), sn = norm(sum);
+    if (sn && (s1 === sn || s1.startsWith(sn)))
+      S(t, "S5", `summary repeats the start of the description — say it differently, in clinician's terms`);
+  }
+
+  // S6, S7, S8 across every field of the entry
+  texts(t).forEach(([field, s]) => {
+    US_UK.forEach(([re, uk]) => {
+      const m = s.match(re);
+      if (m) S(t, "S6", `${field}: "${m[0]}…" — UK spelling is "${m[0].replace(re, uk)}…"`);
+    });
+    checkAppendixRefs(s, (msg) => S(t, "S7", `${field}: ${msg}`));
+    if (/ {2,}/.test(s.trim())) S(t, "S8", `${field}: double space`);
+    if (/[“”‘’]/.test(s))       S(t, "S8", `${field}: curly quotes pasted from Word — use straight quotes`);
+  });
+});
+
+// Appendix references outside the test directory (request.js, site.js …).
+[["request", REQ], ["collection", COLL], ["site", SITE]].forEach(([file, obj]) => {
+  const seen = [];
+  const walk = (v) => {
+    if (typeof v === "string") seen.push(v);
+    else if (Array.isArray(v)) v.forEach(walk);
+    else if (v && typeof v === "object") (v.en !== undefined ? walk(v.en) : Object.values(v).forEach(walk));
+  };
+  walk(obj);
+  seen.forEach(s => checkAppendixRefs(s, (msg) =>
+    style.push({ dept: `(${file}.js)`, test: file + ".js", rule: "S7", msg })));
+});
+
 /* --- 9. Progress ---------------------------------------------------------- */
 N(`${TESTS.length} tests, ${DEPTS.length} departments, ${APPS.length} appendices`);
 N(`draft notice: ${draftOn ? "ON (site shows the not-for-clinical-use banner)" : "OFF"}`);
@@ -397,10 +564,31 @@ function report() {
                          errors.forEach((m, i) => console.log(`  ${i + 1}. ${m}`)); }
   if (warnings.length) { console.log(`\n${line}\nWARNINGS (${warnings.length}) — check these\n${line}`);
                          warnings.forEach((m, i) => console.log(`  ${i + 1}. ${m}`)); }
+  if (style.length) {
+    const byRule = {};
+    style.forEach(x => { byRule[x.rule] = (byRule[x.rule] || 0) + 1; });
+    const tests = new Set(style.map(x => x.test)).size;
+    console.log(`\n${line}\nSTYLE (${style.length} in ${tests} entries) — see STYLE_GUIDE.md\n${line}`);
+    Object.keys(RULES).forEach(r => { if (byRule[r]) console.log(`  ${r}  ${String(byRule[r]).padStart(4)}  ${RULES[r]}`); });
+    if (!STYLE_ARG) {
+      console.log(`\n  Full work list:   node tools/check-data.js --style`);
+      console.log(`  One department:   node tools/check-data.js --style=${deptIds[0] || "haematology"}`);
+    } else {
+      const list = style.filter(x => !STYLE_DEPT || x.dept === STYLE_DEPT);
+      let dept = null, test = null;
+      list.sort((a, b) => (a.dept + a.test + a.rule).localeCompare(b.dept + b.test + b.rule))
+        .forEach(x => {
+          if (x.dept !== dept) { dept = x.dept; test = null; console.log(`\n  ══ ${dept} ══`); }
+          if (x.test !== test) { test = x.test; console.log(`\n  ${test}`); }
+          console.log(`     ${x.rule}  ${x.msg}`);
+        });
+      if (STYLE_DEPT && !list.length) console.log(`\n  Nothing for "${STYLE_DEPT}". Known: ${deptIds.join(", ")}`);
+    }
+  }
   if (notes.length)    { console.log(`\n${line}\nPROGRESS\n${line}`);
                          notes.forEach(m => console.log(`  ${m}`)); }
   console.log("");
-  if (!errors.length && !warnings.length) console.log("  No problems found.\n");
+  if (!errors.length && !warnings.length && !style.length) console.log("  No problems found.\n");
 }
 report();
 process.exit(errors.length ? 1 : 0);

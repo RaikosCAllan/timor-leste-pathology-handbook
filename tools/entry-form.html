@@ -210,6 +210,14 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
     </div>
 
     <div class="card">
+      <h2>Components <span class="note" style="font-weight:400;text-transform:none;letter-spacing:0">panels only</span></h2>
+      <p class="hint">Leave empty unless this test is a panel (for example Full Blood Count). One component per line, four parts separated by <code>|</code>: name | code | unit | what it shows. Shown as a table under the description.</p>
+      <div class="f">
+        <textarea id="components" rows="4" placeholder="Haemoglobin (Hb) | HGB | g/L | Concentration of haemoglobin, the oxygen-carrying protein in red blood cells.&#10;Platelet Count | PLAT | ×10⁹/L | Number of circulating platelets."></textarea>
+      </div>
+    </div>
+
+    <div class="card">
       <h2>Organisms reported <span class="note" style="font-weight:400;text-transform:none;letter-spacing:0">cultures only</span></h2>
       <p class="hint">Leave empty for non-culture tests. Format: a group name on its own line ending in a colon, then its organisms beneath it. A line starting <code>note:</code> becomes a footnote on that group.</p>
       <div class="f">
@@ -390,10 +398,17 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
     });
     if (cur) organisms.push(cur);
 
+    // Components: "name | code | unit | what it shows", one per line.
+    var components = clean(el("components").value).split("\n").map(function (l) {
+      var p = l.split("|").map(function (x) { return x.trim(); });
+      return p[0] ? { name: p[0], code: p[1] || "", unit: p[2] || "", about: p.slice(3).join(" | ") } : null;
+    }).filter(Boolean);
+
     return {
       id: one("id"), name: one("name"), synonyms: lines("synonyms"),
       department: el("department").value, limsCode: one("limsCode"), flags: flags,
       summary: one("summary"), description: one("description"),
+      components: components.length ? components : null,
       indications: lines("indications"), referenceRange: lines("referenceRange"),
       analyticalLimitations: lines("analyticalLimitations"),
       sampleType: one("sampleType"), containerColour: el("containerColour").value,
@@ -425,6 +440,9 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
     return arr(a, indent);
   }
 
+  // A text field may hold one paragraph or several; keep whichever it is.
+  function para(v) { return Array.isArray(v) ? arr(v, 2) : str(v); }
+
   function render(t) {
     var L = [];
     L.push("{");
@@ -436,7 +454,15 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
     L.push('  flags: [' + t.flags.map(str).join(", ") + '],');
     L.push("");
     L.push('  summary: ' + str(t.summary) + ',');
-    L.push('  description: ' + str(t.description) + ',');
+    L.push('  description: ' + para(t.description) + ',');
+    if (t.components && t.components.length) {
+      L.push('  components: [');
+      t.components.forEach(function (c, i) {
+        L.push('    { name: ' + str(c.name) + ', code: ' + str(c.code) + ', unit: ' + str(c.unit) + ',');
+        L.push('      about: ' + str(c.about) + ' }' + (i < t.components.length - 1 ? "," : ""));
+      });
+      L.push('  ],');
+    }
     L.push("");
     L.push('  indications: ' + arr(t.indications, 2) + ',');
     L.push('  referenceRange: ' + scalarOrArr(t.referenceRange, 2) + ',');
@@ -445,15 +471,15 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
     L.push('  sampleType: ' + str(t.sampleType) + ',');
     L.push('  containerColour: ' + str(t.containerColour) + ',');
     L.push('  sampleRequirements: ' + scalarOrArr(t.sampleRequirements, 2) + ',');
-    L.push('  storageTransport: ' + str(t.storageTransport) + ',');
-    L.push('  rejection: ' + str(t.rejection) + ',');
-    L.push('  methodology: ' + str(t.methodology) + ',');
+    L.push('  storageTransport: ' + para(t.storageTransport) + ',');
+    L.push('  rejection: ' + para(t.rejection) + ',');
+    L.push('  methodology: ' + para(t.methodology) + ',');
     L.push("");
     L.push('  turnaround: { routine: ' + str(t.turnaround.routine) +
            ', urgent: ' + str(t.turnaround.urgent) + ' },');
-    L.push('  criticalAlert: ' + str(t.criticalAlert) + ',');
+    L.push('  criticalAlert: ' + para(t.criticalAlert) + ',');
     L.push('  diseaseAssociations: ' + arr(t.diseaseAssociations, 2) + ',');
-    L.push('  conversionFactors: ' + str(t.conversionFactors) + ',');
+    L.push('  conversionFactors: ' + para(t.conversionFactors) + ',');
 
     if (t.organismsReported) {
       L.push('  organismsReported: [');
@@ -566,7 +592,7 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
     ["name","id","limsCode","synonyms","summary","description","indications","referenceRange",
      "analyticalLimitations","sampleType","sampleRequirements","storageTransport","rejection",
      "methodology","tatRoutine","tatUrgent","criticalAlert","diseaseAssociations",
-     "conversionFactors","organisms","lastReviewed","updated"].forEach(function (k) { el(k).value = ""; });
+     "conversionFactors","components","organisms","lastReviewed","updated"].forEach(function (k) { el(k).value = ""; });
     el("added").value = new Date().toISOString().slice(0, 10);   // today, by default
     el("containerColour").value = "";
     // department and lastReviewed habits are usually repeated — keep department.
@@ -626,21 +652,32 @@ pre.out{background:#0d2a43;color:#e6edf3;padding:16px;border-radius:var(--radius
     setTimeout(function () { URL.revokeObjectURL(a.href); document.body.removeChild(a); }, 0);
   }
 
+  // String(["a","b"]) is "a,b" — so lists are kept as lists, never flattened.
+  function keep(v) {
+    var r = v && typeof v === "object" && !Array.isArray(v) && v.en !== undefined ? v.en : v;
+    return Array.isArray(r) ? r.map(text).filter(Boolean) : text(r);
+  }
+
   function renderExisting(t) {
     // Re-emit a loaded entry through the same renderer, so the file stays uniform.
     return render({
       id: t.id || "", name: text(t.name), synonyms: toArr(t.synonyms),
       department: t.department || "", limsCode: text(t.limsCode || t.schuylabCode),
-      flags: t.flags || [], summary: text(t.summary), description: text(t.description),
+      flags: t.flags || [], summary: text(t.summary),
+      // Keep paragraphs as paragraphs; flattening them would merge a panel's lines.
+      description: keep(t.description),
+      components: (t.components || []).map(function (c) {
+        return { name: text(c.name), code: text(c.code), unit: text(c.unit), about: text(c.about) };
+      }),
       indications: toArr(t.indications), referenceRange: toArr(t.referenceRange),
       analyticalLimitations: toArr(t.analyticalLimitations),
       sampleType: text(t.sampleType), containerColour: text(t.containerColour),
       sampleRequirements: toArr(t.sampleRequirements),
-      storageTransport: text(t.storageTransport), rejection: text(t.rejection),
-      methodology: text(t.methodology),
+      storageTransport: keep(t.storageTransport), rejection: keep(t.rejection),
+      methodology: keep(t.methodology),
       turnaround: { routine: text((t.turnaround || {}).routine), urgent: text((t.turnaround || {}).urgent) },
-      criticalAlert: text(t.criticalAlert), diseaseAssociations: toArr(t.diseaseAssociations),
-      conversionFactors: text(t.conversionFactors),
+      criticalAlert: keep(t.criticalAlert), diseaseAssociations: toArr(t.diseaseAssociations),
+      conversionFactors: keep(t.conversionFactors),
       organismsReported: t.organismsReported
         ? t.organismsReported.map(function (g) {
             var o = { group: text(g.group), items: toArr(g.items) };

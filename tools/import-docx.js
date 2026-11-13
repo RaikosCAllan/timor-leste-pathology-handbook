@@ -25,6 +25,13 @@
      id, department, flags, summary, sampleType, containerColour,
      organismsReported, appendixRefs, lastReviewed, added, updated
 
+   TWO HOUSE RULES ARE APPLIED ON THE WAY IN (tools/lib/handbook-text.js):
+     - every "See Appendix N" gains the full title from data/appendices.js,
+       so Word may cite appendices briefly or in full;
+     - in a panel's Test Description, paragraphs written as
+         Haemoglobin (Hb) — code HGB, unit g/L: Concentration of …
+       become rows of the website's `components` table.
+
    It does not add or delete tests. Tests in the document but not on the
    site (and the reverse) are listed in the report for you to handle.
 
@@ -41,6 +48,9 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 const { execFileSync } = require("child_process");
+const HT = require("./lib/handbook-text.js");
+const APP_TITLES = HT.loadAppendixTitles(".");
+const appendixReview = [];
 
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
@@ -231,6 +241,21 @@ doc.forEach(d => {
     else if (!(k in d.fields)) return;
     else if (k === "turnaround") { const items = d.fields[k]; if (!items.length) return; nv = splitTurnaround(items); }
     else { nv = asField(k, d.fields[k]); if (nv === undefined) return; }
+    if (k !== "name" && k !== "limsCode" && k !== "synonyms") {
+      const rv = [];
+      nv = HT.expandDeep(nv, APP_TITLES, rv);
+      rv.forEach(x => appendixReview.push(`${d.name} — ${k}: ${x}`));
+    }
+    if (k === "description") {
+      // Component lines leave the description and become the table.
+      const sp = HT.splitComponents(nv);
+      nv = sp.description;
+      const oc = t.components || null;
+      if (JSON.stringify(oc) !== JSON.stringify(sp.components)) {
+        changes.push({ k: "components", ov: oc, nv: sp.components, minor: false });
+        if (sp.components) t.components = sp.components; else delete t.components;
+      }
+    }
     const ov = t[k];
     const same = k === "turnaround"
       ? norm((ov || {}).routine) === norm(nv.routine) && norm((ov || {}).urgent) === norm(nv.urgent)
@@ -250,7 +275,7 @@ const siteOnly = TESTS.filter(t => !matchedIds.has(t.id)).map(t => `${txt(t.name
 
 /* --- Write tests.js ------------------------------------------------------- */
 const ORDER = ["id", "name", "synonyms", "department", "limsCode", "schuylabCode", "flags", "summary",
-  "description", "indications", "referenceRange", "analyticalLimitations", "sampleType",
+  "description", "components", "indications", "referenceRange", "analyticalLimitations", "sampleType",
   "containerColour", "sampleRequirements", "storageTransport", "rejection", "methodology",
   "turnaround", "criticalAlert", "diseaseAssociations", "conversionFactors", "organismsReported",
   "appendixRefs", "lastReviewed", "added", "updated"];
@@ -286,6 +311,8 @@ if (unstyled.length) r += `## Test headings not styled as Heading 5 in Word — 
   unstyled.map(x => "- " + x).join("\n") + "\n\n";
 if (docOnly.length) r += `## In the document, not on the site — add by hand\n\n` + docOnly.map(x => "- " + x).join("\n") + "\n\n";
 if (siteOnly.length) r += `## On the site, not in the document — remove, or add to Word\n\n` + siteOnly.map(x => "- " + x).join("\n") + "\n\n";
+if (appendixReview.length) r += `## Appendix references to check — left as written in Word\n\n` +
+  [...new Set(appendixReview)].map(x => "- " + x).join("\n") + "\n\n";
 if (skipped.length) r += `## Not imported because the field contains a table — copy by hand\n\n` + skipped.map(x => "- " + x).join("\n") + "\n\n";
 const minorCount = report.reduce((a, x) => a + x.changes.filter(c => c.minor).length, 0);
 r += `## Changes\n\n${minorCount} changes are formatting only (punctuation, bullets, spacing) and are applied but not listed. ` +

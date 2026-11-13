@@ -20,6 +20,11 @@
    and it is yours. See SYNCING.md for how to decide, and for why one of the
    two should be named as master.
 
+   Two house rules are allowed for (tools/lib/handbook-text.js): appendix
+   references are compared with their full titles, and a panel's
+   `components` table is compared as the component lines in Word's
+   Test Description.
+
    Nothing is written or changed; this only reads.
    ========================================================================== */
 
@@ -28,6 +33,8 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 const { execFileSync } = require("child_process");
+const HT = require("./lib/handbook-text.js");
+const APP_TITLES = HT.loadAppendixTitles(".");
 
 /* --- Arguments ------------------------------------------------------------ */
 const args = process.argv.slice(2);
@@ -246,12 +253,17 @@ matched.forEach(({ s, t }) => {
   const rows = [];
   COMPARE.forEach(f => {
     if (onlyField && f !== onlyField) return;
-    const sv = s.fields[f];
+    let sv = s.fields[f];
     if (sv === undefined) return;                  // not in the document
+    // The site always writes appendices with their full title; a short
+    // "See Appendix 7" in Word is the same reference, not drift.
+    if (f !== "department" && f !== "limsCode") sv = HT.expandAppendixRefs(sv, APP_TITLES).text;
 
     let tv;
     if (f === "turnaround") tv = txt((t.turnaround || {}).routine) + " " + txt((t.turnaround || {}).urgent);
     else if (f === "department") tv = deptName(t.department);
+    // A panel's component table came out of the Word description.
+    else if (f === "description") tv = [txt(t.description)].concat(HT.componentLines(t.components, txt)).join(" ");
     else tv = txt(t[f]);
 
     if (isPlaceholder(tv) || !txt(tv).trim()) {
