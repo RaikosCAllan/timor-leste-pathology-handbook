@@ -130,7 +130,7 @@ window.SITE = {
   /* --- Contacts -------------------------------------------------------- */
   // One row per department or contact point.
   contacts: [
-    { name: "Specimen reception",  phone: "331 0151", extension: "+670", email: "[FILL IN]" },
+    { name: "Specimen reception",  phone: "331 0151", extension: "", email: "[FILL IN]" },
     { name: "Biochemistry",        phone: "[FILL IN]", extension: "[FILL IN]", email: "[FILL IN]" },
     { name: "Haematology",         phone: "[FILL IN]", extension: "[FILL IN]", email: "micro.nhl.tl@gmail.com" },
     { name: "Serology/Immunology", phone:"[FILL IN}", extension: "[FILL IN]", email: "[FILL IN]"},

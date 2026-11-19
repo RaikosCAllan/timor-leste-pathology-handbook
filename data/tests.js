@@ -87,6 +87,56 @@ window.TESTS = [
 },
 
 {
+  id: "alpha-fetoprotein",
+  name: "Alpha-fetoprotein (AFP)",
+  synonyms: ["Serum AFP, AFP tumour marker."],
+  department: "biochemistry",
+  limsCode: "AFP",
+  flags: [],
+
+  summary: "Measures serum alpha-fetoprotein.",
+  description: "Measures serum alpha-fetoprotein, a marker used in hepatocellular carcinoma (HCC) and selected AFP-producing germ cell tumours.",
+
+  indications: [
+    "Support HCC surveillance alongside liver ultrasound in patients with cirrhosis or chronic hepatitis B.",
+    "Monitor treatment response and assess for recurrence in AFP-producing tumours.",
+    "Support staging and follow-up of non-seminomatous testicular germ cell tumours alongside human chorionic gonadotrophin (hCG) and lactate dehydrogenase (LDH).",
+    "For prenatal screening."
+  ],
+  referenceRange: [
+    "Use the validated reference interval shown on the laboratory information management system (LIMS) report. Use age-appropriate intervals for infants.",
+    "AFP rises physiologically in pregnancy.",
+    "See Appendix 12.",
+  ],
+
+
+  analyticalLimitations: [
+    "Use the same assay for serial monitoring where possible.",
+    "Check assay-specific interference limits.",
+    "AFP can rise in active hepatitis and cirrhosis. Interpret results with clinical findings and imaging.",
+    "AFP alone cannot confirm or exclude HCC or a germ cell tumour.",
+  ],
+
+  sampleType: "Serum",
+  containerColour: "Gold/Yellow SST II",
+  sampleRequirements: "Serum in an approved serum tube or serum separator tube.",
+  storageTransport: "Follow the testing laboratory's validated transport temperature and stability limits. See Appendix 9a.",
+  rejection: "See Appendix 7 Sample Rejection Criteria (All Departments) and the testing laboratory's criteria for specimen identification, tube type and minimum volume. Assess haemolysis, lipaemia and icterus against validated assay limits.",
+  methodology: "Quantitative immunoassay.",
+
+  turnaround: { routine: "Testing performed Tuesday. 1-2 day turnaround", urgent: "" },
+  criticalAlert: "",
+  diseaseAssociations: ["Hepatocellular carcinoma and AFP-producing germ cell tumours, particularly those with a yolk sac component. An unexplained AFP elevation in a patient with presumed pure seminoma warrants specialist review."],
+  conversionFactors: "1 ng/mL = 1 µg/L",
+  organismsReported: null,
+
+  appendixRefs: ["appendix-1", "appendix-2", "appendix-3", "appendix-4", "appendix-5", "appendix-6", "appendix-7", "appendix-8", "appendix-9a", "appendix-9b", "appendix-10", "appendix-12"],
+  lastReviewed: "",
+  added: "2026-11-18",
+  updated: ""
+},
+
+{
   id: "full-blood-count",
   name: "Full Blood Count",
   synonyms: [
@@ -270,7 +320,7 @@ window.TESTS = [
   ],
   sampleType: "Serum",
   containerColour: "Gold/Yellow SST II",
-  sampleRequirements: "Serum, typically 2–5 mL whole blood collected in a serum tube. Lithium-heparin plasma may be acceptable where validated.",
+  sampleRequirements: "Serum, 2–5 mL whole blood collected in a serum tube. Lithium-heparin plasma may be acceptable where validated.",
   storageTransport: [
     "Separate serum or plasma from cells promptly according to laboratory procedures.",
     "See Appendix 9a: Storage and Transport — Quick Reference (All Disciplines)."
@@ -1338,7 +1388,7 @@ window.TESTS = [
   ],
   methodology: "Immunometric immunoassay technique.",
   turnaround: {
-    routine: "1–3 working days, subject to confirmation. Referral testing may require additional time.",
+    routine: "Testing performed Tuesday. 1-2 day turnaround.",
     urgent: ""
   },
   criticalAlert: [
@@ -1419,7 +1469,7 @@ window.TESTS = [
   ],
   methodology: "Immunometric test.",
   turnaround: {
-    routine: "1–3 working days, subject to confirmation. Referral testing may require additional time.",
+    routine: "Testing performed Tuesday. 1-2 day turnaround.",
     urgent: ""
   },
   criticalAlert: [
@@ -1498,7 +1548,7 @@ window.TESTS = [
   ],
   methodology: "Immunometric assay.",
   turnaround: {
-    routine: "1–3 days, subject to confirmation. Referral testing may require additional time.",
+    routine: "Testing performed Tuesday. 1-2 day turnaround",
     urgent: ""
   },
   criticalAlert: [
@@ -1576,7 +1626,7 @@ window.TESTS = [
   ],
   methodology: "Immunometric immunoassay test.",
   turnaround: {
-    routine: "Typically 1–3 working days; confirm local batching and reporting arrangements. Referral testing may require additional time.",
+    routine: "Testing performed Tuesday. 1-2 day turnaround",
     urgent: ""
   },
   criticalAlert: [
@@ -1660,7 +1710,7 @@ window.TESTS = [
   ],
   methodology: "Flow cytometric enumeration using fluorescent-labelled antibodies.",
   turnaround: {
-    routine: "1–3 working days, subject to local batching or referral arrangements. Specimen processing must still occur within validated stability limits.",
+    routine: "Tested daily. Same day to 1 day turnaround.",
     urgent: ""
   },
   criticalAlert: [
@@ -4368,7 +4418,7 @@ window.TESTS = [
   ],
   methodology: "Immunoassay with chemiluminescent detection.",
   turnaround: {
-    routine: "Batched; 1–3 working days, subject to confirmation of the local schedule. Referral testing may take longer.",
+    routine: "Testing performed Monday. 1-2 day turnaround.",
     urgent: ""
   },
   criticalAlert: [
@@ -4448,7 +4498,7 @@ window.TESTS = [
   ],
   methodology: "Immunoassay with chemiluminescent detection. Percentage free PSA is calculated from matched free and total PSA measurements.",
   turnaround: {
-    routine: "Batched; 1–3 working days, subject to confirmation of the local schedule. Referral testing may take longer.",
+    routine: "Testing performed Tuesday. 1-2 day turnaround.",
     urgent: ""
   },
   criticalAlert: [
@@ -4532,8 +4582,8 @@ window.TESTS = [
   ],
   methodology: "Immunoassay with chemiluminescent detection.",
   turnaround: {
-    routine: "Batched; typically 1–3 working days, subject to confirmation of the local schedule.",
-    urgent: "Discuss urgent testing arrangements with the laboratory when clinically required."
+    routine: "Test: Mon, Wed, Thur, Fri.",
+    urgent: ""
   },
   criticalAlert: [
     "No universal numeric critical threshold applies to FT3.",
@@ -4617,8 +4667,8 @@ window.TESTS = [
   ],
   methodology: "Immunoassay with chemiluminescent detection.",
   turnaround: {
-    routine: "Batched; typically 1–3 working days, subject to confirmation of the local schedule.",
-    urgent: "Discuss urgent testing arrangements with the laboratory when clinically required."
+    routine: "Test: Mon, Wed, Thur, Fri.",
+    urgent: ""
   },
   criticalAlert: [
     "No universal numeric critical threshold applies to FT4.",
@@ -5202,7 +5252,7 @@ window.TESTS = [
   ],
   methodology: "Qualitative lateral-flow immunoassay using the approved HBsAg rapid-test kit.",
   turnaround: {
-    routine: "Rapid result: same day, using the manufacturer-specified reading time. Supplementary or referral testing: according to the confirmed laboratory schedule.",
+    routine: "Same day.",
     urgent: ""
   },
   criticalAlert: [
@@ -5358,7 +5408,7 @@ window.TESTS = [
     "Assess specimen interference against validated assay limits."
   ],
   methodology: "Validated HBsAg immunoassay.",
-  turnaround: { routine: "Same day, subject to the local testing schedule.", urgent: "" },
+  turnaround: { routine: "Same day. Tested daily.", urgent: "" },
   criticalAlert: [
     "No numeric critical threshold.",
     "Communicate newly reactive results promptly according to approved policy, particularly in antenatal, peripartum and exposure-related testing. Apply Appendix 4: Alert List — Critical / Life-Threatening Results Requiring Immediate Notification and Appendix 5: Critical / High-Risk Results Policy Summary where listed.",
@@ -5601,7 +5651,7 @@ window.TESTS = [
     "Complete reactive-result assessment using the approved national algorithm. WHO recommends three consecutive reactive results using a validated serial combination of assays for serological diagnosis, with retesting to verify the diagnosis before treatment."
   ],
   turnaround: {
-    routine: "1–3 working days, subject to the confirmed local schedule. Supplementary or referral testing may take longer.",
+    routine: "Tested daily. Same day to 1 day turnaround.",
     urgent: ""
   },
   criticalAlert: [
@@ -5773,7 +5823,7 @@ window.TESTS = [
   ],
   methodology: "Quantitative nucleic acid amplification testing, commonly real-time reverse transcription polymerase chain reaction (RT-PCR). Report in copies/mL and, where applicable, log₁₀ copies/mL.",
   turnaround: {
-    routine: "Confirm the local or referral turnaround time, including batching and transport. The proposed 7–14 working days requires verification.",
+    routine: "Tested daily. Same day to 1 day turnaround.",
     urgent: "Discuss urgent pregnancy-related or diagnostic requests with the laboratory."
   },
   criticalAlert: [
@@ -7180,7 +7230,7 @@ window.TESTS = [
   ],
   methodology: "Competative immunoassay.",
   turnaround: {
-    routine: "Confirm whether testing is performed daily or in batches and the expected local reporting interval. Referral testing may take longer.",
+    routine: "Testing performed Monday. 1-2 day turnaround.",
     urgent: ""
   },
   criticalAlert: [
@@ -7269,7 +7319,7 @@ window.TESTS = [
     "Immunoassay; confirm the locally used platform.",
     "This entry describes total PSA. Confirm whether free PSA or ultrasensitive PSA requires a separate request or specialist referral."
   ],
-  turnaround: { routine: "1 - 3 days. Confirm batch testing turnaround.", urgent: "" },
+  turnaround: { routine: "Testing performed Tuesday. 1-2 day turnaround", urgent: "" },
   criticalAlert: [
     "Markedly elevated PSA or a confirmed significant rise, particularly after prostate cancer treatment, requires timely clinical or specialist review.",
     "An elevated PSA alone is not an immediate life-threatening result. Investigation and referral thresholds must not be labelled critical-result thresholds unless approved locally."
@@ -8330,7 +8380,7 @@ window.TESTS = [
     "Treponemal testing is performed according to the approved diagnostic algorithm; confirm local or referral availability."
   ],
   turnaround: {
-    routine: "Same day for RPR, subject to local availability. Treponemal confirmation may require additional time.",
+    routine: "Same day.",
     urgent: ""
   },
   criticalAlert: "Promptly communicate a newly reactive RPR in pregnancy and arrange treponemal testing and clinical review.",
@@ -8420,7 +8470,7 @@ window.TESTS = [
     "Specialist supplemental testing may require referral."
   ],
   turnaround: {
-    routine: "Confirm routine and urgent turnaround times with the testing laboratory. Supplemental or referral testing may extend reporting time.",
+    routine: "Same day.",
     urgent: ""
   },
   criticalAlert: [
@@ -8498,7 +8548,7 @@ window.TESTS = [
     "The amount of HRP conjugate bound is indirectly proportional to the concentration of testosterone present."
   ],
   turnaround: {
-    routine: "Proposed routine turnaround: 1–3 working days, subject to laboratory confirmation. Referral testing may take longer.",
+    routine: "Testing performed Monday. 1-2 day turnaround.",
     urgent: ""
   },
   criticalAlert: "Severe androgen excess or rapidly progressive virilisation in women warrants prompt clinician communication and urgent specialist assessment. Unexpected results should undergo laboratory review and appropriate confirmation.",
@@ -8578,8 +8628,8 @@ window.TESTS = [
   ],
   methodology: "Immunometric immunoassay.",
   turnaround: {
-    routine: "Proposed routine turnaround: 1–2 working days, subject to laboratory confirmation.",
-    urgent: "Suspected congenital hypothyroidism requires an urgent testing and communication pathway."
+    routine: "Test: Mon, Wed, Thurs, Fri.",
+    urgent: "Suspected congenital hypothyroidism requires an urgent testing."
   },
   criticalAlert: [
     "Results suggesting congenital hypothyroidism require urgent clinician notification, FT4 assessment and paediatric review according to the neonatal pathway.",
